@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#2f5d3a">
+
+  <title>Services & Pricing — GrowEssential</title>
+  <meta name="description" content="Soil audits, JADAM input systems, vermicompost setups, food forest design, and long-term stewardship retainers. Transparent pricing.">
+  <link rel="canonical" href="https://growessential.com/services">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = { theme: { extend: {
+      colors: { soil:{50:'#faf7f0',100:'#f5f1e8',200:'#e8dfc8',300:'#d4c39e',400:'#b89a6b',500:'#8a6b3d',600:'#6b5028',700:'#4a3719'},
+                leaf:{50:'#f0f7f1',100:'#d8ebdc',200:'#a8d2b1',300:'#6fad7d',400:'#458859',500:'#2f5d3a',600:'#234629',700:'#172f1b'},
+                rust:{500:'#a8472b',600:'#8a3923'}, cream:{DEFAULT:'#f5f1e8'} },
+      fontFamily: { serif:['Fraunces','serif'], sans:['Inter','ui-sans-serif','system-ui'] }
+    } } }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: #f5f1e8; color: #172f1b; }
+    h1,h2,h3,h4 { font-family: 'Fraunces', serif; letter-spacing: -0.01em; }
+    .ring-soil { box-shadow: 0 1px 0 0 rgba(74,55,25,0.08), 0 8px 24px -8px rgba(23,47,27,0.18); }
+  </style>
+</head>
+<body class="antialiased">
+
+<nav class="sticky top-0 z-50 bg-cream/85 backdrop-blur border-b border-soil-200">
+  <div class="max-w-6xl mx-auto px-5 py-4 flex items-center justify-between">
+    <a href="/" class="flex items-center gap-2 text-leaf-600 font-serif text-xl font-semibold">
+      <span class="inline-block w-3 h-3 rounded-full bg-leaf-500"></span>GrowEssential
+    </a>
+    <button id="navToggle" class="md:hidden text-leaf-700 text-2xl" aria-label="Open menu">☰</button>
+    <div class="hidden md:flex items-center gap-7 text-sm text-leaf-700">
+      <a href="/about" class="hover:text-leaf-500">About</a>
+      <a href="/services" class="text-leaf-500">Services</a>
+      <a href="/land-audit" class="hover:text-leaf-500">Land Audit</a>
+      <a href="/contact" class="hover:text-leaf-500">Contact</a>
+      <a href="/land-audit" class="bg-leaf-500 hover:bg-leaf-600 text-cream px-4 py-2 rounded-full">Free Land Audit</a>
+    </div>
+  </div>
+  <div id="mobileNav" class="hidden md:hidden border-t border-soil-200 bg-cream">
+    <div class="max-w-6xl mx-auto px-5 py-3 flex flex-col gap-3 text-leaf-700">
+      <a href="/about" class="py-2 border-b border-soil-100">About</a>
+      <a href="/services" class="py-2 border-b border-soil-100">Services</a>
+      <a href="/land-audit" class="py-2 border-b border-soil-100">Land Audit</a>
+      <a href="/contact" class="py-2 border-b border-soil-100">Contact</a>
+      <a href="/land-audit" class="bg-leaf-500 text-cream text-center px-4 py-3 rounded-full mt-2">Free Land Audit</a>
+    </div>
+  </div>
+</nav>
+
+<header class="max-w-4xl mx-auto px-5 pt-16 pb-10 md:pt-24">
+  <div class="text-xs uppercase tracking-widest text-leaf-500 mb-4">Services</div>
+  <h1 class="font-serif text-4xl md:text-5xl text-leaf-700 leading-tight">
+    Transparent pricing.<br>
+    <span class="text-rust-500">Soil-first deliverables.</span>
+  </h1>
+  <p class="mt-5 text-lg text-soil-700 max-w-2xl">Every engagement starts with a free land audit (or paid soil audit if you want lab work). Pick the tier that matches where you are.</p>
+</header>
+
+<section class="max-w-6xl mx-auto px-5 pb-12">
+  <div class="grid md:grid-cols-3 gap-6">
+
+    <article class="bg-cream border border-soil-200 rounded-3xl p-7 ring-soil flex flex-col">
+      <div class="text-xs uppercase tracking-widest text-leaf-500 mb-2">Tier 01 · Diagnose</div>
+      <h2 class="font-serif text-2xl text-leaf-700 mb-1">Soil Audit</h2>
+      <div class="text-3xl font-serif text-leaf-600 mb-4">$497<span class="text-base text-soil-500">+</span></div>
+      <p class="text-sm text-soil-700 leading-relaxed mb-5">Find out what's actually going on in your soil before spending anything on inputs. Lab work + interpretation + 90-day action plan.</p>
+      <ul class="text-sm text-soil-700 space-y-2 mb-6 flex-1">
+        <li>✓ Chemistry test (Logan or Ward Labs)</li>
+        <li>✓ Biological add-on (Haney or PLFA) optional</li>
+        <li>✓ Field reads if onsite (slake, infiltration, Solvita)</li>
+        <li>✓ 3–5 page plain-English interpretation</li>
+        <li>✓ 3 immediate actions for the next 90 days</li>
+        <li>✓ One 30-min follow-up call</li>
+      </ul>
+      <a href="/contact?service=soil-audit" class="bg-leaf-500 hover:bg-leaf-600 text-cream text-center px-5 py-3 rounded-full font-medium transition">Book a Soil Audit</a>
+    </article>
+
+    <article class="bg-leaf-700 text-cream border border-leaf-600 rounded-3xl p-7 ring-soil flex flex-col scale-[1.02]">
+      <div class="text-xs uppercase tracking-widest text-leaf-200 mb-2">Tier 02 · Build & Design</div>
+      <h2 class="font-serif text-2xl mb-1">System Design</h2>
+      <div class="text-3xl font-serif mb-4">$3,997<span class="text-base text-leaf-200">+</span></div>
+      <p class="text-sm text-leaf-100 leading-relaxed mb-5">Custom design + input system for your parcel. Food forest, regen-farm transition, or agroforestry layout — climate-matched and invasive-screened.</p>
+      <ul class="text-sm text-leaf-100 space-y-2 mb-6 flex-1">
+        <li>✓ Includes full Soil Audit (Tier 01)</li>
+        <li>✓ Site basemap + zone/sector analysis</li>
+        <li>✓ Species plan (natives + non-invasive companions)</li>
+        <li>✓ JADAM input recipes for your climate</li>
+        <li>✓ Compost / vermicompost system spec</li>
+        <li>✓ 12-month implementation roadmap</li>
+        <li>✓ Two 60-min strategy calls</li>
+      </ul>
+      <a href="/contact?service=system-design" class="bg-cream text-leaf-700 hover:bg-soil-100 text-center px-5 py-3 rounded-full font-medium transition">Start a Design</a>
+      <p class="text-xs text-leaf-200 text-center mt-3">Most popular</p>
+    </article>
+
+    <article class="bg-cream border border-soil-200 rounded-3xl p-7 ring-soil flex flex-col">
+      <div class="text-xs uppercase tracking-widest text-leaf-500 mb-2">Tier 03 · Stewardship</div>
+      <h2 class="font-serif text-2xl text-leaf-700 mb-1">Long-Term Retainer</h2>
+      <div class="text-3xl font-serif text-leaf-600 mb-4">$1,497<span class="text-base text-soil-500">/mo</span></div>
+      <p class="text-sm text-soil-700 leading-relaxed mb-5">Soil work is a multi-year process. Monthly retainer for active projects — measurable progress against your baseline tests.</p>
+      <ul class="text-sm text-soil-700 space-y-2 mb-6 flex-1">
+        <li>✓ Two 60-min strategy calls per month</li>
+        <li>✓ Quarterly progress soil retest</li>
+        <li>✓ Async support (email + voice notes)</li>
+        <li>✓ Adjusted input recipes as season changes</li>
+        <li>✓ Annual onsite visit (travel billed at cost)</li>
+        <li>✓ Investor-ready progress reports</li>
+      </ul>
+      <a href="/contact?service=retainer" class="bg-leaf-500 hover:bg-leaf-600 text-cream text-center px-5 py-3 rounded-full font-medium transition">Discuss a Retainer</a>
+    </article>
+
+  </div>
+</section>
+
+<!-- ADD-ONS -->
+<section class="max-w-6xl mx-auto px-5 py-12">
+  <h2 class="font-serif text-2xl md:text-3xl text-leaf-700 mb-6">Add-ons & one-offs</h2>
+  <div class="grid md:grid-cols-2 gap-4">
+    <div class="bg-soil-50 border border-soil-200 rounded-2xl p-5 flex justify-between items-start gap-4">
+      <div>
+        <div class="font-serif text-leaf-700 text-lg">Single Strategy Call</div>
+        <div class="text-sm text-soil-600">60 minutes, Zoom or phone. For specific questions or a second opinion.</div>
+      </div>
+      <div class="font-serif text-xl text-leaf-600 whitespace-nowrap">$197</div>
+    </div>
+    <div class="bg-soil-50 border border-soil-200 rounded-2xl p-5 flex justify-between items-start gap-4">
+      <div>
+        <div class="font-serif text-leaf-700 text-lg">Onsite Walk-Through</div>
+        <div class="text-sm text-soil-600">2–3 hour site visit + verbal recommendations. Travel billed at cost.</div>
+      </div>
+      <div class="font-serif text-xl text-leaf-600 whitespace-nowrap">$697</div>
+    </div>
+    <div class="bg-soil-50 border border-soil-200 rounded-2xl p-5 flex justify-between items-start gap-4">
+      <div>
+        <div class="font-serif text-leaf-700 text-lg">JADAM Inputs Starter Pack</div>
+        <div class="text-sm text-soil-600">Climate-specific JMS, JLF, JWA protocols + 90-day schedule + troubleshooting flowchart.</div>
+      </div>
+      <div class="font-serif text-xl text-leaf-600 whitespace-nowrap">$397</div>
+    </div>
+    <div class="bg-soil-50 border border-soil-200 rounded-2xl p-5 flex justify-between items-start gap-4">
+      <div>
+        <div class="font-serif text-leaf-700 text-lg">Compost System Build Doc</div>
+        <div class="text-sm text-soil-600">Johnson-Su bioreactor OR continuous-flow vermicompost spec + bill of materials + protocol.</div>
+      </div>
+      <div class="font-serif text-xl text-leaf-600 whitespace-nowrap">$497</div>
+    </div>
+  </div>
+</section>
+
+<!-- INVESTORS -->
+<section class="bg-leaf-700 text-cream">
+  <div class="max-w-4xl mx-auto px-5 py-16 text-center">
+    <div class="text-xs uppercase tracking-widest text-leaf-200 mb-3">For investors</div>
+    <h2 class="font-serif text-3xl md:text-4xl mb-4">Funding regenerative ag in the Caribbean?</h2>
+    <p class="text-leaf-100 max-w-xl mx-auto mb-8">We're sourcing land in the DR for a working tropical food-forest project — and we're open to investor partners. Cacao agroforestry, food forest, and education-center revenue mix.</p>
+    <a href="/contact?service=investor" class="inline-block bg-cream text-leaf-700 hover:bg-soil-100 px-8 py-4 rounded-full font-medium transition">Investor Inquiry →</a>
+  </div>
+</section>
+
+<footer class="bg-leaf-50 border-t border-soil-200">
+  <div class="max-w-6xl mx-auto px-5 py-12 grid md:grid-cols-4 gap-8 text-sm">
+    <div class="md:col-span-2">
+      <div class="flex items-center gap-2 text-leaf-700 font-serif text-lg font-semibold mb-3">
+        <span class="inline-block w-3 h-3 rounded-full bg-leaf-500"></span>GrowEssential
+      </div>
+      <p class="text-soil-600 max-w-sm">Soil-first regenerative agriculture, food forest design, and consulting.</p>
+    </div>
+    <div>
+      <div class="font-medium text-leaf-700 mb-3">Site</div>
+      <ul class="space-y-2 text-soil-600">
+        <li><a href="/about" class="hover:text-leaf-500">About</a></li>
+        <li><a href="/services" class="hover:text-leaf-500">Services</a></li>
+        <li><a href="/land-audit" class="hover:text-leaf-500">Land Audit</a></li>
+        <li><a href="/contact" class="hover:text-leaf-500">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="font-medium text-leaf-700 mb-3">Contact</div>
+      <ul class="space-y-2 text-soil-600">
+        <li>hello@growessential.com</li>
+        <li class="text-xs text-soil-500 mt-3">© 2026 GrowEssential.</li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('navToggle')?.addEventListener('click', () => document.getElementById('mobileNav').classList.toggle('hidden'));
+</script>
+</body>
+</html>

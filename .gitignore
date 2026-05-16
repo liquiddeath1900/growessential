@@ -1,0 +1,24 @@
+# macOS
+.DS_Store
+
+# Claude Code project-local config
+.claude/
+
+# Private notes / drafts
+notes/
+drafts/
+
+# Python build artifacts (for future audit tool dev)
+__pycache__/
+*.pyc
+.venv/
+
+# Node (if Next.js gets added later)
+node_modules/
+.next/
+.vercel/
+
+# Env files
+.env
+.env.local
+.env*.local
