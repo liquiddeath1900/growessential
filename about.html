@@ -44,7 +44,7 @@
       <a href="/services" class="hover:text-leaf-500">Services</a>
       <a href="/land-audit" class="hover:text-leaf-500">Land Audit</a>
       <a href="/contact" class="hover:text-leaf-500">Contact</a>
-      <a href="/land-audit" class="bg-leaf-500 hover:bg-leaf-600 text-cream px-4 py-2 rounded-full">Free Land Audit</a>
+      <a href="https://calendly.com/growessential/discovery-call" target="_blank" rel="noopener" class="bg-leaf-500 hover:bg-leaf-600 text-cream px-4 py-2 rounded-full">Book a Call</a>
     </div>
   </div>
   <div id="mobileNav" class="hidden md:hidden border-t border-soil-200 bg-cream">
@@ -53,7 +53,7 @@
       <a href="/services" class="py-2 border-b border-soil-100">Services</a>
       <a href="/land-audit" class="py-2 border-b border-soil-100">Land Audit</a>
       <a href="/contact" class="py-2 border-b border-soil-100">Contact</a>
-      <a href="/land-audit" class="bg-leaf-500 text-cream text-center px-4 py-3 rounded-full mt-2">Free Land Audit</a>
+      <a href="https://calendly.com/growessential/discovery-call" target="_blank" rel="noopener" class="bg-leaf-500 text-cream text-center px-4 py-3 rounded-full mt-2">Book a Free Call</a>
     </div>
   </div>
 </nav>
@@ -94,14 +94,18 @@
 
   <h2 class="font-serif text-2xl text-leaf-700 pt-6">Want to work together?</h2>
   <p>
-    Start with a <a href="/land-audit" class="text-leaf-500 underline">free land audit</a> — tell me about your parcel and I'll send back a first-actions read within 5 business days. Or go straight to <a href="/services" class="text-leaf-500 underline">Services</a> if you already know what you need.
+    Fastest path: <a href="https://calendly.com/growessential/discovery-call" target="_blank" rel="noopener" class="text-leaf-500 underline">book a free 15-min discovery call</a> and tell me what you're trying to build. Not ready to talk? Get a <a href="/land-audit" class="text-leaf-500 underline">free land audit</a> instead — I'll send back a first-actions read in 5 business days.
   </p>
 </article>
 
 <section class="bg-leaf-700 text-cream">
   <div class="max-w-6xl mx-auto px-5 py-16 text-center">
     <h2 class="font-serif text-3xl md:text-4xl mb-4">Ready to start?</h2>
-    <a href="/land-audit" class="inline-block bg-cream text-leaf-700 hover:bg-soil-100 px-8 py-4 rounded-full font-medium transition mt-4">Start a Free Land Audit →</a>
+    <p class="text-leaf-100 max-w-xl mx-auto mb-6 mt-3">No pitch deck. Bring your land questions.</p>
+    <div class="flex flex-col sm:flex-row gap-3 justify-center items-center">
+      <a href="https://calendly.com/growessential/discovery-call" target="_blank" rel="noopener" class="inline-block bg-cream text-leaf-700 hover:bg-soil-100 px-8 py-4 rounded-full font-medium transition">Book a Free 15-min Call →</a>
+      <a href="/land-audit" class="text-leaf-100 hover:text-cream underline underline-offset-4 text-sm">Or get a free Land Audit</a>
+    </div>
   </div>
 </section>
 
@@ -131,6 +135,14 @@
     </div>
   </div>
 </footer>
+
+<!-- MOBILE STICKY CTA -->
+<div class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-cream border-t border-soil-200 px-4 py-3 shadow-lg">
+  <a href="https://calendly.com/growessential/discovery-call" target="_blank" rel="noopener" class="block bg-leaf-500 hover:bg-leaf-600 text-cream text-center px-5 py-3 rounded-full font-medium transition">
+    Book Free 15-min Call →
+  </a>
+</div>
+<div class="md:hidden h-20"></div>
 
 <script>
   document.getElementById('navToggle')?.addEventListener('click', () => document.getElementById('mobileNav').classList.toggle('hidden'));
