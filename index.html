@@ -10,6 +10,8 @@
   <link rel="manifest" href="/site.webmanifest">
   <meta name="theme-color" content="#2f5d3a">
 
+  <link rel="preload" as="image" href="/assets/hero-foodforest.jpg" fetchpriority="high">
+
   <title>GrowEssential — Regenerative Agriculture, Soil Biology, Food Forest Design</title>
   <meta name="description" content="Soil-first regenerative agriculture consulting. JADAM, vermicompost, food forest design. From cannabis cultivation to global regenerative farming.">
   <meta name="keywords" content="regenerative agriculture consultant, soil biology, JADAM, vermicompost, food forest design, permaculture consulting, Dominican Republic agroforestry, soil testing">
@@ -26,21 +28,29 @@
   <link rel="preconnect" href="https://cdn.tailwindcss.com">
 
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            soil:   { 50:'#faf7f0', 100:'#f5f1e8', 200:'#e8dfc8', 300:'#d4c39e', 400:'#b89a6b', 500:'#8a6b3d', 600:'#6b5028', 700:'#4a3719' },
-            leaf:   { 50:'#f0f7f1', 100:'#d8ebdc', 200:'#a8d2b1', 300:'#6fad7d', 400:'#458859', 500:'#2f5d3a', 600:'#234629', 700:'#172f1b' },
-            rust:   { 500:'#a8472b', 600:'#8a3923' },
-            cream:  { DEFAULT:'#f5f1e8' }
+            soil:   { 50:'#faf7f0', 100:'#f5f1e8', 200:'#e8dfc8', 300:'#d4c39e', 400:'#b89a6b', 500:'#8a6b3d', 600:'#6b5028', 700:'#4a3719', 800:'#2d2010' },
+            leaf:   { 50:'#f0f7f1', 100:'#d8ebdc', 200:'#a8d2b1', 300:'#6fad7d', 400:'#458859', 500:'#2f5d3a', 600:'#234629', 700:'#172f1b', 800:'#0c1a0e' },
+            rust:   { 400:'#c0573b', 500:'#a8472b', 600:'#8a3923', 700:'#6e2c1a' },
+            cream:  { DEFAULT:'#f5f1e8', dark:'#e8dfc8' }
           },
           fontFamily: {
             serif: ['Fraunces', 'serif'],
             sans: ['Inter', 'ui-sans-serif', 'system-ui']
+          },
+          animation: {
+            'marquee': 'marquee 40s linear infinite',
+            'fade-up': 'fadeUp 0.8s ease-out forwards'
+          },
+          keyframes: {
+            marquee: { '0%': { transform: 'translateX(0)' }, '100%': { transform: 'translateX(-50%)' } },
+            fadeUp: { '0%': { opacity: 0, transform: 'translateY(20px)' }, '100%': { opacity: 1, transform: 'translateY(0)' } }
           }
         }
       }
@@ -50,38 +60,45 @@
   <style>
     html { scroll-behavior: smooth; }
     body { font-family: 'Inter', sans-serif; background: #f5f1e8; color: #172f1b; }
-    h1,h2,h3,h4 { font-family: 'Fraunces', serif; letter-spacing: -0.01em; }
+    h1,h2,h3,h4 { font-family: 'Fraunces', serif; letter-spacing: -0.02em; }
+    .display { font-variation-settings: "opsz" 144; }
     .grain {
       background-image:
-        radial-gradient(rgba(74,55,25,0.04) 1px, transparent 1px),
+        radial-gradient(rgba(74,55,25,0.05) 1px, transparent 1px),
         radial-gradient(rgba(74,55,25,0.03) 1px, transparent 1px);
       background-size: 24px 24px, 16px 16px;
       background-position: 0 0, 8px 8px;
     }
-    .ring-soil { box-shadow: 0 1px 0 0 rgba(74,55,25,0.08), 0 8px 24px -8px rgba(23,47,27,0.18); }
+    .ring-soil { box-shadow: 0 1px 0 0 rgba(74,55,25,0.08), 0 12px 32px -10px rgba(23,47,27,0.22); }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s ease-out, transform .8s ease-out; }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+    .marquee-track { display: flex; width: max-content; animation: marquee 40s linear infinite; }
+    @keyframes marquee { 0% { transform: translateX(0) } 100% { transform: translateX(-50%) } }
+    .underline-grow { background-image: linear-gradient(currentColor, currentColor); background-size: 0 1.5px; background-repeat: no-repeat; background-position: 0 100%; transition: background-size .4s ease; }
+    .underline-grow:hover { background-size: 100% 1.5px; }
+    .tag { font-size: 10px; letter-spacing: .12em; text-transform: uppercase; }
   </style>
 </head>
 <body class="antialiased">
 
 <!-- NAV -->
-<nav class="sticky top-0 z-50 bg-cream/85 backdrop-blur border-b border-soil-200">
-  <div class="max-w-6xl mx-auto px-5 py-4 flex items-center justify-between">
-    <a href="/" class="flex items-center gap-2 text-leaf-600 font-serif text-xl font-semibold">
-      <span class="inline-block w-3 h-3 rounded-full bg-leaf-500"></span>
+<nav class="fixed top-0 left-0 right-0 z-50 bg-cream/85 backdrop-blur-md border-b border-soil-200">
+  <div class="max-w-7xl mx-auto px-5 py-4 flex items-center justify-between">
+    <a href="/" class="flex items-center gap-2.5 text-leaf-700 font-serif text-xl font-semibold">
+      <span class="inline-block w-2.5 h-2.5 rounded-full bg-leaf-500"></span>
       GrowEssential
     </a>
     <button id="navToggle" class="md:hidden text-leaf-700 text-2xl" aria-label="Open menu">☰</button>
-    <div id="navLinks" class="hidden md:flex items-center gap-7 text-sm text-leaf-700">
-      <a href="/about" class="hover:text-leaf-500">About</a>
-      <a href="/services" class="hover:text-leaf-500">Services</a>
-      <a href="/land-audit" class="hover:text-leaf-500">Land Audit</a>
-      <a href="/contact" class="hover:text-leaf-500">Contact</a>
-      <a href="https://calendly.com/growessential/discovery-call" target="_blank" rel="noopener" class="bg-leaf-500 hover:bg-leaf-600 text-cream px-4 py-2 rounded-full">Book a Call</a>
+    <div class="hidden md:flex items-center gap-8 text-sm text-leaf-700">
+      <a href="/about" class="underline-grow">About</a>
+      <a href="/services" class="underline-grow">Services</a>
+      <a href="/land-audit" class="underline-grow">Land Audit</a>
+      <a href="/contact" class="underline-grow">Contact</a>
+      <a href="https://calendly.com/growessential/discovery-call" target="_blank" rel="noopener" class="bg-leaf-500 hover:bg-leaf-600 text-cream px-5 py-2.5 rounded-full font-medium transition shadow-md shadow-leaf-500/20">Book a Call</a>
     </div>
   </div>
-  <!-- mobile drawer -->
   <div id="mobileNav" class="hidden md:hidden border-t border-soil-200 bg-cream">
-    <div class="max-w-6xl mx-auto px-5 py-3 flex flex-col gap-3 text-leaf-700">
+    <div class="max-w-7xl mx-auto px-5 py-3 flex flex-col gap-3 text-leaf-700">
       <a href="/about" class="py-2 border-b border-soil-100">About</a>
       <a href="/services" class="py-2 border-b border-soil-100">Services</a>
       <a href="/land-audit" class="py-2 border-b border-soil-100">Land Audit</a>
@@ -91,186 +108,392 @@
   </div>
 </nav>
 
-<!-- HERO -->
-<header class="relative grain overflow-hidden">
-  <div class="max-w-6xl mx-auto px-5 pt-20 pb-24 md:pt-32 md:pb-36 grid md:grid-cols-12 gap-10 items-center">
-    <div class="md:col-span-7">
-      <div class="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-leaf-600 bg-leaf-50 border border-leaf-200 px-3 py-1 rounded-full mb-6">
-        <span class="w-1.5 h-1.5 rounded-full bg-leaf-500"></span>
+<!-- HERO — full-bleed image with overlay -->
+<header class="relative min-h-[100vh] flex items-center pt-20 overflow-hidden">
+  <img src="/assets/hero-foodforest.jpg" alt="Lush multi-strata food forest with banana and tropical canopy" class="absolute inset-0 w-full h-full object-cover scale-105" loading="eager" fetchpriority="high">
+  <div class="absolute inset-0 bg-gradient-to-br from-leaf-800/85 via-leaf-700/75 to-leaf-800/90"></div>
+  <div class="absolute inset-0 grain opacity-30"></div>
+
+  <div class="relative max-w-7xl mx-auto px-5 py-20 md:py-32 w-full">
+    <div class="max-w-3xl">
+      <div class="inline-flex items-center gap-2 tag text-leaf-200 bg-leaf-800/40 backdrop-blur border border-leaf-400/30 px-3 py-1.5 rounded-full mb-8 reveal in">
+        <span class="w-1.5 h-1.5 rounded-full bg-leaf-300 animate-pulse"></span>
         Soil-first regenerative consulting
       </div>
-      <h1 class="font-serif text-4xl md:text-6xl font-semibold leading-[1.05] text-leaf-700">
+      <h1 class="display font-serif font-medium text-cream text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[0.95] mb-8 reveal in">
         Heal the soil.<br>
-        <span class="text-rust-500">Grow the rest.</span>
+        <span class="text-rust-400 italic font-normal">Grow the rest.</span>
       </h1>
-      <p class="mt-6 text-lg md:text-xl text-soil-700 max-w-xl leading-relaxed">
-        Food forests, regenerative farms, and truly organic systems — designed from the soil up. We bring cannabis-cultivation soil biology, JADAM Korean natural farming, and vermicompost mastery to every parcel.
+      <p class="text-cream/90 text-lg md:text-2xl max-w-2xl leading-relaxed mb-10 font-light reveal in">
+        Food forests, regenerative farms, and truly organic systems — designed from the soil up.
+        We bring cannabis-cultivation soil biology, JADAM Korean natural farming, and vermicompost mastery to every parcel.
       </p>
-      <div class="mt-8 flex flex-col sm:flex-row gap-3">
-        <a href="https://calendly.com/growessential/discovery-call" target="_blank" rel="noopener" class="bg-leaf-500 hover:bg-leaf-600 text-cream px-7 py-4 rounded-full font-medium text-center transition shadow-lg shadow-leaf-500/20">
-          Book a Free 15-min Call →
+      <div class="flex flex-col sm:flex-row gap-4 reveal in">
+        <a href="https://calendly.com/growessential/discovery-call" target="_blank" rel="noopener" class="bg-cream text-leaf-700 hover:bg-cream-dark px-8 py-4 rounded-full font-semibold text-center transition shadow-2xl shadow-black/30 inline-flex items-center justify-center gap-2 group">
+          Book a Free 15-min Call
+          <span class="transition-transform group-hover:translate-x-1">→</span>
         </a>
-        <a href="/land-audit" class="border border-soil-300 hover:border-leaf-500 text-leaf-700 px-7 py-4 rounded-full font-medium text-center transition">
-          Or Get a Free Land Audit
+        <a href="/land-audit" class="border border-cream/40 hover:border-cream hover:bg-cream/10 text-cream px-8 py-4 rounded-full font-medium text-center transition">
+          Or get a free Land Audit
         </a>
       </div>
-      <p class="mt-5 text-sm text-soil-500 flex flex-wrap items-center gap-x-4 gap-y-1">
-        <span>✓ No pitch deck.</span><span>✓ Bring your land questions.</span><span>✓ Zoom or Google Meet.</span>
-      </p>
-    </div>
-    <div class="md:col-span-5">
-      <div class="ring-soil rounded-3xl bg-leaf-50 p-8 border border-leaf-200">
-        <div class="text-xs uppercase tracking-widest text-leaf-500 mb-2">Three pillars</div>
-        <ul class="space-y-5">
-          <li class="flex gap-4">
-            <div class="text-2xl">🌱</div>
-            <div>
-              <div class="font-serif text-lg text-leaf-700">Diagnose the soil</div>
-              <div class="text-sm text-soil-600">Lab tests + biology assessment + field reads. Find what's missing before you spend a dollar on inputs.</div>
-            </div>
-          </li>
-          <li class="flex gap-4">
-            <div class="text-2xl">🪱</div>
-            <div>
-              <div class="font-serif text-lg text-leaf-700">Build the inputs</div>
-              <div class="text-sm text-soil-600">JADAM microbial solutions, vermicompost ("black gold"), Johnson-Su bioreactors — on your land, near-zero cost.</div>
-            </div>
-          </li>
-          <li class="flex gap-4">
-            <div class="text-2xl">🌳</div>
-            <div>
-              <div class="font-serif text-lg text-leaf-700">Design the system</div>
-              <div class="text-sm text-soil-600">Food forests + agroforestry + cover crop rotations — climate-matched and hurricane-resilient.</div>
-            </div>
-          </li>
-        </ul>
+      <div class="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-cream/70">
+        <span class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-leaf-300"></span>No pitch deck</span>
+        <span class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-leaf-300"></span>Bring your land questions</span>
+        <span class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-leaf-300"></span>Zoom or Google Meet</span>
       </div>
     </div>
+  </div>
+
+  <!-- scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-cream/60 text-xs tracking-widest flex flex-col items-center gap-2 reveal in">
+    <span>SCROLL</span>
+    <span class="block w-px h-8 bg-cream/40"></span>
   </div>
 </header>
 
-<!-- WHY US -->
-<section class="bg-cream border-y border-soil-200">
-  <div class="max-w-6xl mx-auto px-5 py-20">
-    <div class="grid md:grid-cols-2 gap-12 items-center">
-      <div>
-        <h2 class="font-serif text-3xl md:text-4xl text-leaf-700">Soil biology from the<br>highest-stakes laboratory.</h2>
-        <p class="mt-5 text-soil-700 leading-relaxed">
-          Years of cannabis cultivation forced me to learn what most regenerative-ag consultants only read about — what bacteria-to-fungi ratios actually do to yield, how microbial drenches change a root system in 72 hours, what costs you a whole crop when the biology goes wrong.
-        </p>
-        <p class="mt-4 text-soil-700 leading-relaxed">
-          That same toolkit — JADAM inputs, vermicompost teas, Johnson-Su compost, on-farm soil testing — works for every plant a landowner wants to grow. From a backyard food forest to a 50-acre agroforestry project, the soil rules don't change.
-        </p>
+<!-- MARQUEE STRIP -->
+<section class="bg-leaf-700 text-cream/80 py-4 border-y border-leaf-600 overflow-hidden">
+  <div class="marquee-track gap-12 text-sm tracking-widest uppercase">
+    <!-- Set 1 -->
+    <div class="flex items-center gap-12 px-6 whitespace-nowrap">
+      <span>🌱 JADAM Korean Natural Farming</span><span class="text-leaf-400">·</span>
+      <span>🪱 Vermicompost (Black Gold)</span><span class="text-leaf-400">·</span>
+      <span>🍄 Johnson-Su Bioreactor</span><span class="text-leaf-400">·</span>
+      <span>🧪 Haney Soil Health Tests</span><span class="text-leaf-400">·</span>
+      <span>🌳 Tropical Agroforestry</span><span class="text-leaf-400">·</span>
+      <span>🥥 Cacao Forest Design</span><span class="text-leaf-400">·</span>
+      <span>🌾 Regenerative Organic Certified Aligned</span><span class="text-leaf-400">·</span>
+      <span>🌍 Native Species First</span><span class="text-leaf-400">·</span>
+    </div>
+    <!-- Set 2 (duplicate for seamless loop) -->
+    <div class="flex items-center gap-12 px-6 whitespace-nowrap" aria-hidden="true">
+      <span>🌱 JADAM Korean Natural Farming</span><span class="text-leaf-400">·</span>
+      <span>🪱 Vermicompost (Black Gold)</span><span class="text-leaf-400">·</span>
+      <span>🍄 Johnson-Su Bioreactor</span><span class="text-leaf-400">·</span>
+      <span>🧪 Haney Soil Health Tests</span><span class="text-leaf-400">·</span>
+      <span>🌳 Tropical Agroforestry</span><span class="text-leaf-400">·</span>
+      <span>🥥 Cacao Forest Design</span><span class="text-leaf-400">·</span>
+      <span>🌾 Regenerative Organic Certified Aligned</span><span class="text-leaf-400">·</span>
+      <span>🌍 Native Species First</span><span class="text-leaf-400">·</span>
+    </div>
+  </div>
+</section>
+
+<!-- THREE PILLARS -->
+<section class="relative">
+  <div class="max-w-7xl mx-auto px-5 py-20 md:py-28">
+    <div class="grid md:grid-cols-12 gap-12 items-start">
+      <div class="md:col-span-4 md:sticky md:top-28">
+        <div class="tag text-leaf-500 mb-4">How we work · 01</div>
+        <h2 class="font-serif text-4xl md:text-5xl text-leaf-700 leading-tight">Three pillars.<br>One direction:<br><span class="text-rust-500 italic">down into the soil.</span></h2>
       </div>
-      <div class="bg-leaf-700 text-cream rounded-3xl p-8 ring-soil">
-        <div class="text-xs uppercase tracking-widest text-leaf-200 mb-3">Currently scouting</div>
-        <h3 class="font-serif text-2xl mb-3">A regenerative project<br>in the Dominican Republic.</h3>
-        <p class="text-leaf-100 text-sm leading-relaxed">
-          Cibao Valley to north coast — looking for land to build a working demo of tropical food-forest design. Investors and partners welcome. Following the cocoa agroforestry model that's made DR the world's #1 organic cocoa exporter.
-        </p>
-        <a href="https://calendly.com/growessential/discovery-call" target="_blank" rel="noopener" class="mt-5 inline-block text-cream border-b border-leaf-300 hover:border-cream pb-0.5 text-sm">
-          Book an investor call →
+      <div class="md:col-span-8 space-y-5">
+        <article class="reveal bg-cream border border-soil-200 rounded-3xl p-8 hover:-translate-y-1 hover:border-leaf-400 transition ring-soil">
+          <div class="flex items-start gap-6">
+            <div class="text-5xl font-serif text-leaf-500 font-light">01</div>
+            <div>
+              <div class="font-serif text-2xl text-leaf-700 mb-2">Diagnose the soil</div>
+              <p class="text-soil-700 leading-relaxed">Lab chemistry tests (Logan, Ward, Regen Ag Lab) + biological health (Haney, PLFA) + on-farm field reads (slake, infiltration, Solvita CO₂). Find what's missing before spending a dollar on inputs.</p>
+            </div>
+          </div>
+        </article>
+        <article class="reveal bg-leaf-700 text-cream rounded-3xl p-8 hover:-translate-y-1 transition ring-soil">
+          <div class="flex items-start gap-6">
+            <div class="text-5xl font-serif text-leaf-200 font-light">02</div>
+            <div>
+              <div class="font-serif text-2xl mb-2">Build the inputs</div>
+              <p class="text-leaf-100 leading-relaxed">JADAM microbial solutions, vermicompost ("black gold"), Johnson-Su bioreactors. Near-zero-cost biology you make on your own land from local materials. No bottled cure-alls.</p>
+            </div>
+          </div>
+        </article>
+        <article class="reveal bg-cream border border-soil-200 rounded-3xl p-8 hover:-translate-y-1 hover:border-leaf-400 transition ring-soil">
+          <div class="flex items-start gap-6">
+            <div class="text-5xl font-serif text-leaf-500 font-light">03</div>
+            <div>
+              <div class="font-serif text-2xl text-leaf-700 mb-2">Design the system</div>
+              <p class="text-soil-700 leading-relaxed">Food forests, agroforestry, cover crop rotations. Climate-matched, hurricane-resilient, invasive-screened by country. Native species first, non-invasive companions second.</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="bg-leaf-800 text-cream">
+  <div class="max-w-7xl mx-auto px-5 py-20 md:py-24">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-6">
+      <div class="reveal">
+        <div class="font-serif text-6xl md:text-7xl text-rust-400 font-light mb-2">+26<span class="text-3xl align-super">%</span></div>
+        <div class="font-serif text-lg text-cream mb-1">Yield from vermicompost</div>
+        <div class="text-sm text-cream/60">Per peer-reviewed meta-analysis (Mathieu 2019, Springer)</div>
+      </div>
+      <div class="reveal">
+        <div class="font-serif text-6xl md:text-7xl text-rust-400 font-light mb-2">5<span class="text-3xl">d</span></div>
+        <div class="font-serif text-lg text-cream mb-1">Land audit turnaround</div>
+        <div class="text-sm text-cream/60">Free first-actions read, every parcel</div>
+      </div>
+      <div class="reveal">
+        <div class="font-serif text-6xl md:text-7xl text-rust-400 font-light mb-2">$0</div>
+        <div class="font-serif text-lg text-cream mb-1">Cost of JADAM inputs</div>
+        <div class="text-sm text-cream/60">You make them on-farm. We teach the recipes.</div>
+      </div>
+      <div class="reveal">
+        <div class="font-serif text-6xl md:text-7xl text-rust-400 font-light mb-2">100<span class="text-3xl">%</span></div>
+        <div class="font-serif text-lg text-cream mb-1">Invasive-free recommendations</div>
+        <div class="text-sm text-cream/60">Country-specific screening before any species suggested</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STORY / WHY US -->
+<section class="bg-cream relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-5 py-24 md:py-32">
+    <div class="grid md:grid-cols-12 gap-12 items-center">
+      <div class="md:col-span-7 reveal">
+        <div class="tag text-leaf-500 mb-4">Why us · 02</div>
+        <h2 class="font-serif text-4xl md:text-6xl text-leaf-700 leading-[1.05] mb-8">
+          Soil biology<br>from the <span class="italic text-rust-500">highest-stakes</span> laboratory.
+        </h2>
+        <div class="space-y-5 text-soil-700 text-lg leading-relaxed max-w-2xl">
+          <p>Years of cannabis cultivation forced me to learn what most regenerative-ag consultants only read about — what bacteria-to-fungi ratios actually do to yield, how microbial drenches change a root system in 72 hours, what costs you a whole crop when the biology goes wrong.</p>
+          <p>That same toolkit — JADAM inputs, vermicompost teas, Johnson-Su compost, on-farm soil testing — works for every plant a landowner wants to grow. From a backyard food forest to a 50-acre agroforestry project, the soil rules don't change.</p>
+        </div>
+        <a href="/about" class="mt-8 inline-flex items-center gap-2 text-leaf-600 hover:text-leaf-500 font-medium group">
+          Read the full story
+          <span class="transition-transform group-hover:translate-x-1">→</span>
+        </a>
+      </div>
+      <div class="md:col-span-5 reveal">
+        <div class="relative rounded-3xl overflow-hidden ring-soil aspect-[4/5]">
+          <img src="/assets/hands-soil.jpg" alt="Hands holding dark living soil — the foundation of every regenerative system." class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-leaf-800/70 via-transparent to-transparent"></div>
+          <div class="absolute bottom-6 left-6 right-6 text-cream">
+            <div class="tag text-leaf-200 mb-1">The foundation</div>
+            <div class="font-serif text-xl leading-tight">Living soil. Diverse biology. Everything else follows.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METHODS GRID -->
+<section class="bg-soil-50 border-y border-soil-200">
+  <div class="max-w-7xl mx-auto px-5 py-24 md:py-32">
+    <div class="grid md:grid-cols-12 gap-10 mb-16">
+      <div class="md:col-span-5">
+        <div class="tag text-leaf-500 mb-4">Methods · 03</div>
+        <h2 class="font-serif text-4xl md:text-6xl text-leaf-700 leading-[1.05]">No marketing fads.<br><span class="italic text-rust-500">Just what the soil<br>responds to.</span></h2>
+      </div>
+      <div class="md:col-span-6 md:col-start-7 self-end">
+        <p class="text-lg text-soil-700 leading-relaxed">Every method below is either peer-reviewed-validated or used at institutional scale by named practitioners — we cite the work, not the hype. If something has thin evidence, we say so on the same page we're selling it.</p>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <article class="reveal group bg-cream border border-soil-200 rounded-3xl p-7 hover:-translate-y-2 hover:border-leaf-400 hover:shadow-2xl hover:shadow-leaf-700/10 transition-all">
+        <div class="flex items-center justify-between mb-4">
+          <div class="text-3xl font-serif text-leaf-400 font-light">01</div>
+          <span class="tag bg-leaf-50 text-leaf-600 px-2.5 py-1 rounded-full border border-leaf-200">Cited recipes</span>
+        </div>
+        <h3 class="font-serif text-2xl text-leaf-700 mb-3">JADAM Korean Natural Farming</h3>
+        <p class="text-soil-700 text-sm leading-relaxed">Ultra-low-cost microbial inputs you make yourself — JMS, JLF, JWA. Cho Youngsang's open-source farming system. Near-zero cost, built from local leaf mold and household materials.</p>
+      </article>
+      <article class="reveal group bg-cream border border-soil-200 rounded-3xl p-7 hover:-translate-y-2 hover:border-leaf-400 hover:shadow-2xl hover:shadow-leaf-700/10 transition-all">
+        <div class="flex items-center justify-between mb-4">
+          <div class="text-3xl font-serif text-leaf-400 font-light">02</div>
+          <span class="tag bg-rust-500/10 text-rust-600 px-2.5 py-1 rounded-full border border-rust-500/30">Meta-analysis backed</span>
+        </div>
+        <h3 class="font-serif text-2xl text-leaf-700 mb-3">Vermicompost ("Black Gold")</h3>
+        <p class="text-soil-700 text-sm leading-relaxed">Worm-castings amendment. Peer-reviewed meta-analysis (Mathieu 2019): +26% commercial yield, +57% root biomass. The strongest-evidenced biological input we sell.</p>
+      </article>
+      <article class="reveal group bg-cream border border-soil-200 rounded-3xl p-7 hover:-translate-y-2 hover:border-leaf-400 hover:shadow-2xl hover:shadow-leaf-700/10 transition-all">
+        <div class="flex items-center justify-between mb-4">
+          <div class="text-3xl font-serif text-leaf-400 font-light">03</div>
+          <span class="tag bg-leaf-50 text-leaf-600 px-2.5 py-1 rounded-full border border-leaf-200">Institutional adoption</span>
+        </div>
+        <h3 class="font-serif text-2xl text-leaf-700 mb-3">Johnson-Su Bioreactor</h3>
+        <p class="text-soil-700 text-sm leading-relaxed">Static no-turn fungal-dominant compost. Dr. David Johnson's protocol. 12-month cycle. Applied as extract, slurry seed coating, or amendment.</p>
+      </article>
+      <article class="reveal group bg-cream border border-soil-200 rounded-3xl p-7 hover:-translate-y-2 hover:border-leaf-400 hover:shadow-2xl hover:shadow-leaf-700/10 transition-all">
+        <div class="flex items-center justify-between mb-4">
+          <div class="text-3xl font-serif text-leaf-400 font-light">04</div>
+          <span class="tag bg-leaf-50 text-leaf-600 px-2.5 py-1 rounded-full border border-leaf-200">NRCS-validated</span>
+        </div>
+        <h3 class="font-serif text-2xl text-leaf-700 mb-3">Soil testing + interpretation</h3>
+        <p class="text-soil-700 text-sm leading-relaxed">Lab chemistry (Logan, Ward, RegenAg) + biological health (Haney, PLFA) + field reads (slake, infiltration, Solvita). Numbers turned into a 90-day plan.</p>
+      </article>
+      <article class="reveal group bg-cream border border-soil-200 rounded-3xl p-7 hover:-translate-y-2 hover:border-leaf-400 hover:shadow-2xl hover:shadow-leaf-700/10 transition-all">
+        <div class="flex items-center justify-between mb-4">
+          <div class="text-3xl font-serif text-leaf-400 font-light">05</div>
+          <span class="tag bg-leaf-50 text-leaf-600 px-2.5 py-1 rounded-full border border-leaf-200">Country-screened</span>
+        </div>
+        <h3 class="font-serif text-2xl text-leaf-700 mb-3">Food forest + agroforestry design</h3>
+        <p class="text-soil-700 text-sm leading-relaxed">Native species + non-invasive companions. Climate-matched, hurricane-resilient. We screen out invasives by country — no neem in DR, no leucaena in pasture, period.</p>
+      </article>
+      <article class="reveal group bg-cream border border-soil-200 rounded-3xl p-7 hover:-translate-y-2 hover:border-leaf-400 hover:shadow-2xl hover:shadow-leaf-700/10 transition-all">
+        <div class="flex items-center justify-between mb-4">
+          <div class="text-3xl font-serif text-leaf-400 font-light">06</div>
+          <span class="tag bg-leaf-50 text-leaf-600 px-2.5 py-1 rounded-full border border-leaf-200">Long view</span>
+        </div>
+        <h3 class="font-serif text-2xl text-leaf-700 mb-3">Long-term stewardship</h3>
+        <p class="text-soil-700 text-sm leading-relaxed">Soil work is multi-year. Retainer engagements track outcomes against baseline tests — not vibes. Quarterly retesting included.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS / HOW IT WORKS -->
+<section class="bg-cream">
+  <div class="max-w-7xl mx-auto px-5 py-24 md:py-32">
+    <div class="max-w-2xl mb-16 reveal">
+      <div class="tag text-leaf-500 mb-4">Process · 04</div>
+      <h2 class="font-serif text-4xl md:text-5xl text-leaf-700 leading-tight">From first call to thriving system.</h2>
+    </div>
+    <div class="relative grid md:grid-cols-5 gap-6 md:gap-3">
+      <!-- horizontal line on desktop -->
+      <div class="hidden md:block absolute top-12 left-[10%] right-[10%] h-px bg-leaf-300"></div>
+      <div class="reveal text-center">
+        <div class="relative inline-flex items-center justify-center w-24 h-24 bg-cream border-2 border-leaf-400 rounded-full text-leaf-600 font-serif text-3xl mb-4">01</div>
+        <div class="font-serif text-lg text-leaf-700 mb-1">Discovery call</div>
+        <div class="text-sm text-soil-600">Free 15 min. Tell us about your land.</div>
+      </div>
+      <div class="reveal text-center">
+        <div class="relative inline-flex items-center justify-center w-24 h-24 bg-cream border-2 border-leaf-400 rounded-full text-leaf-600 font-serif text-3xl mb-4">02</div>
+        <div class="font-serif text-lg text-leaf-700 mb-1">Soil audit</div>
+        <div class="text-sm text-soil-600">Lab + biology + field reads. 90-day plan.</div>
+      </div>
+      <div class="reveal text-center">
+        <div class="relative inline-flex items-center justify-center w-24 h-24 bg-leaf-500 border-2 border-leaf-500 rounded-full text-cream font-serif text-3xl mb-4 ring-4 ring-leaf-500/20">03</div>
+        <div class="font-serif text-lg text-leaf-700 mb-1">System design</div>
+        <div class="text-sm text-soil-600">Custom species + inputs + roadmap.</div>
+      </div>
+      <div class="reveal text-center">
+        <div class="relative inline-flex items-center justify-center w-24 h-24 bg-cream border-2 border-leaf-400 rounded-full text-leaf-600 font-serif text-3xl mb-4">04</div>
+        <div class="font-serif text-lg text-leaf-700 mb-1">Build</div>
+        <div class="text-sm text-soil-600">JADAM inputs, compost, plantings.</div>
+      </div>
+      <div class="reveal text-center">
+        <div class="relative inline-flex items-center justify-center w-24 h-24 bg-cream border-2 border-leaf-400 rounded-full text-leaf-600 font-serif text-3xl mb-4">05</div>
+        <div class="font-serif text-lg text-leaf-700 mb-1">Steward</div>
+        <div class="text-sm text-soil-600">Multi-year retainer. Quarterly retest.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DR INVESTOR — dramatic full-bleed with cacao image -->
+<section class="relative bg-leaf-800 text-cream overflow-hidden">
+  <div class="absolute inset-0 grain opacity-30"></div>
+  <div class="relative max-w-7xl mx-auto px-5 py-24 md:py-32 grid md:grid-cols-12 gap-12 items-center">
+    <div class="md:col-span-7 reveal">
+      <div class="tag text-rust-400 mb-4">Currently scouting · Dominican Republic</div>
+      <h2 class="font-serif text-4xl md:text-6xl leading-[1.05] mb-6">A regenerative project in the <span class="italic text-rust-400">Dominican Republic.</span></h2>
+      <div class="space-y-4 text-cream/85 text-lg leading-relaxed max-w-2xl mb-8">
+        <p>Cibao Valley to north coast — sourcing land to build a working demo of tropical food-forest design. The DR is the world's #1 organic cocoa exporter; the cooperative networks (CONACADO, COOPROAGRO, FUNDOPO) have already proven multi-strata agroforestry at scale.</p>
+        <p>We're partnering with people who've been doing this longer than most US "regen ag consultants" have been alive.</p>
+      </div>
+      <div class="flex flex-wrap gap-6 mb-8 text-sm">
+        <div><div class="text-3xl font-serif text-rust-400 font-light">80%</div><div class="text-cream/70">DR cocoa surface area is organic</div></div>
+        <div><div class="text-3xl font-serif text-rust-400 font-light">8,700+</div><div class="text-cream/70">CONACADO co-op members</div></div>
+        <div><div class="text-3xl font-serif text-rust-400 font-light">2024</div><div class="text-cream/70">FUNDOPO got Regen Organic Certified</div></div>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-3">
+        <a href="https://calendly.com/growessential/discovery-call" target="_blank" rel="noopener" class="bg-cream text-leaf-800 hover:bg-cream-dark px-7 py-4 rounded-full font-semibold text-center transition shadow-2xl shadow-black/40">
+          Book an Investor Call →
+        </a>
+        <a href="mailto:hello@growessential.com?subject=Investor%20Inquiry%20—%20DR%20Project" class="border border-cream/40 hover:border-cream hover:bg-cream/10 text-cream px-7 py-4 rounded-full font-medium text-center transition">
+          Email instead
         </a>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- METHODS -->
-<section class="bg-soil-50">
-  <div class="max-w-6xl mx-auto px-5 py-20">
-    <div class="max-w-2xl mb-12">
-      <div class="text-xs uppercase tracking-widest text-leaf-500 mb-3">Methods we trust</div>
-      <h2 class="font-serif text-3xl md:text-4xl text-leaf-700">No marketing fads.<br>Just what the soil actually responds to.</h2>
-    </div>
-    <div class="grid md:grid-cols-3 gap-6">
-      <article class="bg-cream border border-soil-200 rounded-2xl p-6 hover:border-leaf-400 transition">
-        <div class="text-xs uppercase tracking-widest text-leaf-500 mb-2">Method 01</div>
-        <h3 class="font-serif text-xl text-leaf-700 mb-2">JADAM (Korean natural farming)</h3>
-        <p class="text-sm text-soil-700 leading-relaxed">Ultra-low-cost microbial inputs you make yourself — JMS, JLF, JWA. Cho Youngsang's open-source farming system. Near-zero cost, built from local materials.</p>
-      </article>
-      <article class="bg-cream border border-soil-200 rounded-2xl p-6 hover:border-leaf-400 transition">
-        <div class="text-xs uppercase tracking-widest text-leaf-500 mb-2">Method 02</div>
-        <h3 class="font-serif text-xl text-leaf-700 mb-2">Vermicompost ("black gold")</h3>
-        <p class="text-sm text-soil-700 leading-relaxed">Worm-castings amendment. Peer-reviewed meta-analysis: +26% commercial yield, +57% root biomass. The strongest-evidenced biological input we sell.</p>
-      </article>
-      <article class="bg-cream border border-soil-200 rounded-2xl p-6 hover:border-leaf-400 transition">
-        <div class="text-xs uppercase tracking-widest text-leaf-500 mb-2">Method 03</div>
-        <h3 class="font-serif text-xl text-leaf-700 mb-2">Johnson-Su bioreactor compost</h3>
-        <p class="text-sm text-soil-700 leading-relaxed">Static, no-turn, fungal-dominant compost protocol developed by Dr. David Johnson. 12-month cycle. Applied as extract, slurry, or seed coating.</p>
-      </article>
-      <article class="bg-cream border border-soil-200 rounded-2xl p-6 hover:border-leaf-400 transition">
-        <div class="text-xs uppercase tracking-widest text-leaf-500 mb-2">Method 04</div>
-        <h3 class="font-serif text-xl text-leaf-700 mb-2">Soil testing + interpretation</h3>
-        <p class="text-sm text-soil-700 leading-relaxed">Lab chemistry (Logan / Ward / RegenAg) + biological health (Haney test, PLFA) + field reads (slake, infiltration, Solvita). Numbers turned into a 90-day plan.</p>
-      </article>
-      <article class="bg-cream border border-soil-200 rounded-2xl p-6 hover:border-leaf-400 transition">
-        <div class="text-xs uppercase tracking-widest text-leaf-500 mb-2">Method 05</div>
-        <h3 class="font-serif text-xl text-leaf-700 mb-2">Food-forest + agroforestry design</h3>
-        <p class="text-sm text-soil-700 leading-relaxed">Native species + non-invasive companions, climate-matched, hurricane-resilient. Tropical and temperate. No invasive recommendations — ever.</p>
-      </article>
-      <article class="bg-cream border border-soil-200 rounded-2xl p-6 hover:border-leaf-400 transition">
-        <div class="text-xs uppercase tracking-widest text-leaf-500 mb-2">Method 06</div>
-        <h3 class="font-serif text-xl text-leaf-700 mb-2">Long-term stewardship</h3>
-        <p class="text-sm text-soil-700 leading-relaxed">Soil work is multi-year. Retainer engagements track outcomes against baseline tests — not vibes.</p>
-      </article>
+    <div class="md:col-span-5 reveal">
+      <div class="relative rounded-3xl overflow-hidden ring-soil aspect-[3/4]">
+        <img src="/assets/dr-cacao.jpg" alt="Cacao pods on the tree — the cornerstone crop of DR agroforestry systems" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-leaf-800/60 via-transparent to-transparent"></div>
+        <div class="absolute bottom-6 left-6 right-6">
+          <div class="tag text-rust-400 mb-1">The cornerstone</div>
+          <div class="font-serif text-xl">Cacao agroforestry — the proven tropical model.</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- CTA STRIP -->
-<section class="bg-leaf-700 text-cream">
-  <div class="max-w-6xl mx-auto px-5 py-16 md:py-20 text-center">
-    <h2 class="font-serif text-3xl md:text-4xl mb-4">Ready to talk about your land?</h2>
-    <p class="text-leaf-100 max-w-xl mx-auto mb-8">Book a free 15-minute discovery call. Tell us where your land is and what you want to build — we'll tell you straight whether we're a fit and what the first move should be.</p>
-    <div class="flex flex-col sm:flex-row gap-3 justify-center items-center">
-      <a href="https://calendly.com/growessential/discovery-call" target="_blank" rel="noopener" class="inline-block bg-cream text-leaf-700 hover:bg-soil-100 px-8 py-4 rounded-full font-medium transition">Book a Free 15-min Call →</a>
-      <a href="/land-audit" class="text-leaf-100 hover:text-cream underline underline-offset-4 text-sm">Or get a free Land Audit instead</a>
+<!-- FINAL CTA -->
+<section class="bg-cream">
+  <div class="max-w-5xl mx-auto px-5 py-24 md:py-32 text-center">
+    <div class="reveal">
+      <div class="tag text-leaf-500 mb-6">Get in touch</div>
+      <h2 class="font-serif text-5xl md:text-7xl text-leaf-700 leading-[1.05] mb-8">
+        Tell us about <span class="italic text-rust-500">your land.</span>
+      </h2>
+      <p class="text-xl text-soil-700 max-w-2xl mx-auto mb-12 leading-relaxed">A free 15-minute discovery call. No pitch deck, no homework — just bring your land questions and we'll tell you straight whether we're a fit.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <a href="https://calendly.com/growessential/discovery-call" target="_blank" rel="noopener" class="bg-leaf-700 hover:bg-leaf-600 text-cream px-10 py-5 rounded-full font-semibold transition shadow-2xl shadow-leaf-700/30 inline-flex items-center gap-2 group text-lg">
+          Book a Free 15-min Call
+          <span class="transition-transform group-hover:translate-x-1">→</span>
+        </a>
+        <a href="/land-audit" class="text-leaf-600 hover:text-leaf-500 underline underline-offset-4 font-medium">Or get a free Land Audit</a>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
-<footer class="bg-leaf-50 border-t border-soil-200">
-  <div class="max-w-6xl mx-auto px-5 py-12 grid md:grid-cols-4 gap-8 text-sm">
-    <div class="md:col-span-2">
-      <div class="flex items-center gap-2 text-leaf-700 font-serif text-lg font-semibold mb-3">
-        <span class="inline-block w-3 h-3 rounded-full bg-leaf-500"></span>
+<footer class="bg-leaf-800 text-cream/80">
+  <div class="max-w-7xl mx-auto px-5 py-16 grid md:grid-cols-12 gap-10 text-sm">
+    <div class="md:col-span-5">
+      <a href="/" class="flex items-center gap-2.5 text-cream font-serif text-2xl font-semibold mb-4">
+        <span class="inline-block w-3 h-3 rounded-full bg-leaf-400"></span>
         GrowEssential
-      </div>
-      <p class="text-soil-600 max-w-sm">Soil-first regenerative agriculture, food forest design, and consulting. Working from the United States; scouting in the Dominican Republic.</p>
+      </a>
+      <p class="text-cream/60 max-w-md leading-relaxed">Soil-first regenerative agriculture, food forest design, and consulting. Working from the United States; scouting in the Dominican Republic.</p>
+      <a href="https://calendly.com/growessential/discovery-call" target="_blank" rel="noopener" class="inline-block mt-6 bg-leaf-500 hover:bg-leaf-400 text-cream px-5 py-3 rounded-full font-medium transition">Book a Free Call →</a>
     </div>
-    <div>
-      <div class="font-medium text-leaf-700 mb-3">Site</div>
-      <ul class="space-y-2 text-soil-600">
-        <li><a href="/about" class="hover:text-leaf-500">About</a></li>
-        <li><a href="/services" class="hover:text-leaf-500">Services</a></li>
-        <li><a href="/land-audit" class="hover:text-leaf-500">Land Audit</a></li>
-        <li><a href="/contact" class="hover:text-leaf-500">Contact</a></li>
+    <div class="md:col-span-3">
+      <div class="font-serif text-cream mb-4 text-lg">Site</div>
+      <ul class="space-y-3 text-cream/70">
+        <li><a href="/about" class="hover:text-cream underline-grow">About</a></li>
+        <li><a href="/services" class="hover:text-cream underline-grow">Services & Pricing</a></li>
+        <li><a href="/land-audit" class="hover:text-cream underline-grow">Free Land Audit</a></li>
+        <li><a href="/contact" class="hover:text-cream underline-grow">Contact</a></li>
       </ul>
     </div>
-    <div>
-      <div class="font-medium text-leaf-700 mb-3">Contact</div>
-      <ul class="space-y-2 text-soil-600">
-        <li>hello@growessential.com</li>
-        <li class="text-xs text-soil-500 mt-3">© 2026 GrowEssential.<br>All rights reserved.</li>
+    <div class="md:col-span-4">
+      <div class="font-serif text-cream mb-4 text-lg">Get in touch</div>
+      <ul class="space-y-3 text-cream/70">
+        <li><a href="mailto:hello@growessential.com" class="hover:text-cream">hello@growessential.com</a></li>
+        <li class="pt-3 text-xs text-cream/40">© 2026 GrowEssential. All rights reserved.</li>
+        <li class="text-xs text-cream/40">Hero & section photography via Unsplash.</li>
       </ul>
     </div>
   </div>
 </footer>
 
 <!-- MOBILE STICKY CTA -->
-<div class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-cream border-t border-soil-200 px-4 py-3 shadow-lg">
-  <a href="https://calendly.com/growessential/discovery-call" target="_blank" rel="noopener" class="block bg-leaf-500 hover:bg-leaf-600 text-cream text-center px-5 py-3 rounded-full font-medium transition">
+<div class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-cream/95 backdrop-blur border-t border-soil-200 px-4 py-3 shadow-2xl">
+  <a href="https://calendly.com/growessential/discovery-call" target="_blank" rel="noopener" class="block bg-leaf-500 hover:bg-leaf-600 text-cream text-center px-5 py-3 rounded-full font-semibold transition">
     Book Free 15-min Call →
   </a>
 </div>
 <div class="md:hidden h-20"></div>
 
 <script>
+  // Mobile nav
   const toggle = document.getElementById('navToggle');
   const drawer = document.getElementById('mobileNav');
   toggle?.addEventListener('click', () => drawer.classList.toggle('hidden'));
+
+  // Scroll-reveal animation
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
 </script>
 
 </body>
