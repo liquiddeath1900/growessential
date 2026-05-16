@@ -13,7 +13,7 @@
   <link rel="preload" as="image" href="/assets/hero-foodforest.jpg" fetchpriority="high">
 
   <title>GrowEssential — Regenerative Agriculture, Soil Biology, Food Forest Design</title>
-  <meta name="description" content="Soil-first regenerative agriculture consulting. JADAM, vermicompost, food forest design. From cannabis cultivation to global regenerative farming.">
+  <meta name="description" content="Soil-first regenerative agriculture consulting. JADAM, vermicompost, food forest design, agroforestry, and on-farm soil testing. Working from the United States; scouting in the Dominican Republic.">
   <meta name="keywords" content="regenerative agriculture consultant, soil biology, JADAM, vermicompost, food forest design, permaculture consulting, Dominican Republic agroforestry, soil testing">
 
   <meta property="og:title" content="GrowEssential — Regenerative Agriculture Consulting">
@@ -70,7 +70,7 @@
       background-position: 0 0, 8px 8px;
     }
     .ring-soil { box-shadow: 0 1px 0 0 rgba(74,55,25,0.08), 0 12px 32px -10px rgba(23,47,27,0.22); }
-    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s ease-out, transform .8s ease-out; }
+    .reveal { transition: opacity .8s ease-out, transform .8s ease-out; }
     .reveal.in { opacity: 1; transform: translateY(0); }
     .marquee-track { display: flex; width: max-content; animation: marquee 40s linear infinite; }
     @keyframes marquee { 0% { transform: translateX(0) } 100% { transform: translateX(-50%) } }
@@ -126,7 +126,7 @@
       </h1>
       <p class="text-cream/90 text-lg md:text-2xl max-w-2xl leading-relaxed mb-10 font-light reveal in">
         Food forests, regenerative farms, and truly organic systems — designed from the soil up.
-        We bring cannabis-cultivation soil biology, JADAM Korean natural farming, and vermicompost mastery to every parcel.
+        Living-soil biology, JADAM Korean natural farming, and vermicompost mastery on every parcel.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 reveal in">
         <a href="https://calendly.com/growessential/discovery-call" target="_blank" rel="noopener" class="bg-cream text-leaf-700 hover:bg-cream-dark px-8 py-4 rounded-full font-semibold text-center transition shadow-2xl shadow-black/30 inline-flex items-center justify-center gap-2 group">
@@ -256,10 +256,10 @@
       <div class="md:col-span-7 reveal">
         <div class="tag text-leaf-500 mb-4">Why us · 02</div>
         <h2 class="font-serif text-4xl md:text-6xl text-leaf-700 leading-[1.05] mb-8">
-          Soil biology<br>from the <span class="italic text-rust-500">highest-stakes</span> laboratory.
+          Soil biology<br>from the <span class="italic text-rust-500">highest-stakes</span> classroom.
         </h2>
         <div class="space-y-5 text-soil-700 text-lg leading-relaxed max-w-2xl">
-          <p>Years of cannabis cultivation forced me to learn what most regenerative-ag consultants only read about — what bacteria-to-fungi ratios actually do to yield, how microbial drenches change a root system in 72 hours, what costs you a whole crop when the biology goes wrong.</p>
+          <p>Years of high-intensity, indoor cultivation forced me to learn what most regenerative-ag consultants only read about — what bacteria-to-fungi ratios actually do to yield, how microbial drenches change a root system in 72 hours, what costs you a whole crop when the biology goes wrong.</p>
           <p>That same toolkit — JADAM inputs, vermicompost teas, Johnson-Su compost, on-farm soil testing — works for every plant a landowner wants to grow. From a backyard food forest to a 50-acre agroforestry project, the soil rules don't change.</p>
         </div>
         <a href="/about" class="mt-8 inline-flex items-center gap-2 text-leaf-600 hover:text-leaf-500 font-medium group">
@@ -489,11 +489,15 @@
   const drawer = document.getElementById('mobileNav');
   toggle?.addEventListener('click', () => drawer.classList.toggle('hidden'));
 
-  // Scroll-reveal animation
+  // Scroll-reveal animation (progressive enhancement — content visible without JS)
+  document.body.classList.add('js-anim');
   const io = new IntersectionObserver((entries) => {
     entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
   }, { threshold: 0.12 });
-  document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+  document.querySelectorAll('.reveal').forEach((el) => {
+    const r = el.getBoundingClientRect();
+    if (r.top < window.innerHeight) { el.classList.add('in'); } else { io.observe(el); }
+  });
 </script>
 
 </body>
