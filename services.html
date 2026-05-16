@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -10,48 +11,60 @@
   <meta name="theme-color" content="#2f5d3a">
 
   <title>Services & Pricing — GrowEssential</title>
-  <meta name="description" content="Soil audits, JADAM input systems, vermicompost setups, food forest design, and long-term stewardship retainers. Transparent pricing.">
+  <meta name="description" content="Soil audits ($497+), system design ($3,997+), long-term retainers ($1,497/mo) and a la carte add-ons. Transparent pricing for regenerative agriculture consulting.">
   <link rel="canonical" href="https://growessential.com/services">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script>
-    tailwind.config = { theme: { extend: {
-      colors: { soil:{50:'#faf7f0',100:'#f5f1e8',200:'#e8dfc8',300:'#d4c39e',400:'#b89a6b',500:'#8a6b3d',600:'#6b5028',700:'#4a3719'},
-                leaf:{50:'#f0f7f1',100:'#d8ebdc',200:'#a8d2b1',300:'#6fad7d',400:'#458859',500:'#2f5d3a',600:'#234629',700:'#172f1b'},
-                rust:{500:'#a8472b',600:'#8a3923'}, cream:{DEFAULT:'#f5f1e8'} },
-      fontFamily: { serif:['Fraunces','serif'], sans:['Inter','ui-sans-serif','system-ui'] }
-    } } }
+    tailwind.config = {
+      theme: { extend: {
+        colors: {
+          soil:   { 50:'#faf7f0', 100:'#f5f1e8', 200:'#e8dfc8', 300:'#d4c39e', 400:'#b89a6b', 500:'#8a6b3d', 600:'#6b5028', 700:'#4a3719', 800:'#2d2010' },
+          leaf:   { 50:'#f0f7f1', 100:'#d8ebdc', 200:'#a8d2b1', 300:'#6fad7d', 400:'#458859', 500:'#2f5d3a', 600:'#234629', 700:'#172f1b', 800:'#0c1a0e' },
+          rust:   { 400:'#c0573b', 500:'#a8472b', 600:'#8a3923', 700:'#6e2c1a' },
+          cream:  { DEFAULT:'#f5f1e8', dark:'#e8dfc8' }
+        },
+        fontFamily: { serif:['Fraunces','serif'], sans:['Inter','ui-sans-serif','system-ui'] }
+      } }
+    }
   </script>
   <style>
     html { scroll-behavior: smooth; }
     body { font-family: 'Inter', sans-serif; background: #f5f1e8; color: #172f1b; }
-    h1,h2,h3,h4 { font-family: 'Fraunces', serif; letter-spacing: -0.01em; }
-    .ring-soil { box-shadow: 0 1px 0 0 rgba(74,55,25,0.08), 0 8px 24px -8px rgba(23,47,27,0.18); }
+    h1,h2,h3,h4 { font-family: 'Fraunces', serif; letter-spacing: -0.02em; }
+    .display { font-variation-settings: "opsz" 144; }
+    .grain { background-image: radial-gradient(rgba(74,55,25,0.05) 1px, transparent 1px), radial-gradient(rgba(74,55,25,0.03) 1px, transparent 1px); background-size: 24px 24px, 16px 16px; background-position: 0 0, 8px 8px; }
+    .ring-soil { box-shadow: 0 1px 0 0 rgba(74,55,25,0.08), 0 12px 32px -10px rgba(23,47,27,0.22); }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s ease-out, transform .8s ease-out; }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+    .underline-grow { background-image: linear-gradient(currentColor, currentColor); background-size: 0 1.5px; background-repeat: no-repeat; background-position: 0 100%; transition: background-size .4s ease; }
+    .underline-grow:hover { background-size: 100% 1.5px; }
+    .tag { font-size: 10px; letter-spacing: .12em; text-transform: uppercase; }
   </style>
 </head>
 <body class="antialiased">
 
-<nav class="sticky top-0 z-50 bg-cream/85 backdrop-blur border-b border-soil-200">
-  <div class="max-w-6xl mx-auto px-5 py-4 flex items-center justify-between">
-    <a href="/" class="flex items-center gap-2 text-leaf-600 font-serif text-xl font-semibold">
-      <span class="inline-block w-3 h-3 rounded-full bg-leaf-500"></span>GrowEssential
+<nav class="fixed top-0 left-0 right-0 z-50 bg-cream/85 backdrop-blur-md border-b border-soil-200">
+  <div class="max-w-7xl mx-auto px-5 py-4 flex items-center justify-between">
+    <a href="/" class="flex items-center gap-2.5 text-leaf-700 font-serif text-xl font-semibold">
+      <span class="inline-block w-2.5 h-2.5 rounded-full bg-leaf-500"></span>GrowEssential
     </a>
     <button id="navToggle" class="md:hidden text-leaf-700 text-2xl" aria-label="Open menu">☰</button>
-    <div class="hidden md:flex items-center gap-7 text-sm text-leaf-700">
-      <a href="/about" class="hover:text-leaf-500">About</a>
-      <a href="/services" class="text-leaf-500">Services</a>
-      <a href="/land-audit" class="hover:text-leaf-500">Land Audit</a>
-      <a href="/contact" class="hover:text-leaf-500">Contact</a>
-      <a href="https://calendly.com/growessential/discovery-call" target="_blank" rel="noopener" class="bg-leaf-500 hover:bg-leaf-600 text-cream px-4 py-2 rounded-full">Book a Call</a>
+    <div class="hidden md:flex items-center gap-8 text-sm text-leaf-700">
+      <a href="/about" class="underline-grow">About</a>
+      <a href="/services" class="underline-grow text-leaf-500">Services</a>
+      <a href="/land-audit" class="underline-grow">Land Audit</a>
+      <a href="/contact" class="underline-grow">Contact</a>
+      <a href="https://calendly.com/growessential/discovery-call" target="_blank" rel="noopener" class="bg-leaf-500 hover:bg-leaf-600 text-cream px-5 py-2.5 rounded-full font-medium transition shadow-md shadow-leaf-500/20">Book a Call</a>
     </div>
   </div>
   <div id="mobileNav" class="hidden md:hidden border-t border-soil-200 bg-cream">
-    <div class="max-w-6xl mx-auto px-5 py-3 flex flex-col gap-3 text-leaf-700">
+    <div class="max-w-7xl mx-auto px-5 py-3 flex flex-col gap-3 text-leaf-700">
       <a href="/about" class="py-2 border-b border-soil-100">About</a>
-      <a href="/services" class="py-2 border-b border-soil-100">Services</a>
+      <a href="/services" class="py-2 border-b border-soil-100 text-leaf-500">Services</a>
       <a href="/land-audit" class="py-2 border-b border-soil-100">Land Audit</a>
       <a href="/contact" class="py-2 border-b border-soil-100">Contact</a>
       <a href="https://calendly.com/growessential/discovery-call" target="_blank" rel="noopener" class="bg-leaf-500 text-cream text-center px-4 py-3 rounded-full mt-2">Book a Free Call</a>
@@ -59,157 +72,261 @@
   </div>
 </nav>
 
-<header class="max-w-4xl mx-auto px-5 pt-16 pb-10 md:pt-24">
-  <div class="text-xs uppercase tracking-widest text-leaf-500 mb-4">Services</div>
-  <h1 class="font-serif text-4xl md:text-5xl text-leaf-700 leading-tight">
-    Transparent pricing.<br>
-    <span class="text-rust-500">Soil-first deliverables.</span>
-  </h1>
-  <p class="mt-5 text-lg text-soil-700 max-w-2xl">Every engagement starts with a free land audit (or paid soil audit if you want lab work). Pick the tier that matches where you are.</p>
+<!-- HERO -->
+<header class="relative grain pt-32 pb-16 md:pt-44 md:pb-24">
+  <div class="max-w-7xl mx-auto px-5">
+    <div class="max-w-4xl reveal in">
+      <div class="tag text-leaf-500 mb-6">Services & Pricing · 01</div>
+      <h1 class="display font-serif font-medium text-leaf-700 text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[0.95] mb-8">
+        Transparent pricing.<br>
+        <span class="text-rust-500 italic font-normal">Soil-first deliverables.</span>
+      </h1>
+      <p class="text-lg md:text-xl text-soil-700 max-w-2xl leading-relaxed mb-6">
+        Every engagement starts with a free 15-minute discovery call or a paid soil audit. Pick the tier that matches where you are — upgrade later when the soil tells you to.
+      </p>
+      <div class="flex flex-wrap gap-x-6 gap-y-2 text-sm text-soil-600">
+        <span class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-leaf-500"></span>5-day land audit turnaround</span>
+        <span class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-leaf-500"></span>No hidden fees</span>
+        <span class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-leaf-500"></span>Cancel retainer anytime</span>
+      </div>
+    </div>
+  </div>
 </header>
 
-<section class="max-w-6xl mx-auto px-5 pb-12">
-  <div class="grid md:grid-cols-3 gap-6">
+<!-- PRICING TIERS -->
+<section class="bg-cream pb-20 md:pb-28">
+  <div class="max-w-7xl mx-auto px-5">
+    <div class="grid md:grid-cols-3 gap-6">
 
-    <article class="bg-cream border border-soil-200 rounded-3xl p-7 ring-soil flex flex-col">
-      <div class="text-xs uppercase tracking-widest text-leaf-500 mb-2">Tier 01 · Diagnose</div>
-      <h2 class="font-serif text-2xl text-leaf-700 mb-1">Soil Audit</h2>
-      <div class="text-3xl font-serif text-leaf-600 mb-4">$497<span class="text-base text-soil-500">+</span></div>
-      <p class="text-sm text-soil-700 leading-relaxed mb-5">Find out what's actually going on in your soil before spending anything on inputs. Lab work + interpretation + 90-day action plan.</p>
-      <ul class="text-sm text-soil-700 space-y-2 mb-6 flex-1">
-        <li>✓ Chemistry test (Logan or Ward Labs)</li>
-        <li>✓ Biological add-on (Haney or PLFA) optional</li>
-        <li>✓ Field reads if onsite (slake, infiltration, Solvita)</li>
-        <li>✓ 3–5 page plain-English interpretation</li>
-        <li>✓ 3 immediate actions for the next 90 days</li>
-        <li>✓ One 30-min follow-up call</li>
-      </ul>
-      <a href="https://calendly.com/growessential/discovery-call" target="_blank" rel="noopener" class="bg-leaf-500 hover:bg-leaf-600 text-cream text-center px-5 py-3 rounded-full font-medium transition">Book a Discovery Call</a>
-    </article>
+      <!-- TIER 01 -->
+      <article class="reveal bg-cream border border-soil-200 rounded-3xl p-8 ring-soil flex flex-col hover:-translate-y-2 hover:border-leaf-400 transition-all">
+        <div class="flex items-start justify-between mb-6">
+          <div>
+            <div class="tag text-leaf-500 mb-2">Tier 01 · Diagnose</div>
+            <h2 class="font-serif text-3xl text-leaf-700">Soil Audit</h2>
+          </div>
+          <div class="text-5xl font-serif text-leaf-300 font-light leading-none">01</div>
+        </div>
+        <div class="flex items-baseline gap-1 mb-5">
+          <span class="text-5xl font-serif text-leaf-700 font-medium">$497</span>
+          <span class="text-soil-500 text-lg">+</span>
+        </div>
+        <p class="text-soil-700 leading-relaxed mb-7 flex-shrink-0">Find out what's actually going on in your soil before spending anything on inputs.</p>
+        <ul class="text-sm text-soil-700 space-y-3 mb-8 flex-1">
+          <li class="flex items-start gap-3"><span class="text-leaf-500 mt-1">✓</span><span>Chemistry test (Logan or Ward Labs)</span></li>
+          <li class="flex items-start gap-3"><span class="text-leaf-500 mt-1">✓</span><span>Biological add-on (Haney or PLFA) optional</span></li>
+          <li class="flex items-start gap-3"><span class="text-leaf-500 mt-1">✓</span><span>Field reads if onsite (slake, infiltration, Solvita)</span></li>
+          <li class="flex items-start gap-3"><span class="text-leaf-500 mt-1">✓</span><span>3–5 page plain-English interpretation</span></li>
+          <li class="flex items-start gap-3"><span class="text-leaf-500 mt-1">✓</span><span>3 immediate actions for the next 90 days</span></li>
+          <li class="flex items-start gap-3"><span class="text-leaf-500 mt-1">✓</span><span>One 30-min follow-up call</span></li>
+        </ul>
+        <a href="https://calendly.com/growessential/discovery-call" target="_blank" rel="noopener" class="bg-cream border-2 border-leaf-500 hover:bg-leaf-500 hover:text-cream text-leaf-700 text-center px-6 py-4 rounded-full font-semibold transition">Book a Discovery Call</a>
+      </article>
 
-    <article class="bg-leaf-700 text-cream border border-leaf-600 rounded-3xl p-7 ring-soil flex flex-col scale-[1.02]">
-      <div class="text-xs uppercase tracking-widest text-leaf-200 mb-2">Tier 02 · Build & Design</div>
-      <h2 class="font-serif text-2xl mb-1">System Design</h2>
-      <div class="text-3xl font-serif mb-4">$3,997<span class="text-base text-leaf-200">+</span></div>
-      <p class="text-sm text-leaf-100 leading-relaxed mb-5">Custom design + input system for your parcel. Food forest, regen-farm transition, or agroforestry layout — climate-matched and invasive-screened.</p>
-      <ul class="text-sm text-leaf-100 space-y-2 mb-6 flex-1">
-        <li>✓ Includes full Soil Audit (Tier 01)</li>
-        <li>✓ Site basemap + zone/sector analysis</li>
-        <li>✓ Species plan (natives + non-invasive companions)</li>
-        <li>✓ JADAM input recipes for your climate</li>
-        <li>✓ Compost / vermicompost system spec</li>
-        <li>✓ 12-month implementation roadmap</li>
-        <li>✓ Two 60-min strategy calls</li>
-      </ul>
-      <a href="https://calendly.com/growessential/discovery-call" target="_blank" rel="noopener" class="bg-cream text-leaf-700 hover:bg-soil-100 text-center px-5 py-3 rounded-full font-medium transition">Book a Discovery Call</a>
-      <p class="text-xs text-leaf-200 text-center mt-3">Most popular</p>
-    </article>
+      <!-- TIER 02 - MOST POPULAR -->
+      <article class="reveal bg-leaf-700 text-cream rounded-3xl p-8 ring-soil flex flex-col hover:-translate-y-2 transition-all relative md:scale-[1.03] md:-mt-2">
+        <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-rust-500 text-cream tag px-3 py-1.5 rounded-full">⭐ Most Popular</div>
+        <div class="flex items-start justify-between mb-6">
+          <div>
+            <div class="tag text-leaf-200 mb-2">Tier 02 · Build & Design</div>
+            <h2 class="font-serif text-3xl">System Design</h2>
+          </div>
+          <div class="text-5xl font-serif text-leaf-400/40 font-light leading-none">02</div>
+        </div>
+        <div class="flex items-baseline gap-1 mb-5">
+          <span class="text-5xl font-serif font-medium">$3,997</span>
+          <span class="text-leaf-200 text-lg">+</span>
+        </div>
+        <p class="text-leaf-100 leading-relaxed mb-7 flex-shrink-0">Custom design + input system for your parcel. Food forest, regen-farm transition, or agroforestry layout — climate-matched and invasive-screened.</p>
+        <ul class="text-sm text-leaf-100 space-y-3 mb-8 flex-1">
+          <li class="flex items-start gap-3"><span class="text-rust-400 mt-1">✓</span><span>Includes full Soil Audit (Tier 01)</span></li>
+          <li class="flex items-start gap-3"><span class="text-rust-400 mt-1">✓</span><span>Site basemap + zone/sector analysis</span></li>
+          <li class="flex items-start gap-3"><span class="text-rust-400 mt-1">✓</span><span>Species plan (natives + non-invasive companions)</span></li>
+          <li class="flex items-start gap-3"><span class="text-rust-400 mt-1">✓</span><span>JADAM input recipes for your climate</span></li>
+          <li class="flex items-start gap-3"><span class="text-rust-400 mt-1">✓</span><span>Compost / vermicompost system spec</span></li>
+          <li class="flex items-start gap-3"><span class="text-rust-400 mt-1">✓</span><span>12-month implementation roadmap</span></li>
+          <li class="flex items-start gap-3"><span class="text-rust-400 mt-1">✓</span><span>Two 60-min strategy calls</span></li>
+        </ul>
+        <a href="https://calendly.com/growessential/discovery-call" target="_blank" rel="noopener" class="bg-cream text-leaf-700 hover:bg-cream-dark text-center px-6 py-4 rounded-full font-semibold transition shadow-xl shadow-black/30">Book a Discovery Call</a>
+      </article>
 
-    <article class="bg-cream border border-soil-200 rounded-3xl p-7 ring-soil flex flex-col">
-      <div class="text-xs uppercase tracking-widest text-leaf-500 mb-2">Tier 03 · Stewardship</div>
-      <h2 class="font-serif text-2xl text-leaf-700 mb-1">Long-Term Retainer</h2>
-      <div class="text-3xl font-serif text-leaf-600 mb-4">$1,497<span class="text-base text-soil-500">/mo</span></div>
-      <p class="text-sm text-soil-700 leading-relaxed mb-5">Soil work is a multi-year process. Monthly retainer for active projects — measurable progress against your baseline tests.</p>
-      <ul class="text-sm text-soil-700 space-y-2 mb-6 flex-1">
-        <li>✓ Two 60-min strategy calls per month</li>
-        <li>✓ Quarterly progress soil retest</li>
-        <li>✓ Async support (email + voice notes)</li>
-        <li>✓ Adjusted input recipes as season changes</li>
-        <li>✓ Annual onsite visit (travel billed at cost)</li>
-        <li>✓ Investor-ready progress reports</li>
-      </ul>
-      <a href="https://calendly.com/growessential/discovery-call" target="_blank" rel="noopener" class="bg-leaf-500 hover:bg-leaf-600 text-cream text-center px-5 py-3 rounded-full font-medium transition">Book a Discovery Call</a>
-    </article>
+      <!-- TIER 03 -->
+      <article class="reveal bg-cream border border-soil-200 rounded-3xl p-8 ring-soil flex flex-col hover:-translate-y-2 hover:border-leaf-400 transition-all">
+        <div class="flex items-start justify-between mb-6">
+          <div>
+            <div class="tag text-leaf-500 mb-2">Tier 03 · Stewardship</div>
+            <h2 class="font-serif text-3xl text-leaf-700">Long-Term Retainer</h2>
+          </div>
+          <div class="text-5xl font-serif text-leaf-300 font-light leading-none">03</div>
+        </div>
+        <div class="flex items-baseline gap-1 mb-5">
+          <span class="text-5xl font-serif text-leaf-700 font-medium">$1,497</span>
+          <span class="text-soil-500 text-lg">/mo</span>
+        </div>
+        <p class="text-soil-700 leading-relaxed mb-7 flex-shrink-0">Soil work is a multi-year process. Monthly retainer for active projects — measurable progress against your baseline tests.</p>
+        <ul class="text-sm text-soil-700 space-y-3 mb-8 flex-1">
+          <li class="flex items-start gap-3"><span class="text-leaf-500 mt-1">✓</span><span>Two 60-min strategy calls per month</span></li>
+          <li class="flex items-start gap-3"><span class="text-leaf-500 mt-1">✓</span><span>Quarterly progress soil retest</span></li>
+          <li class="flex items-start gap-3"><span class="text-leaf-500 mt-1">✓</span><span>Async support (email + voice notes)</span></li>
+          <li class="flex items-start gap-3"><span class="text-leaf-500 mt-1">✓</span><span>Adjusted input recipes as season changes</span></li>
+          <li class="flex items-start gap-3"><span class="text-leaf-500 mt-1">✓</span><span>Annual onsite visit (travel billed at cost)</span></li>
+          <li class="flex items-start gap-3"><span class="text-leaf-500 mt-1">✓</span><span>Investor-ready progress reports</span></li>
+        </ul>
+        <a href="https://calendly.com/growessential/discovery-call" target="_blank" rel="noopener" class="bg-cream border-2 border-leaf-500 hover:bg-leaf-500 hover:text-cream text-leaf-700 text-center px-6 py-4 rounded-full font-semibold transition">Book a Discovery Call</a>
+      </article>
 
+    </div>
+
+    <p class="text-center text-sm text-soil-600 mt-10">
+      Not ready to book a call? <a href="/land-audit" class="text-leaf-500 underline-grow">Start with a free Land Audit</a> — we'll send back a 3–5 page first-actions read in 5 business days.
+    </p>
   </div>
-
-  <p class="text-center text-sm text-soil-600 mt-8">
-    Not ready to book a call? <a href="/land-audit" class="text-leaf-500 underline">Start with a free Land Audit</a> — we'll send back a 3-5 page first-actions read.
-  </p>
 </section>
 
 <!-- ADD-ONS -->
-<section class="max-w-6xl mx-auto px-5 py-12">
-  <h2 class="font-serif text-2xl md:text-3xl text-leaf-700 mb-6">Add-ons & one-offs</h2>
-  <div class="grid md:grid-cols-2 gap-4">
-    <div class="bg-soil-50 border border-soil-200 rounded-2xl p-5 flex justify-between items-start gap-4">
-      <div>
-        <div class="font-serif text-leaf-700 text-lg">Single Strategy Call</div>
-        <div class="text-sm text-soil-600">60 minutes, Zoom or phone. For specific questions or a second opinion.</div>
+<section class="bg-soil-50 border-y border-soil-200">
+  <div class="max-w-7xl mx-auto px-5 py-20 md:py-28">
+    <div class="grid md:grid-cols-12 gap-10 mb-12">
+      <div class="md:col-span-5">
+        <div class="tag text-leaf-500 mb-4">Add-ons · 02</div>
+        <h2 class="font-serif text-4xl md:text-6xl text-leaf-700 leading-[1.05]">A la carte<br><span class="italic text-rust-500">when you just<br>need one thing.</span></h2>
       </div>
-      <div class="font-serif text-xl text-leaf-600 whitespace-nowrap">$197</div>
+      <div class="md:col-span-6 md:col-start-7 self-end">
+        <p class="text-lg text-soil-700 leading-relaxed">Mention any add-ons on your discovery call — we'll bundle them into a clean quote with the right tier underneath.</p>
+      </div>
     </div>
-    <div class="bg-soil-50 border border-soil-200 rounded-2xl p-5 flex justify-between items-start gap-4">
-      <div>
-        <div class="font-serif text-leaf-700 text-lg">Onsite Walk-Through</div>
-        <div class="text-sm text-soil-600">2–3 hour site visit + verbal recommendations. Travel billed at cost.</div>
+
+    <div class="grid md:grid-cols-2 gap-5">
+      <div class="reveal bg-cream border border-soil-200 rounded-2xl p-7 hover:-translate-y-1 hover:border-leaf-400 transition-all flex justify-between items-start gap-6">
+        <div>
+          <div class="tag text-leaf-500 mb-2">Strategy</div>
+          <div class="font-serif text-xl text-leaf-700 mb-2">Single Strategy Call</div>
+          <div class="text-sm text-soil-700 leading-relaxed">60 minutes, Zoom or phone. For specific questions, second opinions, or troubleshooting a stuck system.</div>
+        </div>
+        <div class="font-serif text-3xl text-leaf-600 font-light whitespace-nowrap">$197</div>
       </div>
-      <div class="font-serif text-xl text-leaf-600 whitespace-nowrap">$697</div>
-    </div>
-    <div class="bg-soil-50 border border-soil-200 rounded-2xl p-5 flex justify-between items-start gap-4">
-      <div>
-        <div class="font-serif text-leaf-700 text-lg">JADAM Inputs Starter Pack</div>
-        <div class="text-sm text-soil-600">Climate-specific JMS, JLF, JWA protocols + 90-day schedule + troubleshooting flowchart.</div>
+      <div class="reveal bg-cream border border-soil-200 rounded-2xl p-7 hover:-translate-y-1 hover:border-leaf-400 transition-all flex justify-between items-start gap-6">
+        <div>
+          <div class="tag text-leaf-500 mb-2">Field</div>
+          <div class="font-serif text-xl text-leaf-700 mb-2">Onsite Walk-Through</div>
+          <div class="text-sm text-soil-700 leading-relaxed">2–3 hour site visit with verbal recommendations. Travel billed at cost. Best paired with a Tier 01 audit.</div>
+        </div>
+        <div class="font-serif text-3xl text-leaf-600 font-light whitespace-nowrap">$697</div>
       </div>
-      <div class="font-serif text-xl text-leaf-600 whitespace-nowrap">$397</div>
-    </div>
-    <div class="bg-soil-50 border border-soil-200 rounded-2xl p-5 flex justify-between items-start gap-4">
-      <div>
-        <div class="font-serif text-leaf-700 text-lg">Compost System Build Doc</div>
-        <div class="text-sm text-soil-600">Johnson-Su bioreactor OR continuous-flow vermicompost spec + bill of materials + protocol.</div>
+      <div class="reveal bg-cream border border-soil-200 rounded-2xl p-7 hover:-translate-y-1 hover:border-leaf-400 transition-all flex justify-between items-start gap-6">
+        <div>
+          <div class="tag text-leaf-500 mb-2">Inputs</div>
+          <div class="font-serif text-xl text-leaf-700 mb-2">JADAM Inputs Starter Pack</div>
+          <div class="text-sm text-soil-700 leading-relaxed">Climate-specific JMS, JLF, JWA protocols + 90-day schedule + troubleshooting flowchart. PDF deliverable.</div>
+        </div>
+        <div class="font-serif text-3xl text-leaf-600 font-light whitespace-nowrap">$397</div>
       </div>
-      <div class="font-serif text-xl text-leaf-600 whitespace-nowrap">$497</div>
+      <div class="reveal bg-cream border border-soil-200 rounded-2xl p-7 hover:-translate-y-1 hover:border-leaf-400 transition-all flex justify-between items-start gap-6">
+        <div>
+          <div class="tag text-leaf-500 mb-2">Compost</div>
+          <div class="font-serif text-xl text-leaf-700 mb-2">Compost System Build Doc</div>
+          <div class="text-sm text-soil-700 leading-relaxed">Johnson-Su bioreactor OR continuous-flow vermicompost spec, bill of materials, build + operation protocol.</div>
+        </div>
+        <div class="font-serif text-3xl text-leaf-600 font-light whitespace-nowrap">$497</div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- INVESTORS -->
-<section class="bg-leaf-700 text-cream">
-  <div class="max-w-4xl mx-auto px-5 py-16 text-center">
-    <div class="text-xs uppercase tracking-widest text-leaf-200 mb-3">For investors</div>
-    <h2 class="font-serif text-3xl md:text-4xl mb-4">Funding regenerative ag in the Caribbean?</h2>
-    <p class="text-leaf-100 max-w-xl mx-auto mb-8">We're sourcing land in the DR for a working tropical food-forest project — and we're open to investor partners. Cacao agroforestry, food forest, and education-center revenue mix.</p>
-    <a href="https://calendly.com/growessential/discovery-call" target="_blank" rel="noopener" class="inline-block bg-cream text-leaf-700 hover:bg-soil-100 px-8 py-4 rounded-full font-medium transition">Book an Investor Call →</a>
+<!-- INVESTOR -->
+<section class="relative bg-leaf-800 text-cream overflow-hidden">
+  <div class="absolute inset-0 grain opacity-30"></div>
+  <div class="relative max-w-7xl mx-auto px-5 py-24 md:py-32 grid md:grid-cols-12 gap-12 items-center">
+    <div class="md:col-span-7 reveal">
+      <div class="tag text-rust-400 mb-4">For Investors · 03</div>
+      <h2 class="font-serif text-4xl md:text-6xl leading-[1.05] mb-6">Funding regenerative ag<br>in the <span class="italic text-rust-400">Caribbean?</span></h2>
+      <div class="space-y-4 text-cream/85 text-lg leading-relaxed max-w-2xl mb-8">
+        <p>We're sourcing land in the Dominican Republic for a working tropical food-forest project — and we're open to investor partners. Cacao agroforestry, food forest, and education-center revenue mix.</p>
+        <p>Pre-existing buyer networks (CONACADO, FUNDOPO with Regen Organic Certification) make the offtake side de-risked from day one.</p>
+      </div>
+      <div class="flex flex-wrap gap-6 mb-8 text-sm">
+        <div><div class="text-3xl font-serif text-rust-400 font-light">80%</div><div class="text-cream/70">DR cocoa surface organic</div></div>
+        <div><div class="text-3xl font-serif text-rust-400 font-light">$1–5</div><div class="text-cream/70">USD/m² for rural ag land</div></div>
+        <div><div class="text-3xl font-serif text-rust-400 font-light">8,700+</div><div class="text-cream/70">CONACADO co-op members</div></div>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-3">
+        <a href="https://calendly.com/growessential/discovery-call" target="_blank" rel="noopener" class="bg-cream text-leaf-800 hover:bg-cream-dark px-7 py-4 rounded-full font-semibold text-center transition shadow-2xl shadow-black/40">Book an Investor Call →</a>
+        <a href="mailto:hello@growessential.com?subject=Investor%20Inquiry%20—%20DR%20Project" class="border border-cream/40 hover:border-cream hover:bg-cream/10 text-cream px-7 py-4 rounded-full font-medium text-center transition">Email instead</a>
+      </div>
+    </div>
+    <div class="md:col-span-5 reveal">
+      <div class="relative rounded-3xl overflow-hidden ring-soil aspect-[3/4]">
+        <img src="/assets/dr-cacao.jpg" alt="Cacao pods on the tree — the cornerstone crop of DR agroforestry systems" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-leaf-800/70 via-transparent to-transparent"></div>
+        <div class="absolute bottom-6 left-6 right-6">
+          <div class="tag text-rust-400 mb-1">The cornerstone</div>
+          <div class="font-serif text-xl">Cacao agroforestry — the proven tropical model.</div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
-<footer class="bg-leaf-50 border-t border-soil-200">
-  <div class="max-w-6xl mx-auto px-5 py-12 grid md:grid-cols-4 gap-8 text-sm">
-    <div class="md:col-span-2">
-      <div class="flex items-center gap-2 text-leaf-700 font-serif text-lg font-semibold mb-3">
-        <span class="inline-block w-3 h-3 rounded-full bg-leaf-500"></span>GrowEssential
+<!-- FINAL CTA -->
+<section class="bg-cream">
+  <div class="max-w-5xl mx-auto px-5 py-24 md:py-32 text-center">
+    <div class="reveal">
+      <div class="tag text-leaf-500 mb-6">Get started</div>
+      <h2 class="font-serif text-5xl md:text-7xl text-leaf-700 leading-[1.05] mb-8">
+        Pick a tier on the <span class="italic text-rust-500">discovery call.</span>
+      </h2>
+      <p class="text-xl text-soil-700 max-w-2xl mx-auto mb-12 leading-relaxed">A free 15-minute call. Tell us about your land — we'll tell you straight which tier fits, or whether you're better off with a free Land Audit first.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <a href="https://calendly.com/growessential/discovery-call" target="_blank" rel="noopener" class="bg-leaf-700 hover:bg-leaf-600 text-cream px-10 py-5 rounded-full font-semibold transition shadow-2xl shadow-leaf-700/30 inline-flex items-center gap-2 group text-lg">
+          Book a Free 15-min Call
+          <span class="transition-transform group-hover:translate-x-1">→</span>
+        </a>
+        <a href="/land-audit" class="text-leaf-600 hover:text-leaf-500 underline underline-offset-4 font-medium">Or get a free Land Audit</a>
       </div>
-      <p class="text-soil-600 max-w-sm">Soil-first regenerative agriculture, food forest design, and consulting.</p>
     </div>
-    <div>
-      <div class="font-medium text-leaf-700 mb-3">Site</div>
-      <ul class="space-y-2 text-soil-600">
-        <li><a href="/about" class="hover:text-leaf-500">About</a></li>
-        <li><a href="/services" class="hover:text-leaf-500">Services</a></li>
-        <li><a href="/land-audit" class="hover:text-leaf-500">Land Audit</a></li>
-        <li><a href="/contact" class="hover:text-leaf-500">Contact</a></li>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-leaf-800 text-cream/80">
+  <div class="max-w-7xl mx-auto px-5 py-16 grid md:grid-cols-12 gap-10 text-sm">
+    <div class="md:col-span-5">
+      <a href="/" class="flex items-center gap-2.5 text-cream font-serif text-2xl font-semibold mb-4">
+        <span class="inline-block w-3 h-3 rounded-full bg-leaf-400"></span>GrowEssential
+      </a>
+      <p class="text-cream/60 max-w-md leading-relaxed">Soil-first regenerative agriculture, food forest design, and consulting. Working from the United States; scouting in the Dominican Republic.</p>
+      <a href="https://calendly.com/growessential/discovery-call" target="_blank" rel="noopener" class="inline-block mt-6 bg-leaf-500 hover:bg-leaf-400 text-cream px-5 py-3 rounded-full font-medium transition">Book a Free Call →</a>
+    </div>
+    <div class="md:col-span-3">
+      <div class="font-serif text-cream mb-4 text-lg">Site</div>
+      <ul class="space-y-3 text-cream/70">
+        <li><a href="/about" class="hover:text-cream underline-grow">About</a></li>
+        <li><a href="/services" class="hover:text-cream underline-grow">Services & Pricing</a></li>
+        <li><a href="/land-audit" class="hover:text-cream underline-grow">Free Land Audit</a></li>
+        <li><a href="/contact" class="hover:text-cream underline-grow">Contact</a></li>
       </ul>
     </div>
-    <div>
-      <div class="font-medium text-leaf-700 mb-3">Contact</div>
-      <ul class="space-y-2 text-soil-600">
-        <li>hello@growessential.com</li>
-        <li class="text-xs text-soil-500 mt-3">© 2026 GrowEssential.</li>
+    <div class="md:col-span-4">
+      <div class="font-serif text-cream mb-4 text-lg">Get in touch</div>
+      <ul class="space-y-3 text-cream/70">
+        <li><a href="mailto:hello@growessential.com" class="hover:text-cream">hello@growessential.com</a></li>
+        <li class="pt-3 text-xs text-cream/40">© 2026 GrowEssential. All rights reserved.</li>
       </ul>
     </div>
   </div>
 </footer>
 
 <!-- MOBILE STICKY CTA -->
-<div class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-cream border-t border-soil-200 px-4 py-3 shadow-lg">
-  <a href="https://calendly.com/growessential/discovery-call" target="_blank" rel="noopener" class="block bg-leaf-500 hover:bg-leaf-600 text-cream text-center px-5 py-3 rounded-full font-medium transition">
-    Book Free 15-min Call →
-  </a>
+<div class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-cream/95 backdrop-blur border-t border-soil-200 px-4 py-3 shadow-2xl">
+  <a href="https://calendly.com/growessential/discovery-call" target="_blank" rel="noopener" class="block bg-leaf-500 hover:bg-leaf-600 text-cream text-center px-5 py-3 rounded-full font-semibold transition">Book Free 15-min Call →</a>
 </div>
 <div class="md:hidden h-20"></div>
 
 <script>
   document.getElementById('navToggle')?.addEventListener('click', () => document.getElementById('mobileNav').classList.toggle('hidden'));
+  const io = new IntersectionObserver((entries) => entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
 </script>
+
 </body>
 </html>

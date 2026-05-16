@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -10,211 +11,296 @@
   <meta name="theme-color" content="#2f5d3a">
 
   <title>Free Land Audit — GrowEssential</title>
-  <meta name="description" content="Tell us about your parcel. We'll send back a first-actions read within 5 business days — climate, soil, native plant fit, and the 3 highest-leverage moves.">
+  <meta name="description" content="Tell us about your parcel. We'll send back a 3–5 page first-actions report within 5 business days. Climate, soil, native plants, invasives to avoid, and 3 highest-leverage moves.">
   <link rel="canonical" href="https://growessential.com/land-audit">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script>
     tailwind.config = { theme: { extend: {
-      colors: { soil:{50:'#faf7f0',100:'#f5f1e8',200:'#e8dfc8',300:'#d4c39e',400:'#b89a6b',500:'#8a6b3d',600:'#6b5028',700:'#4a3719'},
-                leaf:{50:'#f0f7f1',100:'#d8ebdc',200:'#a8d2b1',300:'#6fad7d',400:'#458859',500:'#2f5d3a',600:'#234629',700:'#172f1b'},
-                rust:{500:'#a8472b',600:'#8a3923'}, cream:{DEFAULT:'#f5f1e8'} },
+      colors: {
+        soil:{50:'#faf7f0',100:'#f5f1e8',200:'#e8dfc8',300:'#d4c39e',400:'#b89a6b',500:'#8a6b3d',600:'#6b5028',700:'#4a3719',800:'#2d2010'},
+        leaf:{50:'#f0f7f1',100:'#d8ebdc',200:'#a8d2b1',300:'#6fad7d',400:'#458859',500:'#2f5d3a',600:'#234629',700:'#172f1b',800:'#0c1a0e'},
+        rust:{400:'#c0573b',500:'#a8472b',600:'#8a3923',700:'#6e2c1a'},
+        cream:{DEFAULT:'#f5f1e8',dark:'#e8dfc8'}
+      },
       fontFamily: { serif:['Fraunces','serif'], sans:['Inter','ui-sans-serif','system-ui'] }
     } } }
   </script>
   <style>
     html { scroll-behavior: smooth; }
     body { font-family: 'Inter', sans-serif; background: #f5f1e8; color: #172f1b; }
-    h1,h2,h3,h4 { font-family: 'Fraunces', serif; letter-spacing: -0.01em; }
-    .ring-soil { box-shadow: 0 1px 0 0 rgba(74,55,25,0.08), 0 8px 24px -8px rgba(23,47,27,0.18); }
+    h1,h2,h3,h4 { font-family: 'Fraunces', serif; letter-spacing: -0.02em; }
+    .display { font-variation-settings: "opsz" 144; }
+    .grain { background-image: radial-gradient(rgba(74,55,25,0.05) 1px, transparent 1px), radial-gradient(rgba(74,55,25,0.03) 1px, transparent 1px); background-size: 24px 24px, 16px 16px; background-position: 0 0, 8px 8px; }
+    .ring-soil { box-shadow: 0 1px 0 0 rgba(74,55,25,0.08), 0 12px 32px -10px rgba(23,47,27,0.22); }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s ease-out, transform .8s ease-out; }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+    .underline-grow { background-image: linear-gradient(currentColor, currentColor); background-size: 0 1.5px; background-repeat: no-repeat; background-position: 0 100%; transition: background-size .4s ease; }
+    .underline-grow:hover { background-size: 100% 1.5px; }
+    .tag { font-size: 10px; letter-spacing: .12em; text-transform: uppercase; }
     input, select, textarea { font-family: 'Inter', sans-serif; }
+    input:focus, select:focus, textarea:focus { outline: none; border-color: #2f5d3a; box-shadow: 0 0 0 3px rgba(47,93,58,0.15); }
   </style>
 </head>
 <body class="antialiased">
 
-<nav class="sticky top-0 z-50 bg-cream/85 backdrop-blur border-b border-soil-200">
-  <div class="max-w-6xl mx-auto px-5 py-4 flex items-center justify-between">
-    <a href="/" class="flex items-center gap-2 text-leaf-600 font-serif text-xl font-semibold">
-      <span class="inline-block w-3 h-3 rounded-full bg-leaf-500"></span>GrowEssential
+<nav class="fixed top-0 left-0 right-0 z-50 bg-cream/85 backdrop-blur-md border-b border-soil-200">
+  <div class="max-w-7xl mx-auto px-5 py-4 flex items-center justify-between">
+    <a href="/" class="flex items-center gap-2.5 text-leaf-700 font-serif text-xl font-semibold">
+      <span class="inline-block w-2.5 h-2.5 rounded-full bg-leaf-500"></span>GrowEssential
     </a>
     <button id="navToggle" class="md:hidden text-leaf-700 text-2xl" aria-label="Open menu">☰</button>
-    <div class="hidden md:flex items-center gap-7 text-sm text-leaf-700">
-      <a href="/about" class="hover:text-leaf-500">About</a>
-      <a href="/services" class="hover:text-leaf-500">Services</a>
-      <a href="/land-audit" class="text-leaf-500">Land Audit</a>
-      <a href="/contact" class="hover:text-leaf-500">Contact</a>
-      <a href="https://calendly.com/growessential/discovery-call" target="_blank" rel="noopener" class="bg-leaf-500 hover:bg-leaf-600 text-cream px-4 py-2 rounded-full">Book a Call</a>
+    <div class="hidden md:flex items-center gap-8 text-sm text-leaf-700">
+      <a href="/about" class="underline-grow">About</a>
+      <a href="/services" class="underline-grow">Services</a>
+      <a href="/land-audit" class="underline-grow text-leaf-500">Land Audit</a>
+      <a href="/contact" class="underline-grow">Contact</a>
+      <a href="https://calendly.com/growessential/discovery-call" target="_blank" rel="noopener" class="bg-leaf-500 hover:bg-leaf-600 text-cream px-5 py-2.5 rounded-full font-medium transition shadow-md shadow-leaf-500/20">Book a Call</a>
     </div>
   </div>
   <div id="mobileNav" class="hidden md:hidden border-t border-soil-200 bg-cream">
-    <div class="max-w-6xl mx-auto px-5 py-3 flex flex-col gap-3 text-leaf-700">
+    <div class="max-w-7xl mx-auto px-5 py-3 flex flex-col gap-3 text-leaf-700">
       <a href="/about" class="py-2 border-b border-soil-100">About</a>
       <a href="/services" class="py-2 border-b border-soil-100">Services</a>
-      <a href="/land-audit" class="py-2 border-b border-soil-100">Land Audit</a>
+      <a href="/land-audit" class="py-2 border-b border-soil-100 text-leaf-500">Land Audit</a>
       <a href="/contact" class="py-2 border-b border-soil-100">Contact</a>
       <a href="https://calendly.com/growessential/discovery-call" target="_blank" rel="noopener" class="bg-leaf-500 text-cream text-center px-4 py-3 rounded-full mt-2">Book a Free Call</a>
     </div>
   </div>
 </nav>
 
-<header class="max-w-3xl mx-auto px-5 pt-16 pb-8 md:pt-24 text-center">
-  <div class="text-xs uppercase tracking-widest text-leaf-500 mb-4">Free Land Audit</div>
-  <h1 class="font-serif text-4xl md:text-5xl text-leaf-700 leading-tight">
-    Tell us about your land.<br>
-    <span class="text-rust-500">We'll send back a read.</span>
-  </h1>
-  <p class="mt-5 text-lg text-soil-700 max-w-xl mx-auto">
-    A 3-5 page first-actions report within 5 business days. Climate baseline, soil context, native plants that thrive there, invasives to avoid, and the 3 highest-leverage moves for your goals.
-  </p>
-
-  <div class="mt-7 inline-flex items-center gap-3 bg-leaf-50 border border-leaf-200 rounded-full px-5 py-2 text-sm text-leaf-700">
-    <span>⚡ In a hurry?</span>
-    <a href="https://calendly.com/growessential/discovery-call" target="_blank" rel="noopener" class="font-medium text-leaf-600 hover:text-leaf-500 underline">Book a 15-min call instead →</a>
+<!-- HERO -->
+<header class="relative grain pt-32 pb-12 md:pt-40 md:pb-16">
+  <div class="max-w-4xl mx-auto px-5 text-center">
+    <div class="reveal in">
+      <div class="tag text-leaf-500 mb-6">Free Land Audit · 01</div>
+      <h1 class="display font-serif font-medium text-leaf-700 text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[0.95] mb-8">
+        Tell us about<br>your land.<br>
+        <span class="text-rust-500 italic font-normal">We'll send back a read.</span>
+      </h1>
+      <p class="text-lg md:text-xl text-soil-700 max-w-2xl mx-auto leading-relaxed mb-8">
+        A 3–5 page first-actions report within 5 business days. Climate, soil context, native species fit, invasives to avoid, and the 3 highest-leverage moves for your goals.
+      </p>
+      <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-soil-600 mb-8">
+        <span class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-leaf-500"></span>5-day turnaround</span>
+        <span class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-leaf-500"></span>No spam, no list-sharing</span>
+        <span class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-leaf-500"></span>Free, every time</span>
+      </div>
+      <div class="inline-flex items-center gap-3 bg-leaf-50 border border-leaf-200 rounded-full px-5 py-2.5 text-sm text-leaf-700">
+        <span>⚡ In a hurry?</span>
+        <a href="https://calendly.com/growessential/discovery-call" target="_blank" rel="noopener" class="font-medium text-leaf-600 hover:text-leaf-500 underline">Book a 15-min call instead →</a>
+      </div>
+    </div>
   </div>
 </header>
 
-<section class="max-w-3xl mx-auto px-5 pb-16">
-  <form id="auditForm" class="bg-cream border border-soil-200 rounded-3xl p-7 md:p-10 ring-soil space-y-6">
-
-    <!-- Contact -->
-    <div class="grid md:grid-cols-2 gap-5">
-      <label class="block">
-        <span class="text-sm font-medium text-leaf-700">Your name <span class="text-rust-500">*</span></span>
-        <input required type="text" name="name" class="mt-2 w-full bg-white border border-soil-200 rounded-xl px-4 py-3 focus:outline-none focus:border-leaf-500">
-      </label>
-      <label class="block">
-        <span class="text-sm font-medium text-leaf-700">Email <span class="text-rust-500">*</span></span>
-        <input required type="email" name="email" class="mt-2 w-full bg-white border border-soil-200 rounded-xl px-4 py-3 focus:outline-none focus:border-leaf-500">
-      </label>
+<!-- WHAT YOU'LL GET BACK -->
+<section class="bg-cream pb-16">
+  <div class="max-w-5xl mx-auto px-5">
+    <div class="reveal bg-leaf-700 text-cream rounded-3xl p-8 md:p-10 ring-soil relative overflow-hidden">
+      <div class="absolute inset-0 grain opacity-20"></div>
+      <div class="relative">
+        <div class="flex items-center justify-between mb-8">
+          <div>
+            <div class="tag text-leaf-200 mb-2">What you'll get back</div>
+            <h2 class="font-serif text-3xl md:text-4xl">A real first-actions report — not a sales pitch.</h2>
+          </div>
+          <div class="hidden md:block text-leaf-200 text-sm text-right">
+            <div class="font-serif text-2xl text-cream">3–5 pages</div>
+            <div>Plain English</div>
+          </div>
+        </div>
+        <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-5">
+          <div class="bg-leaf-800/40 border border-leaf-400/20 rounded-2xl p-5">
+            <div class="text-3xl mb-3">🌡️</div>
+            <div class="font-serif text-lg text-cream mb-1">Climate baseline</div>
+            <div class="text-sm text-leaf-100">Rainfall, temp range, frost, hurricane exposure for your parcel.</div>
+          </div>
+          <div class="bg-leaf-800/40 border border-leaf-400/20 rounded-2xl p-5">
+            <div class="text-3xl mb-3">🪨</div>
+            <div class="font-serif text-lg text-cream mb-1">Soil context</div>
+            <div class="text-sm text-leaf-100">Regional soil type, likely chemistry concerns, what to test for.</div>
+          </div>
+          <div class="bg-leaf-800/40 border border-leaf-400/20 rounded-2xl p-5">
+            <div class="text-3xl mb-3">🌳</div>
+            <div class="font-serif text-lg text-cream mb-1">Native species fit</div>
+            <div class="text-sm text-leaf-100">What thrives in your zone — and the invasives we screen out.</div>
+          </div>
+          <div class="bg-leaf-800/40 border border-leaf-400/20 rounded-2xl p-5">
+            <div class="text-3xl mb-3">🎯</div>
+            <div class="font-serif text-lg text-cream mb-1">3 first actions</div>
+            <div class="text-sm text-leaf-100">The highest-leverage 90-day moves, ranked by impact.</div>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <!-- Location -->
-    <label class="block">
-      <span class="text-sm font-medium text-leaf-700">Land location <span class="text-rust-500">*</span></span>
-      <input required type="text" name="location" placeholder="City, state/province, country (or lat/long if you have it)" class="mt-2 w-full bg-white border border-soil-200 rounded-xl px-4 py-3 focus:outline-none focus:border-leaf-500">
-      <span class="text-xs text-soil-500 mt-1 block">More specific = better recommendations. Coordinates help most.</span>
-    </label>
-
-    <!-- Parcel -->
-    <div class="grid md:grid-cols-2 gap-5">
-      <label class="block">
-        <span class="text-sm font-medium text-leaf-700">Parcel size</span>
-        <input type="text" name="size" placeholder="e.g. 0.25 acre, 5 hectares" class="mt-2 w-full bg-white border border-soil-200 rounded-xl px-4 py-3 focus:outline-none focus:border-leaf-500">
-      </label>
-      <label class="block">
-        <span class="text-sm font-medium text-leaf-700">Current state</span>
-        <select name="state" class="mt-2 w-full bg-white border border-soil-200 rounded-xl px-4 py-3 focus:outline-none focus:border-leaf-500">
-          <option value="">Select…</option>
-          <option>Bare / cleared land</option>
-          <option>Lawn / turfgrass</option>
-          <option>Pasture</option>
-          <option>Active conventional farm</option>
-          <option>Active organic farm</option>
-          <option>Existing forest / wild</option>
-          <option>Abandoned / overgrown</option>
-          <option>Other</option>
-        </select>
-      </label>
-    </div>
-
-    <!-- Goals -->
-    <label class="block">
-      <span class="text-sm font-medium text-leaf-700">What are you trying to build? <span class="text-rust-500">*</span></span>
-      <textarea required name="goals" rows="4" placeholder="e.g. backyard food forest, regenerative cocoa, market garden, agroforestry investment, soil remediation…" class="mt-2 w-full bg-white border border-soil-200 rounded-xl px-4 py-3 focus:outline-none focus:border-leaf-500"></textarea>
-    </label>
-
-    <!-- Timeline -->
-    <label class="block">
-      <span class="text-sm font-medium text-leaf-700">Timeline / urgency</span>
-      <select name="timeline" class="mt-2 w-full bg-white border border-soil-200 rounded-xl px-4 py-3 focus:outline-none focus:border-leaf-500">
-        <option value="">Select…</option>
-        <option>Just researching</option>
-        <option>Want to start in 3 months</option>
-        <option>Want to start in 6–12 months</option>
-        <option>Already underway, need help fast</option>
-      </select>
-    </label>
-
-    <!-- Budget -->
-    <label class="block">
-      <span class="text-sm font-medium text-leaf-700">Rough budget for the project</span>
-      <select name="budget" class="mt-2 w-full bg-white border border-soil-200 rounded-xl px-4 py-3 focus:outline-none focus:border-leaf-500">
-        <option value="">Prefer not to say</option>
-        <option>Under $2k</option>
-        <option>$2k–$10k</option>
-        <option>$10k–$50k</option>
-        <option>$50k–$250k</option>
-        <option>$250k+</option>
-      </select>
-      <span class="text-xs text-soil-500 mt-1 block">Helps us match the right services. The audit itself stays free regardless.</span>
-    </label>
-
-    <!-- Hidden honeypot for spam -->
-    <input type="text" name="website" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true">
-
-    <button type="submit" class="w-full bg-leaf-500 hover:bg-leaf-600 text-cream px-6 py-4 rounded-full font-medium transition">
-      Send My Free Audit Request →
-    </button>
-
-    <p class="text-xs text-soil-500 text-center">We respond within 5 business days. No spam, no list-sharing.</p>
-  </form>
-
-  <!-- Success state -->
-  <div id="auditSuccess" class="hidden bg-leaf-700 text-cream rounded-3xl p-8 ring-soil text-center">
-    <div class="text-3xl mb-3">🌱</div>
-    <h2 class="font-serif text-2xl mb-2">Got it. Thanks.</h2>
-    <p class="text-leaf-100 mb-6">We'll review your parcel and send your first-actions read within 5 business days. Check your inbox — and your spam folder, just in case.</p>
-    <div class="bg-leaf-600 rounded-2xl p-5 max-w-md mx-auto">
-      <div class="text-xs uppercase tracking-widest text-leaf-200 mb-2">Want to fast-track?</div>
-      <p class="text-sm text-leaf-100 mb-3">Skip the 5-day wait — book a free 15-min discovery call now and we'll cover your land questions live.</p>
-      <a href="https://calendly.com/growessential/discovery-call" target="_blank" rel="noopener" class="inline-block bg-cream text-leaf-700 hover:bg-soil-100 px-6 py-3 rounded-full font-medium transition">Book a Call →</a>
-    </div>
-    <a href="/" class="inline-block mt-6 text-cream border-b border-leaf-300 hover:border-cream pb-0.5 text-sm">Back to home →</a>
   </div>
 </section>
 
-<footer class="bg-leaf-50 border-t border-soil-200">
-  <div class="max-w-6xl mx-auto px-5 py-12 grid md:grid-cols-4 gap-8 text-sm">
-    <div class="md:col-span-2">
-      <div class="flex items-center gap-2 text-leaf-700 font-serif text-lg font-semibold mb-3">
-        <span class="inline-block w-3 h-3 rounded-full bg-leaf-500"></span>GrowEssential
+<!-- FORM -->
+<section class="bg-cream pb-24">
+  <div class="max-w-3xl mx-auto px-5">
+    <form id="auditForm" class="bg-cream border border-soil-200 rounded-3xl p-7 md:p-10 ring-soil space-y-8">
+
+      <!-- Contact -->
+      <fieldset>
+        <legend class="tag text-leaf-500 mb-4">Contact · Step 1</legend>
+        <div class="grid md:grid-cols-2 gap-5">
+          <label class="block">
+            <span class="text-sm font-medium text-leaf-700">Your name <span class="text-rust-500">*</span></span>
+            <input required type="text" name="name" class="mt-2 w-full bg-white border border-soil-200 rounded-xl px-4 py-3 transition">
+          </label>
+          <label class="block">
+            <span class="text-sm font-medium text-leaf-700">Email <span class="text-rust-500">*</span></span>
+            <input required type="email" name="email" class="mt-2 w-full bg-white border border-soil-200 rounded-xl px-4 py-3 transition">
+          </label>
+        </div>
+      </fieldset>
+
+      <!-- Land -->
+      <fieldset class="pt-2 border-t border-soil-100">
+        <legend class="tag text-leaf-500 mb-4 pt-6">Your land · Step 2</legend>
+        <div class="space-y-5">
+          <label class="block">
+            <span class="text-sm font-medium text-leaf-700">Land location <span class="text-rust-500">*</span></span>
+            <input required type="text" name="location" placeholder="City, state/province, country (or lat/long if you have it)" class="mt-2 w-full bg-white border border-soil-200 rounded-xl px-4 py-3 transition">
+            <span class="text-xs text-soil-500 mt-1.5 block">More specific = better recommendations. Coordinates help most.</span>
+          </label>
+          <div class="grid md:grid-cols-2 gap-5">
+            <label class="block">
+              <span class="text-sm font-medium text-leaf-700">Parcel size</span>
+              <input type="text" name="size" placeholder="e.g. 0.25 acre, 5 hectares" class="mt-2 w-full bg-white border border-soil-200 rounded-xl px-4 py-3 transition">
+            </label>
+            <label class="block">
+              <span class="text-sm font-medium text-leaf-700">Current state</span>
+              <select name="state" class="mt-2 w-full bg-white border border-soil-200 rounded-xl px-4 py-3 transition">
+                <option value="">Select…</option>
+                <option>Bare / cleared land</option>
+                <option>Lawn / turfgrass</option>
+                <option>Pasture</option>
+                <option>Active conventional farm</option>
+                <option>Active organic farm</option>
+                <option>Existing forest / wild</option>
+                <option>Abandoned / overgrown</option>
+                <option>Other</option>
+              </select>
+            </label>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- Goals -->
+      <fieldset class="pt-2 border-t border-soil-100">
+        <legend class="tag text-leaf-500 mb-4 pt-6">Your goals · Step 3</legend>
+        <div class="space-y-5">
+          <label class="block">
+            <span class="text-sm font-medium text-leaf-700">What are you trying to build? <span class="text-rust-500">*</span></span>
+            <textarea required name="goals" rows="4" placeholder="e.g. backyard food forest, regenerative cocoa, market garden, agroforestry investment, soil remediation…" class="mt-2 w-full bg-white border border-soil-200 rounded-xl px-4 py-3 transition"></textarea>
+          </label>
+          <div class="grid md:grid-cols-2 gap-5">
+            <label class="block">
+              <span class="text-sm font-medium text-leaf-700">Timeline</span>
+              <select name="timeline" class="mt-2 w-full bg-white border border-soil-200 rounded-xl px-4 py-3 transition">
+                <option value="">Select…</option>
+                <option>Just researching</option>
+                <option>Want to start in 3 months</option>
+                <option>Want to start in 6–12 months</option>
+                <option>Already underway, need help fast</option>
+              </select>
+            </label>
+            <label class="block">
+              <span class="text-sm font-medium text-leaf-700">Rough budget</span>
+              <select name="budget" class="mt-2 w-full bg-white border border-soil-200 rounded-xl px-4 py-3 transition">
+                <option value="">Prefer not to say</option>
+                <option>Under $2k</option>
+                <option>$2k–$10k</option>
+                <option>$10k–$50k</option>
+                <option>$50k–$250k</option>
+                <option>$250k+</option>
+              </select>
+            </label>
+          </div>
+          <span class="text-xs text-soil-500 block">Budget helps us match the right services. The audit itself stays free regardless.</span>
+        </div>
+      </fieldset>
+
+      <!-- Hidden honeypot -->
+      <input type="text" name="website" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true">
+
+      <button type="submit" class="w-full bg-leaf-500 hover:bg-leaf-600 text-cream px-6 py-5 rounded-full font-semibold text-lg transition shadow-xl shadow-leaf-500/20 inline-flex items-center justify-center gap-2 group">
+        Send My Free Audit Request
+        <span class="transition-transform group-hover:translate-x-1">→</span>
+      </button>
+
+      <p class="text-xs text-soil-500 text-center leading-relaxed">
+        We respond within 5 business days. No spam, no list-sharing.<br>
+        We never recommend invasive species — ever.
+      </p>
+    </form>
+
+    <!-- Success state -->
+    <div id="auditSuccess" class="hidden bg-leaf-700 text-cream rounded-3xl p-8 md:p-10 ring-soil text-center">
+      <div class="text-5xl mb-4">🌱</div>
+      <h2 class="font-serif text-3xl md:text-4xl mb-4">Got it. Thanks.</h2>
+      <p class="text-leaf-100 text-lg mb-8 max-w-xl mx-auto">We'll review your parcel and send your first-actions read within 5 business days. Check your inbox — and your spam folder, just in case.</p>
+      <div class="bg-leaf-800/40 border border-leaf-400/20 rounded-2xl p-6 max-w-md mx-auto">
+        <div class="tag text-rust-400 mb-2">Want to fast-track?</div>
+        <p class="text-sm text-leaf-100 mb-4">Skip the 5-day wait. Book a free 15-min discovery call now and we'll cover your land questions live.</p>
+        <a href="https://calendly.com/growessential/discovery-call" target="_blank" rel="noopener" class="inline-block bg-cream text-leaf-700 hover:bg-cream-dark px-6 py-3 rounded-full font-semibold transition">Book a Call →</a>
       </div>
-      <p class="text-soil-600 max-w-sm">Soil-first regenerative agriculture, food forest design, and consulting.</p>
+      <a href="/" class="inline-block mt-8 text-cream/80 hover:text-cream underline underline-offset-4 text-sm">Back to home →</a>
     </div>
-    <div>
-      <div class="font-medium text-leaf-700 mb-3">Site</div>
-      <ul class="space-y-2 text-soil-600">
-        <li><a href="/about" class="hover:text-leaf-500">About</a></li>
-        <li><a href="/services" class="hover:text-leaf-500">Services</a></li>
-        <li><a href="/land-audit" class="hover:text-leaf-500">Land Audit</a></li>
-        <li><a href="/contact" class="hover:text-leaf-500">Contact</a></li>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-leaf-800 text-cream/80">
+  <div class="max-w-7xl mx-auto px-5 py-16 grid md:grid-cols-12 gap-10 text-sm">
+    <div class="md:col-span-5">
+      <a href="/" class="flex items-center gap-2.5 text-cream font-serif text-2xl font-semibold mb-4">
+        <span class="inline-block w-3 h-3 rounded-full bg-leaf-400"></span>GrowEssential
+      </a>
+      <p class="text-cream/60 max-w-md leading-relaxed">Soil-first regenerative agriculture, food forest design, and consulting. Working from the United States; scouting in the Dominican Republic.</p>
+      <a href="https://calendly.com/growessential/discovery-call" target="_blank" rel="noopener" class="inline-block mt-6 bg-leaf-500 hover:bg-leaf-400 text-cream px-5 py-3 rounded-full font-medium transition">Book a Free Call →</a>
+    </div>
+    <div class="md:col-span-3">
+      <div class="font-serif text-cream mb-4 text-lg">Site</div>
+      <ul class="space-y-3 text-cream/70">
+        <li><a href="/about" class="hover:text-cream underline-grow">About</a></li>
+        <li><a href="/services" class="hover:text-cream underline-grow">Services & Pricing</a></li>
+        <li><a href="/land-audit" class="hover:text-cream underline-grow">Free Land Audit</a></li>
+        <li><a href="/contact" class="hover:text-cream underline-grow">Contact</a></li>
       </ul>
     </div>
-    <div>
-      <div class="font-medium text-leaf-700 mb-3">Contact</div>
-      <ul class="space-y-2 text-soil-600">
-        <li>hello@growessential.com</li>
-        <li class="text-xs text-soil-500 mt-3">© 2026 GrowEssential.</li>
+    <div class="md:col-span-4">
+      <div class="font-serif text-cream mb-4 text-lg">Get in touch</div>
+      <ul class="space-y-3 text-cream/70">
+        <li><a href="mailto:hello@growessential.com" class="hover:text-cream">hello@growessential.com</a></li>
+        <li class="pt-3 text-xs text-cream/40">© 2026 GrowEssential. All rights reserved.</li>
       </ul>
     </div>
   </div>
 </footer>
 
+<div class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-cream/95 backdrop-blur border-t border-soil-200 px-4 py-3 shadow-2xl">
+  <a href="https://calendly.com/growessential/discovery-call" target="_blank" rel="noopener" class="block bg-leaf-500 hover:bg-leaf-600 text-cream text-center px-5 py-3 rounded-full font-semibold transition">Book Free 15-min Call →</a>
+</div>
+<div class="md:hidden h-20"></div>
+
 <script>
   document.getElementById('navToggle')?.addEventListener('click', () => document.getElementById('mobileNav').classList.toggle('hidden'));
+  const io = new IntersectionObserver((entries) => entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
 
-  // Stub form handler — wire to Brevo/n8n/Supabase endpoint later.
-  // For now: log payload, swap to success state. Replace fetch URL when backend is live.
+  // Form handler — stub for now, wire to n8n/Brevo later
   document.getElementById('auditForm')?.addEventListener('submit', async (e) => {
     e.preventDefault();
-    if (e.target.website.value) return; // honeypot
+    if (e.target.website.value) return;
     const data = Object.fromEntries(new FormData(e.target));
     console.log('Audit request payload:', data);
-    // TODO: replace with real endpoint (n8n webhook, Brevo contact, or Supabase insert)
-    // await fetch('/api/audit', { method: 'POST', body: JSON.stringify(data) });
     document.getElementById('auditForm').classList.add('hidden');
     document.getElementById('auditSuccess').classList.remove('hidden');
     window.scrollTo({ top: 0, behavior: 'smooth' });
