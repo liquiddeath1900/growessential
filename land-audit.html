@@ -206,6 +206,55 @@
               </select>
             </label>
           </div>
+          <div class="grid md:grid-cols-2 gap-5">
+            <label class="block">
+              <span class="text-sm font-medium text-leaf-700">Water access</span>
+              <select name="water" class="mt-2 w-full bg-white border border-soil-200 rounded-xl px-4 py-3 transition">
+                <option value="">Select…</option>
+                <option>Municipal / city water</option>
+                <option>Well</option>
+                <option>Rain catchment</option>
+                <option>River / stream / spring</option>
+                <option>None yet</option>
+                <option>Not sure</option>
+              </select>
+            </label>
+            <label class="block">
+              <span class="text-sm font-medium text-leaf-700">Terrain</span>
+              <select name="terrain" class="mt-2 w-full bg-white border border-soil-200 rounded-xl px-4 py-3 transition">
+                <option value="">Select…</option>
+                <option>Mostly flat</option>
+                <option>Gentle slope</option>
+                <option>Steep slope</option>
+                <option>Mixed / terraced</option>
+              </select>
+            </label>
+          </div>
+          <div class="grid md:grid-cols-2 gap-5">
+            <label class="block">
+              <span class="text-sm font-medium text-leaf-700">Sun exposure</span>
+              <select name="sun" class="mt-2 w-full bg-white border border-soil-200 rounded-xl px-4 py-3 transition">
+                <option value="">Select…</option>
+                <option>Full sun most of the day</option>
+                <option>Part sun / part shade</option>
+                <option>Mostly shaded</option>
+                <option>Varies across the parcel</option>
+              </select>
+            </label>
+            <label class="block">
+              <span class="text-sm font-medium text-leaf-700">Ever had a soil test?</span>
+              <select name="soiltest" class="mt-2 w-full bg-white border border-soil-200 rounded-xl px-4 py-3 transition">
+                <option value="">Select…</option>
+                <option>Yes — I have results</option>
+                <option>Yes — but years ago</option>
+                <option>Never</option>
+              </select>
+            </label>
+          </div>
+          <label class="block">
+            <span class="text-sm font-medium text-leaf-700">Known problems or worries</span>
+            <textarea name="issues" rows="2" placeholder="e.g. flooding after rain, hard compacted soil, invasive plants, erosion, nothing grows in one corner…" class="mt-2 w-full bg-white border border-soil-200 rounded-xl px-4 py-3 transition"></textarea>
+          </label>
         </div>
       </fieldset>
 
@@ -241,6 +290,45 @@
             </label>
           </div>
           <span class="text-xs text-soil-500 block">Budget helps us match the right services. The audit itself stays free regardless.</span>
+          <div class="grid md:grid-cols-2 gap-5">
+            <label class="block">
+              <span class="text-sm font-medium text-leaf-700">Who will do the physical work?</span>
+              <select name="labor" class="mt-2 w-full bg-white border border-soil-200 rounded-xl px-4 py-3 transition">
+                <option value="">Select…</option>
+                <option>Me / my family</option>
+                <option>Hired help</option>
+                <option>A mix of both</option>
+                <option>Not sure yet</option>
+              </select>
+            </label>
+            <label class="block">
+              <span class="text-sm font-medium text-leaf-700">How did you find us?</span>
+              <select name="source" class="mt-2 w-full bg-white border border-soil-200 rounded-xl px-4 py-3 transition">
+                <option value="">Select…</option>
+                <option>Google search</option>
+                <option>Instagram / TikTok</option>
+                <option>YouTube</option>
+                <option>Friend or family</option>
+                <option>Other</option>
+              </select>
+            </label>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- Raíces Program -->
+      <fieldset class="pt-2 border-t border-soil-100">
+        <legend class="tag text-leaf-500 mb-4 pt-6">Raíces Program · Step 4 (optional)</legend>
+        <div class="bg-leaf-50 border border-leaf-200 rounded-2xl p-5 space-y-4">
+          <label class="flex items-start gap-3 cursor-pointer">
+            <input type="checkbox" name="raices" value="yes" class="mt-1.5 w-4 h-4 accent-leaf-500">
+            <span class="text-sm text-soil-700"><span class="font-medium text-leaf-700">I'd like to apply for the Raíces Program</span> — half-price or free consulting for smallholders, community projects, and families who can't afford the standard tiers. In return, your project becomes a documented case study.</span>
+          </label>
+          <label class="block">
+            <span class="text-sm font-medium text-leaf-700">Tell us your situation</span>
+            <textarea name="raices_situation" rows="3" placeholder="Who you are, what the land means to you, and why the standard pricing is out of reach right now. Plain and honest is perfect." class="mt-2 w-full bg-white border border-soil-200 rounded-xl px-4 py-3 transition"></textarea>
+          </label>
+          <span class="text-xs text-soil-500 block">Two slots per quarter. We read every application.</span>
         </div>
       </fieldset>
 
