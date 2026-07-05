@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#2f5d3a">
+
+  <link rel="preload" as="image" href="/assets/hero-foodforest.jpg" fetchpriority="high">
+
+  <title>Food Forest Design — Strata, Succession & Species Matrix | GrowEssential</title>
+  <meta name="description" content="How a food forest is actually designed: the four canopy strata, succession over 10+ years, the repeating module, and an interactive species matrix screened for invasives by climate. A planning tool from GrowEssential.">
+  <meta name="keywords" content="food forest design, food forest layers, strata, succession planting, agroforestry species, permaculture guild, tropical food forest, temperate food forest, invasive species screening">
+
+  <meta property="og:title" content="Food Forest Design — Strata, Succession & Species Matrix">
+  <meta property="og:description" content="The four canopy layers, the 10-year succession, the repeating module, and an interactive, invasive-screened species matrix.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://growessential.com/food-forest-design">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://growessential.com/food-forest-design">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = { theme: { extend: {
+      colors: {
+        soil:{50:'#faf7f0',100:'#f5f1e8',200:'#e8dfc8',300:'#d4c39e',400:'#b89a6b',500:'#8a6b3d',600:'#6b5028',700:'#4a3719',800:'#2d2010'},
+        leaf:{50:'#f0f7f1',100:'#d8ebdc',200:'#a8d2b1',300:'#6fad7d',400:'#458859',500:'#2f5d3a',600:'#234629',700:'#172f1b',800:'#0c1a0e'},
+        rust:{400:'#c0573b',500:'#a8472b',600:'#8a3923',700:'#6e2c1a'},
+        cream:{DEFAULT:'#f5f1e8',dark:'#e8dfc8'}
+      },
+      fontFamily: { serif:['Fraunces','serif'], sans:['Inter','ui-sans-serif','system-ui'] }
+    } } }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: #f5f1e8; color: #172f1b; }
+    h1,h2,h3,h4 { font-family: 'Fraunces', serif; letter-spacing: -0.02em; }
+    .display { font-variation-settings: "opsz" 144; }
+    .grain { background-image: radial-gradient(rgba(74,55,25,0.05) 1px, transparent 1px), radial-gradient(rgba(74,55,25,0.03) 1px, transparent 1px); background-size: 24px 24px, 16px 16px; background-position: 0 0, 8px 8px; }
+    .ring-soil { box-shadow: 0 1px 0 0 rgba(74,55,25,0.08), 0 12px 32px -10px rgba(23,47,27,0.22); }
+    .reveal { transition: opacity .8s ease-out, transform .8s ease-out; }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+    .underline-grow { background-image: linear-gradient(currentColor, currentColor); background-size: 0 1.5px; background-repeat: no-repeat; background-position: 0 100%; transition: background-size .4s ease; }
+    .underline-grow:hover { background-size: 100% 1.5px; }
+    .tag { font-size: 10px; letter-spacing: .12em; text-transform: uppercase; }
+    /* hero text legibility over photo — soft dark halo so type pops on any background */
+    .hero-shadow { text-shadow: 0 2px 12px rgba(12,26,14,0.55), 0 1px 3px rgba(12,26,14,0.65); }
+    .hero-shadow-sm { text-shadow: 0 1px 8px rgba(12,26,14,0.55), 0 1px 2px rgba(12,26,14,0.6); }
+    /* strata bars */
+    .strata-fill { transition: width 1s cubic-bezier(.22,1,.36,1); }
+    /* filter chips */
+    .chip { transition: all .18s ease; }
+    .chip[aria-pressed="true"] { background:#2f5d3a; color:#f5f1e8; border-color:#2f5d3a; }
+    /* species card enter */
+    .spx { animation: fadeUp .45s ease-out both; }
+    @keyframes fadeUp { from { opacity:0; transform: translateY(10px) } to { opacity:1; transform: none } }
+  </style>
+</head>
+<body class="antialiased">
+
+<!-- NAV -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-cream/85 backdrop-blur-md border-b border-soil-200">
+  <div class="max-w-7xl mx-auto px-5 py-4 flex items-center justify-between">
+    <a href="/" class="flex items-center gap-2.5 text-leaf-700 font-serif text-xl font-semibold">
+      <span class="inline-block w-2.5 h-2.5 rounded-full bg-leaf-500"></span>GrowEssential
+    </a>
+    <button id="navToggle" class="md:hidden text-leaf-700 text-2xl" aria-label="Open menu">☰</button>
+    <div class="hidden md:flex items-center gap-8 text-sm text-leaf-700">
+      <a href="/about.html" class="underline-grow">About</a>
+      <a href="/services.html" class="underline-grow">Services</a>
+      <a href="/food-forest-design.html" class="underline-grow text-leaf-500">Design</a>
+      <a href="/land-audit.html" class="underline-grow">Land Audit</a>
+      <a href="/contact.html" class="underline-grow">Contact</a>
+      <div class="inline-flex items-center gap-1.5"><span aria-hidden="true" class="text-leaf-500 text-sm">🌐</span><button data-lang-toggle role="switch" aria-checked="false" aria-label="Language / Idioma" class="relative inline-flex items-center h-7 w-16 rounded-full bg-soil-200 border border-soil-300 text-[10px] font-bold tracking-wide"><span data-seg="en" class="relative z-10 flex-1 text-center transition-colors text-cream">EN</span><span data-seg="es" class="relative z-10 flex-1 text-center transition-colors text-soil-500">ES</span><span data-knob class="absolute top-0.5 left-0.5 h-6 w-[30px] rounded-full bg-leaf-500 shadow transition-transform duration-200"></span></button></div>
+      <a href="https://calendly.com/growessential/discovery-call" target="_blank" rel="noopener" class="bg-leaf-500 hover:bg-leaf-600 text-cream px-5 py-2.5 rounded-full font-medium transition shadow-md shadow-leaf-500/20">Book a Call</a>
+    </div>
+  </div>
+  <div id="mobileNav" class="hidden md:hidden border-t border-soil-200 bg-cream">
+    <div class="max-w-7xl mx-auto px-5 py-3 flex flex-col gap-3 text-leaf-700">
+      <a href="/about.html" class="py-2 border-b border-soil-100">About</a>
+      <a href="/services.html" class="py-2 border-b border-soil-100">Services</a>
+      <a href="/food-forest-design.html" class="py-2 border-b border-soil-100 text-leaf-500">Design</a>
+      <a href="/land-audit.html" class="py-2 border-b border-soil-100">Land Audit</a>
+      <a href="/contact.html" class="py-2 border-b border-soil-100">Contact</a>
+      <div class="flex items-center justify-between py-2 border-b border-soil-100"><span class="flex items-center gap-2 text-leaf-700"><span aria-hidden="true" class="text-leaf-500">🌐</span>Idioma / Language</span><button data-lang-toggle role="switch" aria-checked="false" aria-label="Language / Idioma" class="relative inline-flex items-center h-8 w-20 rounded-full bg-soil-200 border border-soil-300 text-xs font-bold"><span data-seg="en" class="relative z-10 flex-1 text-center transition-colors text-cream">EN</span><span data-seg="es" class="relative z-10 flex-1 text-center transition-colors text-soil-500">ES</span><span data-knob class="absolute top-0.5 left-0.5 h-7 w-[38px] rounded-full bg-leaf-500 shadow transition-transform duration-200"></span></button></div>
+      <a href="https://calendly.com/growessential/discovery-call" target="_blank" rel="noopener" class="bg-leaf-500 text-cream text-center px-4 py-3 rounded-full mt-2">Book a Free Call</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="relative min-h-[88vh] flex items-center pt-20 overflow-hidden">
+  <img src="/assets/hero-foodforest.jpg" alt="Multi-strata food forest canopy — emergent, high, medium and low layers stacked together" class="absolute inset-0 w-full h-full object-cover scale-105" loading="eager" fetchpriority="high">
+  <div class="absolute inset-0 bg-gradient-to-br from-leaf-800/60 via-leaf-700/35 to-leaf-800/70"></div>
+  <div class="absolute inset-0 bg-gradient-to-t from-leaf-800/90 via-leaf-800/40 to-transparent"></div>
+  <div class="absolute inset-0 grain opacity-30"></div>
+
+  <div class="relative max-w-7xl mx-auto px-5 py-20 md:py-28 w-full">
+    <div class="max-w-3xl">
+      <div class="inline-flex items-center gap-2 tag text-leaf-200 bg-leaf-800/40 backdrop-blur border border-leaf-400/30 px-3 py-1.5 rounded-full mb-8 reveal in">
+        <span class="w-1.5 h-1.5 rounded-full bg-leaf-300 animate-pulse"></span>
+        Design method · Free planning tool
+      </div>
+      <h1 class="hero-shadow display font-serif font-medium text-cream text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[0.95] mb-8 reveal in">
+        Design a food forest<br>
+        <span class="text-rust-400 italic font-normal">that runs itself.</span>
+      </h1>
+      <p class="hero-shadow-sm text-cream text-lg md:text-2xl max-w-2xl leading-relaxed mb-10 font-light reveal in">
+        Four canopy layers, a ten-year succession, and one repeating module. Choose your climate,
+        stack the strata, and screen every species for invasiveness before it ever touches your land.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 reveal in">
+        <a href="#matrix" class="bg-cream text-leaf-700 hover:bg-cream-dark px-8 py-4 rounded-full font-semibold text-center transition shadow-2xl shadow-black/30 inline-flex items-center justify-center gap-2 group">
+          Open the Species Matrix
+          <span class="transition-transform group-hover:translate-y-0.5">↓</span>
+        </a>
+        <a href="#method" class="border border-cream/40 hover:border-cream hover:bg-cream/10 text-cream px-8 py-4 rounded-full font-medium text-center transition">
+          Learn the method first
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- METHOD INTRO -->
+<section id="method" class="bg-cream">
+  <div class="max-w-7xl mx-auto px-5 py-20 md:py-28">
+    <div class="grid md:grid-cols-12 gap-10 items-end mb-14">
+      <div class="md:col-span-7">
+        <div class="tag text-leaf-500 mb-4">The method · 01</div>
+        <h2 class="font-serif text-4xl md:text-6xl text-leaf-700 leading-[1.05]">A food forest isn't<br>a garden. It's a<br><span class="italic text-rust-500">stacked ecosystem.</span></h2>
+      </div>
+      <div class="md:col-span-5">
+        <p class="text-lg text-soil-700 leading-relaxed">Nature fills every layer of light, from the tallest emergent tree down to the ground. A well-designed food forest does the same on purpose — production species where you want the yield, fast-growing support species building fertility in the gaps, all planned to shift over a decade as the canopy matures.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STRATA — the four layers -->
+<section class="bg-soil-50 border-y border-soil-200">
+  <div class="max-w-7xl mx-auto px-5 py-20 md:py-28">
+    <div class="grid md:grid-cols-12 gap-10 mb-12">
+      <div class="md:col-span-5">
+        <div class="tag text-leaf-500 mb-4">Strata · 02</div>
+        <h2 class="font-serif text-4xl md:text-5xl text-leaf-700 leading-tight">Four layers,<br>four <span class="italic text-rust-500">canopy targets.</span></h2>
+      </div>
+      <div class="md:col-span-6 md:col-start-7 self-end">
+        <p class="text-lg text-soil-700 leading-relaxed">Each layer has a target for how much of the sky it fills at maturity. Percentages overlap because layers occupy different heights — the point is that light gets used all the way down, not that the numbers sum to 100.</p>
+      </div>
+    </div>
+
+    <!-- strata bars -->
+    <div class="bg-cream border border-soil-200 rounded-3xl p-6 md:p-10 ring-soil space-y-5">
+      <div class="reveal" data-fill="20">
+        <div class="flex items-baseline justify-between mb-2">
+          <div><span class="font-serif text-2xl text-leaf-700">Emergent</span> <span class="text-soil-600 text-sm ml-2">Tallest trees · timber, nuts, long-lived</span></div>
+          <div class="font-serif text-xl text-rust-500">20%</div>
+        </div>
+        <div class="h-3 rounded-full bg-soil-200 overflow-hidden"><div class="strata-fill h-full rounded-full bg-rust-500" style="width:0"></div></div>
+      </div>
+      <div class="reveal" data-fill="40">
+        <div class="flex items-baseline justify-between mb-2">
+          <div><span class="font-serif text-2xl text-leaf-700">High</span> <span class="text-soil-600 text-sm ml-2">Main canopy · your primary fruit &amp; nut trees</span></div>
+          <div class="font-serif text-xl text-leaf-500">40%</div>
+        </div>
+        <div class="h-3 rounded-full bg-soil-200 overflow-hidden"><div class="strata-fill h-full rounded-full bg-leaf-500" style="width:0"></div></div>
+      </div>
+      <div class="reveal" data-fill="60">
+        <div class="flex items-baseline justify-between mb-2">
+          <div><span class="font-serif text-2xl text-leaf-700">Medium</span> <span class="text-soil-600 text-sm ml-2">Understory · smaller fruit, shade-tolerant crops</span></div>
+          <div class="font-serif text-xl text-leaf-400">60%</div>
+        </div>
+        <div class="h-3 rounded-full bg-soil-200 overflow-hidden"><div class="strata-fill h-full rounded-full bg-leaf-400" style="width:0"></div></div>
+      </div>
+      <div class="reveal" data-fill="80">
+        <div class="flex items-baseline justify-between mb-2">
+          <div><span class="font-serif text-2xl text-leaf-700">Low</span> <span class="text-soil-600 text-sm ml-2">Shrub &amp; ground · berries, herbs, living mulch</span></div>
+          <div class="font-serif text-xl text-leaf-300">80%</div>
+        </div>
+        <div class="h-3 rounded-full bg-soil-200 overflow-hidden"><div class="strata-fill h-full rounded-full bg-leaf-300" style="width:0"></div></div>
+      </div>
+      <p class="text-xs text-soil-500 pt-2">Target canopy fill per layer, after the food-forestry.com module framework. Support (nitrogen-fixing) species are planted at high density between the productive trees, then progressively thinned as the canopy closes.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SUCCESSION -->
+<section class="bg-cream">
+  <div class="max-w-7xl mx-auto px-5 py-20 md:py-28">
+    <div class="max-w-2xl mb-14 reveal">
+      <div class="tag text-leaf-500 mb-4">Succession · 03</div>
+      <h2 class="font-serif text-4xl md:text-5xl text-leaf-700 leading-tight">The system you plant<br>isn't the system you keep.</h2>
+      <p class="text-lg text-soil-700 leading-relaxed mt-6">Short-lifecycle pioneers protect the soil and feed the young trees early. As the long-lived climax species mature, the pioneers get chopped, dropped, and replaced by yield. You plant for three timescales at once.</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <article class="reveal bg-cream border border-soil-200 rounded-3xl p-8 ring-soil hover:-translate-y-1 hover:border-leaf-400 transition-all">
+        <div class="flex items-center justify-between mb-4">
+          <div class="text-4xl font-serif text-leaf-400 font-light">1–3</div>
+          <span class="tag bg-leaf-50 text-leaf-600 px-2.5 py-1 rounded-full border border-leaf-200">Placenta</span>
+        </div>
+        <h3 class="font-serif text-2xl text-leaf-700 mb-2">Pioneer years</h3>
+        <p class="text-soil-700 text-sm leading-relaxed">Fast support species and short-lifecycle crops establish cover, fix nitrogen, and shade out grass pressure. Bananas, pigeon pea, nurse legumes. Early food while the canopy is still open.</p>
+      </article>
+      <article class="reveal bg-leaf-700 text-cream rounded-3xl p-8 ring-soil hover:-translate-y-1 transition-all">
+        <div class="flex items-center justify-between mb-4">
+          <div class="text-4xl font-serif text-leaf-200 font-light">3–8</div>
+          <span class="tag bg-cream/15 text-cream px-2.5 py-1 rounded-full border border-cream/25">Secondary</span>
+        </div>
+        <h3 class="font-serif text-2xl mb-2">Productive years</h3>
+        <p class="text-leaf-100 text-sm leading-relaxed">The main fruit trees come online and start carrying the system. Support species are thinned to open light. This is where a food forest starts paying you back in volume.</p>
+      </article>
+      <article class="reveal bg-cream border border-soil-200 rounded-3xl p-8 ring-soil hover:-translate-y-1 hover:border-leaf-400 transition-all">
+        <div class="flex items-center justify-between mb-4">
+          <div class="text-4xl font-serif text-leaf-400 font-light">10+</div>
+          <span class="tag bg-rust-500/10 text-rust-600 px-2.5 py-1 rounded-full border border-rust-500/30">Climax</span>
+        </div>
+        <h3 class="font-serif text-2xl text-leaf-700 mb-2">Legacy years</h3>
+        <p class="text-soil-700 text-sm leading-relaxed">Emergent and high-strata trees reach full size — timber, nuts, cacao under shade. The system is largely self-maintaining, cycling its own fertility. The highest-value, longest-lived layer.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- MODULE -->
+<section class="bg-leaf-800 text-cream relative overflow-hidden">
+  <div class="absolute inset-0 grain opacity-25"></div>
+  <div class="relative max-w-7xl mx-auto px-5 py-20 md:py-28">
+    <div class="grid md:grid-cols-12 gap-10 mb-12 items-end">
+      <div class="md:col-span-7">
+        <div class="tag text-rust-400 mb-4">The module · 04</div>
+        <h2 class="font-serif text-4xl md:text-5xl leading-tight">Design one module.<br><span class="italic text-rust-400">Repeat it across the row.</span></h2>
+      </div>
+      <div class="md:col-span-5">
+        <p class="text-cream/85 leading-relaxed">Rather than placing hundreds of trees by hand, you design a single repeating unit — one rhythm of emergent, high, medium, and low — then tile it down each planting line. Consistent spacing, predictable light, easy to manage.</p>
+      </div>
+    </div>
+
+    <!-- module diagram -->
+    <div class="bg-leaf-900/30 border border-leaf-400/20 rounded-3xl p-6 md:p-10">
+      <div class="space-y-6">
+        <!-- one module unit -->
+        <div>
+          <div class="tag text-cream/60 mb-3">One module — spacing set by the emergent tree</div>
+          <div class="flex items-end justify-between gap-2 md:gap-4 h-40 md:h-52">
+            <!-- emergent -->
+            <div class="flex flex-col items-center justify-end h-full flex-1">
+              <span class="w-8 h-8 md:w-12 md:h-12 rounded-full bg-rust-500 mb-1"></span>
+              <span class="block w-1 h-24 md:h-32 bg-rust-500/50"></span>
+              <span class="tag text-rust-400 mt-2">Emergent</span>
+            </div>
+            <!-- high -->
+            <div class="flex flex-col items-center justify-end h-full flex-1">
+              <span class="w-7 h-7 md:w-10 md:h-10 rounded-full bg-leaf-400 mb-1"></span>
+              <span class="block w-1 h-16 md:h-24 bg-leaf-400/50"></span>
+              <span class="tag text-leaf-200 mt-2">High</span>
+            </div>
+            <!-- medium -->
+            <div class="flex flex-col items-center justify-end h-full flex-1">
+              <span class="w-5 h-5 md:w-8 md:h-8 rounded-full bg-leaf-300 mb-1"></span>
+              <span class="block w-1 h-10 md:h-16 bg-leaf-300/50"></span>
+              <span class="tag text-leaf-200 mt-2">Medium</span>
+            </div>
+            <!-- high (mirror) -->
+            <div class="flex flex-col items-center justify-end h-full flex-1">
+              <span class="w-7 h-7 md:w-10 md:h-10 rounded-full bg-leaf-400 mb-1"></span>
+              <span class="block w-1 h-16 md:h-24 bg-leaf-400/50"></span>
+              <span class="tag text-leaf-200 mt-2">High</span>
+            </div>
+            <!-- low -->
+            <div class="flex flex-col items-center justify-end h-full flex-1">
+              <span class="w-4 h-4 md:w-6 md:h-6 rounded-full bg-soil-300 mb-1"></span>
+              <span class="block w-1 h-6 md:h-10 bg-soil-300/50"></span>
+              <span class="tag text-cream/60 mt-2">Low</span>
+            </div>
+          </div>
+        </div>
+        <!-- repeat strip -->
+        <div class="pt-4 border-t border-leaf-400/20">
+          <div class="tag text-cream/60 mb-3">…tiled across the planting line</div>
+          <div class="flex items-center gap-1.5 overflow-hidden opacity-90">
+            <!-- repeated dots -->
+            <span class="shrink-0 w-4 h-4 rounded-full bg-rust-500"></span>
+            <span class="shrink-0 w-3 h-3 rounded-full bg-leaf-400"></span>
+            <span class="shrink-0 w-2.5 h-2.5 rounded-full bg-leaf-300"></span>
+            <span class="shrink-0 w-3 h-3 rounded-full bg-leaf-400"></span>
+            <span class="shrink-0 w-2 h-2 rounded-full bg-soil-300"></span>
+            <span class="shrink-0 w-4 h-4 rounded-full bg-rust-500"></span>
+            <span class="shrink-0 w-3 h-3 rounded-full bg-leaf-400"></span>
+            <span class="shrink-0 w-2.5 h-2.5 rounded-full bg-leaf-300"></span>
+            <span class="shrink-0 w-3 h-3 rounded-full bg-leaf-400"></span>
+            <span class="shrink-0 w-2 h-2 rounded-full bg-soil-300"></span>
+            <span class="shrink-0 w-4 h-4 rounded-full bg-rust-500"></span>
+            <span class="shrink-0 w-3 h-3 rounded-full bg-leaf-400"></span>
+            <span class="shrink-0 w-2.5 h-2.5 rounded-full bg-leaf-300"></span>
+            <span class="shrink-0 w-3 h-3 rounded-full bg-leaf-400"></span>
+            <span class="shrink-0 w-2 h-2 rounded-full bg-soil-300"></span>
+            <span class="text-cream/50 text-sm pl-2 whitespace-nowrap">→ repeat</span>
+          </div>
+        </div>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-8 text-sm">
+        <div class="bg-leaf-900/30 rounded-2xl p-4"><div class="font-serif text-cream mb-1">Emergent sets the rhythm</div><div class="text-cream/70">Its recommended spacing defines the module width.</div></div>
+        <div class="bg-leaf-900/30 rounded-2xl p-4"><div class="font-serif text-cream mb-1">High ≈ ½–¾ of emergent</div><div class="text-cream/70">Placed between the emergent trees.</div></div>
+        <div class="bg-leaf-900/30 rounded-2xl p-4"><div class="font-serif text-cream mb-1">Medium ≈ ⅓</div><div class="text-cream/70">Often your main fruiting species.</div></div>
+        <div class="bg-leaf-900/30 rounded-2xl p-4"><div class="font-serif text-cream mb-1">Low fills the gaps</div><div class="text-cream/70">Plus support species at high density, thinned over time.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPECIES MATRIX (interactive) -->
+<section id="matrix" class="bg-cream scroll-mt-20">
+  <div class="max-w-7xl mx-auto px-5 py-20 md:py-28">
+    <div class="grid md:grid-cols-12 gap-10 mb-10">
+      <div class="md:col-span-6">
+        <div class="tag text-leaf-500 mb-4">Species matrix · 05</div>
+        <h2 class="font-serif text-4xl md:text-6xl text-leaf-700 leading-[1.05]">Pick your<br><span class="italic text-rust-500">building blocks.</span></h2>
+      </div>
+      <div class="md:col-span-6 self-end">
+        <p class="text-lg text-soil-700 leading-relaxed">Filter by climate — temperate, Mediterranean, subtropical, or tropical — plus strata, lifecycle, and role. Every species carries its mature size, recommended spacing, and an invasive-risk flag. Invasive status is regional, so we flag widely-documented problem species and screen against your own country's list — starting with the Dominican Republic and the Caribbean, where we work.</p>
+      </div>
+    </div>
+
+    <!-- filters -->
+    <div class="bg-soil-50 border border-soil-200 rounded-3xl p-5 md:p-7 mb-8 space-y-5">
+      <div>
+        <div class="tag text-leaf-500 mb-2.5">Climate</div>
+        <div class="flex flex-wrap gap-2" data-group="climate">
+          <button class="chip px-4 py-2 rounded-full border border-soil-300 text-sm text-leaf-700 bg-cream" aria-pressed="true" data-val="all">All climates</button>
+          <button class="chip px-4 py-2 rounded-full border border-soil-300 text-sm text-leaf-700 bg-cream" aria-pressed="false" data-val="temperate">Temperate</button>
+          <button class="chip px-4 py-2 rounded-full border border-soil-300 text-sm text-leaf-700 bg-cream" aria-pressed="false" data-val="mediterranean">Mediterranean</button>
+          <button class="chip px-4 py-2 rounded-full border border-soil-300 text-sm text-leaf-700 bg-cream" aria-pressed="false" data-val="subtropical">Subtropical</button>
+          <button class="chip px-4 py-2 rounded-full border border-soil-300 text-sm text-leaf-700 bg-cream" aria-pressed="false" data-val="tropical">Tropical</button>
+        </div>
+      </div>
+      <div class="grid sm:grid-cols-3 gap-5">
+        <div>
+          <div class="tag text-leaf-500 mb-2.5">Strata</div>
+          <div class="flex flex-wrap gap-2" data-group="strata">
+            <button class="chip px-3.5 py-1.5 rounded-full border border-soil-300 text-sm text-leaf-700 bg-cream" aria-pressed="true" data-val="all">All</button>
+            <button class="chip px-3.5 py-1.5 rounded-full border border-soil-300 text-sm text-leaf-700 bg-cream" aria-pressed="false" data-val="emergent">Emergent</button>
+            <button class="chip px-3.5 py-1.5 rounded-full border border-soil-300 text-sm text-leaf-700 bg-cream" aria-pressed="false" data-val="high">High</button>
+            <button class="chip px-3.5 py-1.5 rounded-full border border-soil-300 text-sm text-leaf-700 bg-cream" aria-pressed="false" data-val="medium">Medium</button>
+            <button class="chip px-3.5 py-1.5 rounded-full border border-soil-300 text-sm text-leaf-700 bg-cream" aria-pressed="false" data-val="low">Low</button>
+          </div>
+        </div>
+        <div>
+          <div class="tag text-leaf-500 mb-2.5">Lifecycle</div>
+          <div class="flex flex-wrap gap-2" data-group="lifecycle">
+            <button class="chip px-3.5 py-1.5 rounded-full border border-soil-300 text-sm text-leaf-700 bg-cream" aria-pressed="true" data-val="all">All</button>
+            <button class="chip px-3.5 py-1.5 rounded-full border border-soil-300 text-sm text-leaf-700 bg-cream" aria-pressed="false" data-val="short">Short</button>
+            <button class="chip px-3.5 py-1.5 rounded-full border border-soil-300 text-sm text-leaf-700 bg-cream" aria-pressed="false" data-val="long">Long</button>
+          </div>
+        </div>
+        <div>
+          <div class="tag text-leaf-500 mb-2.5">Role</div>
+          <div class="flex flex-wrap gap-2" data-group="role">
+            <button class="chip px-3.5 py-1.5 rounded-full border border-soil-300 text-sm text-leaf-700 bg-cream" aria-pressed="true" data-val="all">All</button>
+            <button class="chip px-3.5 py-1.5 rounded-full border border-soil-300 text-sm text-leaf-700 bg-cream" aria-pressed="false" data-val="production">Production</button>
+            <button class="chip px-3.5 py-1.5 rounded-full border border-soil-300 text-sm text-leaf-700 bg-cream" aria-pressed="false" data-val="support">Support</button>
+          </div>
+        </div>
+      </div>
+      <div class="flex items-center justify-between pt-1">
+        <div class="text-sm text-soil-600"><span id="spxCount" class="font-medium text-leaf-700">0</span> species shown</div>
+        <button id="spxReset" class="text-sm text-leaf-600 hover:text-leaf-500 underline underline-offset-4">Reset filters</button>
+      </div>
+    </div>
+
+    <!-- results -->
+    <div id="spxGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+    <div id="spxEmpty" class="hidden text-center py-16 text-soil-500">
+      <div class="text-4xl mb-3">🌾</div>
+      <p>No species match those filters. Try widening your selection.</p>
+    </div>
+    <p class="text-xs text-soil-500 mt-8 max-w-3xl leading-relaxed">
+      Sizes and spacing are planning estimates and vary with soil, water, and management. Invasive-status flags reflect known risk in the Dominican Republic and wider Caribbean; always confirm against local regulations before planting. This matrix is a starting point — a real design is fitted to your parcel in the <a href="/services.html" class="text-leaf-600 underline-grow">System Design</a> engagement.
+    </p>
+  </div>
+</section>
+
+<!-- STRATA x SUCCESSION planner -->
+<section class="bg-soil-50 border-y border-soil-200">
+  <div class="max-w-7xl mx-auto px-5 py-20 md:py-28">
+    <div class="max-w-2xl mb-10 reveal">
+      <div class="tag text-leaf-500 mb-4">Planning grid · 06</div>
+      <h2 class="font-serif text-4xl md:text-5xl text-leaf-700 leading-tight">Map strata against time.</h2>
+      <p class="text-lg text-soil-700 leading-relaxed mt-6">The final planning move: place a species in every box. Empty boxes are the gaps in your system — a layer with no yield, or a timescale with nothing growing. This grid updates with the climate you pick above.</p>
+    </div>
+
+    <div class="overflow-x-auto -mx-5 px-5">
+      <table class="w-full min-w-[640px] border-separate border-spacing-2">
+        <thead>
+          <tr class="text-left">
+            <th class="w-32"></th>
+            <th class="p-3"><div class="tag text-leaf-500">Years 1–3</div><div class="font-serif text-leaf-700">Placenta</div></th>
+            <th class="p-3"><div class="tag text-leaf-500">Years 3–8</div><div class="font-serif text-leaf-700">Secondary</div></th>
+            <th class="p-3"><div class="tag text-leaf-500">Years 10+</div><div class="font-serif text-leaf-700">Climax</div></th>
+          </tr>
+        </thead>
+        <tbody id="planGrid"></tbody>
+      </table>
+    </div>
+    <p class="text-xs text-soil-500 mt-4">Auto-filled with example species from the matrix for the selected climate. Blank cells mean no screened species in the current data for that layer/phase — a real design fills these deliberately.</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="relative bg-leaf-800 text-cream overflow-hidden">
+  <div class="absolute inset-0 grain opacity-30"></div>
+  <div class="relative max-w-5xl mx-auto px-5 py-24 md:py-32 text-center reveal">
+    <div class="tag text-rust-400 mb-6">From matrix to your parcel</div>
+    <h2 class="font-serif text-4xl md:text-6xl leading-[1.05] mb-8">This is the tool.<br><span class="italic text-rust-400">We build the system.</span></h2>
+    <p class="text-xl text-cream/85 max-w-2xl mx-auto mb-12 leading-relaxed">The matrix gets you thinking in layers. A real food forest is fitted to your soil test, your rainfall, your goals — and screened for invasives by country. That's the System Design engagement.</p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+      <a href="https://calendly.com/growessential/discovery-call" target="_blank" rel="noopener" class="bg-cream text-leaf-800 hover:bg-cream-dark px-10 py-5 rounded-full font-semibold transition shadow-2xl shadow-black/40 inline-flex items-center gap-2 group text-lg">
+        Book a Free 15-min Call
+        <span class="transition-transform group-hover:translate-x-1">→</span>
+      </a>
+      <a href="/land-audit.html" class="border border-cream/40 hover:border-cream hover:bg-cream/10 text-cream px-8 py-5 rounded-full font-medium text-center transition">Or get a free Land Audit</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-leaf-800 text-cream/80 border-t border-leaf-700">
+  <div class="max-w-7xl mx-auto px-5 py-16 grid md:grid-cols-12 gap-10 text-sm">
+    <div class="md:col-span-5">
+      <a href="/" class="flex items-center gap-2.5 text-cream font-serif text-2xl font-semibold mb-4">
+        <span class="inline-block w-3 h-3 rounded-full bg-leaf-400"></span>GrowEssential
+      </a>
+      <p class="text-cream/60 max-w-md leading-relaxed">Soil-first regenerative agriculture, food forest design, and consulting. Working from the United States; scouting in the Dominican Republic.</p>
+      <a href="https://calendly.com/growessential/discovery-call" target="_blank" rel="noopener" class="inline-block mt-6 bg-leaf-500 hover:bg-leaf-400 text-cream px-5 py-3 rounded-full font-medium transition">Book a Free Call →</a>
+    </div>
+    <div class="md:col-span-3">
+      <div class="font-serif text-cream mb-4 text-lg">Site</div>
+      <ul class="space-y-3 text-cream/70">
+        <li><a href="/about.html" class="hover:text-cream underline-grow">About</a></li>
+        <li><a href="/services.html" class="hover:text-cream underline-grow">Services &amp; Pricing</a></li>
+        <li><a href="/food-forest-design.html" class="hover:text-cream underline-grow">Food Forest Design</a></li>
+        <li><a href="/land-audit.html" class="hover:text-cream underline-grow">Free Land Audit</a></li>
+        <li><a href="/contact.html" class="hover:text-cream underline-grow">Contact</a></li>
+      </ul>
+    </div>
+    <div class="md:col-span-4">
+      <div class="font-serif text-cream mb-4 text-lg">Get in touch</div>
+      <ul class="space-y-3 text-cream/70">
+        <li><a href="mailto:hello@growessential.com" class="hover:text-cream">hello@growessential.com</a></li>
+        <li class="pt-3 text-xs text-cream/40">© 2026 GrowEssential. All rights reserved.</li>
+        <li class="text-xs text-cream/40">Design framework after food-forestry.com; species screened against GISD / CABI.</li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<!-- MOBILE STICKY CTA -->
+<div class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-cream/95 backdrop-blur border-t border-soil-200 px-4 py-3 shadow-2xl">
+  <a href="https://calendly.com/growessential/discovery-call" target="_blank" rel="noopener" class="block bg-leaf-500 hover:bg-leaf-600 text-cream text-center px-5 py-3 rounded-full font-semibold transition">Book Free 15-min Call →</a>
+</div>
+<div class="md:hidden h-20"></div>
+
+<script>
+  // Mobile nav
+  document.getElementById('navToggle')?.addEventListener('click', () => document.getElementById('mobileNav').classList.toggle('hidden'));
+
+  // Scroll reveal
+  document.body.classList.add('js-anim');
+  const io = new IntersectionObserver((entries) => entries.forEach((e) => {
+    if (e.isIntersecting) {
+      e.target.classList.add('in');
+      // animate strata bars
+      const f = e.target.getAttribute('data-fill');
+      if (f) { const bar = e.target.querySelector('.strata-fill'); if (bar) bar.style.width = f + '%'; }
+      io.unobserve(e.target);
+    }
+  }), { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach((el) => {
+    const r = el.getBoundingClientRect();
+    if (r.top < window.innerHeight) { el.classList.add('in'); const f = el.getAttribute('data-fill'); if (f){ const bar = el.querySelector('.strata-fill'); if (bar) bar.style.width = f + '%'; } }
+    else io.observe(el);
+  });
+
+  /* ==== SPECIES MATRIX DATA (injected) ==== */
+  const SPECIES = [
+    {"common": "Coconut palm", "scientific": "Cocos nucifera", "climate": "tropical", "strata": "emergent", "lifecycle": "long", "role": "production", "height_m": "20-30", "spacing_m": "6-9", "yields": "Coconuts", "dr_status": "naturalized-safe", "note": "Coastal; long-lived climax overstory"},
+    {"common": "Breadfruit", "scientific": "Artocarpus altilis", "climate": "tropical", "strata": "emergent", "lifecycle": "long", "role": "production", "height_m": "15-20", "spacing_m": "10-12", "yields": "Starchy staple fruit", "dr_status": "cultivated-safe", "note": "Heavy yielder; wide canopy"},
+    {"common": "Mango", "scientific": "Mangifera indica", "climate": "tropical", "strata": "emergent", "lifecycle": "long", "role": "production", "height_m": "15-25", "spacing_m": "8-12", "yields": "Mangoes", "dr_status": "cultivated-safe", "note": "Grafted dwarfs stay smaller"},
+    {"common": "Jackfruit", "scientific": "Artocarpus heterophyllus", "climate": "tropical", "strata": "high", "lifecycle": "long", "role": "production", "height_m": "10-20", "spacing_m": "8-10", "yields": "Jackfruit", "dr_status": "cultivated-safe", "note": "Largest tree-borne fruit"},
+    {"common": "Avocado", "scientific": "Persea americana", "climate": "tropical", "strata": "high", "lifecycle": "long", "role": "production", "height_m": "12-18", "spacing_m": "8-10", "yields": "Avocados", "dr_status": "cultivated-safe", "note": "West Indian types suit DR lowlands"},
+    {"common": "Mamey sapote", "scientific": "Pouteria sapota", "climate": "tropical", "strata": "high", "lifecycle": "long", "role": "production", "height_m": "15-20", "spacing_m": "8-10", "yields": "Mamey fruit", "dr_status": "cultivated-safe", "note": "Slow, high-value climax"},
+    {"common": "Sapodilla", "scientific": "Manilkara zapota", "climate": "tropical", "strata": "high", "lifecycle": "long", "role": "production", "height_m": "10-18", "spacing_m": "8-10", "yields": "Chicozapote fruit", "dr_status": "cultivated-safe", "note": "Wind-firm, drought-hardy"},
+    {"common": "Star apple / Caimito", "scientific": "Chrysophyllum cainito", "climate": "tropical", "strata": "high", "lifecycle": "long", "role": "production", "height_m": "10-15", "spacing_m": "8-10", "yields": "Caimito fruit", "dr_status": "naturalized-safe", "note": "Dense shade canopy"},
+    {"common": "Peach palm", "scientific": "Bactris gasipaes", "climate": "tropical", "strata": "high", "lifecycle": "long", "role": "production", "height_m": "15-20", "spacing_m": "3-4", "yields": "Peach-palm fruit + heart", "dr_status": "cultivated-safe", "note": "Clumping; harvest hearts on thinning"},
+    {"common": "Genip / Quenepa", "scientific": "Melicoccus bijugatus", "climate": "tropical", "strata": "high", "lifecycle": "long", "role": "production", "height_m": "12-25", "spacing_m": "8-12", "yields": "Quenepa / mamoncillo", "dr_status": "naturalized-safe", "note": "Long-lived; dioecious, needs male"},
+    {"common": "Allspice", "scientific": "Pimenta dioica", "climate": "tropical", "strata": "high", "lifecycle": "long", "role": "production", "height_m": "7-10", "spacing_m": "6-8", "yields": "Allspice berries + leaf", "dr_status": "native", "note": "Native Greater Antilles; dioecious"},
+    {"common": "Cacao", "scientific": "Theobroma cacao", "climate": "tropical", "strata": "medium", "lifecycle": "long", "role": "production", "height_m": "4-8", "spacing_m": "3-4", "yields": "Cacao pods", "dr_status": "cultivated-safe", "note": "Understory; needs 30-50% shade"},
+    {"common": "Coffee (Arabica)", "scientific": "Coffea arabica", "climate": "tropical", "strata": "low", "lifecycle": "long", "role": "production", "height_m": "2-4", "spacing_m": "2", "yields": "Coffee cherries", "dr_status": "cultivated-safe", "note": "Shade-grown; DR highland crop"},
+    {"common": "Soursop", "scientific": "Annona muricata", "climate": "tropical", "strata": "medium", "lifecycle": "long", "role": "production", "height_m": "6-8", "spacing_m": "4-5", "yields": "Guanabana fruit", "dr_status": "cultivated-safe", "note": "Frost-tender understory tree"},
+    {"common": "Sugar apple", "scientific": "Annona squamosa", "climate": "tropical", "strata": "medium", "lifecycle": "long", "role": "production", "height_m": "4-6", "spacing_m": "4", "yields": "Sweetsop fruit", "dr_status": "cultivated-safe", "note": "Drought-tolerant, short stature"},
+    {"common": "Starfruit", "scientific": "Averrhoa carambola", "climate": "tropical", "strata": "medium", "lifecycle": "long", "role": "production", "height_m": "5-9", "spacing_m": "4-6", "yields": "Carambola", "dr_status": "cultivated-safe", "note": "Likes partial shade, moist soil"},
+    {"common": "Cashew", "scientific": "Anacardium occidentale", "climate": "tropical", "strata": "medium", "lifecycle": "long", "role": "production", "height_m": "6-12", "spacing_m": "8-10", "yields": "Cashew nut + apple", "dr_status": "cultivated-safe", "note": "Spreading; dry-tolerant"},
+    {"common": "Acerola / West Indian cherry", "scientific": "Malpighia emarginata", "climate": "tropical", "strata": "low", "lifecycle": "long", "role": "production", "height_m": "3-5", "spacing_m": "3-4", "yields": "Acerola (high vit-C)", "dr_status": "native", "note": "Native Antilles shrub-tree"},
+    {"common": "Sea grape", "scientific": "Coccoloba uvifera", "climate": "tropical", "strata": "medium", "lifecycle": "long", "role": "production", "height_m": "5-8", "spacing_m": "5-6", "yields": "Sea grapes", "dr_status": "native", "note": "Salt/wind-tolerant coastal native"},
+    {"common": "Cocoplum", "scientific": "Chrysobalanus icaco", "climate": "tropical", "strata": "low", "lifecycle": "long", "role": "production", "height_m": "2-4", "spacing_m": "2-3", "yields": "Coco plum fruit", "dr_status": "native", "note": "Native hedge; coastal-hardy"},
+    {"common": "Guava", "scientific": "Psidium guajava", "climate": "tropical", "strata": "low", "lifecycle": "short", "role": "production", "height_m": "3-6", "spacing_m": "3-4", "yields": "Guavas", "dr_status": "naturalized-safe", "note": "Self-seeds freely; manage volunteers"},
+    {"common": "Papaya", "scientific": "Carica papaya", "climate": "tropical", "strata": "medium", "lifecycle": "short", "role": "production", "height_m": "3-6", "spacing_m": "2-3", "yields": "Papayas", "dr_status": "cultivated-safe", "note": "Fast pioneer; 3-4 yr productive life"},
+    {"common": "Banana / Plantain", "scientific": "Musa x paradisiaca", "climate": "tropical", "strata": "medium", "lifecycle": "short", "role": "production", "height_m": "3-6", "spacing_m": "2-3", "yields": "Bananas / plantains", "dr_status": "cultivated-safe", "note": "Placenta biomass + food; chop pseudostems"},
+    {"common": "Orange", "scientific": "Citrus x sinensis", "climate": "tropical", "strata": "medium", "lifecycle": "long", "role": "production", "height_m": "4-8", "spacing_m": "4-6", "yields": "Oranges", "dr_status": "cultivated-safe", "note": "Partial shade OK when young"},
+    {"common": "Lime", "scientific": "Citrus x aurantiifolia", "climate": "tropical", "strata": "low", "lifecycle": "long", "role": "production", "height_m": "3-5", "spacing_m": "3-4", "yields": "Limes", "dr_status": "cultivated-safe", "note": "Compact; good understory citrus"},
+    {"common": "Vanilla", "scientific": "Vanilla planifolia", "climate": "tropical", "strata": "low", "lifecycle": "long", "role": "production", "height_m": "vine 3-5", "spacing_m": "2-3", "yields": "Vanilla pods", "dr_status": "cultivated-safe", "note": "Climbing orchid; trains up support trees"},
+    {"common": "Passionfruit", "scientific": "Passiflora edulis", "climate": "tropical", "strata": "medium", "lifecycle": "short", "role": "production", "height_m": "vine 3-5", "spacing_m": "2-3", "yields": "Passionfruit", "dr_status": "cultivated-safe", "note": "Vigorous vine; trellis or edge trees"},
+    {"common": "Achiote / Annatto", "scientific": "Bixa orellana", "climate": "tropical", "strata": "medium", "lifecycle": "long", "role": "production", "height_m": "3-5", "spacing_m": "3", "yields": "Annatto seed dye", "dr_status": "cultivated-safe", "note": "Ornamental + spice understory"},
+    {"common": "Pineapple", "scientific": "Ananas comosus", "climate": "tropical", "strata": "low", "lifecycle": "short", "role": "production", "height_m": "1-1.2", "spacing_m": "0.3-0.6", "yields": "Pineapples", "dr_status": "cultivated-safe", "note": "Sunny gaps; drought-tolerant groundlayer"},
+    {"common": "Cassava / Yuca", "scientific": "Manihot esculenta", "climate": "tropical", "strata": "low", "lifecycle": "short", "role": "production", "height_m": "1-3", "spacing_m": "1", "yields": "Yuca root staple", "dr_status": "cultivated-safe", "note": "Fast pioneer starch crop"},
+    {"common": "Sweet potato", "scientific": "Ipomoea batatas", "climate": "tropical", "strata": "low", "lifecycle": "short", "role": "production", "height_m": "0.3", "spacing_m": "0.3", "yields": "Tubers + living mulch", "dr_status": "cultivated-safe", "note": "Groundcover that suppresses weeds"},
+    {"common": "Yautia / Malanga", "scientific": "Xanthosoma sagittifolium", "climate": "tropical", "strata": "low", "lifecycle": "short", "role": "production", "height_m": "1-1.5", "spacing_m": "0.6", "yields": "Root tubers", "dr_status": "cultivated-safe", "note": "Shade-tolerant; moist ground layer"},
+    {"common": "Ginger", "scientific": "Zingiber officinale", "climate": "tropical", "strata": "low", "lifecycle": "short", "role": "production", "height_m": "0.6-1.2", "spacing_m": "0.3", "yields": "Ginger rhizome", "dr_status": "cultivated-safe", "note": "Deep-shade understory spice"},
+    {"common": "Turmeric", "scientific": "Curcuma longa", "climate": "tropical", "strata": "low", "lifecycle": "short", "role": "production", "height_m": "1", "spacing_m": "0.3", "yields": "Turmeric rhizome", "dr_status": "cultivated-safe", "note": "Shade-tolerant ground layer"},
+    {"common": "Roselle", "scientific": "Hibiscus sabdariffa", "climate": "tropical", "strata": "low", "lifecycle": "short", "role": "production", "height_m": "1.5-2.5", "spacing_m": "1", "yields": "Roselle calyces", "dr_status": "cultivated-safe", "note": "Annual; sunny edges"},
+    {"common": "Chaya", "scientific": "Cnidoscolus aconitifolius", "climate": "tropical", "strata": "medium", "lifecycle": "short", "role": "production", "height_m": "2-6", "spacing_m": "2", "yields": "Tree-spinach greens", "dr_status": "cultivated-safe", "note": "Cook leaves; drought-hardy perennial green"},
+    {"common": "Katuk", "scientific": "Sauropus androgynus", "climate": "tropical", "strata": "low", "lifecycle": "short", "role": "production", "height_m": "2-3", "spacing_m": "1", "yields": "Edible-leaf shrub", "dr_status": "cultivated-safe", "note": "Cut-and-come-again shade green"},
+    {"common": "Moringa", "scientific": "Moringa oleifera", "climate": "tropical", "strata": "medium", "lifecycle": "short", "role": "production", "height_m": "6-12", "spacing_m": "3-4", "yields": "Edible leaves + pods", "dr_status": "cultivated-safe", "note": "Fast biomass; food + light chop-drop"},
+    {"common": "Guama / Ice-cream bean", "scientific": "Inga edulis", "climate": "tropical", "strata": "high", "lifecycle": "short", "role": "support", "height_m": "15-20", "spacing_m": "4-6", "yields": "N-fixer shade + chop-drop", "dr_status": "native", "note": "Core cacao/coffee shade support"},
+    {"common": "Gliricidia", "scientific": "Gliricidia sepium", "climate": "tropical", "strata": "medium", "lifecycle": "short", "role": "support", "height_m": "8-12", "spacing_m": "3-4", "yields": "N-fixer, living fence, mulch", "dr_status": "cultivated-safe", "note": "Safe non-invasive alt to leucaena"},
+    {"common": "Bucare / Erythrina", "scientific": "Erythrina poeppigiana", "climate": "tropical", "strata": "high", "lifecycle": "short", "role": "support", "height_m": "10-15", "spacing_m": "4-6", "yields": "N-fixer shade + biomass", "dr_status": "cultivated-safe", "note": "Classic coffee shade nurse tree"},
+    {"common": "Pigeon pea", "scientific": "Cajanus cajan", "climate": "tropical", "strata": "low", "lifecycle": "short", "role": "support", "height_m": "2-4", "spacing_m": "1-1.5", "yields": "N-fixer + edible peas (gandules)", "dr_status": "naturalized-safe", "note": "Fast placenta; food and fertility"},
+    {"common": "Calliandra", "scientific": "Calliandra calothyrsus", "climate": "tropical", "strata": "medium", "lifecycle": "short", "role": "support", "height_m": "4-6", "spacing_m": "1-2", "yields": "N-fixer, biomass, bee forage", "dr_status": "cultivated-safe", "note": "Coppices hard for mulch; monitor spread"},
+    {"common": "Flemingia", "scientific": "Flemingia macrophylla", "climate": "tropical", "strata": "low", "lifecycle": "short", "role": "support", "height_m": "2-3", "spacing_m": "1", "yields": "N-fixer hedgerow mulch", "dr_status": "cultivated-safe", "note": "Durable slow-decompose chop-drop"},
+    {"common": "Tamarind", "scientific": "Tamarindus indica", "climate": "tropical", "strata": "high", "lifecycle": "long", "role": "production", "height_m": "12-18", "spacing_m": "8-10", "yields": "Tamarind pods", "dr_status": "naturalized-safe", "note": "Legume; mild fertility + long-lived fruit"},
+    {"common": "Sunn hemp", "scientific": "Crotalaria juncea", "climate": "tropical", "strata": "low", "lifecycle": "short", "role": "support", "height_m": "2-3", "spacing_m": "cover crop", "yields": "N-fix cover, fast biomass", "dr_status": "cultivated-safe", "note": "Nurse cover for young systems"},
+    {"common": "Velvet bean", "scientific": "Mucuna pruriens", "climate": "tropical", "strata": "low", "lifecycle": "short", "role": "support", "height_m": "vine cover", "spacing_m": "0.8-1", "yields": "N-fix cover + chop-drop", "dr_status": "naturalized-safe", "note": "Aggressive cover; direct off climax trees"},
+    {"common": "Jack bean", "scientific": "Canavalia ensiformis", "climate": "tropical", "strata": "low", "lifecycle": "short", "role": "support", "height_m": "1-2", "spacing_m": "0.5", "yields": "N-fix cover crop", "dr_status": "cultivated-safe", "note": "Drought-tolerant fertility builder"},
+    {"common": "Vetiver", "scientific": "Chrysopogon zizanioides", "climate": "tropical", "strata": "low", "lifecycle": "long", "role": "support", "height_m": "1.5-2", "spacing_m": "0.3", "yields": "Erosion control, soil stabilizer", "dr_status": "cultivated-safe", "note": "Use sterile cultivar; contour hedges"},
+    {"common": "Lemongrass", "scientific": "Cymbopogon citratus", "climate": "tropical", "strata": "low", "lifecycle": "short", "role": "support", "height_m": "1-1.5", "spacing_m": "0.8", "yields": "Border, mulch, pest-repel", "dr_status": "cultivated-safe", "note": "Clumping edge; culinary bonus"},
+    {"common": "Leucaena", "scientific": "Leucaena leucocephala", "climate": "tropical", "strata": "medium", "lifecycle": "short", "role": "support", "height_m": "5-10", "spacing_m": "n/a", "yields": "N-fixer (do not plant)", "dr_status": "INVASIVE-AVOID", "note": "Aggressive Caribbean invader; use Gliricidia"},
+    {"common": "Neem", "scientific": "Azadirachta indica", "climate": "tropical", "strata": "high", "lifecycle": "long", "role": "support", "height_m": "15-20", "spacing_m": "n/a", "yields": "Biopesticide (do not plant)", "dr_status": "INVASIVE-AVOID", "note": "Listed invasive in Dominican Republic"},
+    {"common": "African tulip tree", "scientific": "Spathodea campanulata", "climate": "tropical", "strata": "emergent", "lifecycle": "long", "role": "support", "height_m": "15-25", "spacing_m": "n/a", "yields": "Ornamental (do not plant)", "dr_status": "INVASIVE-AVOID", "note": "Most widespread invasive tree in Caribbean forests"},
+    {"common": "Rose apple", "scientific": "Syzygium jambos", "climate": "tropical", "strata": "medium", "lifecycle": "long", "role": "production", "height_m": "7-12", "spacing_m": "n/a", "yields": "Fruit (do not plant)", "dr_status": "INVASIVE-AVOID", "note": "Forms dense monotypic thickets; GISD-listed"},
+    {"common": "Mesquite", "scientific": "Prosopis juliflora", "climate": "tropical", "strata": "medium", "lifecycle": "long", "role": "support", "height_m": "5-12", "spacing_m": "n/a", "yields": "N-fixer (do not plant)", "dr_status": "INVASIVE-AVOID", "note": "Thorny invader of dry Caribbean scrub"},
+    {"common": "Woman's tongue", "scientific": "Albizia lebbeck", "climate": "tropical", "strata": "high", "lifecycle": "short", "role": "support", "height_m": "12-18", "spacing_m": "n/a", "yields": "N-fixer (do not plant)", "dr_status": "INVASIVE-AVOID", "note": "Naturalized invasive across Caribbean"},
+    {"common": "Australian pine", "scientific": "Casuarina equisetifolia", "climate": "tropical", "strata": "emergent", "lifecycle": "long", "role": "support", "height_m": "15-30", "spacing_m": "n/a", "yields": "Windbreak (do not plant)", "dr_status": "INVASIVE-AVOID", "note": "Invasive; allelopathic litter smothers ground layer"},
+    {"common": "Castor bean", "scientific": "Ricinus communis", "climate": "tropical", "strata": "low", "lifecycle": "short", "role": "support", "height_m": "2-4", "spacing_m": "n/a", "yields": "Biomass (do not plant)", "dr_status": "INVASIVE-AVOID", "note": "Toxic weedy invasive; avoid"},
+    {"common": "Paperbark", "scientific": "Melaleuca quinquenervia", "climate": "tropical", "strata": "high", "lifecycle": "long", "role": "support", "height_m": "10-20", "spacing_m": "n/a", "yields": "Biomass (do not plant)", "dr_status": "INVASIVE-AVOID", "note": "Aggressive wetland invader"},
+    {"common": "Loquat", "scientific": "Eriobotrya japonica", "climate": "subtropical", "strata": "medium", "lifecycle": "long", "role": "production", "height_m": "5-10", "spacing_m": "5-6", "yields": "Loquats", "dr_status": "cultivated-safe", "note": "Grows in DR highlands; early spring fruit"},
+    {"common": "Fig", "scientific": "Ficus carica", "climate": "subtropical", "strata": "medium", "lifecycle": "long", "role": "production", "height_m": "3-6", "spacing_m": "4-6", "yields": "Figs", "dr_status": "cultivated-safe", "note": "Coppice-friendly; drought-hardy"},
+    {"common": "Pomegranate", "scientific": "Punica granatum", "climate": "subtropical", "strata": "medium", "lifecycle": "long", "role": "production", "height_m": "3-5", "spacing_m": "3-4", "yields": "Pomegranates", "dr_status": "cultivated-safe", "note": "Heat + drought tolerant"},
+    {"common": "Feijoa", "scientific": "Acca sellowiana", "climate": "subtropical", "strata": "medium", "lifecycle": "long", "role": "production", "height_m": "3-5", "spacing_m": "3-4", "yields": "Pineapple-guava fruit", "dr_status": "cultivated-safe", "note": "Hedge-able; edible flowers too"},
+    {"common": "Olive", "scientific": "Olea europaea", "climate": "subtropical", "strata": "medium", "lifecycle": "long", "role": "production", "height_m": "5-10", "spacing_m": "5-7", "yields": "Olives", "dr_status": "cultivated-safe", "note": "Long-lived; dry-summer climate"},
+    {"common": "Jujube", "scientific": "Ziziphus jujuba", "climate": "subtropical", "strata": "medium", "lifecycle": "long", "role": "production", "height_m": "5-10", "spacing_m": "4-6", "yields": "Jujube dates", "dr_status": "cultivated-safe", "note": "Very drought-tolerant; suckers-monitor"},
+    {"common": "Macadamia", "scientific": "Macadamia integrifolia", "climate": "subtropical", "strata": "high", "lifecycle": "long", "role": "production", "height_m": "8-12", "spacing_m": "7-8", "yields": "Macadamia nuts", "dr_status": "cultivated-safe", "note": "Slow climax; high-value nut"},
+    {"common": "Tea", "scientific": "Camellia sinensis", "climate": "subtropical", "strata": "low", "lifecycle": "long", "role": "production", "height_m": "1-2", "spacing_m": "1", "yields": "Tea leaves", "dr_status": "cultivated-safe", "note": "Shade-tolerant hedge understory"},
+    {"common": "Tree lucerne / Tagasaste", "scientific": "Chamaecytisus palmensis", "climate": "mediterranean", "strata": "medium", "lifecycle": "short", "role": "support", "height_m": "3-5", "spacing_m": "2-3", "yields": "N-fixer fodder + bee forage", "dr_status": "cultivated-safe", "note": "Monitor self-seeding in mild climates"},
+    {"common": "Chestnut", "scientific": "Castanea mollissima", "climate": "temperate", "strata": "emergent", "lifecycle": "long", "role": "production", "height_m": "12-20", "spacing_m": "10-12", "yields": "Chestnuts", "dr_status": "not-applicable", "note": "Blight-resistant staple nut canopy"},
+    {"common": "Pecan", "scientific": "Carya illinoinensis", "climate": "temperate", "strata": "emergent", "lifecycle": "long", "role": "production", "height_m": "20-30", "spacing_m": "12-15", "yields": "Pecans", "dr_status": "not-applicable", "note": "Large overstory; needs space + heat"},
+    {"common": "Black walnut", "scientific": "Juglans nigra", "climate": "temperate", "strata": "emergent", "lifecycle": "long", "role": "production", "height_m": "20-30", "spacing_m": "12-15", "yields": "Walnuts + timber", "dr_status": "not-applicable", "note": "Juglone allelopathy; isolate sensitive crops"},
+    {"common": "American persimmon", "scientific": "Diospyros virginiana", "climate": "temperate", "strata": "high", "lifecycle": "long", "role": "production", "height_m": "10-18", "spacing_m": "6-8", "yields": "Persimmons", "dr_status": "not-applicable", "note": "Dioecious; very cold-hardy"},
+    {"common": "Mulberry", "scientific": "Morus nigra", "climate": "temperate", "strata": "high", "lifecycle": "long", "role": "production", "height_m": "8-12", "spacing_m": "6-8", "yields": "Mulberries + fodder", "dr_status": "not-applicable", "note": "Choose non-weedy species over M. alba"},
+    {"common": "Apple", "scientific": "Malus domestica", "climate": "temperate", "strata": "medium", "lifecycle": "long", "role": "production", "height_m": "3-8", "spacing_m": "4-6", "yields": "Apples", "dr_status": "not-applicable", "note": "Size set by rootstock; dwarf for guilds"},
+    {"common": "Pear", "scientific": "Pyrus communis", "climate": "temperate", "strata": "high", "lifecycle": "long", "role": "production", "height_m": "6-12", "spacing_m": "5-7", "yields": "Pears", "dr_status": "not-applicable", "note": "Long-lived; needs pollinizer"},
+    {"common": "Plum", "scientific": "Prunus domestica", "climate": "temperate", "strata": "medium", "lifecycle": "long", "role": "production", "height_m": "4-6", "spacing_m": "4-5", "yields": "Plums", "dr_status": "not-applicable", "note": "Early bloom; frost-pocket aware"},
+    {"common": "Sweet cherry", "scientific": "Prunus avium", "climate": "temperate", "strata": "high", "lifecycle": "long", "role": "production", "height_m": "6-10", "spacing_m": "5-7", "yields": "Cherries", "dr_status": "not-applicable", "note": "Vigorous; net against birds"},
+    {"common": "Peach", "scientific": "Prunus persica", "climate": "temperate", "strata": "medium", "lifecycle": "short", "role": "production", "height_m": "4-6", "spacing_m": "4-5", "yields": "Peaches", "dr_status": "not-applicable", "note": "Short-lived (~15 yr); high early yield"},
+    {"common": "Pawpaw", "scientific": "Asimina triloba", "climate": "temperate", "strata": "medium", "lifecycle": "long", "role": "production", "height_m": "5-10", "spacing_m": "3-5", "yields": "Pawpaw fruit", "dr_status": "not-applicable", "note": "Shade-tolerant native understory"},
+    {"common": "Hazelnut", "scientific": "Corylus americana", "climate": "temperate", "strata": "medium", "lifecycle": "long", "role": "production", "height_m": "3-5", "spacing_m": "3-4", "yields": "Hazelnuts", "dr_status": "not-applicable", "note": "Suckering shrub; hedgerow nut"},
+    {"common": "Serviceberry", "scientific": "Amelanchier alnifolia", "climate": "temperate", "strata": "medium", "lifecycle": "long", "role": "production", "height_m": "4-8", "spacing_m": "3-5", "yields": "Juneberries", "dr_status": "not-applicable", "note": "Early fruit; pollinator native"},
+    {"common": "Elderberry", "scientific": "Sambucus canadensis", "climate": "temperate", "strata": "medium", "lifecycle": "short", "role": "production", "height_m": "3-4", "spacing_m": "2-3", "yields": "Elderflower + berries", "dr_status": "not-applicable", "note": "Fast pioneer; coppice to renew"},
+    {"common": "Black locust", "scientific": "Robinia pseudoacacia", "climate": "temperate", "strata": "high", "lifecycle": "short", "role": "support", "height_m": "12-20", "spacing_m": "6-8", "yields": "N-fixer + rot-proof timber", "dr_status": "not-applicable", "note": "Coppice hard; manage vigorous suckering"},
+    {"common": "Siberian pea shrub", "scientific": "Caragana arborescens", "climate": "temperate", "strata": "medium", "lifecycle": "long", "role": "support", "height_m": "3-5", "spacing_m": "2-3", "yields": "N-fixer + poultry forage", "dr_status": "not-applicable", "note": "Cold-hardy windbreak fertility shrub"},
+    {"common": "Alder", "scientific": "Alnus rubra", "climate": "temperate", "strata": "high", "lifecycle": "short", "role": "support", "height_m": "8-15", "spacing_m": "4-6", "yields": "N-fixer (Frankia) + biomass", "dr_status": "not-applicable", "note": "Fast nurse for wet ground"},
+    {"common": "Goumi", "scientific": "Elaeagnus multiflora", "climate": "temperate", "strata": "medium", "lifecycle": "long", "role": "support", "height_m": "2-3", "spacing_m": "2-3", "yields": "N-fixer + edible berries", "dr_status": "not-applicable", "note": "Safer than autumn olive; still monitor"},
+    {"common": "Seaberry", "scientific": "Hippophae rhamnoides", "climate": "temperate", "strata": "medium", "lifecycle": "long", "role": "support", "height_m": "2-4", "spacing_m": "2-2.5", "yields": "N-fixer + vit-C berries", "dr_status": "not-applicable", "note": "Suckers hard; give root space"},
+    {"common": "Autumn olive", "scientific": "Elaeagnus umbellata", "climate": "temperate", "strata": "medium", "lifecycle": "short", "role": "support", "height_m": "3-5", "spacing_m": "n/a", "yields": "N-fixer (do not plant)", "dr_status": "INVASIVE-AVOID", "note": "US NE/Midwest invasive; use goumi or seaberry"},
+    {"common": "Comfrey (Bocking 14)", "scientific": "Symphytum x uplandicum", "climate": "temperate", "strata": "low", "lifecycle": "long", "role": "support", "height_m": "0.6-1", "spacing_m": "0.6", "yields": "Dynamic accumulator, chop-drop", "dr_status": "not-applicable", "note": "Sterile cultivar only; won't seed-spread"},
+    {"common": "Blackcurrant", "scientific": "Ribes nigrum", "climate": "temperate", "strata": "low", "lifecycle": "long", "role": "production", "height_m": "1-1.5", "spacing_m": "1-1.5", "yields": "Currants", "dr_status": "not-applicable", "note": "Shade-tolerant; thrives under fruit trees"},
+    {"common": "Gooseberry", "scientific": "Ribes uva-crispa", "climate": "temperate", "strata": "low", "lifecycle": "long", "role": "production", "height_m": "1-1.5", "spacing_m": "1.2", "yields": "Gooseberries", "dr_status": "not-applicable", "note": "Partial-shade shrub layer"},
+    {"common": "Raspberry", "scientific": "Rubus idaeus", "climate": "temperate", "strata": "low", "lifecycle": "short", "role": "production", "height_m": "1.5-2", "spacing_m": "0.5-1", "yields": "Raspberries", "dr_status": "not-applicable", "note": "Suckers; keep to defined bed"},
+    {"common": "Blueberry", "scientific": "Vaccinium corymbosum", "climate": "temperate", "strata": "low", "lifecycle": "long", "role": "production", "height_m": "1.5-2", "spacing_m": "1.5", "yields": "Blueberries", "dr_status": "not-applicable", "note": "Needs acidic (pH 4.5-5.5) soil"},
+    {"common": "Aronia", "scientific": "Aronia melanocarpa", "climate": "temperate", "strata": "low", "lifecycle": "long", "role": "production", "height_m": "1.5-2.5", "spacing_m": "1.5", "yields": "Chokeberries", "dr_status": "not-applicable", "note": "Very hardy; high-antioxidant fruit"},
+    {"common": "Honeyberry / Haskap", "scientific": "Lonicera caerulea", "climate": "temperate", "strata": "low", "lifecycle": "long", "role": "production", "height_m": "1.5-2", "spacing_m": "1.2", "yields": "Haskap berries", "dr_status": "not-applicable", "note": "Earliest fruit; needs cross-pollinizer"},
+    {"common": "Hardy kiwi", "scientific": "Actinidia arguta", "climate": "temperate", "strata": "high", "lifecycle": "long", "role": "production", "height_m": "vine 6-9", "spacing_m": "3-4", "yields": "Kiwi berries", "dr_status": "not-applicable", "note": "Vigorous vine; strong trellis + male vine"},
+    {"common": "Grape", "scientific": "Vitis vinifera", "climate": "temperate", "strata": "medium", "lifecycle": "long", "role": "production", "height_m": "vine 3-6", "spacing_m": "2-3", "yields": "Grapes", "dr_status": "not-applicable", "note": "Full-sun edge; annual prune"},
+    {"common": "Rhubarb", "scientific": "Rheum rhabarbarum", "climate": "temperate", "strata": "low", "lifecycle": "long", "role": "production", "height_m": "0.6-1", "spacing_m": "1", "yields": "Rhubarb stalks", "dr_status": "not-applicable", "note": "Shade-tolerant perennial edge"},
+    {"common": "Asparagus", "scientific": "Asparagus officinalis", "climate": "temperate", "strata": "low", "lifecycle": "long", "role": "production", "height_m": "1-1.5", "spacing_m": "0.4", "yields": "Asparagus spears", "dr_status": "not-applicable", "note": "20+ yr perennial bed; sunny"},
+    {"common": "Sunchoke", "scientific": "Helianthus tuberosus", "climate": "temperate", "strata": "medium", "lifecycle": "long", "role": "production", "height_m": "2-3", "spacing_m": "0.5", "yields": "Jerusalem artichoke tubers", "dr_status": "not-applicable", "note": "Spreads aggressively; contain to a bed"},
+    {"common": "Strawberry", "scientific": "Fragaria x ananassa", "climate": "temperate", "strata": "low", "lifecycle": "short", "role": "production", "height_m": "0.2", "spacing_m": "0.3", "yields": "Strawberry groundcover", "dr_status": "not-applicable", "note": "Living mulch that fruits"},
+    {"common": "Walking onion", "scientific": "Allium x proliferum", "climate": "temperate", "strata": "low", "lifecycle": "long", "role": "production", "height_m": "0.5", "spacing_m": "0.2", "yields": "Perennial onions + pest confuser", "dr_status": "not-applicable", "note": "Self-propagating allium ground layer"},
+    {"common": "Sea kale", "scientific": "Crambe maritima", "climate": "temperate", "strata": "low", "lifecycle": "long", "role": "production", "height_m": "0.6", "spacing_m": "0.6", "yields": "Perennial brassica greens", "dr_status": "not-applicable", "note": "Long-lived salt-tolerant perennial veg"},
+    {"common": "Carob", "scientific": "Ceratonia siliqua", "climate": "mediterranean", "strata": "high", "lifecycle": "long", "role": "production", "height_m": "8-12", "spacing_m": "8-10", "yields": "Carob pods + fodder", "dr_status": "not-applicable", "note": "Drought-hardy legume; long-lived"},
+    {"common": "Stone pine", "scientific": "Pinus pinea", "climate": "mediterranean", "strata": "emergent", "lifecycle": "long", "role": "production", "height_m": "15-25", "spacing_m": "8-10", "yields": "Pine nuts (pinones)", "dr_status": "not-applicable", "note": "Umbrella canopy; slow climax"},
+    {"common": "Almond", "scientific": "Prunus dulcis", "climate": "mediterranean", "strata": "medium", "lifecycle": "long", "role": "production", "height_m": "4-8", "spacing_m": "5-6", "yields": "Almonds", "dr_status": "not-applicable", "note": "Early bloom; frost-pocket aware"},
+    {"common": "Persian walnut", "scientific": "Juglans regia", "climate": "mediterranean", "strata": "emergent", "lifecycle": "long", "role": "production", "height_m": "15-25", "spacing_m": "10-12", "yields": "Walnuts + timber", "dr_status": "not-applicable", "note": "Juglone; isolate sensitive crops"},
+    {"common": "Quince", "scientific": "Cydonia oblonga", "climate": "mediterranean", "strata": "medium", "lifecycle": "long", "role": "production", "height_m": "4-6", "spacing_m": "4-5", "yields": "Quince fruit", "dr_status": "not-applicable", "note": "Pollinizer for pears; hardy"},
+    {"common": "Bay laurel", "scientific": "Laurus nobilis", "climate": "mediterranean", "strata": "medium", "lifecycle": "long", "role": "production", "height_m": "3-8", "spacing_m": "3-4", "yields": "Bay leaves", "dr_status": "not-applicable", "note": "Shade-tolerant evergreen; hedge"},
+    {"common": "Caper", "scientific": "Capparis spinosa", "climate": "mediterranean", "strata": "low", "lifecycle": "long", "role": "production", "height_m": "0.5-1", "spacing_m": "1", "yields": "Caper buds", "dr_status": "not-applicable", "note": "Drought + rock-tolerant sprawler"},
+    {"common": "Globe artichoke", "scientific": "Cynara cardunculus", "climate": "mediterranean", "strata": "low", "lifecycle": "long", "role": "production", "height_m": "1-1.5", "spacing_m": "1", "yields": "Artichoke heads", "dr_status": "not-applicable", "note": "Architectural perennial edge"},
+    {"common": "Rosemary", "scientific": "Salvia rosmarinus", "climate": "mediterranean", "strata": "low", "lifecycle": "long", "role": "support", "height_m": "1-1.5", "spacing_m": "1", "yields": "Pollinator + aromatic pest-confuser", "dr_status": "not-applicable", "note": "Evergreen bee-forage border"},
+    {"common": "Lavender", "scientific": "Lavandula angustifolia", "climate": "mediterranean", "strata": "low", "lifecycle": "long", "role": "support", "height_m": "0.6-0.8", "spacing_m": "0.8", "yields": "Bee forage + pest-repel", "dr_status": "not-applicable", "note": "Dry sunny edges"},
+    {"common": "White lupin", "scientific": "Lupinus albus", "climate": "mediterranean", "strata": "low", "lifecycle": "short", "role": "support", "height_m": "0.6-1.2", "spacing_m": "0.3", "yields": "N-fix cover + biomass", "dr_status": "not-applicable", "note": "Fast winter cover crop"}
+  ];
+  /* ==== END DATA ==== */
+
+  const STRATA_ORDER = ['emergent','high','medium','low'];
+  const STRATA_LABEL = { emergent:'Emergent', high:'High', medium:'Medium', low:'Low' };
+  const CLIMATE_LABEL = { temperate:'Temperate', mediterranean:'Mediterranean', subtropical:'Subtropical', tropical:'Tropical' };
+
+  const filters = { climate:'all', strata:'all', lifecycle:'all', role:'all' };
+
+  function statusBadge(s){
+    switch(s){
+      case 'INVASIVE-AVOID': return '<span class="tag inline-block bg-rust-500/15 text-rust-600 border border-rust-500/40 px-2 py-0.5 rounded-full" data-i18n="badge.invasive">⚠ Invasive — avoid</span>';
+      case 'native': return '<span class="tag inline-block bg-leaf-100 text-leaf-600 border border-leaf-200 px-2 py-0.5 rounded-full" data-i18n="badge.native">Caribbean native</span>';
+      case 'naturalized-safe': return '<span class="tag inline-block bg-leaf-50 text-leaf-600 border border-leaf-200 px-2 py-0.5 rounded-full" data-i18n="badge.naturalized">Naturalized</span>';
+      case 'cultivated-safe': return '<span class="tag inline-block bg-leaf-50 text-leaf-600 border border-leaf-200 px-2 py-0.5 rounded-full" data-i18n="badge.cultivated">Widely cultivated</span>';
+      default: return '';
+    }
+  }
+  function roleBadge(r){
+    return r === 'support'
+      ? '<span class="tag inline-block bg-soil-100 text-soil-600 border border-soil-200 px-2 py-0.5 rounded-full">Support</span>'
+      : '<span class="tag inline-block bg-leaf-50 text-leaf-600 border border-leaf-200 px-2 py-0.5 rounded-full">Production</span>';
+  }
+
+  function cardHTML(s){
+    const avoid = s.dr_status === 'INVASIVE-AVOID';
+    return `<article class="spx bg-cream border ${avoid ? 'border-rust-500/40' : 'border-soil-200'} rounded-2xl p-5 hover:-translate-y-1 hover:border-leaf-400 transition-all ring-soil">
+      <div class="flex items-start justify-between gap-3 mb-2">
+        <div>
+          <div class="font-serif text-lg text-leaf-700 leading-tight">${s.common}</div>
+          <div class="text-xs text-soil-500 italic">${s.scientific}</div>
+        </div>
+        <span class="tag shrink-0 bg-leaf-700 text-cream px-2 py-0.5 rounded-full">${STRATA_LABEL[s.strata]}</span>
+      </div>
+      <div class="flex flex-wrap gap-1.5 mb-3">
+        ${roleBadge(s.role)}
+        <span class="tag inline-block bg-cream border border-soil-200 text-soil-600 px-2 py-0.5 rounded-full">${s.lifecycle === 'short' ? 'Short cycle' : 'Long cycle'}</span>
+        ${statusBadge(s.dr_status)}
+      </div>
+      <p class="text-sm text-soil-700 mb-3">${s.yields}${s.note ? ` <span class="text-soil-500">· ${s.note}</span>` : ''}</p>
+      <div class="flex items-center gap-4 text-xs text-soil-500 border-t border-soil-100 pt-3">
+        <span>↕ ${s.height_m} <span>m tall</span></span>
+        <span>⇔ ${s.spacing_m} <span>m spacing</span></span>
+        <span class="ml-auto text-soil-400">${CLIMATE_LABEL[s.climate] || ''}</span>
+      </div>
+    </article>`;
+  }
+
+  function apply(){
+    const list = SPECIES.filter(s =>
+      (filters.climate === 'all' || s.climate === filters.climate) &&
+      (filters.strata === 'all' || s.strata === filters.strata) &&
+      (filters.lifecycle === 'all' || s.lifecycle === filters.lifecycle) &&
+      (filters.role === 'all' || s.role === filters.role)
+    ).sort((a,b) => STRATA_ORDER.indexOf(a.strata) - STRATA_ORDER.indexOf(b.strata));
+
+    const grid = document.getElementById('spxGrid');
+    const empty = document.getElementById('spxEmpty');
+    grid.innerHTML = list.map(cardHTML).join('');
+    document.getElementById('spxCount').textContent = list.length;
+    empty.classList.toggle('hidden', list.length !== 0);
+    buildPlan();
+  }
+
+  function buildPlan(){
+    const clim = filters.climate === 'all' ? null : filters.climate;
+    const pool = SPECIES.filter(s => !clim || s.climate === clim).filter(s => s.dr_status !== 'INVASIVE-AVOID');
+    const phaseOf = (s) => s.lifecycle === 'short'
+      ? '1-3'
+      : (s.strata === 'emergent' || s.strata === 'high') ? '10+' : '3-8';
+    const rows = STRATA_ORDER.map(st => {
+      const cells = ['1-3','3-8','10+'].map(ph => {
+        const match = pool.filter(s => s.strata === st && phaseOf(s) === ph).slice(0,2);
+        const inner = match.length
+          ? match.map(m => `<div class="text-sm text-leaf-700 leading-tight">${m.common}</div>`).join('<div class="h-1"></div>')
+          : '<span class="text-soil-300 text-lg">·</span>';
+        return `<td class="align-top bg-cream border border-soil-200 rounded-xl p-3 min-w-[120px]">${inner}</td>`;
+      }).join('');
+      return `<tr><th class="align-top text-left p-3"><span class="tag bg-leaf-700 text-cream px-2 py-1 rounded-full">${STRATA_LABEL[st]}</span></th>${cells}</tr>`;
+    }).join('');
+    document.getElementById('planGrid').innerHTML = rows;
+  }
+
+  // wire filter chips
+  document.querySelectorAll('[data-group]').forEach(group => {
+    const key = group.getAttribute('data-group');
+    group.querySelectorAll('.chip').forEach(btn => {
+      btn.addEventListener('click', () => {
+        group.querySelectorAll('.chip').forEach(b => b.setAttribute('aria-pressed','false'));
+        btn.setAttribute('aria-pressed','true');
+        filters[key] = btn.getAttribute('data-val');
+        apply();
+      });
+    });
+  });
+  document.getElementById('spxReset').addEventListener('click', () => {
+    Object.keys(filters).forEach(k => filters[k] = 'all');
+    document.querySelectorAll('[data-group]').forEach(group => {
+      group.querySelectorAll('.chip').forEach((b,i) => b.setAttribute('aria-pressed', i === 0 ? 'true' : 'false'));
+    });
+    apply();
+  });
+
+  apply();
+</script>
+
+<script src="/assets/es.js"></script>
+<script src="/assets/i18n.js"></script>
+</body>
+</html>
