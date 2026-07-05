@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /playbook.html
+Disallow: /playbook
 
 Sitemap: https://growessential.com/sitemap.xml

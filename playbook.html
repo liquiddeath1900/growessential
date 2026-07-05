@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Land Audit Playbook — GrowEssential</title>
+<link rel="icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --soil:#4A3719; --green:#2F5D3A; --green-dk:#1f4227; --cream:#F5F1E8;
+    --ink:#172F1B; --paper:#fffdf8; --line:#e2dccb; --muted:#6b6a5c;
+    --amber:#b06a13; --radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--ink);line-height:1.55;font-size:16px;-webkit-font-smoothing:antialiased}
+  h1,h2,h3,h4{font-family:'Fraunces',serif;line-height:1.15;color:var(--ink)}
+  a{color:var(--green);text-decoration:none}a:hover{text-decoration:underline}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+  header{background:var(--green);color:var(--cream);padding:18px 0}
+  .hrow{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .logo{display:flex;align-items:center;gap:9px;font-family:'Fraunces',serif;font-weight:900;font-size:20px;color:var(--cream)}
+  .dot{width:14px;height:14px;border-radius:50%;background:#8cc06a;display:inline-block;flex:0 0 auto}
+  .badge{font-family:'Inter';font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:rgba(255,255,255,.16);padding:4px 10px;border-radius:999px}
+  .htitle{margin-left:auto;font-size:13px;opacity:.85;display:flex;gap:12px;align-items:center}
+  .signout{background:rgba(255,255,255,.16);color:var(--cream);border:none;padding:5px 12px;border-radius:999px;font-family:inherit;font-size:12px;font-weight:600;cursor:pointer}
+  .lockbar{background:var(--soil);color:#f0e6d6;font-size:12.5px;text-align:center;padding:7px 20px}
+  .lockbar b{color:#fff}
+  .toolbar{position:sticky;top:0;z-index:20;background:var(--cream);border-bottom:1px solid var(--line);padding:12px 0}
+  .search{width:100%;padding:11px 15px;border:1.5px solid var(--line);border-radius:999px;font-family:inherit;font-size:15px;background:var(--paper);color:var(--ink)}
+  .search:focus{outline:none;border-color:var(--green)}
+  .tabs{display:flex;gap:8px;overflow-x:auto;margin-top:11px;padding-bottom:3px;-webkit-overflow-scrolling:touch}
+  .tab{flex:0 0 auto;padding:8px 15px;border-radius:999px;border:1.5px solid var(--line);background:var(--paper);color:var(--ink);font-size:13.5px;font-weight:600;cursor:pointer;white-space:nowrap}
+  .tab.active{background:var(--green);color:var(--cream);border-color:var(--green)}
+  section{padding:30px 0;border-bottom:1px solid var(--line)}
+  section h2{font-size:27px;font-weight:900;margin-bottom:4px}
+  .lede{color:var(--muted);font-size:15px;margin-bottom:18px;max-width:70ch}
+  h3.blk{font-size:18px;margin:22px 0 10px;color:var(--green-dk)}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;margin-bottom:12px}
+  .card h4{font-size:16px;margin-bottom:5px}.card p{font-size:14.5px;color:#33402f}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  @media(max-width:720px){.grid{grid-template-columns:1fr}.htitle{display:none}}
+  .step{display:flex;gap:14px;margin-bottom:10px;background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--green);border-radius:var(--radius);padding:14px 16px}
+  .step .n{flex:0 0 30px;height:30px;border-radius:50%;background:var(--green);color:var(--cream);font-family:'Fraunces';font-weight:700;display:flex;align-items:center;justify-content:center;font-size:15px}
+  .step h4{font-size:15.5px;margin-bottom:2px}.step p{font-size:14px;color:#33402f;margin:0}
+  .tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);margin-bottom:14px}
+  table{border-collapse:collapse;width:100%;font-size:14px;min-width:520px;background:var(--paper)}
+  th,td{text-align:left;padding:10px 13px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:#efe9db;font-family:'Inter';font-weight:700;font-size:12.5px;text-transform:uppercase;letter-spacing:.03em;color:var(--soil)}
+  tr:last-child td{border-bottom:none}
+  .pill{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:999px}
+  .free{background:#dcefd0;color:#2b5a1f}.paid{background:#f6e3cc;color:#8a4d0a}.pro{background:#e2dbf0;color:#4b3a7a}
+  .flag{background:#fbf1dd;border:1px solid #ecd9ad;border-left:4px solid var(--amber);border-radius:var(--radius);padding:13px 16px;margin:12px 0;font-size:14.5px}
+  .flag b{color:var(--amber)}
+  .win{background:#e5f2da;border:1px solid #cbe4b4;border-left:4px solid var(--green);border-radius:var(--radius);padding:13px 16px;margin:12px 0;font-size:14.5px}
+  ul.tight{margin:6px 0 4px 20px;font-size:14.5px;color:#33402f}ul.tight li{margin-bottom:4px}
+  .gen{background:linear-gradient(180deg,#2F5D3A,#1f4227);color:var(--cream);border-radius:18px;padding:24px}
+  .gen h3{color:var(--cream);font-size:21px;margin-bottom:8px}.gen p{opacity:.9;font-size:14.5px;margin-bottom:14px}
+  .io{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:720px){.io{grid-template-columns:1fr}}
+  .io .box{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.2);border-radius:12px;padding:14px}
+  .io h4{color:#bfe3a6;font-size:12px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+  .io ul{list-style:none;font-size:13.5px}.io li{padding:3px 0;opacity:.92}.io li:before{content:"›  ";color:#8cc06a;font-weight:700}
+  .soon{display:inline-block;margin-top:14px;background:#8cc06a;color:#17301b;font-weight:700;font-size:12px;padding:6px 13px;border-radius:999px}
+  footer{padding:26px 0;text-align:center;color:var(--muted);font-size:12.5px}
+  .nohits{display:none;text-align:center;color:var(--muted);padding:40px;font-style:italic}
+  mark{background:#fff2a8;padding:0 1px}
+  /* auth */
+  .gate{max-width:400px;margin:8vh auto;background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:30px 26px;text-align:center}
+  .gate h2{font-size:24px;font-weight:900;margin-bottom:6px}
+  .gate p{color:var(--muted);font-size:14px;margin-bottom:18px}
+  .gate input{width:100%;padding:12px 15px;border:1.5px solid var(--line);border-radius:999px;font-family:inherit;font-size:15px;margin-bottom:12px;background:var(--cream)}
+  .gate input:focus{outline:none;border-color:var(--green)}
+  .btn{width:100%;background:var(--green);color:var(--cream);border:none;padding:12px;border-radius:999px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer}
+  .btn:disabled{opacity:.6;cursor:default}
+  .gbtn{width:100%;display:flex;align-items:center;justify-content:center;gap:10px;background:#fff;color:#3c4043;border:1.5px solid var(--line);padding:11px;border-radius:999px;font-family:inherit;font-size:15px;font-weight:600;cursor:pointer}
+  .gbtn:hover{background:#faf9f6}.gbtn svg{width:18px;height:18px}
+  .ordiv{display:flex;align-items:center;gap:12px;color:var(--muted);font-size:12px;margin:14px 0}
+  .ordiv:before,.ordiv:after{content:"";flex:1;height:1px;background:var(--line)}
+  .msg{margin-top:14px;font-size:13.5px}.msg.ok{color:var(--green-dk)}.msg.err{color:#a3341f}
+  .hidden{display:none!important}
+  .spinner{text-align:center;padding:12vh 0;color:var(--muted)}
+</style>
+</head>
+<body>
+
+<div class="lockbar" id="lockbar">🔒 <b>Admin</b> — private land-audit playbook</div>
+<header>
+  <div class="wrap hrow">
+    <span class="logo"><span class="dot"></span>GrowEssential</span>
+    <span class="badge">Land Audit Playbook</span>
+    <span class="htitle hidden" id="userbar"><span id="who"></span><button class="signout" id="signout">Sign out</button></span>
+  </div>
+</header>
+
+<!-- loading -->
+<div class="spinner" id="loading">Loading…</div>
+
+<!-- login gate -->
+<div class="gate hidden" id="gate">
+  <h2>Sign in</h2>
+  <p>Admin access only.</p>
+  <button class="gbtn" id="google">
+    <svg viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.6 2.4 30.2 0 24 0 14.6 0 6.4 5.4 2.6 13.3l7.9 6.1C12.3 13.2 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.1 24.6c0-1.6-.1-3.1-.4-4.6H24v9.1h12.4c-.5 2.9-2.1 5.3-4.6 6.9l7.1 5.5c4.2-3.9 6.6-9.6 6.6-16.9z"/><path fill="#FBBC05" d="M10.5 28.4c-.5-1.4-.7-2.9-.7-4.4s.3-3 .7-4.4l-7.9-6.1C1 16.7 0 20.2 0 24s1 7.3 2.6 10.5l7.9-6.1z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.1-5.5c-2 1.3-4.5 2.1-8.8 2.1-6.3 0-11.7-3.7-13.5-9.9l-7.9 6.1C6.4 42.6 14.6 48 24 48z"/></svg>
+    Continue with Google
+  </button>
+  <div class="ordiv">or magic link</div>
+  <input type="email" id="email" placeholder="you@email.com" autocomplete="email">
+  <button class="btn" id="send">Send magic link</button>
+  <div class="msg" id="gatemsg"></div>
+</div>
+
+<!-- app (populated from Supabase after auth) -->
+<div id="app" class="hidden">
+  <div class="toolbar">
+    <div class="wrap">
+      <input class="search" id="search" placeholder="🔎  Search the playbook — “drone”, “lead”, “IDIAF”, “swale”…" autocomplete="off">
+      <div class="tabs" id="tabs"></div>
+    </div>
+  </div>
+  <main class="wrap" id="main"></main>
+  <div class="nohits" id="nohits">No matches in the playbook for that search.</div>
+  <footer class="wrap">GrowEssential — Land Audit Playbook · content served privately from Supabase · confirm pricing before quoting a client.</footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  const SUPA_URL="https://lpzijtmbdowcshomyenk.supabase.co";
+  const SUPA_ANON="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxwemlqdG1iZG93Y3Nob215ZW5rIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQwNTM4MDgsImV4cCI6MjA4OTYyOTgwOH0.2GN7eyC8rutMuHrVOc_2e2meMLu1S5YoNViV1zFgzX4";
+  const sb = window.supabase.createClient(SUPA_URL, SUPA_ANON);
+
+  const $=id=>document.getElementById(id);
+  const show=(el,on)=>el.classList[on?'remove':'add']('hidden');
+  let activeTab='all';
+
+  async function boot(){
+    const {data:{session}} = await sb.auth.getSession();
+    show($('loading'),false);
+    if(session) enterApp(session); else showGate();
+  }
+  sb.auth.onAuthStateChange((_e,session)=>{ if(session) enterApp(session); });
+
+  function showGate(){ show($('gate'),true); show($('app'),false); show($('userbar'),false); }
+
+  $('send').addEventListener('click', async ()=>{
+    const email=$('email').value.trim();
+    if(!email){ msg('Enter your email.','err'); return; }
+    $('send').disabled=true; msg('Sending…','ok');
+    const {error}=await sb.auth.signInWithOtp({email, options:{emailRedirectTo: location.origin+'/playbook.html'}});
+    $('send').disabled=false;
+    if(error) msg(error.message,'err');
+    else msg('Check your email — tap the link to sign in.','ok');
+  });
+  function msg(t,k){ const m=$('gatemsg'); m.textContent=t; m.className='msg '+(k||''); }
+
+  $('google').addEventListener('click', async ()=>{
+    msg('Redirecting to Google…','ok');
+    const {error}=await sb.auth.signInWithOAuth({provider:'google', options:{redirectTo: location.origin+'/playbook.html'}});
+    if(error) msg(error.message,'err');
+  });
+
+  $('signout').addEventListener('click', async ()=>{ await sb.auth.signOut(); location.reload(); });
+
+  async function enterApp(session){
+    show($('gate'),false);
+    const {data,error}=await sb.from('ge_playbook').select('tab_key,label,sort,html').order('sort',{ascending:true});
+    if(error || !data || !data.length){
+      // authenticated but not the owner (RLS returns nothing)
+      show($('app'),false); show($('gate'),true);
+      $('gate').innerHTML='<h2>Not authorized</h2><p>This account isn’t on the admin list.</p><button class="btn" id="so2">Sign out</button>';
+      $('so2').onclick=async()=>{ await sb.auth.signOut(); location.reload(); };
+      return;
+    }
+    $('who').textContent=session.user.email;
+    show($('userbar'),true); show($('app'),true);
+    renderTabs(data); renderSections(data); wire();
+  }
+
+  function renderTabs(rows){
+    const t=$('tabs');
+    t.innerHTML='<div class="tab active" data-t="all">All</div>'+
+      rows.map(r=>`<div class="tab" data-t="${r.tab_key}">${r.label}</div>`).join('');
+  }
+  function renderSections(rows){ $('main').innerHTML=rows.map(r=>r.html).join(''); }
+
+  function wire(){
+    const tabs=document.querySelectorAll('.tab');
+    const search=$('search'), nohits=$('nohits');
+    function apply(){
+      const q=search.value.trim().toLowerCase();
+      let any=false;
+      document.querySelectorAll('section[data-sec]').forEach(sec=>{
+        const tabOk=activeTab==='all'||sec.dataset.sec===activeTab;
+        const ok=tabOk && (!q||sec.textContent.toLowerCase().includes(q));
+        sec.style.display=ok?'':'none'; if(ok)any=true;
+      });
+      nohits.style.display=any?'none':'block';
+    }
+    tabs.forEach(tb=>tb.addEventListener('click',()=>{
+      tabs.forEach(x=>x.classList.remove('active')); tb.classList.add('active');
+      activeTab=tb.dataset.t; apply(); window.scrollTo({top:0,behavior:'smooth'});
+    }));
+    search.addEventListener('input',apply); apply();
+  }
+
+  boot();
+</script>
+</body>
+</html>
