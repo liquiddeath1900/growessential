@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#2f5d3a">
+
+  <title>Read Your Soil — Color & Texture Field Guide | GrowEssential</title>
+  <meta name="description" content="Match your soil against real photos — like a paint swatch. Dark, red, pale, or gray with rust flecks? Learn what each color and texture means and what to do about it.">
+  <link rel="canonical" href="https://growessential.com/knowledge-base">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        colors: {
+          soil:   { 50:'#faf7f0', 100:'#f5f1e8', 200:'#e8dfc8', 300:'#d4c39e', 400:'#b89a6b', 500:'#8a6b3d', 600:'#6b5028', 700:'#4a3719', 800:'#2d2010' },
+          leaf:   { 50:'#f0f7f1', 100:'#d8ebdc', 200:'#a8d2b1', 300:'#6fad7d', 400:'#458859', 500:'#2f5d3a', 600:'#234629', 700:'#172f1b', 800:'#0c1a0e' },
+          rust:   { 400:'#c0573b', 500:'#a8472b', 600:'#8a3923', 700:'#6e2c1a' },
+          cream:  { DEFAULT:'#f5f1e8', dark:'#e8dfc8' }
+        },
+        fontFamily: { serif:['Fraunces','serif'], sans:['Inter','ui-sans-serif','system-ui'] }
+      } }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: #f5f1e8; color: #172f1b; }
+    h1,h2,h3,h4 { font-family: 'Fraunces', serif; letter-spacing: -0.02em; }
+    .display { font-variation-settings: "opsz" 144; }
+    .grain { background-image: radial-gradient(rgba(74,55,25,0.05) 1px, transparent 1px), radial-gradient(rgba(74,55,25,0.03) 1px, transparent 1px); background-size: 24px 24px, 16px 16px; background-position: 0 0, 8px 8px; }
+    .ring-soil { box-shadow: 0 1px 0 0 rgba(74,55,25,0.08), 0 12px 32px -10px rgba(23,47,27,0.22); }
+    .reveal { transition: opacity .8s ease-out, transform .8s ease-out; }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+    .underline-grow { background-image: linear-gradient(currentColor, currentColor); background-size: 0 1.5px; background-repeat: no-repeat; background-position: 0 100%; transition: background-size .4s ease; }
+    .underline-grow:hover { background-size: 100% 1.5px; }
+    .tag { font-size: 10px; letter-spacing: .12em; text-transform: uppercase; }
+    .swatch { width: 28px; height: 28px; border-radius: 6px; border: 1px solid rgba(74,55,25,0.15); flex: none; }
+    .match-card img { transition: transform .5s ease; }
+    .match-card:hover img { transform: scale(1.03); }
+  </style>
+  <meta property="og:title" content="Read Your Soil — Color & Texture Field Guide">
+  <meta property="og:description" content="Match your soil against real photos — like a paint swatch. Learn what each color and texture means and what to do about it.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://growessential.com/knowledge-base">
+  <meta property="og:image" content="https://growessential.com/assets/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="GrowEssential — Heal the soil. Grow the rest.">
+  <meta property="og:site_name" content="GrowEssential">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Read Your Soil — Color & Texture Field Guide">
+  <meta name="twitter:description" content="Match your soil against real photos — like a paint swatch. Learn what each color and texture means.">
+  <meta name="twitter:image" content="https://growessential.com/assets/og.jpg">
+</head>
+<body class="antialiased">
+
+<nav class="fixed top-0 left-0 right-0 z-50 bg-cream/85 backdrop-blur-md border-b border-soil-200">
+  <div class="max-w-7xl mx-auto px-5 py-4 flex items-center justify-between">
+    <a href="/" class="flex items-center gap-2.5 text-leaf-700 font-serif text-xl font-semibold">
+      <span class="inline-block w-2.5 h-2.5 rounded-full bg-leaf-500"></span>GrowEssential
+    </a>
+    <button id="navToggle" class="md:hidden text-leaf-700 text-2xl" aria-label="Open menu">☰</button>
+    <div class="hidden md:flex items-center gap-8 text-sm text-leaf-700">
+      <a href="/about.html" class="underline-grow">About</a>
+      <a href="/food-forest-design.html" class="underline-grow">Design</a>
+      <a href="/land-audit.html" class="underline-grow">Land Audit</a>
+      <a href="/knowledge-base.html" class="underline-grow text-leaf-500">Knowledge</a>
+      <a href="/services.html" class="underline-grow">Services</a>
+      <a href="/contact.html" class="underline-grow">Contact</a>
+      <div class="inline-flex items-center gap-1.5"><span aria-hidden="true" class="text-leaf-500 text-sm">🌐</span><button data-lang-toggle role="switch" aria-checked="false" aria-label="Language / Idioma" class="relative inline-flex items-center h-7 w-16 rounded-full bg-soil-200 border border-soil-300 text-[10px] font-bold tracking-wide"><span data-seg="en" class="relative z-10 flex-1 text-center transition-colors text-cream">EN</span><span data-seg="es" class="relative z-10 flex-1 text-center transition-colors text-soil-500">ES</span><span data-knob class="absolute top-0.5 left-0.5 h-6 w-[30px] rounded-full bg-leaf-500 shadow transition-transform duration-200"></span></button></div>
+      <a href="https://calendly.com/growessential/discovery-call" target="_blank" rel="noopener" class="bg-leaf-500 hover:bg-leaf-600 text-cream px-5 py-2.5 rounded-full font-medium transition shadow-md shadow-leaf-500/20">Book a Call</a>
+    </div>
+  </div>
+  <div id="mobileNav" class="hidden md:hidden border-t border-soil-200 bg-cream">
+    <div class="max-w-7xl mx-auto px-5 py-3 flex flex-col gap-3 text-leaf-700">
+      <a href="/about.html" class="py-2 border-b border-soil-100">About</a>
+      <a href="/food-forest-design.html" class="py-2 border-b border-soil-100">Design</a>
+      <a href="/land-audit.html" class="py-2 border-b border-soil-100">Land Audit</a>
+      <a href="/knowledge-base.html" class="py-2 border-b border-soil-100 text-leaf-500">Knowledge</a>
+      <a href="/services.html" class="py-2 border-b border-soil-100">Services</a>
+      <a href="/contact.html" class="py-2 border-b border-soil-100">Contact</a>
+      <div class="flex items-center justify-between py-2"><span class="flex items-center gap-2 text-leaf-700"><span aria-hidden="true" class="text-leaf-500">🌐</span>Idioma / Language</span><button data-lang-toggle role="switch" aria-checked="false" aria-label="Language / Idioma" class="relative inline-flex items-center h-8 w-20 rounded-full bg-soil-200 border border-soil-300 text-xs font-bold"><span data-seg="en" class="relative z-10 flex-1 text-center transition-colors text-cream">EN</span><span data-seg="es" class="relative z-10 flex-1 text-center transition-colors text-soil-500">ES</span><span data-knob class="absolute top-0.5 left-0.5 h-7 w-[38px] rounded-full bg-leaf-500 shadow transition-transform duration-200"></span></button></div>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="relative grain pt-32 pb-16 md:pt-44 md:pb-20">
+  <div class="max-w-7xl mx-auto px-5">
+    <div class="max-w-4xl reveal in">
+      <div class="tag text-leaf-500 mb-6">Knowledge Base · Soil Field Guide</div>
+      <h1 class="display font-serif font-medium text-leaf-700 text-5xl sm:text-6xl md:text-7xl leading-[0.95] mb-8">
+        Read your soil<br>
+        <span class="text-rust-500 italic font-normal">like a paint swatch.</span>
+      </h1>
+      <p class="text-lg md:text-xl text-soil-700 max-w-2xl leading-relaxed mb-4">
+        Grab a handful of your dirt. Scroll until you see a photo that matches. Every card tells you what you're looking at, what it means for growing, and what to do next.
+      </p>
+      <p class="text-sm text-soil-500 max-w-2xl leading-relaxed">
+        Every photo below is a real, documented soil sample — no stock filler, no AI images. Credits at the bottom of the page.
+      </p>
+    </div>
+  </div>
+</header>
+
+<!-- HOW TO SAMPLE -->
+<section class="max-w-7xl mx-auto px-5 pb-16">
+  <div class="bg-white rounded-3xl ring-soil p-8 md:p-10 reveal in">
+    <div class="tag text-rust-500 mb-4">Before you match · 60 seconds</div>
+    <h2 class="font-serif text-2xl md:text-3xl text-leaf-700 mb-6">Take a real sample first</h2>
+    <div class="grid md:grid-cols-3 gap-6 text-soil-700 text-sm md:text-base leading-relaxed">
+      <div class="flex gap-4"><span class="font-serif text-3xl text-leaf-300 flex-none">1</span><p>Dig down 6 inches (15 cm). Surface dirt lies — it's sun-bleached and dried out. The real story is below.</p></div>
+      <div class="flex gap-4"><span class="font-serif text-3xl text-leaf-300 flex-none">2</span><p>Grab a golf-ball-sized handful. Pick out rocks, roots, and mulch.</p></div>
+      <div class="flex gap-4"><span class="font-serif text-3xl text-leaf-300 flex-none">3</span><p>Moisten it slightly — damp, not muddy. Color and texture both read truer when moist.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 1: MATCH THE COLOR -->
+<section class="max-w-7xl mx-auto px-5 pb-20">
+  <div class="max-w-3xl mb-10 reveal in">
+    <div class="tag text-leaf-500 mb-4">Step 01 · Match the color</div>
+    <h2 class="display font-serif text-4xl md:text-5xl text-leaf-700 mb-4">What color is it?</h2>
+    <p class="text-soil-700 leading-relaxed">Soil color is chemistry you can see. Hold your handful next to these photos and find your match.</p>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-8">
+
+    <!-- Dark / black -->
+    <div class="match-card bg-white rounded-3xl ring-soil overflow-hidden reveal in">
+      <div class="h-64 overflow-hidden"><img src="/assets/kb/black-organic-profile.jpg" alt="Test pit showing deep black organic-rich topsoil with a measuring tape" loading="lazy" class="w-full h-full object-cover"></div>
+      <div class="p-7">
+        <div class="flex items-center gap-2 mb-4">
+          <span class="swatch" style="background:#1f1a14"></span><span class="swatch" style="background:#2e2618"></span><span class="swatch" style="background:#3a3226"></span><span class="swatch" style="background:#4a3719"></span>
+        </div>
+        <h3 class="font-serif text-2xl text-leaf-700 mb-2">Dark brown to black</h3>
+        <p class="text-sm text-rust-500 font-semibold mb-3">The color of organic matter</p>
+        <p class="text-soil-700 text-sm leading-relaxed mb-4">Deep, dark soil means decomposed plant material (humus) has built up. This is the soil everyone wants — it holds water, feeds microbes, and releases nutrients steadily.</p>
+        <p class="text-sm text-leaf-600 leading-relaxed"><span class="font-semibold">What to do:</span> Protect it. Keep it covered with mulch or living plants, don't till it, and it will keep working for you.</p>
+      </div>
+    </div>
+
+    <!-- Red / orange -->
+    <div class="match-card bg-white rounded-3xl ring-soil overflow-hidden reveal in">
+      <div class="h-64 overflow-hidden"><img src="/assets/kb/red-laterite-hillside.jpg" alt="Exposed red lateritic soil on a green tropical hillside in Guam" loading="lazy" class="w-full h-full object-cover"></div>
+      <div class="p-7">
+        <div class="flex items-center gap-2 mb-4">
+          <span class="swatch" style="background:#8a3923"></span><span class="swatch" style="background:#a8472b"></span><span class="swatch" style="background:#b45a2e"></span><span class="swatch" style="background:#c0573b"></span>
+        </div>
+        <h3 class="font-serif text-2xl text-leaf-700 mb-2">Red to orange</h3>
+        <p class="text-sm text-rust-500 font-semibold mb-3">Iron oxide — rust, literally</p>
+        <p class="text-soil-700 text-sm leading-relaxed mb-4">Red means iron minerals that have been exposed to air — a sign of good drainage and heavy weathering. Very common in the tropics and the Caribbean. Often low in organic matter and slightly acidic.</p>
+        <p class="text-sm text-leaf-600 leading-relaxed"><span class="font-semibold">What to do:</span> Drainage is usually fine; fertility is the project. Build organic matter with compost, mulch heavy, and consider a pH test before planting.</p>
+      </div>
+    </div>
+
+    <!-- Pale / sandy -->
+    <div class="match-card bg-white rounded-3xl ring-soil overflow-hidden reveal in">
+      <div class="h-64 overflow-hidden"><img src="/assets/kb/sandy-ground.jpg" alt="Pale sandy soil on open ground with pine trees" loading="lazy" class="w-full h-full object-cover"></div>
+      <div class="p-7">
+        <div class="flex items-center gap-2 mb-4">
+          <span class="swatch" style="background:#d4c39e"></span><span class="swatch" style="background:#dccfae"></span><span class="swatch" style="background:#e0d5b8"></span><span class="swatch" style="background:#e8dfc8"></span>
+        </div>
+        <h3 class="font-serif text-2xl text-leaf-700 mb-2">Pale tan to whitish</h3>
+        <p class="text-sm text-rust-500 font-semibold mb-3">Sand-heavy, leached, or both</p>
+        <p class="text-soil-700 text-sm leading-relaxed mb-4">Light-colored soil has little organic matter, and rain washes nutrients through it fast. Water drains almost instantly — great for root crops, brutal for thirsty plants.</p>
+        <p class="text-sm text-leaf-600 leading-relaxed"><span class="font-semibold">What to do:</span> Add organic matter relentlessly — compost, manure, cover crops. It's the only thing that makes sand hold water and nutrients.</p>
+      </div>
+    </div>
+
+    <!-- Gray + rust mottles -->
+    <div class="match-card bg-white rounded-3xl ring-soil overflow-hidden reveal in">
+      <div class="h-64 overflow-hidden"><img src="/assets/kb/rust-mottles.jpg" alt="Close-up of gray soil streaked with rust-orange mottles next to a folding ruler" loading="lazy" class="w-full h-full object-cover"></div>
+      <div class="p-7">
+        <div class="flex items-center gap-2 mb-4">
+          <span class="swatch" style="background:#8d8a80"></span><span class="swatch" style="background:#a39e90"></span><span class="swatch" style="background:#b06a3f"></span><span class="swatch" style="background:#c07a45"></span>
+        </div>
+        <h3 class="font-serif text-2xl text-leaf-700 mb-2">Gray with rust flecks</h3>
+        <p class="text-sm text-rust-500 font-semibold mb-3">Mottling — the waterlogging fingerprint</p>
+        <p class="text-soil-700 text-sm leading-relaxed mb-4">Gray soil streaked or spotted with orange means the ground sits waterlogged part of the year, then dries out. Solid gray or blue-gray with a swampy smell means it's waterlogged most of the time. Roots drown in it.</p>
+        <p class="text-sm text-leaf-600 leading-relaxed"><span class="font-semibold">What to do:</span> Don't fight it with the wrong plants. Raise beds, plant water-tolerant species, or redirect the water. This is exactly what a land audit maps out.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Layered profile — full width -->
+  <div class="match-card bg-white rounded-3xl ring-soil overflow-hidden mt-8 md:grid md:grid-cols-2 reveal in">
+    <div class="h-64 md:h-auto overflow-hidden"><img src="/assets/kb/layered-profile.jpg" alt="Roadside soil profile showing dark topsoil over an orange band over pale subsoil" loading="lazy" class="w-full h-full object-cover"></div>
+    <div class="p-7 md:p-10">
+      <div class="flex items-center gap-2 mb-4">
+        <span class="swatch" style="background:#2d2010"></span><span class="swatch" style="background:#6b5028"></span><span class="swatch" style="background:#b8762e"></span><span class="swatch" style="background:#d4c39e"></span>
+      </div>
+      <h3 class="font-serif text-2xl text-leaf-700 mb-2">Bands of color as you dig</h3>
+      <p class="text-sm text-rust-500 font-semibold mb-3">Soil horizons — your land's biography</p>
+      <p class="text-soil-700 text-sm leading-relaxed mb-4">Dig a knee-deep hole and you'll usually see layers: dark topsoil, a colored middle, pale parent material below. The thickness of that dark top layer is the single fastest read on how much fertile soil you actually have. Two inches and fourteen inches are very different starting points.</p>
+      <p class="text-sm text-leaf-600 leading-relaxed"><span class="font-semibold">What to do:</span> Measure your dark layer. Thin topsoil means build up (mulch, compost, chop-and-drop) before you plant anything demanding.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2: FEEL THE TEXTURE -->
+<section class="bg-white/60 py-20">
+  <div class="max-w-7xl mx-auto px-5">
+    <div class="max-w-3xl mb-10 reveal in">
+      <div class="tag text-leaf-500 mb-4">Step 02 · Feel the texture</div>
+      <h2 class="display font-serif text-4xl md:text-5xl text-leaf-700 mb-4">Now squeeze it.</h2>
+      <p class="text-soil-700 leading-relaxed">Color tells you chemistry; texture tells you how water and roots will move. You only need your hands.</p>
+    </div>
+
+    <!-- Squeeze test -->
+    <div class="bg-leaf-700 text-cream rounded-3xl p-8 md:p-10 mb-8 reveal in">
+      <div class="tag text-leaf-200 mb-4">The 10-second squeeze test</div>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div>
+          <div class="font-serif text-xl mb-2">Falls apart → Sand</div>
+          <p class="text-cream/70 text-sm leading-relaxed">Squeeze a moist handful and open your hand. If it crumbles immediately and feels gritty, you're sandy. Fast drainage, low nutrient holding.</p>
+        </div>
+        <div>
+          <div class="font-serif text-xl mb-2">Holds, then crumbles → Loam</div>
+          <p class="text-cream/70 text-sm leading-relaxed">Forms a ball that breaks apart when poked. Feels slightly gritty and slightly smooth. This is the sweet spot — most crops love it.</p>
+        </div>
+        <div>
+          <div class="font-serif text-xl mb-2">Ribbons → Clay</div>
+          <p class="text-cream/70 text-sm leading-relaxed">Roll it between thumb and finger. If it presses into a shiny ribbon an inch or longer, you've got clay. Nutrient-rich but slow-draining and easily compacted.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8">
+      <!-- Clay clods -->
+      <div class="match-card bg-white rounded-3xl ring-soil overflow-hidden reveal in">
+        <div class="h-64 overflow-hidden"><img src="/assets/kb/clay-clods-hands.jpg" alt="Two hands holding chunky red-brown clay soil aggregates" loading="lazy" class="w-full h-full object-cover"></div>
+        <div class="p-7">
+          <h3 class="font-serif text-2xl text-leaf-700 mb-2">Dry clay: hard clumps</h3>
+          <p class="text-soil-700 text-sm leading-relaxed">If your soil dries into dense clods you could throw through a window, that's clay structure. It's not bad soil — it's rich soil that needs organic matter and zero tilling to open up.</p>
+        </div>
+      </div>
+      <!-- Sticky wet clay -->
+      <div class="match-card bg-white rounded-3xl ring-soil overflow-hidden reveal in">
+        <div class="h-64 overflow-hidden"><img src="/assets/kb/sticky-wet-clay.jpg" alt="Red clay soil caked thickly onto a motorcycle wheel in the wet season" loading="lazy" class="w-full h-full object-cover"></div>
+        <div class="p-7">
+          <h3 class="font-serif text-2xl text-leaf-700 mb-2">Wet clay: sticks to everything</h3>
+          <p class="text-soil-700 text-sm leading-relaxed">Clay announces itself in the wet season — it cakes onto boots, tools, and tires. If walking your land after rain adds two pounds to each foot, plan drainage and raised planting zones before anything else.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Jar test + triangle -->
+    <div class="bg-white rounded-3xl ring-soil overflow-hidden mt-8 md:grid md:grid-cols-2 reveal in">
+      <div class="p-8 md:p-10">
+        <div class="tag text-rust-500 mb-4">Want a precise answer? · The jar test</div>
+        <h3 class="font-serif text-2xl text-leaf-700 mb-4">Measure your mix overnight</h3>
+        <ol class="space-y-3 text-sm text-soil-700 leading-relaxed list-decimal list-inside mb-6">
+          <li>Fill a straight-sided jar ⅓ with soil, top up with water, add a drop of dish soap.</li>
+          <li>Shake hard for 2 minutes, then set it down where it won't be moved.</li>
+          <li>Sand settles in 1 minute — mark the line. Silt settles in 2 hours — mark again. Clay settles over 1–2 days.</li>
+          <li>Measure each band, divide by total depth, and find your percentages on the triangle.</li>
+        </ol>
+        <p class="text-sm text-leaf-600"><span class="font-semibold">Example:</span> 50% sand / 30% silt / 20% clay lands in "loam" — dead center, right where you want to be.</p>
+      </div>
+      <div class="bg-soil-50 flex items-center justify-center p-8">
+        <img src="/assets/kb/texture-triangle.jpg" alt="USDA soil texture triangle showing clay, silt, and sand percentage classes" loading="lazy" class="max-w-full max-h-80 mix-blend-multiply">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3: WATCH THE WATER -->
+<section class="max-w-7xl mx-auto px-5 py-20">
+  <div class="max-w-3xl mb-10 reveal in">
+    <div class="tag text-leaf-500 mb-4">Step 03 · Watch the water</div>
+    <h2 class="display font-serif text-4xl md:text-5xl text-leaf-700 mb-4">Where does the rain go?</h2>
+    <p class="text-soil-700 leading-relaxed">Color and texture predict drainage — these two checks confirm it.</p>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-8">
+    <div class="match-card bg-white rounded-3xl ring-soil overflow-hidden reveal in">
+      <div class="h-64 overflow-hidden"><img src="/assets/kb/test-pit-water.jpg" alt="A dug test pit in a grass field with water pooled at the bottom and a spade" loading="lazy" class="w-full h-full object-cover"></div>
+      <div class="p-7">
+        <h3 class="font-serif text-2xl text-leaf-700 mb-2">The percolation test</h3>
+        <p class="text-soil-700 text-sm leading-relaxed mb-4">Dig a hole one foot deep, fill it with water, let it drain, then fill it again and time it. Draining 1–3 inches per hour is ideal. Under 1 inch per hour — or standing water like this pit — means poor drainage; over 4 means it drains too fast to hold moisture.</p>
+        <p class="text-sm text-leaf-600 leading-relaxed"><span class="font-semibold">What to do:</span> Slow drainers get raised beds, swales, or water-loving species. Fast drainers get organic matter and heavy mulch.</p>
+      </div>
+    </div>
+    <div class="match-card bg-white rounded-3xl ring-soil overflow-hidden reveal in">
+      <div class="h-64 overflow-hidden"><img src="/assets/kb/waterlogged-field.jpg" alt="Farm field with standing water and mud among young green crops" loading="lazy" class="w-full h-full object-cover"></div>
+      <div class="p-7">
+        <h3 class="font-serif text-2xl text-leaf-700 mb-2">Surface signs after rain</h3>
+        <p class="text-soil-700 text-sm leading-relaxed mb-4">Walk your land 24 hours after a good rain. Puddles that linger, shiny compacted paths, moss, sedges, or rushes all point to water sitting where roots need air.</p>
+        <p class="text-sm text-leaf-600 leading-relaxed"><span class="font-semibold">What to do:</span> Map the wet spots — they're design information, not problems. A pond, a swale, or a water-tolerant guild might belong exactly there.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="max-w-7xl mx-auto px-5 pb-24">
+  <div class="bg-leaf-700 grain rounded-3xl p-10 md:p-16 text-center reveal in">
+    <h2 class="display font-serif text-3xl md:text-5xl text-cream mb-4">Matched your soil? Now read your whole property.</h2>
+    <p class="text-cream/70 max-w-2xl mx-auto leading-relaxed mb-8">The free land audit takes what you just learned and maps it across your land — soil, water, sun, slope, and what to plant where.</p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="/land-audit.html" class="bg-cream text-leaf-700 hover:bg-cream-dark px-8 py-4 rounded-full font-semibold transition">Start the Free Land Audit</a>
+      <a href="https://calendly.com/growessential/discovery-call" target="_blank" rel="noopener" class="border border-cream/30 text-cream hover:bg-cream/10 px-8 py-4 rounded-full font-semibold transition">Book a 15-min Call</a>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO CREDITS -->
+<section class="max-w-7xl mx-auto px-5 pb-16">
+  <details class="text-xs text-soil-500">
+    <summary class="cursor-pointer font-semibold text-soil-600 mb-2">Photo credits & licenses</summary>
+    <ul class="space-y-1 mt-3 leading-relaxed">
+      <li>Black organic soil profile — <a href="https://commons.wikimedia.org/wiki/File:Soil_profile_0-125cm.jpg" class="underline" target="_blank" rel="noopener">Mclund, Wikimedia Commons, CC BY 4.0</a></li>
+      <li>Red lateritic soil, Guam — <a href="https://commons.wikimedia.org/wiki/File:Red_lateritic_soil_in_the_mountains_of_Guam_(line378776781).jpg" class="underline" target="_blank" rel="noopener">David Burdick / NOAA, public domain</a></li>
+      <li>Sandy soil — <a href="https://commons.wikimedia.org/wiki/File:Sandy_soil_-_geograph.org.uk_-_3958130.jpg" class="underline" target="_blank" rel="noopener">Alan Hunt, geograph.org.uk, CC BY-SA 2.0</a></li>
+      <li>Gray soil with rust mottles — <a href="https://commons.wikimedia.org/wiki/File:Hydromorphe_Merkmale.JPG" class="underline" target="_blank" rel="noopener">Begonia, Wikimedia Commons, copyrighted free use</a></li>
+      <li>Layered soil profile (stagnogley) — <a href="https://commons.wikimedia.org/wiki/File:Stagnogley.JPG" class="underline" target="_blank" rel="noopener">HolgerK, Wikimedia Commons, public domain</a></li>
+      <li>Clay aggregates in hands — <a href="https://commons.wikimedia.org/wiki/File:Soil_material_containing_Sand,_silt,_clay.jpg" class="underline" target="_blank" rel="noopener">J. Kelley / SoilScience.info, CC BY 2.0</a></li>
+      <li>Wet clay on wheel — <a href="https://commons.wikimedia.org/wiki/File:Laterite_soil_adhering_motorcycle_wheel_wet_season_Thailand.jpg" class="underline" target="_blank" rel="noopener">Cmoffroad, Wikimedia Commons, CC0</a></li>
+      <li>USDA soil texture triangle — <a href="https://commons.wikimedia.org/wiki/File:USDA_soil_texture_triangle.jpg" class="underline" target="_blank" rel="noopener">USDA, public domain</a></li>
+      <li>Test pit with water — <a href="https://commons.wikimedia.org/wiki/File:Gley.jpg" class="underline" target="_blank" rel="noopener">Solum, Wikimedia Commons, CC BY-SA 3.0</a></li>
+      <li>Waterlogged field — <a href="https://commons.wikimedia.org/wiki/File:Issues_arising_from_waterlogged_soil_on_farmland,_East_Sussex_-_geograph.org.uk_-_8273460.jpg" class="underline" target="_blank" rel="noopener">Andrew Diack, geograph.org.uk, CC BY-SA 2.0</a></li>
+    </ul>
+  </details>
+</section>
+
+<footer class="bg-leaf-800 text-cream/80">
+  <div class="max-w-7xl mx-auto px-5 py-16 grid md:grid-cols-12 gap-10 text-sm">
+    <div class="md:col-span-5">
+      <a href="/" class="flex items-center gap-2.5 text-cream font-serif text-2xl font-semibold mb-4">
+        <span class="inline-block w-3 h-3 rounded-full bg-leaf-400"></span>GrowEssential
+      </a>
+      <p class="text-cream/60 max-w-md leading-relaxed">Soil-first regenerative agriculture, food forest design, and consulting. Working from the United States; scouting in the Dominican Republic.</p>
+    </div>
+    <div class="md:col-span-3">
+      <div class="font-serif text-cream mb-4 text-lg">Site</div>
+      <ul class="space-y-3 text-cream/70">
+        <li><a href="/about.html" class="hover:text-cream underline-grow">About</a></li>
+        <li><a href="/food-forest-design.html" class="hover:text-cream underline-grow">Food Forest Design</a></li>
+        <li><a href="/land-audit.html" class="hover:text-cream underline-grow">Free Land Audit</a></li>
+        <li><a href="/knowledge-base.html" class="hover:text-cream underline-grow">Knowledge Base</a></li>
+        <li><a href="/services.html" class="hover:text-cream underline-grow">Services & Pricing</a></li>
+        <li><a href="/contact.html" class="hover:text-cream underline-grow">Contact</a></li>
+      </ul>
+    </div>
+    <div class="md:col-span-4">
+      <div class="font-serif text-cream mb-4 text-lg">Get in touch</div>
+      <ul class="space-y-3 text-cream/70">
+        <li><a href="mailto:hello@growessential.com" class="hover:text-cream">hello@growessential.com</a></li>
+        <li class="pt-3 text-xs text-cream/40">© 2026 GrowEssential. All rights reserved.</li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<!-- MOBILE STICKY CTA -->
+<div id="stickyCta" class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-cream/95 backdrop-blur border-t border-soil-200 px-4 py-3 shadow-2xl translate-y-full transition-transform duration-300">
+  <a href="/land-audit.html" class="block bg-leaf-500 hover:bg-leaf-600 text-cream text-center px-5 py-3 rounded-full font-semibold transition">Start the Free Land Audit →</a>
+</div>
+<div class="md:hidden h-20"></div>
+
+<script>
+  document.getElementById('navToggle')?.addEventListener('click', () => document.getElementById('mobileNav').classList.toggle('hidden'));
+  const stickyCta = document.getElementById("stickyCta");
+  const toggleSticky = () => stickyCta?.classList.toggle("translate-y-full", window.scrollY < window.innerHeight * 0.7);
+  window.addEventListener("scroll", toggleSticky, { passive: true });
+  toggleSticky();
+  document.body.classList.add('js-anim');
+  const io = new IntersectionObserver((entries) => entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach((el) => { const r = el.getBoundingClientRect(); if (r.top < window.innerHeight) { el.classList.add('in'); } else { io.observe(el); } });
+</script>
+
+<script src="/assets/es.js"></script>
+<script src="/assets/i18n.js"></script>
+</body>
+</html>
