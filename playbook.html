@@ -68,6 +68,9 @@
   footer{padding:26px 0;text-align:center;color:var(--muted);font-size:12.5px}
   .nohits{display:none;text-align:center;color:var(--muted);padding:40px;font-style:italic}
   mark{background:#fff2a8;padding:0 1px}
+  /* per-item lookup links */
+  .lu{display:inline-block;margin-left:5px;font-size:12.5px;line-height:1;text-decoration:none;opacity:.5;cursor:pointer;vertical-align:baseline}
+  .lu:hover{opacity:1;text-decoration:none}
   /* auth */
   .gate{max-width:400px;margin:8vh auto;background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:30px 26px;text-align:center}
   .gate h2{font-size:24px;font-weight:900;margin-bottom:6px}
@@ -184,7 +187,25 @@
     t.innerHTML='<div class="tab active" data-t="all">All</div>'+
       rows.map(r=>`<div class="tab" data-t="${r.tab_key}">${r.label}</div>`).join('');
   }
-  function renderSections(rows){ $('main').innerHTML=rows.map(r=>r.html).join(''); }
+  function renderSections(rows){ $('main').innerHTML=rows.map(r=>r.html).join(''); linkifyItems(); }
+
+  // Append Google + Amazon lookup icons to each item name (table rows + gear lists)
+  function linkifyItems(){
+    const enc=s=>encodeURIComponent(s);
+    const clean=t=>t.replace(/[🔎🛒]/g,'').replace(/["']/g,'').replace(/\s+/g,' ').trim().split(/[—–:•|]/)[0].trim();
+    const icons=q=>` <a class="lu" target="_blank" rel="noopener" title="Google: ${q}" href="https://www.google.com/search?q=${enc(q)}">🔎</a><a class="lu" target="_blank" rel="noopener" title="Amazon: ${q}" href="https://www.amazon.com/s?k=${enc(q)}">🛒</a>`;
+    document.querySelectorAll('#main table tr').forEach(tr=>{
+      if(tr.querySelector('th')) return;                 // skip header rows
+      const td=tr.querySelector('td'); if(!td||td.querySelector('.lu')) return;
+      const q=clean(td.textContent); if(q.length<2) return;
+      td.insertAdjacentHTML('beforeend',icons(q));
+    });
+    document.querySelectorAll('#main ul.tight li').forEach(li=>{
+      if(li.querySelector('.lu')) return;
+      const q=clean(li.textContent); if(q.length<2) return;
+      li.insertAdjacentHTML('beforeend',icons(q));
+    });
+  }
 
   function wire(){
     const tabs=document.querySelectorAll('.tab');
