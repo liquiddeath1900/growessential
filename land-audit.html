@@ -83,8 +83,7 @@
       <a href="/food-forest-design.html" class="py-2 border-b border-soil-100">Design</a>
       <a href="/land-audit.html" class="py-2 border-b border-soil-100 text-leaf-500">Land Audit</a>
       <a href="/contact.html" class="py-2 border-b border-soil-100">Contact</a>
-      <div class="flex items-center justify-between py-2 border-b border-soil-100"><span class="flex items-center gap-2 text-leaf-700"><span aria-hidden="true" class="text-leaf-500">🌐</span>Idioma / Language</span><button data-lang-toggle role="switch" aria-checked="false" aria-label="Language / Idioma" class="relative inline-flex items-center h-8 w-20 rounded-full bg-soil-200 border border-soil-300 text-xs font-bold"><span data-seg="en" class="relative z-10 flex-1 text-center transition-colors text-cream">EN</span><span data-seg="es" class="relative z-10 flex-1 text-center transition-colors text-soil-500">ES</span><span data-knob class="absolute top-0.5 left-0.5 h-7 w-[38px] rounded-full bg-leaf-500 shadow transition-transform duration-200"></span></button></div>
-      <a href="https://calendly.com/growessential/discovery-call" target="_blank" rel="noopener" class="bg-leaf-500 text-cream text-center px-4 py-3 rounded-full mt-2">Book a Free Call</a>
+      <div class="flex items-center justify-between py-2"><span class="flex items-center gap-2 text-leaf-700"><span aria-hidden="true" class="text-leaf-500">🌐</span>Idioma / Language</span><button data-lang-toggle role="switch" aria-checked="false" aria-label="Language / Idioma" class="relative inline-flex items-center h-8 w-20 rounded-full bg-soil-200 border border-soil-300 text-xs font-bold"><span data-seg="en" class="relative z-10 flex-1 text-center transition-colors text-cream">EN</span><span data-seg="es" class="relative z-10 flex-1 text-center transition-colors text-soil-500">ES</span><span data-knob class="absolute top-0.5 left-0.5 h-7 w-[38px] rounded-full bg-leaf-500 shadow transition-transform duration-200"></span></button></div>
     </div>
   </div>
 </nav>
@@ -369,7 +368,6 @@
         <span class="inline-block w-3 h-3 rounded-full bg-leaf-400"></span>GrowEssential
       </a>
       <p class="text-cream/60 max-w-md leading-relaxed">Soil-first regenerative agriculture, food forest design, and consulting. Working from the United States; scouting in the Dominican Republic.</p>
-      <a href="https://calendly.com/growessential/discovery-call" target="_blank" rel="noopener" class="inline-block mt-6 bg-leaf-500 hover:bg-leaf-400 text-cream px-5 py-3 rounded-full font-medium transition">Book a Free Call →</a>
     </div>
     <div class="md:col-span-3">
       <div class="font-serif text-cream mb-4 text-lg">Site</div>
@@ -391,13 +389,18 @@
   </div>
 </footer>
 
-<div class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-cream/95 backdrop-blur border-t border-soil-200 px-4 py-3 shadow-2xl">
+<div id="stickyCta" class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-cream/95 backdrop-blur border-t border-soil-200 px-4 py-3 shadow-2xl translate-y-full transition-transform duration-300">
   <a href="https://calendly.com/growessential/discovery-call" target="_blank" rel="noopener" class="block bg-leaf-500 hover:bg-leaf-600 text-cream text-center px-5 py-3 rounded-full font-semibold transition">Book Free 15-min Call →</a>
 </div>
 <div class="md:hidden h-20"></div>
 
 <script>
   document.getElementById('navToggle')?.addEventListener('click', () => document.getElementById('mobileNav').classList.toggle('hidden'));
+  // Sticky mobile CTA — appears only after scrolling past the hero
+  const stickyCta = document.getElementById("stickyCta");
+  const toggleSticky = () => stickyCta?.classList.toggle("translate-y-full", window.scrollY < window.innerHeight * 0.7);
+  window.addEventListener("scroll", toggleSticky, { passive: true });
+  toggleSticky();
   document.body.classList.add('js-anim');
   const io = new IntersectionObserver((entries) => entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach((el) => { const r = el.getBoundingClientRect(); if (r.top < window.innerHeight) { el.classList.add('in'); } else { io.observe(el); } });
