@@ -187,7 +187,27 @@
     t.innerHTML='<div class="tab active" data-t="all">All</div>'+
       rows.map(r=>`<div class="tab" data-t="${r.tab_key}">${r.label}</div>`).join('');
   }
-  function renderSections(rows){ $('main').innerHTML=rows.map(r=>r.html).join(''); linkifyItems(); }
+  function renderSections(rows){ $('main').innerHTML=rows.map(r=>r.html).join(''); fixDeals(); linkifyItems(); }
+
+  // Correct stale/dead buy links (DJI store is out of stock in the US — customs hold on new imports)
+  function fixDeals(){
+    const BH_BASE='https://www.bhphotovideo.com/c/replacement_for/1784783-REG/dji_cp_ma_00000732_01_mini_4_pro_drone.html';
+    const BH_COMBO='https://www.bhphotovideo.com/c/replacement_for/1784785-REG/dji_cp_ma_00000740_01_mini_4_pro_drone.html';
+    const djiLinks=document.querySelectorAll('#main a[href*="dji.com"]');
+    if(!djiLinks.length) return;
+    const droneTable=djiLinks[0].closest('table');
+    djiLinks.forEach(a=>{
+      const rowText=(a.closest('tr')?.textContent||'').toLowerCase();
+      const combo=/fly more|combo/.test(rowText);
+      a.href=combo?BH_COMBO:BH_BASE;
+      a.textContent='B&H ✓ in stock';
+      a.title='DJI’s own store is out of stock (US customs hold). B&H is an authorized US retailer with stock.';
+    });
+    if(droneTable && !(droneTable.nextElementSibling && droneTable.nextElementSibling.classList.contains('deal-note'))){
+      droneTable.insertAdjacentHTML('afterend',
+        '<div class="flag deal-note"><b>Drone availability (2026):</b> DJI’s own store shows out of stock — the FCC blocked <i>new</i> DJI imports (Dec 23, 2025), and there’s a customs hold. The <b>Mini 4 Pro is still legal to fly and in stock</b> at authorized US retailers, so these links now point to <b>B&H</b> (Amazon &amp; Best Buy also carry it). NDAA-compliant alternative if you scale or need US-assembled: <b>Anzu Raptor</b> ~$5,100 — <a href="https://www.anzurobotics.com/" target="_blank" rel="noopener">anzurobotics.com</a>.</div>');
+    }
+  }
 
   // Append Google + Amazon lookup icons to each item name (table rows + gear lists)
   function linkifyItems(){
