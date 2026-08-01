@@ -214,6 +214,8 @@
   .jc-h{font-size:15px;margin:18px 0 8px;color:var(--green-dk);font-family:'Fraunces',serif}
   .jc-steps{margin:0 0 6px 20px;font-size:15px;line-height:1.55;color:#33402f}
   .jc-steps li{margin-bottom:7px}
+  .jc-jnp{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:11px 15px;margin:12px 0;font-size:13.5px}
+  .jc-jnp summary{cursor:pointer;font-weight:700;color:var(--green-dk)}
   /* auth */
   .gate{max-width:400px;margin:8vh auto;background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:30px 26px;text-align:center}
   .gate h2{font-size:24px;font-weight:900;margin-bottom:6px}
@@ -774,10 +776,11 @@
       warn+='<div class="jc-danger"><b>⚠ Caustic — full PPE before you start.</b><ul class="tight">'+
         JAD.ppe.map(p=>'<li>'+p+'</li>').join('')+'</ul></div>';
     }
-    const rows=fm.ing.map(i=>'<tr><td>'+i.n+'</td><td><b>'+fmtQ(i.q*k,i.u)+'</b></td>'+
+    const rows=fm.ing.map(i=>'<tr><td>'+i.n+'</td><td><b>'+(fm.noscale?'—':fmtQ(i.q*k,i.u))+'</b></td>'+
       (jPlain?'':'<td class="jc-mut">'+ (i.u==='kg'? (i.q*k).toFixed(3)+' kg' : (i.q*k).toFixed(3)+' L') +'</td>')+'</tr>').join('');
     const per=fm.ing.map(i=>i.n+' '+fmtQ(i.q/fm.baseL*(jUnit==='us'?G():1),i.u)).join(' · ');
     out.innerHTML=warn+
+      (fm.noscale?'<div class="flag">The book gives <b>no weights or volumes</b> for this one — it is sized to whatever water tank you already have. Follow the steps, not a number.</div>':'')+
       (jPlain&&fm.plain?'<p class="jc-plain">'+fm.plain+'</p>':'')+
       '<div class="tbl-wrap"><table><tr><th>Ingredient</th><th>For '+fmtVol(L)+'</th>'+(jPlain?'':'<th>exact</th>')+'</tr>'+rows+'</table></div>'+
       '<div class="jc-per"><b>Per '+(jUnit==='us'?'gallon':'litre')+':</b> '+per+'</div>'+
@@ -793,6 +796,7 @@
   function calcMix(){
     const p=JAD.programs.find(x=>x.id===$('jcP').value);
     const tank=parseFloat($('jcT').value); const out=$('jcOut');
+    if(p.kind==='fert'){ return calcFert(p,out); }
     if(isNaN(tank)||tank<=0){ out.innerHTML='<p class="vp-note">Enter your tank size.</p>'; return; }
     const L=toL(tank), k=L/p.per, per500={};
     const rows=p.mix.map(m=>{
@@ -814,7 +818,29 @@
       '<tr><td>Water</td><td><b>fill to '+fmtVol(L)+'</b></td></tr></table></div>'+
       (p.warn?'<div class="flag">'+p.warn.join(' ')+'</div>':'')+
       '<div class="win"><b>Order matters:</b> half-fill with water, add each input separately and mix after each, then top up. Never pour JWA and JS together — they clot.</div>'+
+      jnpBlock()+
       '<p class="vp-note">Book recipe is per '+fmtVol(p.per)+'; scaled ×'+k.toFixed(3)+' for your tank.</p>';
+  }
+
+  // Fixed soil recipe for a stated area — deliberately NOT scaled to a tank.
+  function calcFert(p,out){
+    const rows=p.mix.map(m=>{
+      const fm=m.id?JAD.formulas.find(x=>x.id===m.id):null;
+      return '<tr><td>'+(fm?fm.name.split(' (')[0]:m.n)+'</td><td><b>'+fmtQ(m.q,m.u||'L')+'</b></td></tr>';
+    }).join('');
+    out.innerHTML=
+      '<div class="flag"><b>This one is different.</b> It is not a spray-tank recipe — it is a fixed <b>soil</b> application covering <b>'+p.area+
+      '</b>, so the amounts below do not scale to your sprayer. Scale by <i>land area</i> instead.</div>'+
+      (jPlain&&p.plain?'<p class="jc-plain">'+p.plain+'</p>':'')+
+      '<div class="tbl-wrap"><table><tr><th>Apply to soil</th><th>Amount for '+p.area+'</th></tr>'+rows+'</table></div>'+
+      '<div class="jc-danger"><b>⚠ Do not spray this on leaves as written.</b> For foliar use the book caps total inputs (JMS + JLF) at <b>under 30 L per 500 L</b> and requires over 1.5 L of JWA. Seawater and sea salt kill the JWA’s wetting power — keep those to soil only.</div>'+
+      jnpBlock();
+  }
+
+  function jnpBlock(){
+    if(!JAD.jnp||!JAD.jnp.length) return '';
+    return '<details class="jc-jnp"><summary>Blanket rules for every JADAM spray — read once, then keep to them</summary><ul class="tight">'+
+      JAD.jnp.map(r=>'<li>'+r+'</li>').join('')+'</ul></details>';
   }
 
   function calcDil(){
