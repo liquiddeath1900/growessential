@@ -299,13 +299,20 @@
 
   const $=id=>document.getElementById(id);
   const show=(el,on)=>el.classList[on?'remove':'add']('hidden');
-  let activeTab='all';
+  let activeTab='home';
+  // How many history entries this app has pushed. Guards against history.back()
+  // walking off the site when there is nothing of ours to go back to.
+  let _depth=0;
 
   async function boot(){
     const {data:{session}} = await sb.auth.getSession();
     show($('loading'),false);
     if(session) enterApp(session); else showGate();
   }
+  // onAuthStateChange also fires INITIAL_SESSION for the same session boot()
+  // already handled, and again on every ~1h token refresh. Rendering twice
+  // detaches half-built card grids, so collapse to one render per session.
+  let _renderedFor=null, _rendering=false;
   sb.auth.onAuthStateChange((_e,session)=>{ if(session) enterApp(session); });
 
   function showGate(){ show($('gate'),true); show($('app'),false); show($('userbar'),false); }
@@ -330,6 +337,9 @@
   $('signout').addEventListener('click', async ()=>{ await sb.auth.signOut(); location.reload(); });
 
   async function enterApp(session){
+    const sig=session&&session.user?session.user.id:'anon';
+    if(_rendering||_renderedFor===sig) return;      // already rendered for this user
+    _rendering=true;
     show($('gate'),false);
     const {data,error}=await sb.from('ge_playbook').select('tab_key,label,sort,html').order('sort',{ascending:true});
     if(error || !data || !data.length){
@@ -341,19 +351,25 @@
     }
     $('who').textContent=session.user.email;
     show($('userbar'),true); show($('app'),true);
-    renderTabs(data); renderSections(data); wire();
+    renderTabs(data);
+    await renderSections(data);
+    _renderedFor=sig; _rendering=false;
+    wire();
   }
 
   // Section grouping. Any tab_key NOT listed here still shows up, under "More" —
   // so adding a Supabase section never requires editing this file to stay reachable.
   const GROUPS=[
+    {name:'My site',          keys:['yamasa']},
     {name:'Field workflow',   keys:['sop','framework','kit','tools','gen']},
     {name:'Reference',        keys:['soil','labs','global','nutrition','vpd']},
     {name:'Species & crops',  keys:['crops','natives']},
     {name:'Inputs & recipes', keys:['ipm','jadam']},
+    {name:'Propagation',      keys:['graft']},
     {name:'Business',         keys:['economics']}
   ];
   const BLURB={
+    yamasa:'Yamasá land plan, cross-checked against the research',
     sop:'Step-by-step field SOP for running an audit on site',
     framework:'How to structure findings into a client report',
     kit:'Everything to buy, with prices and buy links',
@@ -368,6 +384,7 @@
     natives:'91 natives and endemics, plus the invasive AVOID list',
     ipm:'The IPM ladder and DR threat table',
     jadam:'25 formulas with a batch and dilution calculator',
+    graft:'What comes true from seed, which cut to use, saving genetics',
     economics:'Export values, premiums and where your fee comes from'
   };
   // Sections genuinely reference each other; these chips stop it feeling like
@@ -379,7 +396,9 @@
     soil:['labs','nutrition'], labs:['soil','framework'],
     economics:['crops','framework'], sop:['kit','soil','framework'],
     framework:['sop','economics'], kit:['sop','tools'], tools:['kit','sop'],
-    global:['natives','crops'], gen:['sop','kit']
+    global:['natives','crops'], gen:['sop','kit'],
+    yamasa:['jadam','crops','natives','graft'],
+    graft:['crops','natives','yamasa']
   };
   const isData=k=>k.charAt(0)==='_';
 
@@ -419,7 +438,10 @@
     $('data').innerHTML=rows.filter(r=>isData(r.tab_key)).map(r=>r.html).join('');
     $('main').innerHTML=renderHome(rows)+rows.filter(r=>!isData(r.tab_key)).map(r=>r.html).join('');
     fixDeals(); linkifyItems(); defPicker(); vpdCalc(); cropFilter(); nativeFilter();
-    tableCards(); jadamCalc(); addRelated(rows); homeCounts();
+    jadamCalc(); addRelated(rows); homeCounts();
+    // tableCards() is async (it fetches CREDITS.json). Anything that needs a
+    // card to exist — deep links, the first filter pass — must wait for it.
+    return tableCards().catch(e=>console.error('tableCards failed',e));
   }
 
   // ── Dashboard ─────────────────────────────────────────────────────────────
@@ -830,13 +852,14 @@
     if(!want||want.indexOf('-')<0) return null;   // genus-only → no photo
     return CREDITS._bySlug[want]||null;
   }
+  const safeUrl=u=>/^https?:\/\//i.test(String(u||'')) ? u : '';
   function credLine(c){
     if(!c) return '';
     let who=(c.credit||'').replace(/<[^>]+>/g,'').trim();
     if(who.length>60) who=who.slice(0,57).replace(/\s+\S*$/,'')+'…';
     const bits=[who,c.license].filter(Boolean).join(' · ');
     return '<div class="gc-cred" title="'+esc(c.credit||'')+'">📷 '+esc(bits)+
-      (c.source?' · <a href="'+esc(c.source)+'" target="_blank" rel="noopener">source</a>':'')+'</div>';
+      (safeUrl(c.source)?' · <a href="'+esc(safeUrl(c.source))+'" target="_blank" rel="noopener">source</a>':'')+'</div>';
   }
   const esc=s=>String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 
@@ -897,7 +920,14 @@
           '<div class="gc-more">Open profile →</div>'+
           credLine(ph)+
         '</div>';
-      card.addEventListener('click',()=>openDetail((cfg.kind==='crop'?'crop/':'sp/')+card.dataset.slug,tr,cfg));
+      const open=()=>openDetail((cfg.kind==='crop'?'crop/':'sp/')+card.dataset.slug,tr,cfg,true);
+      card.addEventListener('click',open);
+      // MAJOR: the card is the only interactive element that isn't a <button>,
+      // so it needs its own keyboard handling.
+      card.setAttribute('role','button');
+      card.addEventListener('keydown',e=>{
+        if(e.key==='Enter'||e.key===' '){ e.preventDefault(); open(); }
+      });
       tr._card=card; card._tr=tr;
       grid.appendChild(card);
     });
@@ -933,7 +963,9 @@
   }
   // Called at the end of each filter pass so the card grid gets an empty state too.
   function syncEmpty(table,hits){
-    if(table&&table._empty) table._empty.style.display=hits?'none':'block';
+    if(!table||!table._empty) return;
+    const cardsView=table._grid&&table._grid.style.display!=='none';
+    table._empty.style.display=(!hits&&cardsView)?'block':'none';
   }
 
   // ── Detail sheet ──────────────────────────────────────────────────────────
@@ -941,7 +973,7 @@
   // expansion shifts everything and loses your place. pushState on open means
   // the Android back gesture and iOS swipe-back close it — the thing that makes
   // this usable one-handed in a field.
-  function sheet(html,hash){
+  function sheet(html,hash,push){
     let el=$('detail');
     if(!el){
       el=document.createElement('div'); el.id='detail'; el.className='sheet';
@@ -951,17 +983,23 @@
       '<button class="sheet-x" id="detailClose" aria-label="Close">✕</button>'+html+'</div>';
     el.classList.add('open');
     document.body.style.overflow='hidden';
-    el.querySelector('#detailClose').onclick=()=>{ history.back(); };
-    el.querySelector('.sheet-scrim').onclick=()=>{ history.back(); };
+    el.querySelector('#detailClose').onclick=goBack;
+    el.querySelector('.sheet-scrim').onclick=goBack;
     el.querySelector('.sheet-body').scrollTop=0;
-    if(hash) history.pushState({detail:hash},'','#'+hash);
+    // Only push when opened by a user action. Restoring from popstate or an
+    // initial deep link must NOT add an entry, or Back can never escape.
+    if(hash&&push){ history.pushState({detail:hash},'','#'+hash); _depth++; }
     updateBackBtn();
   }
   // Resolve a #crop/<slug> or #sp/<slug> hash (or a direct click) to a sheet.
-  function openDetail(hash,tr,cfg){
+  function openDetail(hash,tr,cfg,push){
+    if(push===undefined) push=true;
     if(!tr){
+      const kind=hash.startsWith('crop/')?'crop':'sp';
       const slug=hash.replace(/^(crop|sp)\//,'');
-      const card=document.querySelector('#main .gc[data-slug="'+slug+'"]');
+      // scope by kind — the same slug can exist in both tables
+      const card=document.querySelector('#main .gc[data-kind="'+kind+'"][data-slug="'+slug+'"]')
+              || document.querySelector('#main .gc[data-slug="'+slug+'"]');
       if(!card) return;
       tr=card._tr; cfg=CARDS[tr.closest('table').id]||{};
     }
@@ -987,7 +1025,7 @@
       '<a class="rel-chip" target="_blank" rel="noopener" href="https://www.inaturalist.org/search?q='+encodeURIComponent(sci)+'">iNaturalist</a>'+
       '<a class="rel-chip" target="_blank" rel="noopener" href="https://www.google.com/search?q='+encodeURIComponent(sci+' cultivation')+'">Google</a>'+
       '</div>'+credLine(ph);
-    sheet(html,hash);
+    sheet(html,hash,push);
   }
 
   // Rich profile fields from the _crops data row, when present.
@@ -996,7 +1034,8 @@
     try{
       const data=JSON.parse(el.textContent);
       const p=data[slug]; if(!p) return '';
-      const ORDER=[['ranking','Ranking'],['lifecycle','Life cycle'],['climate','Climate'],['soil','Soil'],
+      const ORDER=[['quick','At a glance'],['ranking','Economic ranking'],['lifecycle','Life cycle'],
+        ['botany','Names & botany'],['climate','Climate'],['soil','Soil'],
         ['nutrients','Nutrients'],['biology','Soil biology'],['water','Water / drought'],['agroforestry','Agroforestry role'],
         ['pests','Pests & diseases'],['maturity','Maturity / yield'],['planting','Planting'],['management','Management'],
         ['harvest','Harvesting'],['succession','Succession / replacement']];
@@ -1005,11 +1044,19 @@
     }catch(e){ return ''; }
   }
 
+  // Back that can never leave the app — falls through to Home instead.
+  function goBack(){
+    if(_depth>0){ history.back(); return; }
+    const d=$('detail');
+    if(d&&d.classList.contains('open')){ closeDetail(true); return; }
+    activateTab('home');
+  }
+
   function closeDetail(fromPop){
     const el=$('detail'); if(!el||!el.classList.contains('open')) return;
     el.classList.remove('open'); el.innerHTML='';
     if(!document.querySelector('.sheet.open')) document.body.style.overflow='';
-    if(!fromPop) history.back();
+    if(!fromPop) goBack();
     updateBackBtn();
   }
 
@@ -1027,7 +1074,10 @@
       const ok = tabOk && (!q || isHome || sec.textContent.toLowerCase().includes(q));
       sec.style.display=ok?'':'none'; if(ok&&!isHome)any=true;
     });
-    $('nohits').style.display=(any||scope==='home')?'none':'block';
+    const nh=$('nohits');
+    nh.textContent = q ? 'No matches in the playbook for that search.'
+                       : 'That section doesn’t exist. Tap Sections below.';
+    nh.style.display=(any||scope==='home')?'none':'block';
   }
 
   function activateTab(key,opts){
@@ -1042,7 +1092,7 @@
     if(!opts.noScroll) window.scrollTo({top:0,behavior:opts.instant?'auto':'smooth'});
     if(!opts.noHash){
       const h='#'+activeTab;
-      if(opts.push) history.pushState({tab:activeTab},'',h);
+      if(opts.push){ history.pushState({tab:activeTab},'',h); _depth++; }
       else history.replaceState({tab:activeTab},'',h);
     }
     updateBackBtn(); pushRecent(activeTab);
@@ -1080,7 +1130,11 @@
 
   function routeFromHash(instant){
     const h=(location.hash||'').replace(/^#/,'');
-    if(h.startsWith('crop/')||h.startsWith('sp/')){ activateTab(activeTab,{noHash:true,noScroll:true}); openDetail(h); return; }
+    if(h.startsWith('crop/')||h.startsWith('sp/')){
+      activateTab(activeTab,{noHash:true,noScroll:true});
+      openDetail(h,null,null,false);      // restore, never push
+      return;
+    }
     activateTab(h||'home',{noHash:true,instant:instant});
   }
 
@@ -1095,13 +1149,17 @@
       const tab=e.target.closest('.tab');
       if(tab&&tab.dataset.t){ activateTab(tab.dataset.t,{push:true}); return; }
       const go=e.target.closest('[data-goto]');
-      if(go){ e.preventDefault(); activateTab(go.dataset.goto,{push:true}); return; }
+      if(go){ e.preventDefault();
+        activateTab(go.dataset.goto,{push:go.dataset.goto!==activeTab}); return; }
       if(e.target.closest('#secBtn')){ openSections(); return; }
       if(e.target.closest('#secClose')||e.target.classList.contains('sheet-scrim')){ closeSections(); return; }
-      if(e.target.closest('#backBtn')){ history.back(); return; }
+      if(e.target.closest('#backBtn')){ goBack(); return; }
     });
 
-    window.addEventListener('popstate',()=>{ closeDetail(true); routeFromHash(true); });
+    window.addEventListener('popstate',()=>{
+      if(_depth>0) _depth--;
+      closeDetail(true); routeFromHash(true);
+    });
     document.addEventListener('keydown',e=>{ if(e.key==='Escape'){ closeSections(); closeDetail(); } });
 
     routeFromHash(true);
