@@ -1,39 +1,45 @@
 {
  "Cocos nucifera": {
   "img": "assets/species/cocos-nucifera.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Cocos_nucifera_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-187.jpg/500px-Cocos_nucifera_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-187.jpg"
+  "credit": "Franz Eugen Köhler, Köhler's Medizinal-Pflanzen",
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Cocos_nucifera_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-187.jpg",
+  "file": "File:Cocos_nucifera_-_Köhler–s_Medizinal-Pflanzen-187.jpg"
  },
  "Artocarpus altilis": {
   "img": "assets/species/artocarpus-altilis.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Artocarpus_altilis_%28fruit%29.jpg/500px-Artocarpus_altilis_%28fruit%29.jpg"
+  "credit": "Hans Hillewaert",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Artocarpus_altilis_(fruit).jpg",
+  "file": "File:Artocarpus_altilis_(fruit).jpg"
  },
  "Mangifera indica": {
   "img": "assets/species/mangifera-indica.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Mangoes_%28Magnifera_indica%29_from_India.jpg/500px-Mangoes_%28Magnifera_indica%29_from_India.jpg"
+  "credit": "Billjones94",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Mangoes_(Magnifera_indica)_from_India.jpg",
+  "file": "File:Mangoes_(Magnifera_indica)_from_India.jpg"
  },
  "Artocarpus heterophyllus": {
   "img": "assets/species/artocarpus-heterophyllus.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/The_jackfruit_is_holding_on_to_the_tree.jpg/500px-The_jackfruit_is_holding_on_to_the_tree.jpg"
+  "credit": "This work was made by Tushar Hossain and released under the license(s) stated below. Please feel free to use it for any purpose as long as you credit Tushar Hossain as author and follow the terms of the chosen license. If you use this work outside of the Wikimedia projects, I would very much like to get a note from you. Thanks!",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:The_jackfruit_is_holding_on_to_the_tree.jpg",
+  "file": "File:The_jackfruit_is_holding_on_to_the_tree.jpg"
  },
  "Persea americana": {
   "img": "assets/species/persea-americana.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Persea_americana_fruit_2.JPG/500px-Persea_americana_fruit_2.JPG"
+  "credit": "B.navez",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Persea_americana_fruit_2.JPG",
+  "file": "File:Persea_americana_fruit_2.JPG"
  },
  "Pouteria sapota": {
   "img": "assets/species/pouteria-sapota.webp",
   "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/ARS-_Pouteria_sapota.jpg/500px-ARS-_Pouteria_sapota.jpg"
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:ARS-_Pouteria_sapota.jpg",
+  "file": "File:ARS-_Pouteria_sapota.jpg"
  },
  "Manilkara zapota": {
   "img": "assets/species/manilkara-zapota.webp",
@@ -43,27 +49,31 @@
  },
  "Chrysophyllum cainito": {
   "img": "assets/species/chrysophyllum-cainito.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Chrusophyllum_cainito.jpg/500px-Chrusophyllum_cainito.jpg"
+  "credit": "No machine-readable author provided. Hans B.~commonswiki assumed (based on copyright claims).",
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Chrusophyllum_cainito.jpg",
+  "file": "File:Chrusophyllum_cainito.jpg"
  },
  "Bactris gasipaes": {
   "img": "assets/species/bactris-gasipaes.webp",
   "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Pupunha_%28Bactris_gasipaes%29_2.jpg/500px-Pupunha_%28Bactris_gasipaes%29_2.jpg"
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Pupunha_(Bactris_gasipaes)_2.jpg",
+  "file": "File:Pupunha_(Bactris_gasipaes)_2.jpg"
  },
  "Melicoccus bijugatus": {
   "img": "assets/species/melicoccus-bijugatus.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Melicoccus_bijugatus.jpg/500px-Melicoccus_bijugatus.jpg"
+  "credit": "No machine-readable author provided. Hans B.~commonswiki assumed (based on copyright claims).",
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Melicoccus_bijugatus.jpg",
+  "file": "File:Melicoccus_bijugatus.jpg"
  },
  "Pimenta dioica": {
   "img": "assets/species/pimenta-dioica.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/a/a5/Pimenta_dioica_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-239.jpg"
+  "credit": "Franz Eugen Köhler, Köhler's Medizinal-Pflanzen",
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Pimenta_dioica_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-239.jpg",
+  "file": "File:Pimenta_dioica_-_Köhler–s_Medizinal-Pflanzen-239.jpg"
  },
  "Theobroma cacao": {
   "img": "assets/species/theobroma-cacao.webp",
@@ -73,99 +83,115 @@
  },
  "Coffea arabica": {
   "img": "assets/species/coffea-arabica.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Coffee_Flowers.JPG/500px-Coffee_Flowers.JPG"
+  "credit": "Marcelo Corrêa",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Coffee_Flowers.JPG",
+  "file": "File:Coffee_Flowers.JPG"
  },
  "Annona muricata": {
   "img": "assets/species/annona-muricata.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Annona_muricata_1.jpg/500px-Annona_muricata_1.jpg"
+  "credit": "Damien Boilley from suburbs of Paris, France",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Annona_muricata_1.jpg",
+  "file": "File:Annona_muricata_1.jpg"
  },
  "Annona squamosa": {
   "img": "assets/species/annona-squamosa.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Sugar_apple_on_tree.jpg/500px-Sugar_apple_on_tree.jpg"
+  "credit": "Muhammad Mahdi Karim",
+  "license": "GFDL 1.2",
+  "source": "https://commons.wikimedia.org/wiki/File:Sugar_apple_on_tree.jpg",
+  "file": "File:Sugar_apple_on_tree.jpg"
  },
  "Averrhoa carambola": {
   "img": "assets/species/averrhoa-carambola.webp",
   "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Averrhoa_carambola_ARS_k5735-7.jpg/500px-Averrhoa_carambola_ARS_k5735-7.jpg"
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Averrhoa_carambola_ARS_k5735-7.jpg",
+  "file": "File:Averrhoa_carambola_ARS_k5735-7.jpg"
  },
  "Anacardium occidentale": {
   "img": "assets/species/anacardium-occidentale.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Cashew_apples.jpg/500px-Cashew_apples.jpg"
+  "credit": "Abhishek Jacob",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Cashew_apples.jpg",
+  "file": "File:Cashew_apples.jpg"
  },
  "Malpighia emarginata": {
   "img": "assets/species/malpighia-emarginata.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Malpighia_glabra_blossom_and_unripe_fruits.jpg/500px-Malpighia_glabra_blossom_and_unripe_fruits.jpg"
+  "credit": "Eric Gaba (Sting - fr:Sting)",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Malpighia_glabra_blossom_and_unripe_fruits.jpg",
+  "file": "File:Malpighia_glabra_blossom_and_unripe_fruits.jpg"
  },
  "Coccoloba uvifera": {
   "img": "assets/species/coccoloba-uvifera.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Starr_080604-6302_Coccoloba_uvifera.jpg/500px-Starr_080604-6302_Coccoloba_uvifera.jpg"
+  "credit": "Forest &amp; Kim Starr",
+  "license": "CC BY 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Starr_080604-6302_Coccoloba_uvifera.jpg",
+  "file": "File:Starr_080604-6302_Coccoloba_uvifera.jpg"
  },
  "Chrysobalanus icaco": {
   "img": "assets/species/chrysobalanus-icaco.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Chrysobalanus_icaco_%28inflorescense%29.jpg/500px-Chrysobalanus_icaco_%28inflorescense%29.jpg"
+  "credit": "Hans Hillewaert",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Chrysobalanus_icaco_(inflorescense).jpg",
+  "file": "File:Chrysobalanus_icaco_(inflorescense).jpg"
  },
  "Psidium guajava": {
   "img": "assets/species/psidium-guajava.webp",
   "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Psidium_guajava_fruit.jpg/500px-Psidium_guajava_fruit.jpg"
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Psidium_guajava_fruit.jpg",
+  "file": "File:Psidium_guajava_fruit.jpg"
  },
  "Carica papaya": {
   "img": "assets/species/carica-papaya.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Carica_papaya_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-029.jpg/500px-Carica_papaya_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-029.jpg"
+  "credit": "Franz Eugen Köhler, Köhler's Medizinal-Pflanzen",
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Carica_papaya_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-029.jpg",
+  "file": "File:Carica_papaya_-_Köhler–s_Medizinal-Pflanzen-029.jpg"
  },
  "Musa x paradisiaca": {
   "img": "assets/species/musa-x-paradisiaca.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/2018_06_TropicalIslands_IMG_2170.jpg/500px-2018_06_TropicalIslands_IMG_2170.jpg"
+  "credit": "Daniela Kloth",
+  "license": "GFDL 1.2",
+  "source": "https://commons.wikimedia.org/wiki/File:2018_06_TropicalIslands_IMG_2170.jpg",
+  "file": "File:2018_06_TropicalIslands_IMG_2170.jpg"
  },
  "Citrus x sinensis": {
   "img": "assets/species/citrus-x-sinensis.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/OrangeBloss_wb.jpg/500px-OrangeBloss_wb.jpg"
+  "credit": "Ellen Levy Finch (Elf)",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:OrangeBloss_wb.jpg",
+  "file": "File:OrangeBloss_wb.jpg"
  },
  "Citrus x aurantiifolia": {
   "img": "assets/species/citrus-x-aurantiifolia.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Citrus_%C3%97_aurantiifolia_%28Christm.%29_Swingle_%2851906868474%29.jpg/500px-Citrus_%C3%97_aurantiifolia_%28Christm.%29_Swingle_%2851906868474%29.jpg"
+  "credit": "Dinesh Valke from Thane, India",
+  "license": "CC BY-SA 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Citrus_%C3%97_aurantiifolia_(Christm.)_Swingle_(51906868474).jpg",
+  "file": "File:Citrus_×_aurantiifolia_(Christm.)_Swingle_(51906868474).jpg"
  },
  "Vanilla planifolia": {
   "img": "assets/species/vanilla-planifolia.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Vanilla_planifolia_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-278.jpg/500px-Vanilla_planifolia_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-278.jpg"
+  "credit": "Franz Eugen Köhler, Köhler's Medizinal-Pflanzen",
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Vanilla_planifolia_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-278.jpg",
+  "file": "File:Vanilla_planifolia_-_Köhler–s_Medizinal-Pflanzen-278.jpg"
  },
  "Passiflora edulis": {
   "img": "assets/species/passiflora-edulis.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Passiflora_edulis_forma_flavicarpa.jpg/500px-Passiflora_edulis_forma_flavicarpa.jpg"
+  "credit": "Unknown authorUnknown author",
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Passiflora_edulis_forma_flavicarpa.jpg",
+  "file": "File:Passiflora_edulis_forma_flavicarpa.jpg"
  },
  "Bixa orellana": {
   "img": "assets/species/bixa-orellana.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Achiote_pj.JPG/500px-Achiote_pj.JPG"
+  "credit": "Primejyothi",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Achiote_pj.JPG",
+  "file": "File:Achiote_pj.JPG"
  },
  "Ananas comosus": {
   "img": "assets/species/ananas-comosus.webp",
@@ -175,51 +201,59 @@
  },
  "Manihot esculenta": {
   "img": "assets/species/manihot-esculenta.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/f/f1/Manihot_esculenta_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-090.jpg"
+  "credit": "Franz Eugen Köhler, Köhlers Medizinal-Pflanzen",
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Manihot_esculenta_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-090.jpg",
+  "file": "File:Manihot_esculenta_-_Köhler–s_Medizinal-Pflanzen-090.jpg"
  },
  "Ipomoea batatas": {
   "img": "assets/species/ipomoea-batatas.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Ipomoea_batatas_006.JPG/500px-Ipomoea_batatas_006.JPG"
+  "credit": "Llez",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Ipomoea_batatas_006.JPG",
+  "file": "File:Ipomoea_batatas_006.JPG"
  },
  "Xanthosoma sagittifolium": {
   "img": "assets/species/xanthosoma-sagittifolium.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Xanthosoma_sagittifolium_in_Bukidnon%2C_Philippines_01.jpg/500px-Xanthosoma_sagittifolium_in_Bukidnon%2C_Philippines_01.jpg"
+  "credit": "Obsidian Soul",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Xanthosoma_sagittifolium_in_Bukidnon,_Philippines_01.jpg",
+  "file": "File:Xanthosoma_sagittifolium_in_Bukidnon,_Philippines_01.jpg"
  },
  "Zingiber officinale": {
   "img": "assets/species/zingiber-officinale.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Koeh-146-no_text.jpg/500px-Koeh-146-no_text.jpg"
+  "credit": "Franz Eugen Köhler, Köhler's Medizinal-Pflanzen",
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Koeh-146-no_text.jpg",
+  "file": "File:Koeh-146-no_text.jpg"
  },
  "Curcuma longa": {
   "img": "assets/species/curcuma-longa.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Turmeric_inflorescence.jpg/500px-Turmeric_inflorescence.jpg"
+  "credit": "SKsiddhartthan",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Turmeric_inflorescence.jpg",
+  "file": "File:Turmeric_inflorescence.jpg"
  },
  "Hibiscus sabdariffa": {
   "img": "assets/species/hibiscus-sabdariffa.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Roselle%2C_Hibiscus_sabdariffa%2C_2014_01.JPG/500px-Roselle%2C_Hibiscus_sabdariffa%2C_2014_01.JPG"
+  "credit": "Invertzoo",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Roselle,_Hibiscus_sabdariffa,_2014_01.JPG",
+  "file": "File:Roselle,_Hibiscus_sabdariffa,_2014_01.JPG"
  },
  "Cnidoscolus aconitifolius": {
   "img": "assets/species/cnidoscolus-aconitifolius.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Cnidoscolus_chayamansa1_ies.jpg/500px-Cnidoscolus_chayamansa1_ies.jpg"
+  "credit": "Frank Vincentz",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Cnidoscolus_chayamansa1_ies.jpg",
+  "file": "File:Cnidoscolus_chayamansa1_ies.jpg"
  },
  "Sauropus androgynus": {
   "img": "assets/species/sauropus-androgynus.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Sauropus_androgynus_at_Kadavoor.jpg/500px-Sauropus_androgynus_at_Kadavoor.jpg"
+  "credit": "Jeevan Jose, Kerala, India",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Sauropus_androgynus_at_Kadavoor.jpg",
+  "file": "File:Sauropus_androgynus_at_Kadavoor.jpg"
  },
  "Moringa oleifera": {
   "img": "assets/species/moringa-oleifera.webp",
@@ -229,129 +263,149 @@
  },
  "Inga edulis": {
   "img": "assets/species/inga-edulis.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Inga_edulis_04.jpg/500px-Inga_edulis_04.jpg"
+  "credit": "Burkhard Mücke",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Inga_edulis_04.jpg",
+  "file": "File:Inga_edulis_04.jpg"
  },
  "Gliricidia sepium": {
   "img": "assets/species/gliricidia-sepium.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Gliricidia_sepium_0002.jpg/500px-Gliricidia_sepium_0002.jpg"
+  "credit": "Atamari",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Gliricidia_sepium_0002.jpg",
+  "file": "File:Gliricidia_sepium_0002.jpg"
  },
  "Erythrina poeppigiana": {
   "img": "assets/species/erythrina-poeppigiana.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/C%C3%A1mbulo_-_P%C3%ADsamo_%28Erythrina_poeppigiana%29_%2814741089764%29.jpg/500px-C%C3%A1mbulo_-_P%C3%ADsamo_%28Erythrina_poeppigiana%29_%2814741089764%29.jpg"
+  "credit": "Alejandro Bayer Tamayo from Armenia, Colombia",
+  "license": "CC BY-SA 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:C%C3%A1mbulo_-_P%C3%ADsamo_(Erythrina_poeppigiana)_(14741089764).jpg",
+  "file": "File:Cámbulo_-_Písamo_(Erythrina_poeppigiana)_(14741089764).jpg"
  },
  "Cajanus cajan": {
   "img": "assets/species/cajanus-cajan.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Cajanus_cajan_Blanco1.167-cropped.jpg/500px-Cajanus_cajan_Blanco1.167-cropped.jpg"
+  "credit": "Francisco Manuel Blanco (O.S.A.)",
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Cajanus_cajan_Blanco1.167-cropped.jpg",
+  "file": "File:Cajanus_cajan_Blanco1.167-cropped.jpg"
  },
  "Calliandra calothyrsus": {
   "img": "assets/species/calliandra-calothyrsus.webp",
   "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Calliandra_flwr.jpg/500px-Calliandra_flwr.jpg"
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Calliandra_flwr.jpg",
+  "file": "File:Calliandra_flwr.jpg"
  },
  "Flemingia macrophylla": {
   "img": "assets/species/flemingia-macrophylla.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Flemingia_macrophylla.jpg/500px-Flemingia_macrophylla.jpg"
+  "credit": "Vinayaraj",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Flemingia_macrophylla.jpg",
+  "file": "File:Flemingia_macrophylla.jpg"
  },
  "Tamarindus indica": {
   "img": "assets/species/tamarindus-indica.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Tamarindus_indica_pods.JPG/500px-Tamarindus_indica_pods.JPG"
+  "credit": "B.navez",
+  "license": "CC BY 2.5",
+  "source": "https://commons.wikimedia.org/wiki/File:Tamarindus_indica_pods.JPG",
+  "file": "File:Tamarindus_indica_pods.JPG"
  },
  "Crotalaria juncea": {
   "img": "assets/species/crotalaria-juncea.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Crotalaria_juncea_Da220020.JPG/500px-Crotalaria_juncea_Da220020.JPG"
+  "credit": "A16898",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Crotalaria_juncea_Da220020.JPG",
+  "file": "File:Crotalaria_juncea_Da220020.JPG"
  },
  "Mucuna pruriens": {
   "img": "assets/species/mucuna-pruriens.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Mucuna_pruriens_flower.jpg/500px-Mucuna_pruriens_flower.jpg"
+  "credit": "Agong1",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Mucuna_pruriens_flower.jpg",
+  "file": "File:Mucuna_pruriens_flower.jpg"
  },
  "Canavalia ensiformis": {
   "img": "assets/species/canavalia-ensiformis.webp",
-  "credit": "L\u00edgia Prado",
+  "credit": "Lígia Prado",
   "license": "Public domain",
   "source": "https://upload.wikimedia.org/wikipedia/commons/1/16/Canava1.jpg"
  },
  "Chrysopogon zizanioides": {
   "img": "assets/species/chrysopogon-zizanioides.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Vetiver_grass.jpg/500px-Vetiver_grass.jpg"
+  "credit": "Ratel",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Vetiver_grass.jpg",
+  "file": "File:Vetiver_grass.jpg"
  },
  "Cymbopogon citratus": {
   "img": "assets/species/cymbopogon-citratus.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Gardenology.org-IMG_2892_rbgs11jan.jpg/500px-Gardenology.org-IMG_2892_rbgs11jan.jpg"
+  "credit": "Raffi Kojian",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Gardenology.org-IMG_2892_rbgs11jan.jpg",
+  "file": "File:Gardenology.org-IMG_2892_rbgs11jan.jpg"
  },
  "Leucaena leucocephala": {
   "img": "assets/species/leucaena-leucocephala.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Leucena_%28Leucaena_leucocephala%29_em_Bag%C3%A9%2C_RS%2C_Brasil_-_55223237062.jpg/500px-Leucena_%28Leucaena_leucocephala%29_em_Bag%C3%A9%2C_RS%2C_Brasil_-_55223237062.jpg"
+  "credit": "O Tupinólogo",
+  "license": "CC BY 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Leucena_(Leucaena_leucocephala)_em_Bag%C3%A9,_RS,_Brasil_-_55223237062.jpg",
+  "file": "File:Leucena_(Leucaena_leucocephala)_em_Bagé,_RS,_Brasil_-_55223237062.jpg"
  },
  "Azadirachta indica": {
   "img": "assets/species/azadirachta-indica.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Neem_Tree_in_Rajasthan%2C_India.jpg/500px-Neem_Tree_in_Rajasthan%2C_India.jpg"
+  "credit": "TheSlumPanda",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Neem_Tree_in_Rajasthan,_India.jpg",
+  "file": "File:Neem_Tree_in_Rajasthan,_India.jpg"
  },
  "Spathodea campanulata": {
   "img": "assets/species/spathodea-campanulata.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Starr_031210-0047_Spathodea_campanulata.jpg/500px-Starr_031210-0047_Spathodea_campanulata.jpg"
+  "credit": "Forest &amp; Kim Starr",
+  "license": "CC BY 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Starr_031210-0047_Spathodea_campanulata.jpg",
+  "file": "File:Starr_031210-0047_Spathodea_campanulata.jpg"
  },
  "Syzygium jambos": {
   "img": "assets/species/syzygium-jambos.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Syzygium_jambos.JPG/500px-Syzygium_jambos.JPG"
+  "credit": "B.Navez",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Syzygium_jambos.JPG",
+  "file": "File:Syzygium_jambos.JPG"
  },
  "Prosopis juliflora": {
   "img": "assets/species/prosopis-juliflora.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Prosopis_juliflora%2C_known_as_the_Velvet_Mesquite_%2810078437503%29.jpg/500px-Prosopis_juliflora%2C_known_as_the_Velvet_Mesquite_%2810078437503%29.jpg"
+  "credit": "Dick Culbert from Gibsons, B.C., Canada",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Prosopis_juliflora,_known_as_the_Velvet_Mesquite_(10078437503).jpg",
+  "file": "File:Prosopis_juliflora,_known_as_the_Velvet_Mesquite_(10078437503).jpg"
  },
  "Albizia lebbeck": {
   "img": "assets/species/albizia-lebbeck.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Starr_080531-4752_Albizia_lebbeck.jpg/500px-Starr_080531-4752_Albizia_lebbeck.jpg"
+  "credit": "Forest &amp; Kim Starr",
+  "license": "CC BY 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Starr_080531-4752_Albizia_lebbeck.jpg",
+  "file": "File:Starr_080531-4752_Albizia_lebbeck.jpg"
  },
  "Casuarina equisetifolia": {
   "img": "assets/species/casuarina-equisetifolia.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Casuarina_equisetifolia_-_Darwin_NT.jpg/500px-Casuarina_equisetifolia_-_Darwin_NT.jpg"
+  "credit": "Bidgee",
+  "license": "CC BY 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Casuarina_equisetifolia_-_Darwin_NT.jpg",
+  "file": "File:Casuarina_equisetifolia_-_Darwin_NT.jpg"
  },
  "Ricinus communis": {
   "img": "assets/species/ricinus-communis.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Ricinus_March_2010-1.jpg/500px-Ricinus_March_2010-1.jpg"
+  "credit": "Alvesgaspar",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Ricinus_March_2010-1.jpg",
+  "file": "File:Ricinus_March_2010-1.jpg"
  },
  "Melaleuca quinquenervia": {
   "img": "assets/species/melaleuca-quinquenervia.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Melaleuca_quinquenervia_flowers.jpg/500px-Melaleuca_quinquenervia_flowers.jpg"
+  "credit": "Geoff Derrin",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Melaleuca_quinquenervia_flowers.jpg",
+  "file": "File:Melaleuca_quinquenervia_flowers.jpg"
  },
  "Eriobotrya japonica": {
   "img": "assets/species/eriobotrya-japonica.webp",
@@ -361,21 +415,24 @@
  },
  "Ficus carica": {
   "img": "assets/species/ficus-carica.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Ficus_carica_L%2C_1771.jpg/500px-Ficus_carica_L%2C_1771.jpg"
+  "credit": "Trew, C.J",
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Ficus_carica_L,_1771.jpg",
+  "file": "File:Ficus_carica_L,_1771.jpg"
  },
  "Punica granatum": {
   "img": "assets/species/punica-granatum.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Pomegranate_Juice_%282019%29.jpg/500px-Pomegranate_Juice_%282019%29.jpg"
+  "credit": "Augustus Binu : flickr",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Pomegranate_Juice_(2019).jpg",
+  "file": "File:Pomegranate_Juice_(2019).jpg"
  },
  "Acca sellowiana": {
   "img": "assets/species/acca-sellowiana.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Goiaba-serrana%2C_ou_guarobi_%28do_guarani_%27fruto_verde%27%29%2C_Feijoa_sellowiana%2C_em_Bag%C3%A9%2C_RS%2C_Brasil_-_55238473195.jpg/500px-Goiaba-serrana%2C_ou_guarobi_%28do_guarani_%27fruto_verde%27%29%2C_Feijoa_sellowiana%2C_em_Bag%C3%A9%2C_RS%2C_Brasil_-_55238473195.jpg"
+  "credit": "Gabriel Collares",
+  "license": "CC BY 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Goiaba-serrana,_ou_guarobi_(do_guarani_%27fruto_verde%27),_Feijoa_sellowiana,_em_Bag%C3%A9,_RS,_Brasil_-_55238473195.jpg",
+  "file": "File:Goiaba-serrana,_ou_guarobi_(do_guarani_'fruto_verde'),_Feijoa_sellowiana,_em_Bagé,_RS,_Brasil_-_55238473195.jpg"
  },
  "Olea europaea": {
   "img": "assets/species/olea-europaea.webp",
@@ -385,15 +442,17 @@
  },
  "Ziziphus jujuba": {
   "img": "assets/species/ziziphus-jujuba.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Ziziphus_jujuba.jpg/500px-Ziziphus_jujuba.jpg"
+  "credit": "Tokyo Watcher at English Wikipedia",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Ziziphus_jujuba.jpg",
+  "file": "File:Ziziphus_jujuba.jpg"
  },
  "Macadamia integrifolia": {
   "img": "assets/species/macadamia-integrifolia.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Macadamia_integrifolia_inflorescences_74_Sunbury_St_Geebung_L1060475.jpg/500px-Macadamia_integrifolia_inflorescences_74_Sunbury_St_Geebung_L1060475.jpg"
+  "credit": "John Robert McPherson",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Macadamia_integrifolia_inflorescences_74_Sunbury_St_Geebung_L1060475.jpg",
+  "file": "File:Macadamia_integrifolia_inflorescences_74_Sunbury_St_Geebung_L1060475.jpg"
  },
  "Camellia sinensis": {
   "img": "assets/species/camellia-sinensis.webp",
@@ -403,45 +462,52 @@
  },
  "Chamaecytisus palmensis": {
   "img": "assets/species/chamaecytisus-palmensis.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Chamaecytisus_proliferus_flowers.jpg/500px-Chamaecytisus_proliferus_flowers.jpg"
+  "credit": "Tigerente",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Chamaecytisus_proliferus_flowers.jpg",
+  "file": "File:Chamaecytisus_proliferus_flowers.jpg"
  },
  "Castanea mollissima": {
   "img": "assets/species/castanea-mollissima.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Castanea_mollissima.jpg/500px-Castanea_mollissima.jpg"
+  "credit": "Richard Webb, Self-employed horticulurist, Bugwood.org",
+  "license": "CC BY 3.0 us",
+  "source": "https://commons.wikimedia.org/wiki/File:Castanea_mollissima.jpg",
+  "file": "File:Castanea_mollissima.jpg"
  },
  "Carya illinoinensis": {
   "img": "assets/species/carya-illinoinensis.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Carya_illinoinensis.jpg/500px-Carya_illinoinensis.jpg"
+  "credit": "Bruce Marlin",
+  "license": "CC BY 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Carya_illinoinensis.jpg",
+  "file": "File:Carya_illinoinensis.jpg"
  },
  "Juglans nigra": {
   "img": "assets/species/juglans-nigra.webp",
   "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Black_Walnut_nut_and_leave_detail.JPG/500px-Black_Walnut_nut_and_leave_detail.JPG"
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Black_Walnut_nut_and_leave_detail.JPG",
+  "file": "File:Black_Walnut_nut_and_leave_detail.JPG"
  },
  "Diospyros virginiana": {
   "img": "assets/species/diospyros-virginiana.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Diospyros_virginiana_BB-1913.png/500px-Diospyros_virginiana_BB-1913.png"
+  "credit": "Britton, N.L., and A. Brown. 1913. An illustrated flora of the northern United States, Canada and the British Possessions. 3 vols. Charles Scribner's Sons, New York. Vol. 2: 720. Courtesy of Kentucky Native Plant Society. Scanned by Omnitek Inc.",
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Diospyros_virginiana_BB-1913.png",
+  "file": "File:Diospyros_virginiana_BB-1913.png"
  },
  "Morus nigra": {
   "img": "assets/species/morus-nigra.webp",
   "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Illustration_Morus_nigra0.jpg/500px-Illustration_Morus_nigra0.jpg"
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Illustration_Morus_nigra0.jpg",
+  "file": "File:Illustration_Morus_nigra0.jpg"
  },
  "Malus domestica": {
   "img": "assets/species/malus-domestica.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Pink_lady_and_cross_section.jpg/500px-Pink_lady_and_cross_section.jpg"
+  "credit": "fir0002 flagstaffotos [at] gmail.com Canon 20D + Sigma 150mm f/2.8",
+  "license": "GFDL 1.2",
+  "source": "https://commons.wikimedia.org/wiki/File:Pink_lady_and_cross_section.jpg",
+  "file": "File:Pink_lady_and_cross_section.jpg"
  },
  "Pyrus communis": {
   "img": "assets/species/pyrus-communis.webp",
@@ -451,45 +517,52 @@
  },
  "Prunus domestica": {
   "img": "assets/species/prunus-domestica.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Fruits_Prunus_domestica.jpg/500px-Fruits_Prunus_domestica.jpg"
+  "credit": "YAMAMAYA",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Fruits_Prunus_domestica.jpg",
+  "file": "File:Fruits_Prunus_domestica.jpg"
  },
  "Prunus avium": {
   "img": "assets/species/prunus-avium.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Prunus_avium_fruit.jpg/500px-Prunus_avium_fruit.jpg"
+  "credit": "MPF",
+  "license": "CC BY 2.5",
+  "source": "https://commons.wikimedia.org/wiki/File:Prunus_avium_fruit.jpg",
+  "file": "File:Prunus_avium_fruit.jpg"
  },
  "Prunus persica": {
   "img": "assets/species/prunus-persica.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Illustration_Prunus_persica_clean_no_descr.jpg/500px-Illustration_Prunus_persica_clean_no_descr.jpg"
+  "credit": "File:Illustration Prunus persica0.jpg: PLEASE COMPLETE AUTHOR INFORMATION derivative work: Kenraiz",
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Illustration_Prunus_persica_clean_no_descr.jpg",
+  "file": "File:Illustration_Prunus_persica_clean_no_descr.jpg"
  },
  "Asimina triloba": {
   "img": "assets/species/asimina-triloba.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Asimina_triloba3.jpg/500px-Asimina_triloba3.jpg"
+  "credit": "Scott Bauer, USDA",
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Asimina_triloba3.jpg",
+  "file": "File:Asimina_triloba3.jpg"
  },
  "Corylus americana": {
   "img": "assets/species/corylus-americana.webp",
   "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Corylus_americana1.jpg/500px-Corylus_americana1.jpg"
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Corylus_americana1.jpg",
+  "file": "File:Corylus_americana1.jpg"
  },
  "Amelanchier alnifolia": {
   "img": "assets/species/amelanchier-alnifolia.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Amelanchier_alnifolia_var._semiintegrifolia_4.jpg/500px-Amelanchier_alnifolia_var._semiintegrifolia_4.jpg"
+  "credit": "Thayne Tuason",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Amelanchier_alnifolia_var._semiintegrifolia_4.jpg",
+  "file": "File:Amelanchier_alnifolia_var._semiintegrifolia_4.jpg"
  },
  "Sambucus canadensis": {
   "img": "assets/species/sambucus-canadensis.webp",
   "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Sambucus_nigra_subsp_canadensis_-_Indiana.jpg/500px-Sambucus_nigra_subsp_canadensis_-_Indiana.jpg"
+  "license": "CC BY 2.5",
+  "source": "https://commons.wikimedia.org/wiki/File:Sambucus_nigra_subsp_canadensis_-_Indiana.jpg",
+  "file": "File:Sambucus_nigra_subsp_canadensis_-_Indiana.jpg"
  },
  "Robinia pseudoacacia": {
   "img": "assets/species/robinia-pseudoacacia.webp",
@@ -499,177 +572,205 @@
  },
  "Caragana arborescens": {
   "img": "assets/species/caragana-arborescens.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Caragana_arborescens.jpg/500px-Caragana_arborescens.jpg"
+  "credit": "A. Barra",
+  "license": "CC BY 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Caragana_arborescens.jpg",
+  "file": "File:Caragana_arborescens.jpg"
  },
  "Alnus rubra": {
   "img": "assets/species/alnus-rubra.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Yurok_Loop_Coastal_Trail_at_Redwood_NP.jpg/500px-Yurok_Loop_Coastal_Trail_at_Redwood_NP.jpg"
+  "credit": "Wing-Chi Poon",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Yurok_Loop_Coastal_Trail_at_Redwood_NP.jpg",
+  "file": "File:Yurok_Loop_Coastal_Trail_at_Redwood_NP.jpg"
  },
  "Elaeagnus multiflora": {
   "img": "assets/species/elaeagnus-multiflora.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Elaeagnus_multiflora2.jpg/500px-Elaeagnus_multiflora2.jpg"
+  "credit": "KENPEI",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Elaeagnus_multiflora2.jpg",
+  "file": "File:Elaeagnus_multiflora2.jpg"
  },
  "Hippophae rhamnoides": {
   "img": "assets/species/hippophae-rhamnoides.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Hippophae_rhamnoides-01_%28xndr%29.JPG/500px-Hippophae_rhamnoides-01_%28xndr%29.JPG"
+  "credit": "No machine-readable author provided. Svdmolen assumed (based on copyright claims).",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Hippophae_rhamnoides-01_(xndr).JPG",
+  "file": "File:Hippophae_rhamnoides-01_(xndr).JPG"
  },
  "Elaeagnus umbellata": {
   "img": "assets/species/elaeagnus-umbellata.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Elaeagnus_umbellata1.jpg/500px-Elaeagnus_umbellata1.jpg"
+  "credit": "KENPEI",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Elaeagnus_umbellata1.jpg",
+  "file": "File:Elaeagnus_umbellata1.jpg"
  },
  "Symphytum x uplandicum": {
   "img": "assets/species/symphytum-x-uplandicum.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Symphytum_%C3%97uplandicum_plant_2009-05-20%2C_cropped.jpg/500px-Symphytum_%C3%97uplandicum_plant_2009-05-20%2C_cropped.jpg"
+  "credit": "Kim Hansen",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Symphytum_%C3%97uplandicum_plant_2009-05-20,_cropped.jpg",
+  "file": "File:Symphytum_×uplandicum_plant_2009-05-20,_cropped.jpg"
  },
  "Ribes nigrum": {
   "img": "assets/species/ribes-nigrum.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Ribes_nigrum_a1.JPG/500px-Ribes_nigrum_a1.JPG"
+  "credit": "Jerzy Opioła",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Ribes_nigrum_a1.JPG",
+  "file": "File:Ribes_nigrum_a1.JPG"
  },
  "Ribes uva-crispa": {
   "img": "assets/species/ribes-uva-crispa.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Ribes_uva-crispa_kz04.jpg/500px-Ribes_uva-crispa_kz04.jpg"
+  "credit": "Krzysztof Ziarnek, Kenraiz",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Ribes_uva-crispa_kz04.jpg",
+  "file": "File:Ribes_uva-crispa_kz04.jpg"
  },
  "Rubus idaeus": {
   "img": "assets/species/rubus-idaeus.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Fert%C5%91di_k%C3%A1rmin_m%C3%A1lna.JPG/500px-Fert%C5%91di_k%C3%A1rmin_m%C3%A1lna.JPG"
+  "credit": "Kollányi Gábor",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Fert%C5%91di_k%C3%A1rmin_m%C3%A1lna.JPG",
+  "file": "File:Fertődi_kármin_málna.JPG"
  },
  "Vaccinium corymbosum": {
   "img": "assets/species/vaccinium-corymbosum.webp",
   "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Vaccinium_corymbosum%2801%29.jpg/500px-Vaccinium_corymbosum%2801%29.jpg"
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Vaccinium_corymbosum(01).jpg",
+  "file": "File:Vaccinium_corymbosum(01).jpg"
  },
  "Aronia melanocarpa": {
   "img": "assets/species/aronia-melanocarpa.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Aronia_melanocarpa_cv_Rubina_P1020524.JPG/500px-Aronia_melanocarpa_cv_Rubina_P1020524.JPG"
+  "credit": "manfred.sause@volloeko.de",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Aronia_melanocarpa_cv_Rubina_P1020524.JPG",
+  "file": "File:Aronia_melanocarpa_cv_Rubina_P1020524.JPG"
  },
  "Lonicera caerulea": {
   "img": "assets/species/lonicera-caerulea.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Lonicera_coerulea_a3.jpg/500px-Lonicera_coerulea_a3.jpg"
+  "credit": "Opioła Jerzy (Poland)",
+  "license": "CC BY 2.5",
+  "source": "https://commons.wikimedia.org/wiki/File:Lonicera_coerulea_a3.jpg",
+  "file": "File:Lonicera_coerulea_a3.jpg"
  },
  "Actinidia arguta": {
   "img": "assets/species/actinidia-arguta.webp",
-  "credit": "Bj\u00f6rn Appel",
+  "credit": "Björn Appel",
   "license": "CC BY-SA 3.0",
   "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Weiki01.jpg/500px-Weiki01.jpg"
  },
  "Vitis vinifera": {
   "img": "assets/species/vitis-vinifera.webp",
   "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Cabernet_Sauvignon_Gaillac.jpg/500px-Cabernet_Sauvignon_Gaillac.jpg"
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Cabernet_Sauvignon_Gaillac.jpg",
+  "file": "File:Cabernet_Sauvignon_Gaillac.jpg"
  },
  "Rheum rhabarbarum": {
   "img": "assets/species/rheum-rhabarbarum.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Rheum_undulatum_in_Jardin_botanique_de_la_Charme.jpg/500px-Rheum_undulatum_in_Jardin_botanique_de_la_Charme.jpg"
+  "credit": "Krzysztof Golik",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Rheum_undulatum_in_Jardin_botanique_de_la_Charme.jpg",
+  "file": "File:Rheum_undulatum_in_Jardin_botanique_de_la_Charme.jpg"
  },
  "Helianthus tuberosus": {
   "img": "assets/species/helianthus-tuberosus.webp",
   "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Sunroot_top.jpg/500px-Sunroot_top.jpg"
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Sunroot_top.jpg",
+  "file": "File:Sunroot_top.jpg"
  },
  "Fragaria x ananassa": {
   "img": "assets/species/fragaria-x-ananassa.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Garden_strawberry_%28Fragaria_%C3%97_ananassa%29_single2.jpg/500px-Garden_strawberry_%28Fragaria_%C3%97_ananassa%29_single2.jpg"
+  "credit": "Ivar Leidus",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Garden_strawberry_(Fragaria_%C3%97_ananassa)_single2.jpg",
+  "file": "File:Garden_strawberry_(Fragaria_×_ananassa)_single2.jpg"
  },
  "Crambe maritima": {
   "img": "assets/species/crambe-maritima.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Crambe_Maritima_Estonia.jpg/500px-Crambe_Maritima_Estonia.jpg"
+  "credit": "Siim at et.wikipedia",
+  "license": "CC BY-SA 2.5",
+  "source": "https://commons.wikimedia.org/wiki/File:Crambe_Maritima_Estonia.jpg",
+  "file": "File:Crambe_Maritima_Estonia.jpg"
  },
  "Ceratonia siliqua": {
   "img": "assets/species/ceratonia-siliqua.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Ceratonia_siliqua_Keciboynuzu_1370984_Nevit.jpg/500px-Ceratonia_siliqua_Keciboynuzu_1370984_Nevit.jpg"
+  "credit": "Nevit Dilmen (talk)",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Ceratonia_siliqua_Keciboynuzu_1370984_Nevit.jpg",
+  "file": "File:Ceratonia_siliqua_Keciboynuzu_1370984_Nevit.jpg"
  },
  "Pinus pinea": {
   "img": "assets/species/pinus-pinea.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Pinus_pinea_Wellington_Botanic_Gardens.jpg/500px-Pinus_pinea_Wellington_Botanic_Gardens.jpg"
+  "credit": "Karora",
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Pinus_pinea_Wellington_Botanic_Gardens.jpg",
+  "file": "File:Pinus_pinea_Wellington_Botanic_Gardens.jpg"
  },
  "Prunus dulcis": {
   "img": "assets/species/prunus-dulcis.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Almonds_-_in_shell%2C_shell_cracked_open%2C_shelled%2C_blanched.jpg/500px-Almonds_-_in_shell%2C_shell_cracked_open%2C_shelled%2C_blanched.jpg"
+  "credit": "Ivar Leidus",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Almonds_-_in_shell,_shell_cracked_open,_shelled,_blanched.jpg",
+  "file": "File:Almonds_-_in_shell,_shell_cracked_open,_shelled,_blanched.jpg"
  },
  "Juglans regia": {
   "img": "assets/species/juglans-regia.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Noyer_centenaire_en_automne.JPG/500px-Noyer_centenaire_en_automne.JPG"
+  "credit": "Thesupermat",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Noyer_centenaire_en_automne.JPG",
+  "file": "File:Noyer_centenaire_en_automne.JPG"
  },
  "Cydonia oblonga": {
   "img": "assets/species/cydonia-oblonga.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Pancrace_Bessa00.jpg/500px-Pancrace_Bessa00.jpg"
+  "credit": "Pancrace Bessa",
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Pancrace_Bessa00.jpg",
+  "file": "File:Pancrace_Bessa00.jpg"
  },
  "Laurus nobilis": {
   "img": "assets/species/laurus-nobilis.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Starr-071024-0195-Laurus_nobilis-leaves-Enchanting_Floral_Gardens_of_Kula-Maui_%2824867859296%29.jpg/500px-Starr-071024-0195-Laurus_nobilis-leaves-Enchanting_Floral_Gardens_of_Kula-Maui_%2824867859296%29.jpg"
+  "credit": "Forest and Kim Starr",
+  "license": "CC BY 3.0 us",
+  "source": "https://commons.wikimedia.org/wiki/File:Starr-071024-0195-Laurus_nobilis-leaves-Enchanting_Floral_Gardens_of_Kula-Maui_(24867859296).jpg",
+  "file": "File:Starr-071024-0195-Laurus_nobilis-leaves-Enchanting_Floral_Gardens_of_Kula-Maui_(24867859296).jpg"
  },
  "Capparis spinosa": {
   "img": "assets/species/capparis-spinosa.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Illustration_Capparis_spinosa0.jpg/500px-Illustration_Capparis_spinosa0.jpg"
+  "credit": "Otto Wilhelm Thomé (1840-1925)",
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Illustration_Capparis_spinosa0.jpg",
+  "file": "File:Illustration_Capparis_spinosa0.jpg"
  },
  "Cynara cardunculus": {
   "img": "assets/species/cynara-cardunculus.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Cynara_cardunculus_flavescens_%2814684164583%29.jpg/500px-Cynara_cardunculus_flavescens_%2814684164583%29.jpg"
+  "credit": "peganum from Henfield, England",
+  "license": "CC BY-SA 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Cynara_cardunculus_flavescens_(14684164583).jpg",
+  "file": "File:Cynara_cardunculus_flavescens_(14684164583).jpg"
  },
  "Salvia rosmarinus": {
   "img": "assets/species/salvia-rosmarinus.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Rosemary_in_bloom.JPG/500px-Rosemary_in_bloom.JPG"
+  "credit": "Margalob",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Rosemary_in_bloom.JPG",
+  "file": "File:Rosemary_in_bloom.JPG"
  },
  "Lavandula angustifolia": {
   "img": "assets/species/lavandula-angustifolia.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/4/40/Lavandula_angustifolia_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-087.jpg"
+  "credit": "Franz Eugen Köhler, Köhler's Medizinal-Pflanzen",
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Lavandula_angustifolia_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-087.jpg",
+  "file": "File:Lavandula_angustifolia_-_Köhler–s_Medizinal-Pflanzen-087.jpg"
  },
  "Lupinus albus": {
   "img": "assets/species/lupinus-albus.webp",
-  "credit": "",
-  "license": "",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Lupinus_albus_000_223_259_O.jpg/500px-Lupinus_albus_000_223_259_O.jpg"
+  "credit": "Jean-Claude Echardour [CC BY-SA], via Tela Botanica",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Lupinus_albus_000_223_259_O.jpg",
+  "file": "File:Lupinus_albus_000_223_259_O.jpg"
  },
  "Asparagus officinalis": {
   "img": "assets/species/asparagus-officinalis.webp",
@@ -682,5 +783,516 @@
   "credit": "Dave Whitinger",
   "license": "CC BY-SA 3.0",
   "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Egyptian_Tree_Onion%2C_Walking_Onion%2C_Topset_Onion_%28Allium_cepa_var._proliferum%29.jpg/500px-Egyptian_Tree_Onion%2C_Walking_Onion%2C_Topset_Onion_%28Allium_cepa_var._proliferum%29.jpg"
+ },
+ "nicotiana-tabacum": {
+  "img": "assets/species/nicotiana-tabacum.webp",
+  "credit": "Photo by and (c)2006 Derek Ramsey (Ram-Man)",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Patch_of_Tobacco_(Nicotiana_tabacum_)_in_a_field_in_Intercourse,_Pennsylvania..jpg",
+  "file": "File:Patch of Tobacco (Nicotiana tabacum ) in a field in Intercourse, Pennsylvania..jpg"
+ },
+ "musa-spp": {
+  "img": "assets/species/musa-spp.webp",
+  "credit": "Forest &amp; Kim Starr",
+  "license": "CC BY 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Starr_050826-4195_Musa_sp..jpg",
+  "file": "File:Starr 050826-4195 Musa sp..jpg"
+ },
+ "citrus-spp": {
+  "img": "assets/species/citrus-spp.webp",
+  "credit": "The original uploader was Radomil at Polish Wikipedia.",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Citrus_aurentium_spp.jpg",
+  "file": "File:Citrus aurentium spp.jpg"
+ },
+ "piper-nigrum": {
+  "img": "assets/species/piper-nigrum.webp",
+  "credit": "K Hari Krishnan",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Black_Pepper_(Piper_nigrum)_fruits.jpg",
+  "file": "File:Black Pepper (Piper nigrum) fruits.jpg"
+ },
+ "myristica-fragrans": {
+  "img": "assets/species/myristica-fragrans.webp",
+  "credit": "Jeevan Jose, Kerala, India",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Myristica_fragrans_by_kadavoor.jpg",
+  "file": "File:Myristica fragrans by kadavoor.jpg"
+ },
+ "cinnamomum-verum": {
+  "img": "assets/species/cinnamomum-verum.webp",
+  "credit": "Simon A. Eugster",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Cinnamomum_verum_spices.jpg",
+  "file": "File:Cinnamomum verum spices.jpg"
+ },
+ "elettaria-cardamomum": {
+  "img": "assets/species/elettaria-cardamomum.webp",
+  "credit": "Didier Descouens",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Elettaria_cardamomum_Capsules_and_seeds.jpg",
+  "file": "File:Elettaria cardamomum Capsules and seeds.jpg"
+ },
+ "arachis-hypogaea": {
+  "img": "assets/species/arachis-hypogaea.webp",
+  "credit": "Ivar Leidus",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Peanuts_(Arachis_hypogaea)_-_in_shell,_shell_cracked_open,_shelled,_peeled.jpg",
+  "file": "File:Peanuts (Arachis hypogaea) - in shell, shell cracked open, shelled, peeled.jpg"
+ },
+ "spondias-dulcis": {
+  "img": "assets/species/spondias-dulcis.webp",
+  "credit": "Prenn",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Spondias_dulcis_01.JPG",
+  "file": "File:Spondias dulcis 01.JPG"
+ },
+ "litchi-chinensis": {
+  "img": "assets/species/litchi-chinensis.webp",
+  "credit": "Ivar Leidus",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Lychee_fruits_and_seed.jpg",
+  "file": "File:Lychee fruits and seed.jpg"
+ },
+ "garcinia-mangostana": {
+  "img": "assets/species/garcinia-mangostana.webp",
+  "credit": "Christine Braaten",
+  "license": "CC0",
+  "source": "https://commons.wikimedia.org/wiki/File:Garcinia_mangostana_466038429.jpg",
+  "file": "File:Garcinia mangostana 466038429.jpg"
+ },
+ "dioscorea-alata": {
+  "img": "assets/species/dioscorea-alata.webp",
+  "credit": "Aruna at Malayalam Wikipedia",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:%E0%B4%95%E0%B4%BE%E0%B4%9A%E0%B5%8D%E0%B4%9A%E0%B4%BF%E0%B5%BD-%E0%B4%95%E0%B4%BF%E0%B4%B4%E0%B4%99%E0%B5%8D%E0%B4%99%E0%B5%8D.JPG",
+  "file": "File:കാച്ചിൽ-കിഴങ്ങ്.JPG"
+ },
+ "maranta-arundinacea": {
+  "img": "assets/species/maranta-arundinacea.webp",
+  "credit": "Dr. Chinchu C.",
+  "license": "CC BY 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Arrowroot_(Maranta_arundinacea)_Boiled.jpg",
+  "file": "File:Arrowroot (Maranta arundinacea) Boiled.jpg"
+ },
+ "saccharum-officinarum": {
+  "img": "assets/species/saccharum-officinarum.webp",
+  "credit": "ruurmo",
+  "license": "CC BY-SA 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Cut_sugarcane.jpg",
+  "file": "File:Cut sugarcane.jpg"
+ },
+ "swietenia-mahagoni": {
+  "img": "assets/species/swietenia-mahagoni.webp",
+  "credit": "Krzysztof Ziarnek, Kenraiz",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Swietenia_mahagoni_kz02.jpg",
+  "file": "File:Swietenia mahagoni kz02.jpg"
+ },
+ "pinus-occidentalis": {
+  "img": "assets/species/pinus-occidentalis.webp",
+  "credit": "Ken_Mayer on Flickr",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Pinus_occidentalis_Jarabacoa.jpg",
+  "file": "File:Pinus occidentalis Jarabacoa.jpg"
+ },
+ "cedrela-odorata": {
+  "img": "assets/species/cedrela-odorata.webp",
+  "credit": "",
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Cedrela_odorata_foliage.jpg",
+  "file": "File:Cedrela odorata foliage.jpg"
+ },
+ "catalpa-longissima": {
+  "img": "assets/species/catalpa-longissima.webp",
+  "credit": "Scott Zona from Miami, Florida, USA",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Catalpa_longissima.jpg",
+  "file": "File:Catalpa longissima.jpg"
+ },
+ "guaiacum-officinale": {
+  "img": "assets/species/guaiacum-officinale.webp",
+  "credit": "Cuvier, Frédéric Georges, 1773-1838",
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Cuvier_-_Dictionnaire_des_sciences_naturelles,_tome_18.djvu",
+  "file": "File:Cuvier - Dictionnaire des sciences naturelles, tome 18.djvu"
+ },
+ "guaiacum-sanctum": {
+  "img": "assets/species/guaiacum-sanctum.webp",
+  "credit": "Mangostar",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Guaiacum_sanctum.jpg",
+  "file": "File:Guaiacum sanctum.jpg"
+ },
+ "cordia-alliodora": {
+  "img": "assets/species/cordia-alliodora.webp",
+  "credit": "treesftf",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Cordia_alliodora.jpg",
+  "file": "File:Cordia alliodora.jpg"
+ },
+ "calophyllum-brasiliense": {
+  "img": "assets/species/calophyllum-brasiliense.webp",
+  "credit": "Steve J Sewell",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:C._antillanum_flower.jpg",
+  "file": "File:C. antillanum flower.jpg"
+ },
+ "juglans-jamaicensis": {
+  "img": "assets/species/juglans-jamaicensis.webp",
+  "credit": "Descourtilz, J. Theodore.; Descourtilz, M. E.; Pichard.",
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Flore_m%C3%A9dicale_des_Antilles,_ou,_Trait%C3%A9_des_plantes_usuelles_(8260726721).jpg",
+  "file": "File:Flore médicale des Antilles, ou, Traité des plantes usuelles (8260726721).jpg"
+ },
+ "guarea-guidonia": {
+  "img": "assets/species/guarea-guidonia.webp",
+  "credit": "Me",
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Guarea_guidonia_1.JPG",
+  "file": "File:Guarea guidonia 1.JPG"
+ },
+ "petitia-domingensis": {
+  "img": "assets/species/petitia-domingensis.webp",
+  "credit": "Quentin Groom",
+  "license": "CC0",
+  "source": "https://commons.wikimedia.org/wiki/File:Petitia_domingensis_209389649.jpg",
+  "file": "File:Petitia domingensis 209389649.jpg"
+ },
+ "phyllostylon-brasiliense": {
+  "img": "assets/species/phyllostylon-brasiliense.webp",
+  "credit": "Centre de coopération internationale en recherche agronomique pour le développement (France). Programme Bois. Producteur d'un fonds d'archives",
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Collection_de_bois_de_la_Xyloth%C3%A8que_du_Cirad._Bois_de_la_Collection_de_r%C3%A9f%C3%A9rence._Phyllostylon_brasiliense_Capan._ex_Benth._%26_Hook.f._-_Famille_des_Ulmac%C3%A9es_(Antilles_fran%C3%A7aises)_-_btv1b101133832.jpg",
+  "file": "File:Collection de bois de la Xylothèque du Cirad. Bois de la Collection de référence. Phyllostylon brasiliense Capan. ex Benth. & Hook.f. - Famille des Ulmacées (Antilles françaises) - btv1b101133832.jpg"
+ },
+ "ceiba-pentandra": {
+  "img": "assets/species/ceiba-pentandra.webp",
+  "credit": "Basile Morin",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Kapok_on_a_branch_of_Ceiba_pentandra_(white_silk-cotton_tree).jpg",
+  "file": "File:Kapok on a branch of Ceiba pentandra (white silk-cotton tree).jpg"
+ },
+ "bucida-buceras": {
+  "img": "assets/species/bucida-buceras.webp",
+  "credit": "Forest &amp; Kim Starr",
+  "license": "CC BY 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Starr_080530-4638_Bucida_buceras.jpg",
+  "file": "File:Starr 080530-4638 Bucida buceras.jpg"
+ },
+ "manilkara-bidentata": {
+  "img": "assets/species/manilkara-bidentata.webp",
+  "credit": "Jean-Pierre Chéreau &amp; Roger Culos",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Manilkara_bidentata_MHNT.BOT.2010.6.32.jpg",
+  "file": "File:Manilkara bidentata MHNT.BOT.2010.6.32.jpg"
+ },
+ "ocotea-spp": {
+  "img": "assets/species/ocotea-spp.webp",
+  "credit": "Centre de coopération internationale en recherche agronomique pour le développement (France). Programme Bois. Producteur d'un fonds d'archives",
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Collection_de_bois_de_la_Xyloth%C3%A8que_du_Cirad._Bois_de_Madagascar._Ocotea_spp._-_Varongy_-_Famille_des_Laurac%C3%A9es_(Madagascar)_-_btv1b10115488c.jpg",
+  "file": "File:Collection de bois de la Xylothèque du Cirad. Bois de Madagascar. Ocotea spp. - Varongy - Famille des Lauracées (Madagascar) - btv1b10115488c.jpg"
+ },
+ "inga-vera": {
+  "img": "assets/species/inga-vera.webp",
+  "credit": "Dick Culbert from Gibsons, B.C., Canada",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Inga_Vera,_flower_of_the_Guabo_tree_(10108387095).jpg",
+  "file": "File:Inga Vera, flower of the Guabo tree (10108387095).jpg"
+ },
+ "erythrina-spp": {
+  "img": "assets/species/erythrina-spp.webp",
+  "credit": "Rexness",
+  "license": "CC BY-SA 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Erythrina_spp._(8341894014).jpg",
+  "file": "File:Erythrina spp. (8341894014).jpg"
+ },
+ "hymenaea-courbaril": {
+  "img": "assets/species/hymenaea-courbaril.webp",
+  "credit": "Jean-Pierre Chéreau &amp; Roger Culos",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Hymenaea_courbaril_MHNT.BOT.2010.6.30.jpg",
+  "file": "File:Hymenaea courbaril MHNT.BOT.2010.6.30.jpg"
+ },
+ "pterocarpus-officinalis": {
+  "img": "assets/species/pterocarpus-officinalis.webp",
+  "credit": "Jean-Pierre Chéreau &amp; Roger Culos",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Pterocarpus_officinalis_MHNT.BOT.2010.6.39.jpg",
+  "file": "File:Pterocarpus officinalis MHNT.BOT.2010.6.39.jpg"
+ },
+ "andira-inermis": {
+  "img": "assets/species/andira-inermis.webp",
+  "credit": "S.Pereira-Nunes",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Tree_Picture_of_Andira_Inermis.jpg",
+  "file": "File:Tree Picture of Andira Inermis.jpg"
+ },
+ "lysiloma-latisiliquum": {
+  "img": "assets/species/lysiloma-latisiliquum.webp",
+  "credit": "Forest and Kim Starr",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Lysiloma_latisiliquum-leaves_and_seedpods.jpg",
+  "file": "File:Lysiloma latisiliquum-leaves and seedpods.jpg"
+ },
+ "arcoa-gonavensis": {
+  "img": "assets/species/arcoa-gonavensis.webp",
+  "credit": "Solomon203",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Sony_Ericsson_BST-38_with_Arcoa_warranty_20110613.jpg",
+  "file": "File:Sony Ericsson BST-38 with Arcoa warranty 20110613.jpg"
+ },
+ "mammea-americana": {
+  "img": "assets/species/mammea-americana.webp",
+  "credit": "Sven Volkens",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Mammea_americana1.jpg",
+  "file": "File:Mammea americana1.jpg"
+ },
+ "genipa-americana": {
+  "img": "assets/species/genipa-americana.webp",
+  "credit": "",
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Geniculata_and_Genipa.jpg",
+  "file": "File:Geniculata and Genipa.jpg"
+ },
+ "annona-glabra": {
+  "img": "assets/species/annona-glabra.webp",
+  "credit": "Filo gèn'",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Annona_glabra_-_Seeds.jpg",
+  "file": "File:Annona glabra - Seeds.jpg"
+ },
+ "annona-montana": {
+  "img": "assets/species/annona-montana.webp",
+  "credit": "Tatiana Gerus from Brisbane, Australia",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Annona_montana.jpg",
+  "file": "File:Annona montana.jpg"
+ },
+ "spondias-mombin": {
+  "img": "assets/species/spondias-mombin.webp",
+  "credit": "Adoscam",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Spondias_mombin_(Fruit)_sur_un_papier_blanc_au_B%C3%A9nin_03.jpg",
+  "file": "File:Spondias mombin (Fruit) sur un papier blanc au Bénin 03.jpg"
+ },
+ "phyllanthus-acidus": {
+  "img": "assets/species/phyllanthus-acidus.webp",
+  "credit": "Dinesh Valke from Thane, India",
+  "license": "CC BY-SA 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Phyllanthus_acidus_(2464194687).jpg",
+  "file": "File:Phyllanthus acidus (2464194687).jpg"
+ },
+ "zamia-pumila": {
+  "img": "assets/species/zamia-pumila.webp",
+  "credit": "",
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Zamia_pumila.jpg",
+  "file": "File:Zamia pumila.jpg"
+ },
+ "colubrina-elliptica": {
+  "img": "assets/species/colubrina-elliptica.webp",
+  "credit": "Djringer",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Colubrina_elliptica_(Soldierwood)_by_David_Jeffrey_Ringer.jpg",
+  "file": "File:Colubrina elliptica (Soldierwood) by David Jeffrey Ringer.jpg"
+ },
+ "sideroxylon-foetidissimum": {
+  "img": "assets/species/sideroxylon-foetidissimum.webp",
+  "credit": "Photo by David J. Stang",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Sideroxylon_foetidissimum_7zz.jpg",
+  "file": "File:Sideroxylon foetidissimum 7zz.jpg"
+ },
+ "coccothrinax-spissa": {
+  "img": "assets/species/coccothrinax-spissa.webp",
+  "credit": "Daderot",
+  "license": "CC0",
+  "source": "https://commons.wikimedia.org/wiki/File:Coccothrinax_spissa_-_Marie_Selby_Botanical_Gardens_-_Sarasota,_Florida_-_DSC01550.jpg",
+  "file": "File:Coccothrinax spissa - Marie Selby Botanical Gardens - Sarasota, Florida - DSC01550.jpg"
+ },
+ "sabal-domingensis": {
+  "img": "assets/species/sabal-domingensis.webp",
+  "credit": "Photo by David J. Stang",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Sabal_domingensis_4zz.jpg",
+  "file": "File:Sabal domingensis 4zz.jpg"
+ },
+ "pseudophoenix-vinifera": {
+  "img": "assets/species/pseudophoenix-vinifera.webp",
+  "credit": "scott.zona",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Pseudophoenix_vinifera.jpg",
+  "file": "File:Pseudophoenix vinifera.jpg"
+ },
+ "pseudophoenix-ekmanii": {
+  "img": "assets/species/pseudophoenix-ekmanii.webp",
+  "credit": "Photo by David J. Stang",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Pseudophoenix_ekmanii_1zz.jpg",
+  "file": "File:Pseudophoenix ekmanii 1zz.jpg"
+ },
+ "zombia-antillarum": {
+  "img": "assets/species/zombia-antillarum.webp",
+  "credit": "Daderot",
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Zombia_antillarum_-_Denver_Botanic_Gardens_-_DSC00947.JPG",
+  "file": "File:Zombia antillarum - Denver Botanic Gardens - DSC00947.JPG"
+ },
+ "bactris-plumeriana": {
+  "img": "assets/species/bactris-plumeriana.webp",
+  "credit": "jasonhernandez74",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Prickly_Palm_(Bactris_plumeriana).jpeg",
+  "file": "File:Prickly Palm (Bactris plumeriana).jpeg"
+ },
+ "pimenta-racemosa": {
+  "img": "assets/species/pimenta-racemosa.webp",
+  "credit": "Krzysztof Ziarnek, Kenraiz",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Pimenta_racemosa_kz01.jpg",
+  "file": "File:Pimenta racemosa kz01.jpg"
+ },
+ "petiveria-alliacea": {
+  "img": "assets/species/petiveria-alliacea.webp",
+  "credit": "",
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Petiveria_-_Ehret.jpg",
+  "file": "File:Petiveria - Ehret.jpg"
+ },
+ "simarouba-glauca": {
+  "img": "assets/species/simarouba-glauca.webp",
+  "credit": "Vinayaraj",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Simarouba_glauca.jpg",
+  "file": "File:Simarouba glauca.jpg"
+ },
+ "guazuma-ulmifolia": {
+  "img": "assets/species/guazuma-ulmifolia.webp",
+  "credit": "Dick Culbert from Gibsons, B.C., Canada",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Guazuma_ulmifolia_(25042641476).jpg",
+  "file": "File:Guazuma ulmifolia (25042641476).jpg"
+ },
+ "clusia-rosea": {
+  "img": "assets/species/clusia-rosea.webp",
+  "credit": "Forest &amp; Kim Starr",
+  "license": "CC BY 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Starr_010330-0602_Clusia_rosea.jpg",
+  "file": "File:Starr 010330-0602 Clusia rosea.jpg"
+ },
+ "croton-spp": {
+  "img": "assets/species/croton-spp.webp",
+  "credit": "vivek raj from mangalore, india",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Monkey_puzzle_(4079675925).jpg",
+  "file": "File:Monkey puzzle (4079675925).jpg"
+ },
+ "chiococca-alba": {
+  "img": "assets/species/chiococca-alba.webp",
+  "credit": "Scott Zona",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Chiococca_alba.jpg",
+  "file": "File:Chiococca alba.jpg"
+ },
+ "neurolaena-lobata": {
+  "img": "assets/species/neurolaena-lobata.webp",
+  "credit": "Dick Culbert from Gibsons, B.C., Canada",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Neurolaena_lobata,_known_as_Jackass_Bitters._(9239761603).jpg",
+  "file": "File:Neurolaena lobata, known as Jackass Bitters. (9239761603).jpg"
+ },
+ "ficus-spp": {
+  "img": "assets/species/ficus-spp.webp",
+  "credit": "G-Lignum",
+  "license": "CC BY 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Wood_from_Ficus_spp.jpg",
+  "file": "File:Wood from Ficus spp.jpg"
+ },
+ "metopium-toxiferum": {
+  "img": "assets/species/metopium-toxiferum.webp",
+  "credit": "Forest &amp; Kim Starr",
+  "license": "CC BY 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Starr_031108-2123_Metopium_toxiferum.jpg",
+  "file": "File:Starr 031108-2123 Metopium toxiferum.jpg"
+ },
+ "hippomane-mancinella": {
+  "img": "assets/species/hippomane-mancinella.webp",
+  "credit": "Hans Hillewaert",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Hippomane_mancinella_(fruit).jpg",
+  "file": "File:Hippomane mancinella (fruit).jpg"
+ },
+ "avicennia-germinans": {
+  "img": "assets/species/avicennia-germinans.webp",
+  "credit": "Roger Culos",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Avicennia_germinans_MHNT.BOT.2025.31.14.jpg",
+  "file": "File:Avicennia germinans MHNT.BOT.2025.31.14.jpg"
+ },
+ "tabebuia-spp": {
+  "img": "assets/species/tabebuia-spp.webp",
+  "credit": "J.M.Garg",
+  "license": "CC BY 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Tabebuia_aurea_fruit_%26_flowers_W_IMG_7055.jpg",
+  "file": "File:Tabebuia aurea fruit & flowers W IMG 7055.jpg"
+ },
+ "rhizophora-mangle": {
+  "img": "assets/species/rhizophora-mangle.webp",
+  "credit": "Jonathan Wilkins",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Detail_of_mangrove_roots.jpg",
+  "file": "File:Detail of mangrove roots.jpg"
+ },
+ "laguncularia-racemosa": {
+  "img": "assets/species/laguncularia-racemosa.webp",
+  "credit": "Roger Culos",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Laguncularia_racemosa_MHNT.BOT.2025.31.22.jpg",
+  "file": "File:Laguncularia racemosa MHNT.BOT.2025.31.22.jpg"
+ },
+ "conocarpus-erectus": {
+  "img": "assets/species/conocarpus-erectus.webp",
+  "credit": "Roger Culos",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Conocarpus_erectus_MHNT.BOT.2025.31.2.jpg",
+  "file": "File:Conocarpus erectus MHNT.BOT.2025.31.2.jpg"
+ },
+ "suriana-maritima": {
+  "img": "assets/species/suriana-maritima.webp",
+  "credit": "B. navez",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Suriana_maritima_flowers.JPG",
+  "file": "File:Suriana maritima flowers.JPG"
+ },
+ "tournefortia-gnaphalodes": {
+  "img": "assets/species/tournefortia-gnaphalodes.webp",
+  "credit": "James St. John",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Tournefortia_gnaphalodes_(bay_lavender)_(San_Salvador_Island,_Bahamas)_2_(15575655697).jpg",
+  "file": "File:Tournefortia gnaphalodes (bay lavender) (San Salvador Island, Bahamas) 2 (15575655697).jpg"
+ },
+ "ipomoea-pes": {
+  "img": "assets/species/ipomoea-pes.webp",
+  "credit": "Drajay1976",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:%E0%B4%85%E0%B4%9F%E0%B4%AE%E0%B5%8D%E0%B4%AA%E0%B5%8D_Ipomoea_pes-caprae_02.jpg",
+  "file": "File:അടമ്പ് Ipomoea pes-caprae 02.jpg"
+ },
+ "krugiodendron-ferreum": {
+  "img": "assets/species/krugiodendron-ferreum.webp",
+  "credit": "Daderot",
+  "license": "CC0",
+  "source": "https://commons.wikimedia.org/wiki/File:Krugiodendron_ferreum_-_McKee_Botanical_Garden_-_Vero_Beach,_Florida_-_DSC03107.jpg",
+  "file": "File:Krugiodendron ferreum - McKee Botanical Garden - Vero Beach, Florida - DSC03107.jpg"
+ },
+ "coccoloba-diversifolia": {
+  "img": "assets/species/coccoloba-diversifolia.webp",
+  "credit": "",
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Coccoloba_diversifolia_-_Jacquin.jpg",
+  "file": "File:Coccoloba diversifolia - Jacquin.jpg"
  }
 }

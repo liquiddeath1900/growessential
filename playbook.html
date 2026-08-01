@@ -47,8 +47,46 @@
   .step{display:flex;gap:14px;margin-bottom:10px;background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--green);border-radius:var(--radius);padding:14px 16px}
   .step .n{flex:0 0 30px;height:30px;border-radius:50%;background:var(--green);color:var(--cream);font-family:'Fraunces';font-weight:700;display:flex;align-items:center;justify-content:center;font-size:15px}
   .step h4{font-size:15.5px;margin-bottom:2px}.step p{font-size:14px;color:#33402f;margin:0}
-  .tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);margin-bottom:14px}
+  .tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);margin-bottom:14px;position:relative}
+  /* scroll affordance — without it a clipped table just looks broken */
+  .tbl-wrap.is-scrollable:after{content:"";position:absolute;top:0;right:0;bottom:0;width:38px;pointer-events:none;
+    background:linear-gradient(90deg,rgba(255,253,248,0),rgba(255,253,248,.95))}
   table{border-collapse:collapse;width:100%;font-size:14px;min-width:520px;background:var(--paper)}
+  /* cardified tables keep a readable table view instead of blowing past the container */
+  .tbl-wrap table[data-cardified]{min-width:0;table-layout:fixed;font-size:13px}
+  .tbl-wrap table[data-cardified] td{overflow-wrap:anywhere}
+  /* card grid */
+  .gc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-bottom:14px}
+  .gc{display:flex;flex-direction:column;background:var(--paper);border:1px solid var(--line);
+    border-radius:var(--radius);overflow:hidden;cursor:pointer;transition:.15s;text-align:left;font-family:inherit;padding:0}
+  .gc:hover{border-color:var(--green);transform:translateY(-2px)}
+  .gc-img{width:100%;aspect-ratio:4/3;object-fit:cover;background:var(--cream);display:block}
+  .gc-noimg{width:100%;aspect-ratio:4/3;background:linear-gradient(160deg,#eef2e6,#e3ddcc);
+    display:flex;align-items:center;justify-content:center;font-size:30px;opacity:.5}
+  .gc-in{padding:13px 15px 14px;display:flex;flex-direction:column;gap:7px;flex:1}
+  .gc-t{font-family:'Fraunces',serif;font-weight:700;font-size:16px;color:var(--ink);line-height:1.2}
+  .gc-s{font-size:12.5px;color:var(--muted);line-height:1.3}
+  .gc-badges{display:flex;gap:5px;flex-wrap:wrap}
+  .gc-badge{font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:999px;background:#e8eede;color:var(--green-dk)}
+  .gc-f{display:flex;gap:8px;font-size:12.5px;line-height:1.4}
+  .gc-l{flex:0 0 76px;font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);padding-top:2px}
+  .gc-v{flex:1;color:#33402f}
+  .gc details{font-size:12.5px}
+  .gc summary{cursor:pointer;color:var(--green);font-weight:600;font-size:12px}
+  .gc-cred{font-size:10.5px;color:var(--muted);margin-top:auto;padding-top:8px;line-height:1.35;
+    overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .gc-cred a{color:var(--muted);text-decoration:underline}
+  .gc-more{font-size:11.5px;font-weight:700;color:var(--green);letter-spacing:.04em;text-transform:uppercase}
+  .gc-empty{display:none;text-align:center;color:var(--muted);padding:30px;font-style:italic}
+  /* detail sheet content */
+  .ds-hero{width:100%;max-height:230px;object-fit:cover;border-radius:14px;margin-bottom:14px;background:var(--cream)}
+  .ds-h{font-family:'Fraunces',serif;font-size:25px;font-weight:900;line-height:1.15;margin-bottom:2px;padding-right:44px}
+  .ds-sci{font-size:14px;color:var(--muted);font-style:italic;margin-bottom:10px}
+  .ds-badges{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+  .ds-f{margin-bottom:13px}
+  .ds-f h4{font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--soil);margin-bottom:3px}
+  .ds-f div{font-size:14.5px;color:#33402f;line-height:1.5}
+  .ds-links{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;padding-top:12px;border-top:1px solid var(--line)}
   th,td{text-align:left;padding:10px 13px;border-bottom:1px solid var(--line);vertical-align:top}
   th{background:#efe9db;font-family:'Inter';font-weight:700;font-size:12.5px;text-transform:uppercase;letter-spacing:.03em;color:var(--soil)}
   tr:last-child td{border-bottom:none}
@@ -71,6 +109,111 @@
   /* per-item lookup links */
   .lu{display:inline-block;margin-left:5px;font-size:12.5px;line-height:1;text-decoration:none;opacity:.5;cursor:pointer;vertical-align:baseline}
   .lu:hover{opacity:1;text-decoration:none}
+  /* deficiency picker */
+  .dp-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+  .dp-btn{padding:7px 14px;border-radius:999px;border:1.5px solid var(--line);background:var(--paper);color:var(--ink);font-family:inherit;font-size:13.5px;font-weight:600;cursor:pointer}
+  .dp-btn.active{background:var(--green);color:var(--cream);border-color:var(--green)}
+  .dp-in{width:100%;padding:11px 15px;border:1.5px solid var(--line);border-radius:999px;font-family:inherit;font-size:15px;background:var(--paper);color:var(--ink)}
+  .dp-in:focus{outline:none;border-color:var(--green)}
+  .dp-hint{font-size:13px;color:var(--muted);margin:8px 2px 12px;font-style:italic}
+  /* vpd calculator */
+  .vp-in{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+  .vp-in label{flex:1 1 130px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--soil)}
+  .vp-in input{width:100%;margin-top:5px;padding:10px 13px;border:1.5px solid var(--line);border-radius:10px;font-family:inherit;font-size:16px;background:var(--paper);color:var(--ink)}
+  .vp-in input:focus{outline:none;border-color:var(--green)}
+  .vp-out{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px}
+  .vp-nums{display:flex;gap:18px;flex-wrap:wrap;font-size:15px;margin-bottom:10px}
+  .vp-nums b{font-family:'Fraunces',serif;font-size:24px;color:var(--green-dk)}
+  .vp-leaf b{color:var(--amber)}
+  .vp-v{font-size:14.5px;font-weight:600;margin-bottom:8px}
+  .vp-v.good{color:var(--green-dk)}.vp-v.bad{color:#a3341f}
+  .vp-note{font-size:13px;color:var(--muted);font-style:italic}
+  /* crop matrix filters */
+  .cf-g{display:flex;gap:7px;flex-wrap:wrap;align-items:center;margin-bottom:9px}
+  .cf-l{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--soil);flex:0 0 92px}
+  @media(max-width:720px){.cf-l{flex:0 0 100%;margin-bottom:2px}}
+  /* nav row — search only; all navigation lives in the thumb bar */
+  .navrow{display:flex;gap:8px;align-items:center}
+  .navrow .search{flex:1 1 auto;min-width:0}
+  #tabs{display:none}
+  /* thumb bar — fixed to the bottom so it sits in natural thumb reach */
+  .thumbbar{position:fixed;left:0;right:0;bottom:0;z-index:55;display:flex;gap:8px;
+    background:rgba(245,241,232,.97);backdrop-filter:blur(8px);border-top:1px solid var(--line);
+    padding:8px 14px calc(8px + env(safe-area-inset-bottom)) 14px}
+  .tb-btn{flex:0 0 auto;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;
+    min-width:66px;min-height:52px;padding:6px 14px;border-radius:14px;border:1.5px solid var(--line);
+    background:var(--paper);color:var(--ink);font-family:inherit;font-size:11.5px;font-weight:700;cursor:pointer}
+  .tb-btn:active{transform:scale(.96)}
+  .tb-i{font-size:19px;line-height:1}
+  .tb-main{flex:1 1 auto;flex-direction:row;gap:9px;background:var(--green);border-color:var(--green);
+    color:var(--cream);font-size:15px;min-height:52px}
+  .tb-main .tb-i{font-size:17px}
+  #curSec{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:60vw}
+  body{padding-bottom:84px}
+  @media(min-width:721px){
+    .thumbbar{left:50%;transform:translateX(-50%);right:auto;bottom:18px;width:min(560px,94vw);
+      border:1px solid var(--line);border-radius:18px;box-shadow:0 8px 28px rgba(23,47,27,.16)}
+  }
+  /* dashboard */
+  .hm-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px;margin-bottom:6px}
+  .hm-card{display:flex;flex-direction:column;gap:4px;text-align:left;background:var(--paper);border:1px solid var(--line);
+    border-left:4px solid var(--green);border-radius:var(--radius);padding:14px 16px;cursor:pointer;font-family:inherit;transition:.15s}
+  .hm-card:hover{border-color:var(--green);transform:translateY(-2px)}
+  .hm-t{font-family:'Fraunces',serif;font-weight:700;font-size:16.5px;color:var(--ink)}
+  .hm-b{font-size:13px;color:var(--muted);line-height:1.45}
+  .hm-n{font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--green-dk)}
+  .hm-recent{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:18px}
+  /* related chips */
+  .related{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:22px;padding-top:14px;border-top:1px solid var(--line)}
+  .related-l{font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  .rel-chip{background:var(--paper);border:1.5px solid var(--line);color:var(--green-dk);font-family:inherit;
+    font-size:13px;font-weight:600;padding:6px 13px;border-radius:999px;cursor:pointer}
+  .rel-chip:hover{border-color:var(--green);background:#eef5e9}
+  /* sheets (section picker + detail) */
+  .sheet{position:fixed;inset:0;z-index:60;display:none}
+  .sheet.open{display:block}
+  .sheet-scrim{position:absolute;inset:0;background:rgba(23,47,27,.45)}
+  .sheet-body{position:absolute;left:0;right:0;bottom:0;top:0;background:var(--paper);overflow-y:auto;
+    padding:22px 20px 40px;animation:sheetUp .22s ease-out}
+  @media(min-width:721px){.sheet-body{top:auto;max-height:86vh;border-radius:20px 20px 0 0;
+    left:50%;transform:translateX(-50%);width:min(760px,100%)}}
+  @keyframes sheetUp{from{transform:translateY(18px);opacity:.6}to{transform:none;opacity:1}}
+  @media(min-width:721px){@keyframes sheetUp{from{transform:translate(-50%,18px);opacity:.6}to{transform:translateX(-50%);opacity:1}}}
+  .sheet-x{position:absolute;top:14px;right:16px;background:var(--cream);border:1.5px solid var(--line);
+    width:38px;height:38px;border-radius:50%;font-size:16px;cursor:pointer;color:var(--ink);line-height:1}
+  .sheet-h{font-size:21px;font-weight:900;margin-bottom:14px}
+  .sl-g{margin-bottom:18px}
+  .sl-g h4{font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+  /* big tap targets — 60px min, comfortably thumb-sized */
+  .sl-i{display:block;width:100%;text-align:left;background:var(--cream);border:1.5px solid var(--line);
+    border-radius:14px;padding:14px 16px;margin-bottom:9px;cursor:pointer;font-family:inherit;min-height:60px}
+  .sl-i b{display:block;font-size:16px;color:var(--ink)}
+  .sl-i span{display:block;font-size:12.5px;color:var(--muted);margin-top:3px;line-height:1.35}
+  .sl-i:active{transform:scale(.99)}
+  .sl-i.active{border-color:var(--green);background:#eef5e9}
+  .sl-i.wide{background:var(--paper)}
+  @media(min-width:721px){ .sl-g{display:grid;grid-template-columns:1fr 1fr;gap:0 10px}
+    .sl-g h4{grid-column:1/-1} }
+  @media(max-width:720px){ .hm-grid{grid-template-columns:1fr} }
+  /* jadam calculator */
+  .jc-top{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+  .jc-seg{display:flex;gap:6px;flex-wrap:wrap}
+  .jc-row{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+  .jc-row label{flex:1 1 210px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--soil)}
+  .jc-row select,.jc-row input{width:100%;margin-top:5px;padding:12px 13px;border:1.5px solid var(--line);
+    border-radius:10px;font-family:inherit;font-size:16px;background:var(--paper);color:var(--ink)}
+  .jc-row select:focus,.jc-row input:focus{outline:none;border-color:var(--green)}
+  .jc-plain{font-size:16px;line-height:1.5;color:var(--ink);background:#eef5e9;border-left:4px solid var(--green);
+    border-radius:var(--radius);padding:13px 16px;margin-bottom:14px}
+  .jc-danger{background:#fbe9e4;border:1px solid #eec4b8;border-left:4px solid #a3341f;border-radius:var(--radius);
+    padding:13px 16px;margin-bottom:12px;font-size:14.5px}
+  .jc-danger b{color:#a3341f}
+  .jc-per{background:var(--paper);border:1px dashed var(--line);border-radius:var(--radius);
+    padding:11px 14px;margin-bottom:14px;font-size:13.5px;color:#33402f}
+  .jc-mut{color:var(--muted);font-size:12.5px}
+  .jc-h{font-size:15px;margin:18px 0 8px;color:var(--green-dk);font-family:'Fraunces',serif}
+  .jc-steps{margin:0 0 6px 20px;font-size:15px;line-height:1.55;color:#33402f}
+  .jc-steps li{margin-bottom:7px}
   /* auth */
   .gate{max-width:400px;margin:8vh auto;background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:30px 26px;text-align:center}
   .gate h2{font-size:24px;font-weight:900;margin-bottom:6px}
@@ -120,11 +263,30 @@
 <div id="app" class="hidden">
   <div class="toolbar">
     <div class="wrap">
-      <input class="search" id="search" placeholder="🔎  Search the playbook — “drone”, “lead”, “IDIAF”, “swale”…" autocomplete="off">
-      <div class="tabs" id="tabs"></div>
+      <div class="navrow">
+        <input class="search" id="search" placeholder="🔎  Search — “JS dilution”, “cacao”, “black pod”…" autocomplete="off">
+      </div>
+    </div>
+  </div>
+  <div id="tabs" hidden></div>
+
+  <!-- thumb bar: everything you navigate with lives at the bottom of the screen -->
+  <nav class="thumbbar">
+    <button class="tb-btn" id="backBtn"><span class="tb-i">←</span><span>Back</span></button>
+    <button class="tb-btn" data-goto="home"><span class="tb-i">⌂</span><span>Home</span></button>
+    <button class="tb-btn tb-main" id="secBtn"><span class="tb-i">☰</span><span id="curSec">Sections</span></button>
+  </nav>
+  <!-- mobile / overflow section picker -->
+  <div class="sheet" id="secSheet">
+    <div class="sheet-scrim"></div>
+    <div class="sheet-body">
+      <button class="sheet-x" id="secClose" aria-label="Close">✕</button>
+      <h3 class="sheet-h">Jump to a section</h3>
+      <div id="secList"></div>
     </div>
   </div>
   <main class="wrap" id="main"></main>
+  <div id="data" hidden></div>
   <div class="nohits" id="nohits">No matches in the playbook for that search.</div>
   <footer class="wrap">GrowEssential — Land Audit Playbook · content served privately from Supabase · confirm pricing before quoting a client.</footer>
 </div>
@@ -182,12 +344,130 @@
     renderTabs(data); renderSections(data); wire();
   }
 
-  function renderTabs(rows){
-    const t=$('tabs');
-    t.innerHTML='<div class="tab active" data-t="all">All</div>'+
-      rows.map(r=>`<div class="tab" data-t="${r.tab_key}">${r.label}</div>`).join('');
+  // Section grouping. Any tab_key NOT listed here still shows up, under "More" —
+  // so adding a Supabase section never requires editing this file to stay reachable.
+  const GROUPS=[
+    {name:'Field workflow',   keys:['sop','framework','kit','tools','gen']},
+    {name:'Reference',        keys:['soil','labs','global','nutrition','vpd']},
+    {name:'Species & crops',  keys:['crops','natives']},
+    {name:'Inputs & recipes', keys:['ipm','jadam']},
+    {name:'Business',         keys:['economics']}
+  ];
+  const BLURB={
+    sop:'Step-by-step field SOP for running an audit on site',
+    framework:'How to structure findings into a client report',
+    kit:'Everything to buy, with prices and buy links',
+    tools:'Mapping, drone and GIS tooling',
+    gen:'Checklist generator',
+    soil:'Sampling method, what to test, how to read it',
+    labs:'Where to send samples, cost and turnaround',
+    global:'Working outside the DR',
+    nutrition:'Ionic forms, pH direction by zone, deficiency picker',
+    vpd:'Why the tropics break standard VPD advice, plus calculator',
+    crops:'50 crops matched to site conditions',
+    natives:'91 natives and endemics, plus the invasive AVOID list',
+    ipm:'The IPM ladder and DR threat table',
+    jadam:'25 formulas with a batch and dilution calculator',
+    economics:'Export values, premiums and where your fee comes from'
+  };
+  // Sections genuinely reference each other; these chips stop it feeling like
+  // 14 disconnected documents.
+  const RELATED={
+    crops:['natives','ipm','economics'], natives:['crops','global'],
+    nutrition:['soil','labs','vpd'], vpd:['crops','nutrition'],
+    ipm:['jadam','crops'], jadam:['ipm','kit'],
+    soil:['labs','nutrition'], labs:['soil','framework'],
+    economics:['crops','framework'], sop:['kit','soil','framework'],
+    framework:['sop','economics'], kit:['sop','tools'], tools:['kit','sop'],
+    global:['natives','crops'], gen:['sop','kit']
+  };
+  const isData=k=>k.charAt(0)==='_';
+
+  function groupRows(rows){
+    const byKey={}; rows.forEach(r=>{ if(!isData(r.tab_key)) byKey[r.tab_key]=r; });
+    const used=new Set(), out=[];
+    GROUPS.forEach(g=>{
+      const items=g.keys.filter(k=>byKey[k]).map(k=>{used.add(k);return byKey[k];});
+      if(items.length) out.push({name:g.name,items:items});
+    });
+    const rest=Object.keys(byKey).filter(k=>!used.has(k)).map(k=>byKey[k]);
+    if(rest.length) out.push({name:'More',items:rest});
+    return out;
   }
-  function renderSections(rows){ $('main').innerHTML=rows.map(r=>r.html).join(''); fixDeals(); linkifyItems(); }
+
+  // No horizontal strip anywhere. The grouped sheet IS the navigation — one tap
+  // from any screen, everything reachable without scrolling sideways.
+  function renderTabs(rows){
+    const groups=groupRows(rows);
+    // hidden registry: activateTab() reads these for active state + labels
+    $('tabs').innerHTML='<i class="tab" data-t="home">Home</i><i class="tab" data-t="all">All sections</i>'+
+      groups.map(g=>g.items.map(r=>'<i class="tab" data-t="'+r.tab_key+'">'+r.label+'</i>').join('')).join('');
+    $('secList').innerHTML=
+      '<div class="sl-g"><button class="sl-i wide" data-goto="all"><b>All sections</b>'+
+        '<span>Everything at once — use with search</span></button></div>'+
+      groups.map(g=>
+      '<div class="sl-g"><h4>'+g.name+'</h4>'+
+      g.items.map(r=>'<button class="sl-i" data-goto="'+r.tab_key+'"><b>'+r.label+'</b>'+
+        (BLURB[r.tab_key]?'<span>'+BLURB[r.tab_key]+'</span>':'')+'</button>').join('')+
+      '</div>').join('');
+  }
+
+  function renderSections(rows){
+    // Data rows (_-prefixed) carry JSON payloads. They must land in the DOM so
+    // JSON.parse can read them, but never render as sections — hence the hidden
+    // sibling container rather than dropping them entirely.
+    $('data').innerHTML=rows.filter(r=>isData(r.tab_key)).map(r=>r.html).join('');
+    $('main').innerHTML=renderHome(rows)+rows.filter(r=>!isData(r.tab_key)).map(r=>r.html).join('');
+    fixDeals(); linkifyItems(); defPicker(); vpdCalc(); cropFilter(); nativeFilter();
+    tableCards(); jadamCalc(); addRelated(rows); homeCounts();
+  }
+
+  // ── Dashboard ─────────────────────────────────────────────────────────────
+  // Hardcoded rather than a DB row so counts can be derived from the rendered
+  // DOM instead of hand-maintained numbers that silently rot.
+  function renderHome(rows){
+    const groups=groupRows(rows), recent=getRecent();
+    const label={}; rows.forEach(r=>{ if(!isData(r.tab_key)) label[r.tab_key]=r.label; });
+    const recentHtml = recent.filter(k=>label[k]).length
+      ? '<div class="hm-recent"><span class="related-l">Recently opened</span>'+
+        recent.filter(k=>label[k]).map(k=>'<button class="rel-chip" data-goto="'+k+'">'+label[k]+'</button>').join('')+
+        '</div>' : '';
+    return '<section data-sec="home">'+
+      '<h2>Land Audit Playbook</h2>'+
+      '<p class="lede">Your field reference. Everything is searchable from the bar above — or jump straight to a section.</p>'+
+      recentHtml+
+      groups.map(g=>'<h3 class="blk">'+g.name+'</h3><div class="hm-grid">'+
+        g.items.map(r=>'<button class="hm-card" data-goto="'+r.tab_key+'">'+
+          '<span class="hm-t">'+r.label+'</span>'+
+          '<span class="hm-b">'+(BLURB[r.tab_key]||'')+'</span>'+
+          '<span class="hm-n" data-count="'+r.tab_key+'"></span>'+
+        '</button>').join('')+'</div>').join('')+
+      '</section>';
+  }
+
+  // Counts read off the rendered sections, so they can never disagree with reality.
+  function homeCounts(){
+    document.querySelectorAll('#main [data-count]').forEach(el=>{
+      const sec=document.querySelector('#main section[data-sec="'+el.dataset.count+'"]');
+      if(!sec) return;
+      const rows=sec.querySelectorAll('tr[data-cat]').length||sec.querySelectorAll('tr[data-lay]').length;
+      const tbl=sec.querySelectorAll('table').length;
+      el.textContent = rows ? rows+' entries' : (tbl ? tbl+(tbl===1?' table':' tables') : '');
+    });
+  }
+
+  // "Related" jump chips at the end of each section.
+  function addRelated(rows){
+    const have={}; rows.forEach(r=>{ if(!isData(r.tab_key)) have[r.tab_key]=r.label; });
+    document.querySelectorAll('#main section[data-sec]').forEach(sec=>{
+      const k=sec.dataset.sec;
+      if(k==='home'||sec.querySelector('.related')) return;
+      const rel=(RELATED[k]||[]).filter(x=>have[x]);
+      if(!rel.length) return;
+      sec.insertAdjacentHTML('beforeend','<div class="related"><span class="related-l">Related</span>'+
+        rel.map(x=>'<button class="rel-chip" data-goto="'+x+'">'+have[x]+' →</button>').join('')+'</div>');
+    });
+  }
 
   // Correct stale/dead buy links (DJI store is out of stock in the US — customs hold on new imports)
   function fixDeals(){
@@ -214,37 +494,617 @@
     const enc=s=>encodeURIComponent(s);
     const clean=t=>t.replace(/[🔎🛒]/g,'').replace(/["']/g,'').replace(/\s+/g,' ').trim().split(/[—–:•|]/)[0].trim();
     const icons=q=>` <a class="lu" target="_blank" rel="noopener" title="Google: ${q}" href="https://www.google.com/search?q=${enc(q)}">🔎</a><a class="lu" target="_blank" rel="noopener" title="Amazon: ${q}" href="https://www.amazon.com/s?k=${enc(q)}">🛒</a>`;
-    document.querySelectorAll('#main table tr').forEach(tr=>{
+    // Reference tabs (nutrition, crops, economics…) opt out — shopping icons on a
+    // nutrient or crop table are noise. Gear/kit tabs keep them.
+    document.querySelectorAll('#main section:not([data-nolookup]) table tr').forEach(tr=>{
       if(tr.querySelector('th')) return;                 // skip header rows
       const td=tr.querySelector('td'); if(!td||td.querySelector('.lu')) return;
       const q=clean(td.textContent); if(q.length<2) return;
       td.insertAdjacentHTML('beforeend',icons(q));
     });
-    document.querySelectorAll('#main ul.tight li').forEach(li=>{
+    document.querySelectorAll('#main section:not([data-nolookup]) ul.tight li').forEach(li=>{
       if(li.querySelector('.lu')) return;
       const q=clean(li.textContent); if(q.length<2) return;
       li.insertAdjacentHTML('beforeend',icons(q));
     });
   }
 
-  function wire(){
-    const tabs=document.querySelectorAll('.tab');
-    const search=$('search'), nohits=$('nohits');
+  // Symptom → element picker. Filters the deficiency table by leaf position + free text.
+  // Lives here, not in the DB html, because renderSections() uses innerHTML (scripts don't run).
+  function defPicker(){
+    const host=$('defpicker'), table=$('deftable');
+    if(!host || !table || host.dataset.wired) return;
+    host.dataset.wired='1';
+    host.innerHTML=
+      '<div class="dp-row">'+
+        '<button class="dp-btn active" data-loc="">All leaves</button>'+
+        '<button class="dp-btn" data-loc="old">Older leaves first</button>'+
+        '<button class="dp-btn" data-loc="new">New growth first</button>'+
+      '</div>'+
+      '<input class="dp-in" id="dpq" placeholder="Describe what you see — “purple”, “margins”, “interveinal”, “growing tip”…" autocomplete="off">'+
+      '<div class="dp-hint" id="dphint"></div>';
+    const rows=[...table.querySelectorAll('tr[data-loc]')];
+    let loc='';
     function apply(){
-      const q=search.value.trim().toLowerCase();
-      let any=false;
-      document.querySelectorAll('section[data-sec]').forEach(sec=>{
-        const tabOk=activeTab==='all'||sec.dataset.sec===activeTab;
-        const ok=tabOk && (!q||sec.textContent.toLowerCase().includes(q));
-        sec.style.display=ok?'':'none'; if(ok)any=true;
+      const q=$('dpq').value.trim().toLowerCase();
+      let hits=0;
+      rows.forEach(tr=>{
+        const ok=(!loc||tr.dataset.loc===loc)&&(!q||tr.textContent.toLowerCase().includes(q));
+        showRow(tr,ok); if(ok)hits++;
       });
-      nohits.style.display=any?'none':'block';
+      $('dphint').textContent = hits
+        ? hits+' candidate'+(hits===1?'':'s')+' — confirm with a soil or tissue test before amending.'
+        : 'No match. Try a simpler word, or clear the filter — look-alikes are common (Fe vs Mn vs Zn).';
     }
-    tabs.forEach(tb=>tb.addEventListener('click',()=>{
-      tabs.forEach(x=>x.classList.remove('active')); tb.classList.add('active');
-      activeTab=tb.dataset.t; apply(); window.scrollTo({top:0,behavior:'smooth'});
+    host.querySelectorAll('.dp-btn').forEach(b=>b.addEventListener('click',()=>{
+      host.querySelectorAll('.dp-btn').forEach(x=>x.classList.remove('active'));
+      b.classList.add('active'); loc=b.dataset.loc; apply();
     }));
-    search.addEventListener('input',apply); apply();
+    $('dpq').addEventListener('input',apply); apply();
+  }
+
+  // VPD calculator. Tetens SVP; leaf offset because a transpiring leaf runs cooler
+  // than air, so raw air VPD overstates what the plant actually feels.
+  function vpdCalc(){
+    const host=$('vpdcalc'); if(!host || host.dataset.wired) return;
+    host.dataset.wired='1';
+    host.innerHTML=
+      '<div class="vp-in">'+
+        '<label>Air temp °C<input type="number" id="vpT" value="29" step="0.5"></label>'+
+        '<label>RH %<input type="number" id="vpH" value="85" step="1"></label>'+
+        '<label>Leaf offset °C<input type="number" id="vpO" value="1.5" step="0.5"></label>'+
+      '</div><div class="vp-out" id="vpOut"></div>';
+    const svp=t=>0.6108*Math.exp(17.27*t/(t+237.3));
+    function calc(){
+      const T=parseFloat($('vpT').value), H=parseFloat($('vpH').value), O=parseFloat($('vpO').value);
+      const out=$('vpOut');
+      if([T,H,O].some(isNaN)){ out.innerHTML='<i>Enter temp, RH and leaf offset.</i>'; return; }
+      const air=svp(T)*(1-H/100);
+      const leaf=svp(T-O)-svp(T)*(H/100);   // SVP at leaf temp minus actual vapour pressure of air
+      let verdict,cls;
+      if(leaf<0.4){ verdict='TOO LOW — disease window, soft growth, calcium will not reach fruit. Airflow + spacing + dry-canopy timing.'; cls='bad'; }
+      else if(leaf<=1.6){ verdict='In the workable band. Match to growth stage: propagation ~0.3–0.6, veg 0.8–1.2, fruit set 1.0–1.5.'; cls='good'; }
+      else if(leaf<=2.2){ verdict='HIGH — stomata closing, growth slowing. Shade, syringe, damp the floor.'; cls='bad'; }
+      else { verdict='SEVERE — fruit cracking and stomatal shutdown territory.'; cls='bad'; }
+      out.innerHTML=
+        '<div class="vp-nums"><span>Air VPD <b>'+air.toFixed(2)+'</b> kPa</span>'+
+        '<span class="vp-leaf">Leaf VPD <b>'+leaf.toFixed(2)+'</b> kPa</span></div>'+
+        '<p class="vp-v '+cls+'">'+verdict+'</p>'+
+        '<p class="vp-note">Leaf VPD is the number the plant feels — it is lower than air VPD because a transpiring leaf runs cooler. Under heat stress the offset inverts (closed stomata stop cooling), so measure leaf temp with an IR gun before trusting the default.</p>';
+    }
+    ['vpT','vpH','vpO'].forEach(id=>$(id).addEventListener('input',calc));
+    calc();
+  }
+
+  // Crop matrix filters — match a crop to the site (canopy gap, drought reality, soil biology).
+  function cropFilter(){
+    const host=$('cropfilter'), table=$('croptable');
+    if(!host || !table || host.dataset.wired) return;
+    host.dataset.wired='1';
+    const GROUPS=[
+      {key:'lay', label:'Layer', opts:[['emergent','Emergent'],['canopy','Canopy'],['understory','Understory'],['shrub','Shrub'],['herb','Herb'],['ground','Ground / root'],['vine','Vine']]},
+      {key:'dro', label:'Drought', opts:[['high','Drought-hardy'],['mod','Moderate'],['low','Needs water']]},
+      {key:'fb',  label:'Soil biology', opts:[['fungal','Fungal-leaning'],['balanced','Balanced'],['bacterial','Bacterial']]},
+      {key:'nfix',label:'Nitrogen', opts:[['yes','N-fixers only']]}
+    ];
+    host.innerHTML=GROUPS.map(g=>
+      '<div class="cf-g"><span class="cf-l">'+g.label+'</span>'+
+      '<button class="dp-btn active" data-k="'+g.key+'" data-v="">Any</button>'+
+      g.opts.map(o=>'<button class="dp-btn" data-k="'+g.key+'" data-v="'+o[0]+'">'+o[1]+'</button>').join('')+
+      '</div>').join('')+'<div class="dp-hint" id="cfhint"></div>';
+    const rows=[...table.querySelectorAll('tr[data-lay]')];
+    const sel={lay:'',dro:'',fb:'',nfix:''};
+    function apply(){
+      let hits=0;
+      rows.forEach(tr=>{
+        const ok=Object.keys(sel).every(k=>!sel[k]||tr.dataset[k]===sel[k]);
+        showRow(tr,ok); if(ok)hits++;
+      });
+      syncEmpty(table,hits);
+      $('cfhint').textContent=hits+' of '+rows.length+' crops match'+
+        (hits?'. Cross-check the pH column against the client’s soil test before recommending.':' — loosen a filter.');
+    }
+    host.querySelectorAll('.dp-btn').forEach(b=>b.addEventListener('click',()=>{
+      const k=b.dataset.k;
+      host.querySelectorAll('.dp-btn[data-k="'+k+'"]').forEach(x=>x.classList.remove('active'));
+      b.classList.add('active'); sel[k]=b.dataset.v; apply();
+    }));
+    apply();
+  }
+
+  // Native species catalog — filter by role and endemism.
+  function nativeFilter(){
+    const host=$('natfilter'), table=$('nattable');
+    if(!host || !table || host.dataset.wired) return;
+    host.dataset.wired='1';
+    const CATS=[['','All'],['timber','Timber / canopy'],['nfixer','N-fixer'],['fruit','Fruit / food'],
+      ['palm','Palms'],['medicinal','Medicinal'],['pollinator','Pollinator'],['mangrove','Mangrove / coastal'],['dryforest','Dry forest']];
+    host.innerHTML='<div class="cf-g"><span class="cf-l">Role</span>'+
+      CATS.map((c,i)=>'<button class="dp-btn'+(i?'':' active')+'" data-k="cat" data-v="'+c[0]+'">'+c[1]+'</button>').join('')+'</div>'+
+      '<div class="cf-g"><span class="cf-l">Endemism</span>'+
+      '<button class="dp-btn active" data-k="end" data-v="">Any</button>'+
+      '<button class="dp-btn" data-k="end" data-v="yes">Endemic only</button></div>'+
+      '<input class="dp-in" id="natq" placeholder="Search name, family, zone — “caoba”, “Coccothrinax”, “limestone”…" autocomplete="off">'+
+      '<div class="dp-hint" id="nathint"></div>';
+    const rows=[...table.querySelectorAll('tr[data-cat]')];
+    const sel={cat:'',end:''};
+    function apply(){
+      const q=$('natq').value.trim().toLowerCase();
+      let hits=0;
+      rows.forEach(tr=>{
+        const ok=(!sel.cat||tr.dataset.cat===sel.cat)&&(!sel.end||tr.dataset.end===sel.end)&&
+                 (!q||tr.textContent.toLowerCase().includes(q));
+        showRow(tr,ok); if(ok)hits++;
+      });
+      syncEmpty(table,hits);
+      $('nathint').textContent=hits+' of '+rows.length+' species'+
+        (hits?'. Genus-level rows need species confirmation before planting.':' — loosen a filter.');
+    }
+    host.querySelectorAll('.dp-btn').forEach(b=>b.addEventListener('click',()=>{
+      const k=b.dataset.k;
+      host.querySelectorAll('.dp-btn[data-k="'+k+'"]').forEach(x=>x.classList.remove('active'));
+      b.classList.add('active'); sel[k]=b.dataset.v; apply();
+    }));
+    $('natq').addEventListener('input',apply); apply();
+  }
+
+  // ── JADAM calculator ──────────────────────────────────────────────────────
+  // Formulas are ratios, so scaling is exact arithmetic. The catch is physical:
+  // JWA and JS heat themselves, and a small batch sheds heat faster than it
+  // makes it — so we surface the size the book actually documents and warn below it.
+  let JAD=null, jUnit='us', jPlain=true;
+  function jadamCalc(){
+    const host=$('jadamcalc'); if(!host||host.dataset.wired) return;
+    const src=$('ge-jadam'); if(!src) return;
+    try{ JAD=JSON.parse(src.textContent); }catch(e){ return; }
+    host.dataset.wired='1';
+    host.innerHTML=
+      '<div class="jc-top">'+
+        '<div class="jc-seg" id="jcUnit"><button class="dp-btn active" data-v="us">US (gallons)</button>'+
+          '<button class="dp-btn" data-v="m">Metric (litres)</button></div>'+
+        '<div class="jc-seg" id="jcMode"><button class="dp-btn active" data-v="plain">Plain English</button>'+
+          '<button class="dp-btn" data-v="tech">Technical</button></div>'+
+      '</div>'+
+      '<div class="jc-seg" id="jcTab" style="margin-bottom:12px">'+
+        '<button class="dp-btn active" data-v="make">Make a batch</button>'+
+        '<button class="dp-btn" data-v="mix">Mix a spray tank</button>'+
+        '<button class="dp-btn" data-v="dil">Dilute something</button></div>'+
+      '<div id="jcBody"></div>';
+    host.querySelectorAll('#jcUnit .dp-btn').forEach(b=>b.onclick=()=>{jUnit=b.dataset.v;seg('jcUnit',b);draw();});
+    host.querySelectorAll('#jcMode .dp-btn').forEach(b=>b.onclick=()=>{jPlain=b.dataset.v==='plain';seg('jcMode',b);draw();});
+    host.querySelectorAll('#jcTab .dp-btn').forEach(b=>b.onclick=()=>{jTab=b.dataset.v;seg('jcTab',b);draw();});
+    draw();
+  }
+  let jTab='make';
+  function seg(id,btn){ document.querySelectorAll('#'+id+' .dp-btn').forEach(x=>x.classList.remove('active')); btn.classList.add('active'); }
+
+  const G=()=>JAD.L_PER_GAL;
+  function fmtVol(L){
+    if(jUnit==='m') return L>=1?L.toFixed(L<10?2:1).replace(/\.?0+$/,'')+' L':Math.round(L*1000)+' mL';
+    const gal=L/G();
+    if(gal>=1) return gal.toFixed(2).replace(/\.?0+$/,'')+' gal';
+    const oz=L*33.8140226; return oz.toFixed(oz<10?1:0)+' fl oz';
+  }
+  function fmtMass(kg){
+    if(jUnit==='m') return kg>=1?kg.toFixed(2).replace(/\.?0+$/,'')+' kg':Math.round(kg*1000)+' g';
+    const lb=kg*2.20462262;
+    if(lb>=1) return lb.toFixed(2).replace(/\.?0+$/,'')+' lb';
+    return (lb*16).toFixed(1)+' oz';
+  }
+  const fmtQ=(q,u)=>u==='kg'?fmtMass(q):fmtVol(q);
+
+  function draw(){
+    const b=$('jcBody'); if(!b) return;
+    b.innerHTML = jTab==='make'?viewMake() : jTab==='mix'?viewMix() : viewDil();
+    wireBody();
+  }
+
+  function unitLabel(){ return jUnit==='us'?'gallons':'litres'; }
+  function toL(v){ return jUnit==='us'? v*G() : v; }
+  function fromL(L){ return jUnit==='us'? L/G() : L; }
+
+  function viewMake(){
+    const opts=JAD.formulas.map(f=>'<option value="'+f.id+'">'+f.name+'</option>').join('');
+    return '<div class="jc-row"><label>Formula<select id="jcF">'+opts+'</select></label>'+
+      '<label>Batch size ('+unitLabel()+')<input type="number" id="jcV" step="any" min="0"></label></div>'+
+      '<div id="jcOut"></div>';
+  }
+
+  function viewMix(){
+    const opts=JAD.programs.map(p=>'<option value="'+p.id+'">'+p.name+'</option>').join('');
+    return '<div class="jc-row"><label>What are you treating?<select id="jcP">'+opts+'</select></label>'+
+      '<label>Your tank ('+unitLabel()+')<input type="number" id="jcT" step="any" min="0" value="'+
+        (jUnit==='us'?25:100)+'"></label></div>'+
+      '<div id="jcOut"></div>';
+  }
+
+  function viewDil(){
+    return '<div class="jc-row"><label>Water in the tank ('+unitLabel()+')<input type="number" id="jcW" step="any" min="0" value="'+
+        (jUnit==='us'?25:100)+'"></label>'+
+      '<label>Dilution rate 1 : <input type="number" id="jcR" step="any" min="1" value="500"></label></div>'+
+      '<div id="jcOut"></div>';
+  }
+
+  function wireBody(){
+    const f=$('jcF');
+    if(f){
+      const set=()=>{ const fm=JAD.formulas.find(x=>x.id===f.value);
+        $('jcV').value=(fromL(fm.baseL)).toFixed(jUnit==='us'?1:0); calcMake(); };
+      f.onchange=set; $('jcV').oninput=calcMake; set();
+    }
+    if($('jcP')){ $('jcP').onchange=calcMix; $('jcT').oninput=calcMix; calcMix(); }
+    if($('jcW')){ $('jcW').oninput=calcDil; $('jcR').oninput=calcDil; calcDil(); }
+  }
+
+  function calcMake(){
+    const fm=JAD.formulas.find(x=>x.id===$('jcF').value);
+    const want=parseFloat($('jcV').value); const out=$('jcOut');
+    if(isNaN(want)||want<=0){ out.innerHTML='<p class="vp-note">Enter a batch size.</p>'; return; }
+    const L=toL(want), k=L/fm.baseL;
+    let warn='';
+    if(fm.exo && L < fm.minDoc*0.999){
+      warn='<div class="jc-danger"><b>Below the size the book documents.</b> '+fm.name.split(' (')[0]+
+        ' is only documented at <b>'+fmtVol(fm.minDoc)+'</b> and larger. It heats itself to work — a smaller batch '+
+        'loses heat faster than it makes it and can fail to reach reaction temperature. '+
+        '<button class="rel-chip" id="jcFix">Use '+fmtVol(fm.minDoc)+' instead</button></div>';
+    }
+    if(fm.hazard==='caustic'){
+      warn+='<div class="jc-danger"><b>⚠ Caustic — full PPE before you start.</b><ul class="tight">'+
+        JAD.ppe.map(p=>'<li>'+p+'</li>').join('')+'</ul></div>';
+    }
+    const rows=fm.ing.map(i=>'<tr><td>'+i.n+'</td><td><b>'+fmtQ(i.q*k,i.u)+'</b></td>'+
+      (jPlain?'':'<td class="jc-mut">'+ (i.u==='kg'? (i.q*k).toFixed(3)+' kg' : (i.q*k).toFixed(3)+' L') +'</td>')+'</tr>').join('');
+    const per=fm.ing.map(i=>i.n+' '+fmtQ(i.q/fm.baseL*(jUnit==='us'?G():1),i.u)).join(' · ');
+    out.innerHTML=warn+
+      (jPlain&&fm.plain?'<p class="jc-plain">'+fm.plain+'</p>':'')+
+      '<div class="tbl-wrap"><table><tr><th>Ingredient</th><th>For '+fmtVol(L)+'</th>'+(jPlain?'':'<th>exact</th>')+'</tr>'+rows+'</table></div>'+
+      '<div class="jc-per"><b>Per '+(jUnit==='us'?'gallon':'litre')+':</b> '+per+'</div>'+
+      (fm.ratio?'<p class="vp-note">'+fm.ratio+'</p>':'')+
+      (fm.timing?'<div class="win"><b>Timing:</b> '+fm.timing+'</div>':'')+
+      '<h4 class="jc-h">Steps</h4><ol class="jc-steps">'+fm.steps.map(s=>'<li>'+s+'</li>').join('')+'</ol>'+
+      (fm.rate?'<div class="win"><b>How much to use:</b> '+fm.rate+'</div>':'')+
+      (fm.warn&&fm.warn.length?'<div class="flag"><b>Watch out:</b><ul class="tight">'+fm.warn.map(w=>'<li>'+w+'</li>').join('')+'</ul></div>':'')+
+      '<p class="vp-note">Container must hold at least '+fmtVol(L*1.1)+' — these boil over.</p>';
+    if($('jcFix')) $('jcFix').onclick=()=>{ $('jcV').value=fromL(fm.minDoc).toFixed(jUnit==='us'?1:0); calcMake(); };
+  }
+
+  function calcMix(){
+    const p=JAD.programs.find(x=>x.id===$('jcP').value);
+    const tank=parseFloat($('jcT').value); const out=$('jcOut');
+    if(isNaN(tank)||tank<=0){ out.innerHTML='<p class="vp-note">Enter your tank size.</p>'; return; }
+    const L=toL(tank), k=L/p.per, per500={};
+    const rows=p.mix.map(m=>{
+      const fm=m.id?JAD.formulas.find(x=>x.id===m.id):null;
+      const nm=(fm?fm.name.split(' (')[0]:m.n)+(m.herb?' — '+m.herb:'');
+      if(m.id) per500[m.id]=(per500[m.id]||0)+m.q;
+      return '<tr><td>'+nm+'</td><td><b>'+fmtQ(m.q*k,m.u||'L')+'</b></td></tr>';
+    }).join('');
+    let warn='';
+    JAD.rules.forEach(r=>{
+      const v={jwa:per500.jwa||0,js:per500.js||0,jms:per500.jms||0,jhs:per500.jhs||0};
+      let hit=false; try{ hit=Function('jwa','js','jms','jhs','return ('+r.test+')')(v.jwa,v.js,v.jms,v.jhs); }catch(e){}
+      if(hit) warn+='<div class="'+(r.level==='danger'?'jc-danger':'flag')+'">'+
+        (r.level==='danger'?'<b>⚠ </b>':'')+r.text+'</div>';
+    });
+    out.innerHTML=warn+
+      (jPlain&&p.plain?'<p class="jc-plain">'+p.plain+'</p>':'')+
+      '<div class="tbl-wrap"><table><tr><th>Add to the tank</th><th>For '+fmtVol(L)+'</th></tr>'+rows+
+      '<tr><td>Water</td><td><b>fill to '+fmtVol(L)+'</b></td></tr></table></div>'+
+      (p.warn?'<div class="flag">'+p.warn.join(' ')+'</div>':'')+
+      '<div class="win"><b>Order matters:</b> half-fill with water, add each input separately and mix after each, then top up. Never pour JWA and JS together — they clot.</div>'+
+      '<p class="vp-note">Book recipe is per '+fmtVol(p.per)+'; scaled ×'+k.toFixed(3)+' for your tank.</p>';
+  }
+
+  function calcDil(){
+    const w=parseFloat($('jcW').value), r=parseFloat($('jcR').value), out=$('jcOut');
+    if(isNaN(w)||isNaN(r)||w<=0||r<1){ out.innerHTML='<p class="vp-note">Enter tank volume and a dilution rate.</p>'; return; }
+    const L=toL(w), mL=L*1000/r;
+    out.innerHTML=
+      '<div class="vp-out"><div class="vp-nums"><span>Concentrate to add <b>'+fmtVol(mL/1000)+'</b></span>'+
+      '<span class="vp-leaf">into <b>'+fmtVol(L)+'</b> of water</span></div>'+
+      '<p class="vp-note">'+JAD.dilution.formula+'</p></div>'+
+      (r<500?'<div class="flag">Stronger than 1:500 — keep it weaker than that around bees, and spray at dusk when they are inactive.</div>':'')+
+      '<p class="vp-note">'+JAD.dilution.note+'</p>';
+  }
+
+  // ── Table → cards ─────────────────────────────────────────────────────────
+  // A 7-column table cannot work at any width. Cards read the <th> row as field
+  // labels and each <tr> as a card. The table stays in the DOM (hidden) so the
+  // existing filters, full-text search and a Table toggle all keep working.
+  const CARDS={
+    nattable:{title:0,sub:1,badges:[2,5],note:6,kind:'sp'},
+    croptable:{title:0,sub:1,badges:[2,7],note:null,kind:'crop'}
+  };
+  let CREDITS=null;
+
+  const slugify=s=>(s||'').replace(/<[^>]+>/g,'').replace(/\(.*?\)/g,'').split('/')[0]
+    .normalize('NFKD').replace(/[̀-ͯ]/g,'')
+    .replace(/\b(spp?\.|var\.|subsp\.|×|x)\b/gi,' ')
+    .trim().split(/[^A-Za-z]+/).filter(Boolean).slice(0,2).join('-').toLowerCase();
+
+  function photoFor(sci){
+    // Gate on CREDITS.json keys — all 187 correspond 1:1 with real files, so we
+    // never guess a URL and never fire a 404 on a phone connection.
+    if(!CREDITS) return null;
+    const want=slugify(sci);
+    if(!want||want.indexOf('-')<0) return null;   // genus-only → no photo
+    return CREDITS._bySlug[want]||null;
+  }
+  function credLine(c){
+    if(!c) return '';
+    let who=(c.credit||'').replace(/<[^>]+>/g,'').trim();
+    if(who.length>60) who=who.slice(0,57).replace(/\s+\S*$/,'')+'…';
+    const bits=[who,c.license].filter(Boolean).join(' · ');
+    return '<div class="gc-cred" title="'+esc(c.credit||'')+'">📷 '+esc(bits)+
+      (c.source?' · <a href="'+esc(c.source)+'" target="_blank" rel="noopener">source</a>':'')+'</div>';
+  }
+  const esc=s=>String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+
+  async function tableCards(){
+    const targets=[...document.querySelectorAll('#main table')].filter(t=>CARDS[t.id]||t.hasAttribute('data-cards'));
+    if(!targets.length) return;
+    if(!CREDITS){
+      try{
+        const r=await fetch('assets/species/CREDITS.json');
+        const raw=await r.json(); const bySlug={};
+        Object.keys(raw).forEach(k=>{ const s=slugify(k); if(s) bySlug[s]=raw[k]; });
+        CREDITS=raw; CREDITS._bySlug=bySlug;
+      }catch(e){ CREDITS={_bySlug:{}}; }
+    }
+    targets.forEach(buildCards);
+    // flag any still-scrollable table so the gradient affordance shows
+    document.querySelectorAll('#main .tbl-wrap').forEach(w=>{
+      w.classList.toggle('is-scrollable', w.scrollWidth>w.clientWidth+4);
+    });
+  }
+
+  function buildCards(table){
+    if(table.dataset.cardified) return;
+    table.dataset.cardified='1';
+    const cfg=CARDS[table.id]||{};
+    const ths=[...table.querySelectorAll('tr')].find(r=>r.querySelector('th'));
+    const labels=ths?[...ths.querySelectorAll('th')].map(th=>th.textContent.trim()):[];
+    const rows=[...table.querySelectorAll('tr')].filter(tr=>!tr.querySelector('th')&&[...tr.attributes].some(a=>a.name.startsWith('data-')));
+    if(!rows.length){ delete table.dataset.cardified; return; }
+    const tCol=cfg.title==null?0:cfg.title, sCol=cfg.sub==null?1:cfg.sub;
+    const badges=cfg.badges||[], nCol=cfg.note===undefined?labels.length-1:cfg.note;
+
+    const grid=document.createElement('div'); grid.className='gc-grid';
+    rows.forEach((tr,i)=>{
+      const tds=[...tr.querySelectorAll('td')];
+      const cell=n=>tds[n]?tds[n].innerHTML:'';
+      const sci=tds[sCol]?tds[sCol].textContent:'';
+      const ph=photoFor(sci);
+      const skip=new Set([tCol,sCol,nCol].concat(badges));
+      const fields=tds.map((td,n)=>({n:n,l:labels[n]||'',v:td.innerHTML}))
+        .filter(f=>!skip.has(f.n)&&f.v.trim()&&f.v.trim()!=='—');
+      const noteTxt=nCol!=null&&tds[nCol]?tds[nCol].textContent.trim():'';
+      const card=document.createElement('article');
+      card.className='gc'; card.tabIndex=0;
+      card.dataset.slug=slugify(sci); card.dataset.kind=cfg.kind||'row';
+      card.innerHTML=
+        (ph?'<img class="gc-img" loading="lazy" decoding="async" src="'+esc(ph.img)+'" alt="'+esc(sci)+'" onerror="this.remove()">'
+           :'<div class="gc-noimg">🌿</div>')+
+        '<div class="gc-in">'+
+          '<div><div class="gc-t">'+cell(tCol)+'</div><div class="gc-s">'+cell(sCol)+'</div></div>'+
+          (badges.length?'<div class="gc-badges">'+badges.map(b=>{
+             const v=tds[b]?tds[b].textContent.trim():''; return v&&v!=='—'?'<span class="gc-badge">'+esc(v.slice(0,42))+'</span>':'';
+           }).join('')+'</div>':'')+
+          fields.map(f=>'<div class="gc-f"><span class="gc-l">'+esc(f.l)+'</span><span class="gc-v">'+f.v+'</span></div>').join('')+
+          (noteTxt?(noteTxt.length>140
+             ? '<details><summary>Notes</summary><div class="gc-v">'+cell(nCol)+'</div></details>'
+             : '<div class="gc-f"><span class="gc-l">'+esc(labels[nCol]||'Notes')+'</span><span class="gc-v">'+cell(nCol)+'</span></div>'):'')+
+          '<div class="gc-more">Open profile →</div>'+
+          credLine(ph)+
+        '</div>';
+      card.addEventListener('click',()=>openDetail((cfg.kind==='crop'?'crop/':'sp/')+card.dataset.slug,tr,cfg));
+      tr._card=card; card._tr=tr;
+      grid.appendChild(card);
+    });
+
+    const wrap=table.closest('.tbl-wrap')||table;
+    const empty=document.createElement('div'); empty.className='gc-empty'; empty.textContent='No matches — loosen a filter.';
+    const bar=document.createElement('div'); bar.className='dp-row';
+    bar.innerHTML='<button class="dp-btn active" data-v="cards">Cards</button><button class="dp-btn" data-v="table">Table</button>';
+    wrap.parentNode.insertBefore(bar,wrap);
+    wrap.parentNode.insertBefore(grid,wrap);
+    wrap.parentNode.insertBefore(empty,wrap);
+
+    const key='ge_view_'+table.id;
+    function setView(v){
+      const cards=v!=='table';
+      grid.style.display=cards?'':'none';
+      wrap.style.display=cards?'none':'';
+      bar.querySelectorAll('.dp-btn').forEach(b=>b.classList.toggle('active',b.dataset.v===(cards?'cards':'table')));
+      try{ localStorage.setItem(key,cards?'cards':'table'); }catch(e){}
+      if(!cards) wrap.classList.toggle('is-scrollable', wrap.scrollWidth>wrap.clientWidth+4);
+    }
+    bar.querySelectorAll('.dp-btn').forEach(b=>b.addEventListener('click',()=>setView(b.dataset.v)));
+    let saved='cards'; try{ saved=localStorage.getItem(key)||'cards'; }catch(e){}
+    setView(saved);
+    table._grid=grid; table._empty=empty;
+  }
+
+  // One filter implementation drives both views: the <tr> stays the source of
+  // truth and the card is a slave view.
+  function showRow(tr,ok){
+    tr.style.display=ok?'':'none';
+    if(tr._card) tr._card.style.display=ok?'':'none';
+  }
+  // Called at the end of each filter pass so the card grid gets an empty state too.
+  function syncEmpty(table,hits){
+    if(table&&table._empty) table._empty.style.display=hits?'none':'block';
+  }
+
+  // ── Detail sheet ──────────────────────────────────────────────────────────
+  // Full-screen bottom sheet, not inline expansion: on a 91-card grid inline
+  // expansion shifts everything and loses your place. pushState on open means
+  // the Android back gesture and iOS swipe-back close it — the thing that makes
+  // this usable one-handed in a field.
+  function sheet(html,hash){
+    let el=$('detail');
+    if(!el){
+      el=document.createElement('div'); el.id='detail'; el.className='sheet';
+      document.body.appendChild(el);
+    }
+    el.innerHTML='<div class="sheet-scrim"></div><div class="sheet-body">'+
+      '<button class="sheet-x" id="detailClose" aria-label="Close">✕</button>'+html+'</div>';
+    el.classList.add('open');
+    document.body.style.overflow='hidden';
+    el.querySelector('#detailClose').onclick=()=>{ history.back(); };
+    el.querySelector('.sheet-scrim').onclick=()=>{ history.back(); };
+    el.querySelector('.sheet-body').scrollTop=0;
+    if(hash) history.pushState({detail:hash},'','#'+hash);
+    updateBackBtn();
+  }
+  // Resolve a #crop/<slug> or #sp/<slug> hash (or a direct click) to a sheet.
+  function openDetail(hash,tr,cfg){
+    if(!tr){
+      const slug=hash.replace(/^(crop|sp)\//,'');
+      const card=document.querySelector('#main .gc[data-slug="'+slug+'"]');
+      if(!card) return;
+      tr=card._tr; cfg=CARDS[tr.closest('table').id]||{};
+    }
+    const table=tr.closest('table');
+    const ths=[...table.querySelectorAll('tr')].find(r=>r.querySelector('th'));
+    const labels=ths?[...ths.querySelectorAll('th')].map(th=>th.textContent.trim()):[];
+    const tds=[...tr.querySelectorAll('td')];
+    const tCol=cfg.title==null?0:cfg.title, sCol=cfg.sub==null?1:cfg.sub;
+    const sci=(tds[sCol]?tds[sCol].textContent:'').replace(/\(.*?\)/g,'').trim();
+    const ph=photoFor(tds[sCol]?tds[sCol].textContent:'');
+    const prof=cropProfile(slugify(tds[sCol]?tds[sCol].textContent:''));
+
+    let html=(ph?'<img class="ds-hero" src="'+esc(ph.img)+'" alt="'+esc(sci)+'">':'')+
+      '<h2 class="ds-h">'+(tds[tCol]?tds[tCol].innerHTML:'')+'</h2>'+
+      '<div class="ds-sci">'+(tds[sCol]?tds[sCol].innerHTML:'')+'</div>';
+    // every table column, in order — the rigid field order is what makes these
+    // read like cards you can learn
+    html+=tds.map((td,n)=>(n===tCol||n===sCol||!td.textContent.trim()||td.textContent.trim()==='—')?''
+      :'<div class="ds-f"><h4>'+esc(labels[n]||'')+'</h4><div>'+td.innerHTML+'</div></div>').join('');
+    if(prof) html+=prof;
+    html+='<div class="ds-links">'+
+      '<a class="rel-chip" target="_blank" rel="noopener" href="https://powo.science.kew.org/results?q='+encodeURIComponent(sci)+'">POWO</a>'+
+      '<a class="rel-chip" target="_blank" rel="noopener" href="https://www.inaturalist.org/search?q='+encodeURIComponent(sci)+'">iNaturalist</a>'+
+      '<a class="rel-chip" target="_blank" rel="noopener" href="https://www.google.com/search?q='+encodeURIComponent(sci+' cultivation')+'">Google</a>'+
+      '</div>'+credLine(ph);
+    sheet(html,hash);
+  }
+
+  // Rich profile fields from the _crops data row, when present.
+  function cropProfile(slug){
+    const el=$('ge-crops'); if(!el||!slug) return '';
+    try{
+      const data=JSON.parse(el.textContent);
+      const p=data[slug]; if(!p) return '';
+      const ORDER=[['ranking','Ranking'],['lifecycle','Life cycle'],['climate','Climate'],['soil','Soil'],
+        ['nutrients','Nutrients'],['biology','Soil biology'],['water','Water / drought'],['agroforestry','Agroforestry role'],
+        ['pests','Pests & diseases'],['maturity','Maturity / yield'],['planting','Planting'],['management','Management'],
+        ['harvest','Harvesting'],['succession','Succession / replacement']];
+      const out=ORDER.filter(f=>p[f[0]]).map(f=>'<div class="ds-f"><h4>'+f[1]+'</h4><div>'+p[f[0]]+'</div></div>').join('');
+      return out?'<h3 class="blk">Full profile</h3>'+out:'';
+    }catch(e){ return ''; }
+  }
+
+  function closeDetail(fromPop){
+    const el=$('detail'); if(!el||!el.classList.contains('open')) return;
+    el.classList.remove('open'); el.innerHTML='';
+    if(!document.querySelector('.sheet.open')) document.body.style.overflow='';
+    if(!fromPop) history.back();
+    updateBackBtn();
+  }
+
+  // ── Navigation ────────────────────────────────────────────────────────────
+  // Single entry point for every navigation: tab clicks, dashboard cards,
+  // cross-links, hash routing and popstate all funnel through activateTab().
+  function applyFilter(){
+    const q=($('search').value||'').trim().toLowerCase();
+    // Searching from Home would look broken (Home has no body text), so widen scope.
+    const scope = q && activeTab==='home' ? 'all' : activeTab;
+    let any=false;
+    document.querySelectorAll('section[data-sec]').forEach(sec=>{
+      const isHome=sec.dataset.sec==='home';
+      const tabOk = isHome ? (scope==='home' && !q) : (scope==='all'||sec.dataset.sec===scope);
+      const ok = tabOk && (!q || isHome || sec.textContent.toLowerCase().includes(q));
+      sec.style.display=ok?'':'none'; if(ok&&!isHome)any=true;
+    });
+    $('nohits').style.display=(any||scope==='home')?'none':'block';
+  }
+
+  function activateTab(key,opts){
+    opts=opts||{};
+    activeTab=key||'home';
+    document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x.dataset.t===activeTab));
+    document.querySelectorAll('#secList .sl-i').forEach(x=>x.classList.toggle('active',x.dataset.goto===activeTab));
+    const cur=$('curSec');
+    if(cur) cur.textContent = activeTab==='home' ? 'Sections' : tabLabel(activeTab);
+    applyFilter();
+    closeSections();
+    if(!opts.noScroll) window.scrollTo({top:0,behavior:opts.instant?'auto':'smooth'});
+    if(!opts.noHash){
+      const h='#'+activeTab;
+      if(opts.push) history.pushState({tab:activeTab},'',h);
+      else history.replaceState({tab:activeTab},'',h);
+    }
+    updateBackBtn(); pushRecent(activeTab);
+  }
+
+  function tabLabel(key){
+    if(key==='home') return 'Home';
+    if(key==='all') return 'All sections';
+    const t=document.querySelector('.tab[data-t="'+key+'"]');
+    return t?t.textContent:key;
+  }
+
+  function updateBackBtn(){
+    const b=$('backBtn'); if(!b) return;
+    // Back is meaningful once we've navigated away from the landing view.
+    b.style.display=(activeTab==='home'&&!document.querySelector('.sheet.open'))?'none':'';
+  }
+
+  // Recently opened — in the field the same few sections get reused all day.
+  function pushRecent(key){
+    if(key==='home'||key==='all') return;
+    try{
+      let r=JSON.parse(localStorage.getItem('ge_recent')||'[]');
+      r=[key].concat(r.filter(x=>x!==key)).slice(0,5);
+      localStorage.setItem('ge_recent',JSON.stringify(r));
+    }catch(e){}
+  }
+  function getRecent(){
+    try{ return JSON.parse(localStorage.getItem('ge_recent')||'[]'); }catch(e){ return []; }
+  }
+
+  // Mobile "Sections" sheet — one tap to any of the 14, vs scrolling a pill strip.
+  function openSections(){ const s=$('secSheet'); if(s){ s.classList.add('open'); document.body.style.overflow='hidden'; } }
+  function closeSections(){ const s=$('secSheet'); if(s){ s.classList.remove('open'); if(!document.querySelector('.sheet.open')) document.body.style.overflow=''; } }
+
+  function routeFromHash(instant){
+    const h=(location.hash||'').replace(/^#/,'');
+    if(h.startsWith('crop/')||h.startsWith('sp/')){ activateTab(activeTab,{noHash:true,noScroll:true}); openDetail(h); return; }
+    activateTab(h||'home',{noHash:true,instant:instant});
+  }
+
+  function wire(){
+    if(document.body.dataset.navWired) { routeFromHash(true); return; }
+    document.body.dataset.navWired='1';
+
+    $('search').addEventListener('input',applyFilter);
+
+    // Delegated — the tab bar and #main are re-rendered, so per-node binding would leak.
+    document.addEventListener('click',e=>{
+      const tab=e.target.closest('.tab');
+      if(tab&&tab.dataset.t){ activateTab(tab.dataset.t,{push:true}); return; }
+      const go=e.target.closest('[data-goto]');
+      if(go){ e.preventDefault(); activateTab(go.dataset.goto,{push:true}); return; }
+      if(e.target.closest('#secBtn')){ openSections(); return; }
+      if(e.target.closest('#secClose')||e.target.classList.contains('sheet-scrim')){ closeSections(); return; }
+      if(e.target.closest('#backBtn')){ history.back(); return; }
+    });
+
+    window.addEventListener('popstate',()=>{ closeDetail(true); routeFromHash(true); });
+    document.addEventListener('keydown',e=>{ if(e.key==='Escape'){ closeSections(); closeDetail(); } });
+
+    routeFromHash(true);
   }
 
   boot();
