@@ -797,6 +797,7 @@
     const p=JAD.programs.find(x=>x.id===$('jcP').value);
     const tank=parseFloat($('jcT').value); const out=$('jcOut');
     if(p.kind==='fert'){ return calcFert(p,out); }
+    if(p.kind==='neat'){ return calcNeat(p,out); }
     if(isNaN(tank)||tank<=0){ out.innerHTML='<p class="vp-note">Enter your tank size.</p>'; return; }
     const L=toL(tank), k=L/p.per, per500={};
     const rows=p.mix.map(m=>{
@@ -805,34 +806,67 @@
       if(m.id) per500[m.id]=(per500[m.id]||0)+m.q;
       return '<tr><td>'+nm+'</td><td><b>'+fmtQ(m.q*k,m.u||'L')+'</b></td></tr>';
     }).join('');
+    // norules = the book documents this recipe past a guard-rail on purpose
+    // (seed soak has no living leaf to burn). Firing the rule would be wrong.
     let warn='';
-    JAD.rules.forEach(r=>{
+    if(!p.norules) JAD.rules.forEach(r=>{
       const v={jwa:per500.jwa||0,js:per500.js||0,jms:per500.jms||0,jhs:per500.jhs||0};
       let hit=false; try{ hit=Function('jwa','js','jms','jhs','return ('+r.test+')')(v.jwa,v.js,v.jms,v.jhs); }catch(e){}
       if(hit) warn+='<div class="'+(r.level==='danger'?'jc-danger':'flag')+'">'+
         (r.level==='danger'?'<b>⚠ </b>':'')+r.text+'</div>';
     });
+    const soak=p.kind==='soak';
     out.innerHTML=warn+
+      (soak?'<div class="flag"><b>This is a soak, not a spray.</b> The volume below is the <b>soaking water</b> the seed sits in — it never goes through a sprayer.</div>':'')+
       (jPlain&&p.plain?'<p class="jc-plain">'+p.plain+'</p>':'')+
-      '<div class="tbl-wrap"><table><tr><th>Add to the tank</th><th>For '+fmtVol(L)+'</th></tr>'+rows+
-      '<tr><td>Water</td><td><b>fill to '+fmtVol(L)+'</b></td></tr></table></div>'+
-      (p.warn?'<div class="flag">'+p.warn.join(' ')+'</div>':'')+
-      '<div class="win"><b>Order matters:</b> half-fill with water, add each input separately and mix after each, then top up. Never pour JWA and JS together — they clot.</div>'+
-      jnpBlock()+
-      '<p class="vp-note">Book recipe is per '+fmtVol(p.per)+'; scaled ×'+k.toFixed(3)+' for your tank.</p>';
+      '<div class="tbl-wrap"><table><tr><th>'+(soak?'Into the soaking water':'Add to the tank')+'</th><th>For '+fmtVol(L)+'</th></tr>'+rows+
+      '<tr><td>'+(p.water||'Water')+'</td><td><b>fill to '+fmtVol(L)+'</b></td></tr></table></div>'+
+      (p.steps?'<h4 class="jc-h">Steps</h4><ol class="jc-steps">'+p.steps.map(s=>'<li>'+s+'</li>').join('')+'</ol>':'')+
+      (p.warn?'<div class="flag"><b>Watch out:</b><ul class="tight">'+p.warn.map(w=>'<li>'+w+'</li>').join('')+'</ul></div>':'')+
+      (soak?'':'<div class="win"><b>Order matters:</b> half-fill with water, add each input separately and mix after each, then top up. Never pour JWA and JS together — they clot.</div>')+
+      (soak?'':jnpBlock())+
+      '<p class="vp-note">Book recipe is per '+fmtVol(p.per)+'; scaled ×'+k.toFixed(3)+' for your '+(soak?'soak':'tank')+'.</p>';
+  }
+
+  // Applied UNDILUTED. This one must never go through the per-500 L model —
+  // it is a small fixed batch sized by the land it covers, not by a tank.
+  function calcNeat(p,out){
+    // one display unit of finished agent = 1 gal (US) or 1 L (metric), in litres
+    const unitL=jUnit==='us'?G():1;
+    const rows=p.mix.map(m=>{
+      const fm=m.id?JAD.formulas.find(x=>x.id===m.id):null;
+      return '<tr><td>'+(fm?fm.name.split(' (')[0]:m.n)+'</td><td><b>'+fmtQ(m.q,m.u||'L')+'</b></td>'+
+        '<td class="jc-mut">'+fmtQ(m.q/p.batchL*unitL,m.u||'L')+'</td></tr>';
+    }).join('');
+    const ha=p.batchL*p.coverPerL, haUnit=unitL*p.coverPerL;
+    out.innerHTML=
+      '<div class="jc-danger"><b>⚠ This one is applied UNDILUTED.</b> It is not a tank mix and it does not scale to your sprayer — '+
+      'the whole batch is only '+fmtVol(p.batchL)+' and it goes straight onto the water surface. Your tank size is ignored here.</div>'+
+      (jPlain&&p.plain?'<p class="jc-plain">'+p.plain+'</p>':'')+
+      '<div class="tbl-wrap"><table><tr><th>Ingredient</th><th>Full book batch ('+fmtVol(p.batchL)+')</th><th>per '+(jUnit==='us'?'gal':'L')+' of agent</th></tr>'+rows+'</table></div>'+
+      '<div class="win"><b>How far it goes:</b> one '+(jUnit==='us'?'gallon':'litre')+' of finished agent covers about '+
+      haUnit.toFixed(2)+' ha ('+(haUnit*2.471).toFixed(2)+' ac), so a full book batch covers roughly '+
+      ha.toFixed(2)+' ha ('+(ha*2.471).toFixed(1)+' ac). Scale it by the area you are treating — use the right-hand column.</div>'+
+      (p.steps?'<h4 class="jc-h">Steps</h4><ol class="jc-steps">'+p.steps.map(s=>'<li>'+s+'</li>').join('')+'</ol>':'')+
+      (p.warn?'<div class="flag"><b>Watch out:</b><ul class="tight">'+p.warn.map(w=>'<li>'+w+'</li>').join('')+'</ul></div>':'')+
+      '<div class="win"><b>Why JWA and JS are both in here:</b> each one is stirred into the water separately, in order, before the oil goes in. That is the same rule as the tank — never pour them into each other neat.</div>';
   }
 
   // Fixed soil recipe for a stated area — deliberately NOT scaled to a tank.
   function calcFert(p,out){
     const rows=p.mix.map(m=>{
       const fm=m.id?JAD.formulas.find(x=>x.id===m.id):null;
-      return '<tr><td>'+(fm?fm.name.split(' (')[0]:m.n)+'</td><td><b>'+fmtQ(m.q,m.u||'L')+'</b></td></tr>';
+      // some ingredients state their own coverage, which differs from the recipe's
+      return '<tr><td>'+(fm?fm.name.split(' (')[0]:m.n)+
+        (m.area?' <span class="jc-mut">('+m.area+')</span>':'')+
+        '</td><td><b>'+fmtQ(m.q,m.u||'L')+'</b></td></tr>';
     }).join('');
     out.innerHTML=
       '<div class="flag"><b>This one is different.</b> It is not a spray-tank recipe — it is a fixed <b>soil</b> application covering <b>'+p.area+
       '</b>, so the amounts below do not scale to your sprayer. Scale by <i>land area</i> instead.</div>'+
       (jPlain&&p.plain?'<p class="jc-plain">'+p.plain+'</p>':'')+
       '<div class="tbl-wrap"><table><tr><th>Apply to soil</th><th>Amount for '+p.area+'</th></tr>'+rows+'</table></div>'+
+      (p.warn?'<div class="flag"><b>Watch out:</b><ul class="tight">'+p.warn.map(w=>'<li>'+w+'</li>').join('')+'</ul></div>':'')+
       '<div class="jc-danger"><b>⚠ Do not spray this on leaves as written.</b> For foliar use the book caps total inputs (JMS + JLF) at <b>under 30 L per 500 L</b> and requires over 1.5 L of JWA. Seawater and sea salt kill the JWA’s wetting power — keep those to soil only.</div>'+
       jnpBlock();
   }
