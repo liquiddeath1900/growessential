@@ -343,7 +343,8 @@
     if(_rendering||_renderedFor===sig) return;      // already rendered for this user
     _rendering=true;
     show($('gate'),false);
-    const {data,error}=await sb.from('ge_playbook').select('tab_key,label,sort,html').order('sort',{ascending:true});
+    // Rows whose key starts with "plantdoc" are whole standalone pages (served by plant.html) — far too big to load here.
+    const {data,error}=await sb.from('ge_playbook').select('tab_key,label,sort,html').not('tab_key','like','plantdoc%').order('sort',{ascending:true});
     if(error || !data || !data.length){
       // authenticated but not the owner (RLS returns nothing)
       show($('app'),false); show($('gate'),true);
@@ -460,6 +461,10 @@
       '<h2>Land Audit Playbook</h2>'+
       '<p class="lede">Your field reference. Everything is searchable from the bar above — or jump straight to a section.</p>'+
       recentHtml+
+      '<h3 class="blk">The plant</h3><div class="hm-grid">'+
+        '<a class="hm-card" href="plant.html" style="text-decoration:none;color:inherit"><span class="hm-t">Plant Manual</span><span class="hm-b">Soldier flies, barrel station, land plan, price calculator — EN/ES</span></a>'+
+        '<a class="hm-card" href="plant.html?doc=labels" style="text-decoration:none;color:inherit"><span class="hm-t">Barrel labels</span><span class="hm-b">Printable sign for every barrel</span></a>'+
+      '</div>'+
       groups.map(g=>'<h3 class="blk">'+g.name+'</h3><div class="hm-grid">'+
         g.items.map(r=>'<button class="hm-card" data-goto="'+r.tab_key+'">'+
           '<span class="hm-t">'+r.label+'</span>'+

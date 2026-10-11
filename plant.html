@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Plant Manual · GrowEssential</title>
+<link rel="icon" href="favicon-96x96.png">
+<style>body{margin:0;background:#F5F1E8;color:#172F1B;font:17px/1.5 system-ui,-apple-system,sans-serif;display:grid;place-items:center;min-height:100vh;text-align:center;padding:24px}a{color:#2F5D3A;font-weight:700}</style>
+</head>
+<body>
+<div id="msg">Loading…</div>
+<!-- Content is private: it is fetched from Supabase after sign-in and never stored in this public repo. -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+(async function(){
+  const SUPA_URL="https://lpzijtmbdowcshomyenk.supabase.co";
+  const SUPA_ANON="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxwemlqdG1iZG93Y3Nob215ZW5rIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQwNTM4MDgsImV4cCI6MjA4OTYyOTgwOH0.2GN7eyC8rutMuHrVOc_2e2meMLu1S5YoNViV1zFgzX4";
+  var msg=document.getElementById('msg');
+  var doc=new URLSearchParams(location.search).get('doc')==='labels'?'plantdoc_labels':'plantdoc_manual';
+  try{
+    var sb=window.supabase.createClient(SUPA_URL, SUPA_ANON);
+    var s=await sb.auth.getSession();
+    if(!s.data.session){ msg.innerHTML='Sign in first. <a href="playbook.html">Open the playbook</a>, sign in, then come back.'; return; }
+    var r=await sb.from('ge_playbook').select('html').eq('tab_key',doc).maybeSingle();
+    if(r.error || !r.data){ msg.innerHTML='Not available yet for this account. <a href="playbook.html">Back to the playbook</a>'; return; }
+    document.open(); document.write(r.data.html); document.close();
+  }catch(e){ msg.textContent='Could not load. Check your connection and try again.'; }
+})();
+</script>
+</body>
+</html>
