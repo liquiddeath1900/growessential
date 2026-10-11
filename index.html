@@ -11,7 +11,6 @@
   <meta name="theme-color" content="#2f5d3a">
   <meta name="google-site-verification" content="6TPYQKuK3aqkjH10usd4VsI59NJ2jQ5yANjDMbXJuMI">
 
-  <link rel="preload" as="image" href="/assets/hero-foodforest.jpg" fetchpriority="high">
 
   <title>GrowEssential — Regenerative Agriculture, Soil Biology, Food Forest Design</title>
   <meta name="description" content="Soil-first regenerative agriculture consulting. JADAM, vermicompost, food forest design, agroforestry, and on-farm soil testing. Working from the United States; exploring across the Dominican Republic.">
@@ -78,6 +77,128 @@
     .underline-grow { background-image: linear-gradient(currentColor, currentColor); background-size: 0 1.5px; background-repeat: no-repeat; background-position: 0 100%; transition: background-size .4s ease; }
     .underline-grow:hover { background-size: 100% 1.5px; }
     .tag { font-size: 10px; letter-spacing: .12em; text-transform: uppercase; }
+  </style>
+  <style>
+:root{--soil50:#faf7f0;--cream:#f5f1e8;--soil200:#e8dfc8;--soil300:#d4c39e;--soil400:#b89a6b;--soil500:#8a6b3d;--soil600:#6b5028;--soil700:#4a3719;--soil800:#2d2010;
+  --leaf100:#d8ebdc;--leaf200:#a8d2b1;--leaf300:#6fad7d;--leaf400:#458859;--leaf500:#2f5d3a;--leaf600:#234629;--leaf700:#172f1b;--leaf800:#0c1a0e;
+  --rust400:#c0573b;--rust500:#a8472b;--gut:clamp(16px,4vw,48px);--max:1240px;
+  --serif:"Fraunces",Georgia,serif;--sans:"Inter",system-ui,-apple-system,sans-serif}
+.gx *{box-sizing:border-box;margin:0}
+.gx :focus-visible{outline:2px solid var(--rust400);outline-offset:3px;border-radius:6px}
+.gx .tag{font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase}
+.gx .bar{position:fixed;z-index:50;top:max(10px,env(safe-area-inset-top));left:50%;transform:translateX(-50%);width:min(calc(100% - 20px),var(--max));height:56px;padding:0 8px 0 18px;
+  display:flex;align-items:center;gap:16px;border-radius:999px;border:1px solid rgba(12,26,14,.1);color:var(--leaf700);
+  background:linear-gradient(180deg,rgba(255,255,255,.5),rgba(255,255,255,.18)),rgba(250,247,240,.5);-webkit-backdrop-filter:blur(16px) saturate(150%);backdrop-filter:blur(16px) saturate(150%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.7),0 12px 34px -22px rgba(12,26,14,.55);transition:background .3s}
+.gx .bar.lit{background:rgba(250,247,240,.9)}
+.gx .logo{font:500 19px var(--serif);display:flex;align-items:center;gap:9px;letter-spacing:-.01em}
+.gx .logo::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--leaf400)}
+.gx .links{display:none;gap:26px;margin-left:auto;font-size:14.5px}
+.gx .links a{opacity:.82}
+.gx .links a:hover{opacity:1;text-decoration:underline;text-underline-offset:5px}
+.gx .bar-end{margin-left:auto;display:flex;align-items:center;gap:6px}
+.gx .lang{display:flex;padding:3px;border:0;border-radius:999px;background:rgba(12,26,14,.09);font-size:11.5px;font-weight:600;letter-spacing:.05em;cursor:pointer}
+.gx .lang span{padding:6px 10px;border-radius:999px;opacity:.65}
+.gx .lang .on{background:var(--leaf500);color:var(--cream);opacity:1}
+.gx .burger{width:44px;height:44px;border:0;border-radius:50%;background:none;cursor:pointer;display:grid;place-items:center}
+.gx .burger i{display:block;width:20px;height:2px;border-radius:2px;background:currentColor;box-shadow:0 6px 0 currentColor,0 -6px 0 currentColor;transition:.25s}
+.gx .burger[aria-expanded=true] i{box-shadow:none;transform:rotate(45deg)}
+.gx .burger i{position:relative}
+.gx .burger[aria-expanded=true] i::after{content:"";position:absolute;inset:0;border-radius:2px;background:currentColor;transform:rotate(-90deg)}
+.gx .drawer{position:fixed;z-index:49;top:calc(max(10px,env(safe-area-inset-top)) + 64px);left:10px;right:10px;border-radius:26px;background:#faf7f0;border:1px solid rgba(12,26,14,.1);
+  box-shadow:0 30px 60px -30px rgba(12,26,14,.6);padding:10px 22px;display:grid;opacity:0;transform:translateY(-10px);pointer-events:none;transition:.25s}
+.gx .drawer.open{opacity:1;transform:none;pointer-events:auto}
+.gx .drawer a{padding:15px 0;font:400 24px var(--serif);color:var(--leaf700);border-bottom:1px solid rgba(74,55,25,.12);letter-spacing:-.01em}
+.gx .drawer a:last-child{border:0}
+.gx .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 28px;border-radius:999px;border:0;background:var(--leaf600);color:var(--cream);font-weight:600;cursor:pointer;white-space:nowrap;transition:transform .2s,background .2s;box-shadow:0 14px 30px -16px rgba(12,26,14,.7)}
+.gx .btn:hover{background:var(--leaf500)}
+.gx .btn:active{transform:scale(.98)}
+@media(min-width:940px){.gx .links{display:flex}
+.gx .bar-end{margin-left:26px}
+.gx .bar{height:62px;padding:0 12px 0 26px}
+.gx .burger,.gx .drawer{display:none}}
+.gx .hero{position:relative;color:var(--leaf800);overflow:hidden;padding:calc(56px + 34px) 0 0;
+  background:radial-gradient(60% 40% at 88% 4%,rgba(255,244,200,.85),transparent 60%),linear-gradient(180deg,#3fa9e6 0%,#7cc8f1 38%,#bfe6f6 70%,#eef4dc 100%)}
+.gx .clouds{position:absolute;inset:0 0 30% 0;pointer-events:none;z-index:1;overflow:hidden}
+.gx .cloud{position:absolute;left:0;--k:.55;width:calc(var(--w,220px)*var(--k));height:calc(var(--w,220px)*var(--k)*.26);border-radius:999px;background:#fff;opacity:var(--o,.92);animation:drift var(--d,90s) linear infinite;animation-delay:var(--s,0s);will-change:transform}
+.gx .cloud::before,.gx .cloud::after{content:"";position:absolute;background:#fff;border-radius:50%}
+.gx .cloud::before{width:42%;aspect-ratio:1;left:16%;bottom:28%}
+.gx .cloud::after{width:30%;aspect-ratio:1;left:50%;bottom:36%}
+@keyframes drift{from{transform:translateX(-60vw)}to{transform:translateX(110vw)}}
+@media(min-width:940px){.gx .cloud{--k:1}}
+.gx .hero-in{max-width:calc(var(--max) + 2*var(--gut));margin:0 auto;padding:0 var(--gut);position:relative;z-index:3}
+.gx .hero .tag{display:inline-flex;align-items:center;gap:9px;color:var(--leaf700)}
+.gx .hero .tag::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--leaf500)}
+.gx h1{font:400 clamp(44px,11.5vw,112px)/.95 var(--serif);letter-spacing:-.035em;margin-top:16px;font-variation-settings:"opsz" 144}
+.gx h1 em{display:block;color:#8a3923}
+.gx .sub{margin-top:20px;max-width:34em;color:#12301a;font-weight:500;font-size:clamp(15.5px,1.35vw,20px);line-height:1.5}
+.gx .acts{margin-top:24px;display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px}
+.gx .acts a.txt{font-size:15px;font-weight:600;border-bottom:1.5px solid rgba(12,26,14,.45);padding-bottom:2px}
+.gx .acts a.txt:hover{border-color:var(--leaf800)}
+.gx .scene{position:relative;margin-top:clamp(10px,2vw,28px)}
+.gx .scene svg{display:block;width:100%;height:auto}
+.gx .dial{position:relative;z-index:4;margin:-2px 0 0;padding:0 var(--gut) 26px;background:linear-gradient(180deg,#3a2812,#1b1408);color:var(--cream)}
+.gx .dial-card{position:relative;top:-18px;margin-bottom:-18px;border-radius:22px;border:1px solid rgba(245,241,232,.14);background:rgba(12,18,10,.82);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);padding:16px 18px 18px;display:grid;gap:12px}
+.gx .dial-top{display:flex;align-items:baseline;justify-content:space-between;gap:14px}
+.gx .yr{font:400 clamp(30px,5vw,46px)/1 var(--serif);letter-spacing:-.02em;font-variant-numeric:tabular-nums;white-space:nowrap}
+.gx .yr small{font:600 11px var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--leaf200);margin-right:8px;vertical-align:middle}
+.gx .phase{font:600 11px var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--rust400);text-align:right}
+.gx .say{color:rgba(245,241,232,.84);font-size:14.5px;line-height:1.45;min-height:4.4em}
+.gx .now{font-size:12.5px;color:var(--leaf200);min-height:1.5em}
+.gx .track{position:relative;height:30px}
+.gx .track input{position:absolute;inset:0;width:100%;margin:0;-webkit-appearance:none;appearance:none;background:none;cursor:pointer;z-index:2}
+.gx .track input::-webkit-slider-runnable-track{height:4px;border-radius:4px;background:rgba(245,241,232,.2)}
+.gx .track input::-moz-range-track{height:4px;border-radius:4px;background:rgba(245,241,232,.2)}
+.gx .track input::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;margin-top:-9px;border-radius:50%;background:var(--cream);border:4px solid var(--rust400);box-shadow:0 2px 10px rgba(0,0,0,.5)}
+.gx .track input::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:var(--cream);border:4px solid var(--rust400)}
+.gx .bands{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;font:600 10px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:rgba(245,241,232,.55)}
+.gx .bands span{padding-top:7px;border-top:2px solid rgba(245,241,232,.16);line-height:1.5}
+.gx .bands b{font-weight:600}
+.gx .bands i{display:block;font-style:normal;opacity:.75;letter-spacing:.04em;text-transform:none;font-weight:500;font-size:11px}
+.gx .bands span.on{color:var(--cream);border-color:var(--rust400)}
+.gx .fine{font-size:11.5px;color:rgba(245,241,232,.5)}
+@media(min-width:940px){.gx .hero{padding-top:calc(62px + 40px);height:max(100svh,740px);display:flex;flex-direction:column;justify-content:space-between;gap:16px}
+.gx h1{font-size:clamp(56px,6.6vw,104px)}
+.gx .say{min-height:3em}
+.gx .fine{display:none}
+.gx .hero-in{width:100%}
+.gx .hero-in>div:first-child{max-width:min(50%,690px)}
+.gx .scene{position:absolute;inset:0;margin:0;z-index:1}
+.gx .scene svg{width:100%;height:100%}
+.gx .dial{width:100%;max-width:calc(var(--max) + 2*var(--gut));margin:0 auto;padding-bottom:26px;background:none}
+.gx .dial-card{top:0;margin-bottom:0}
+.gx .dial-card{max-width:min(42%,520px);padding:16px 22px 18px;gap:9px}}
+.gx .sec{max-width:calc(var(--max) + 2*var(--gut));margin:0 auto;padding:clamp(56px,8vw,110px) var(--gut)}
+.gx .sec h2{font:400 clamp(30px,5vw,58px)/1.02 var(--serif);letter-spacing:-.03em;color:var(--leaf700);max-width:16em;margin-top:12px}
+.gx .sec h2 em{color:var(--rust500)}
+.gx .tools{display:grid;gap:14px;margin-top:clamp(24px,3vw,44px)}
+.gx .tool{display:grid;gap:10px;padding:26px;border-radius:26px;border:1px solid var(--soil200);background:var(--soil50);transition:transform .25s,border-color .25s}
+.gx .tool:hover{transform:translateY(-4px);border-color:var(--leaf300)}
+.gx .tool b{font:400 clamp(22px,2.2vw,30px)/1.1 var(--serif);color:var(--leaf700);letter-spacing:-.02em}
+.gx .tool p{color:var(--soil700);font-size:15px}
+.gx .tool span{margin-top:6px;font-weight:600;font-size:14.5px;color:var(--leaf500)}
+.gx .tool.dark{background:var(--leaf700);border-color:var(--leaf700)}
+.gx .tool.dark b{color:var(--cream)}
+.gx .tool.dark p{color:var(--leaf100)}
+.gx .tool.dark span{color:var(--leaf200)}
+.gx .tool .tag{color:var(--soil500)}
+.gx .tool.dark .tag{color:var(--leaf200)}
+@media(min-width:860px){.gx .tools{grid-template-columns:repeat(3,1fr);gap:20px}
+.gx .tool{padding:34px}}
+.gx .note{max-width:calc(var(--max) + 2*var(--gut));margin:0 auto;padding:0 var(--gut) 70px;color:var(--soil600);font-size:13px}
+@media(prefers-reduced-motion:reduce){.gx *{transition:none!important;animation:none!important}}
+.gx{font-size:clamp(15px,1vw + 11px,17px);line-height:1.6;color:var(--soil800)}
+.gx .lang{position:relative}
+.gx .lang[aria-checked=false] [data-seg=en],.gx .lang[aria-checked=true] [data-seg=es]{background:var(--leaf500);color:var(--cream);opacity:1}
+@media(max-width:767px){
+  /* process on phones: one tidy vertical timeline, every step fully visible */
+  .gx-steps{gap:0!important}
+  .gx-steps::before{content:"";position:absolute;left:27px;top:28px;bottom:28px;width:2px;background:#6fad7d;opacity:.6}
+  .gx-steps>.reveal{position:relative;display:grid;grid-template-columns:56px 1fr;column-gap:16px;align-items:center;text-align:left;padding:10px 0}
+  .gx-steps>.reveal>:first-child{grid-row:1/3;width:56px;height:56px;font-size:20px;margin:0}
+  .gx-steps>.reveal>:nth-child(2){align-self:end;margin:0}
+  .gx-steps>.reveal>:nth-child(3){align-self:start}
+}
   </style>
   <meta property="og:image" content="https://growessential.com/assets/og.jpg">
   <meta property="og:image:width" content="1200">
@@ -156,109 +277,77 @@
 </head>
 <body class="antialiased">
 
-<!-- NAV -->
-<nav class="fixed top-0 left-0 right-0 z-50 bg-cream/85 backdrop-blur-md border-b border-soil-200">
-  <div class="max-w-7xl mx-auto px-5 py-4 flex items-center justify-between">
-    <a href="/" class="flex items-center gap-2.5 text-leaf-700 font-serif text-xl font-semibold">
-      <span class="inline-block w-2.5 h-2.5 rounded-full bg-leaf-500"></span>
-      GrowEssential
-    </a>
-    <button id="navToggle" class="md:hidden text-leaf-700 text-2xl" aria-label="Open menu">☰</button>
-    <div class="hidden md:flex items-center gap-8 text-sm text-leaf-700">
-      <a href="/about.html" class="underline-grow">About</a>
-      <a href="/food-forest-design.html" class="underline-grow">Design</a>
-      <a href="/land-audit.html" class="underline-grow">Land Audit</a>
-      <a href="/knowledge-base.html" class="underline-grow">Knowledge</a>
-      <a href="/services.html" class="underline-grow">Services</a>
-      <a href="/contact.html" class="underline-grow">Contact</a>
-      <div class="inline-flex items-center gap-1.5"><span aria-hidden="true" class="text-leaf-500 text-sm">🌐</span><button data-lang-toggle role="switch" aria-checked="false" aria-label="Language / Idioma" class="relative inline-flex items-center h-7 w-16 rounded-full bg-soil-200 border border-soil-300 text-[10px] font-bold tracking-wide"><span data-seg="en" class="relative z-10 flex-1 text-center transition-colors text-cream">EN</span><span data-seg="es" class="relative z-10 flex-1 text-center transition-colors text-soil-500">ES</span><span data-knob class="absolute top-0.5 left-0.5 h-6 w-[30px] rounded-full bg-leaf-500 shadow transition-transform duration-200"></span></button></div>
-      <a href="https://calendly.com/seamlessflow-ai/30-minute-meeting" target="_blank" rel="noopener" class="bg-leaf-500 hover:bg-leaf-600 text-cream px-5 py-2.5 rounded-full font-medium transition shadow-md shadow-leaf-500/20">Book a Call</a>
-    </div>
-  </div>
-  <div id="mobileNav" class="hidden md:hidden border-t border-soil-200 bg-cream">
-    <div class="max-w-7xl mx-auto px-5 py-3 flex flex-col gap-3 text-leaf-700">
-      <a href="/about.html" class="py-2 border-b border-soil-100">About</a>
-      <a href="/food-forest-design.html" class="py-2 border-b border-soil-100">Design</a>
-      <a href="/land-audit.html" class="py-2 border-b border-soil-100">Land Audit</a>
-      <a href="/knowledge-base.html" class="py-2 border-b border-soil-100">Knowledge</a>
-      <a href="/services.html" class="py-2 border-b border-soil-100">Services</a>
-      <a href="/contact.html" class="py-2 border-b border-soil-100">Contact</a>
-      <div class="flex items-center justify-between py-2"><span class="flex items-center gap-2 text-leaf-700"><span aria-hidden="true" class="text-leaf-500">🌐</span>Idioma / Language</span><button data-lang-toggle role="switch" aria-checked="false" aria-label="Language / Idioma" class="relative inline-flex items-center h-8 w-20 rounded-full bg-soil-200 border border-soil-300 text-xs font-bold"><span data-seg="en" class="relative z-10 flex-1 text-center transition-colors text-cream">EN</span><span data-seg="es" class="relative z-10 flex-1 text-center transition-colors text-soil-500">ES</span><span data-knob class="absolute top-0.5 left-0.5 h-7 w-[38px] rounded-full bg-leaf-500 shadow transition-transform duration-200"></span></button></div>
-    </div>
-  </div>
-</nav>
-
-<!-- HERO — full-bleed image with overlay -->
-<header class="relative min-h-[100vh] flex items-center pt-20 overflow-hidden">
-  <img src="/assets/hero-foodforest.jpg" alt="Lush multi-strata food forest with banana and tropical canopy" class="absolute inset-0 w-full h-full object-cover scale-105" loading="eager" fetchpriority="high">
-  <div class="absolute inset-0 bg-gradient-to-br from-leaf-800/85 via-leaf-700/75 to-leaf-800/90"></div>
-  <div class="absolute inset-0 grain opacity-30"></div>
-
-  <div class="relative max-w-7xl mx-auto px-5 py-20 md:py-32 w-full">
-    <div class="max-w-3xl">
-      <div class="inline-flex items-center gap-2 tag text-leaf-200 bg-leaf-800/40 backdrop-blur border border-leaf-400/30 px-3 py-1.5 rounded-full mb-8 reveal in">
-        <span class="w-1.5 h-1.5 rounded-full bg-leaf-300 animate-pulse"></span>
-        Soil-first regenerative consulting
-      </div>
-      <h1 class="display font-serif font-medium text-cream text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[0.95] mb-8 reveal in">
-        Heal the soil.<br>
-        <span class="text-rust-400 italic font-normal">Grow the rest.</span>
-      </h1>
-      <p class="text-cream/90 text-lg md:text-2xl max-w-2xl leading-relaxed mb-10 font-light reveal in">
-        Food forests, regenerative farms, and truly organic systems, designed from the soil up.
-        Built on living-soil biology, JADAM natural farming, and worm compost you make on your own land.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4 reveal in">
-        <a href="https://calendly.com/seamlessflow-ai/30-minute-meeting" target="_blank" rel="noopener" class="bg-cream text-leaf-700 hover:bg-cream-dark px-8 py-4 rounded-full font-semibold text-center transition shadow-2xl shadow-black/30 inline-flex items-center justify-center gap-2 group">
-          Book a Free 30-min Call
-          <span class="transition-transform group-hover:translate-x-1">→</span>
-        </a>
-        <a href="/land-audit.html" class="border border-cream/40 hover:border-cream hover:bg-cream/10 text-cream px-8 py-4 rounded-full font-medium text-center transition">
-          Or get a free Land Audit
-        </a>
-      </div>
-      <div class="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-cream/70">
-        <span class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-leaf-300"></span>No pitch deck</span>
-        <span class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-leaf-300"></span>Bring your land questions</span>
-        <span class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-leaf-300"></span>Zoom or Google Meet</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- scroll indicator -->
-  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-cream/60 text-xs tracking-widest flex flex-col items-center gap-2 reveal in">
-    <span>SCROLL</span>
-    <span class="block w-px h-8 bg-cream/40"></span>
-  </div>
+<!-- NAV: floating bar, navigation only (the call button lives in the hero) -->
+<div class="gx">
+<header class="bar" id="bar">
+  <a class="logo" href="/">GrowEssential</a>
+  <nav class="links"><a href="/about.html">About</a><a href="/food-forest-design.html">Design</a><a href="/land-audit.html">Land Audit</a><a href="/knowledge-base.html">Knowledge</a><a href="/services.html">Services</a><a href="/contact.html">Contact</a></nav>
+  <div class="bar-end"><button class="lang" data-lang-toggle role="switch" aria-checked="false" aria-label="Language / Idioma" type="button"><span data-seg="en">EN</span><span data-seg="es">ES</span></button><button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="drawer" aria-label="Open menu"><i></i></button></div>
 </header>
+<nav class="drawer" id="drawer"><a href="/about.html">About</a><a href="/food-forest-design.html">Design</a><a href="/land-audit.html">Land Audit</a><a href="/knowledge-base.html">Knowledge</a><a href="/services.html">Services</a><a href="/contact.html">Contact</a></nav>
+</div>
 
-<!-- MARQUEE STRIP -->
-<section class="bg-leaf-700 text-cream/80 py-4 border-y border-leaf-600 overflow-hidden">
-  <div class="marquee-track gap-12 text-sm tracking-widest uppercase">
-    <!-- Set 1 -->
-    <div class="flex items-center gap-12 px-6 whitespace-nowrap">
-      <span>🌱 JADAM Korean Natural Farming</span><span class="text-leaf-400">·</span>
-      <span>🪱 Vermicompost (Black Gold)</span><span class="text-leaf-400">·</span>
-      <span>🍄 Johnson-Su Bioreactor</span><span class="text-leaf-400">·</span>
-      <span>🧪 Haney Soil Health Tests</span><span class="text-leaf-400">·</span>
-      <span>🌳 Tropical Agroforestry</span><span class="text-leaf-400">·</span>
-      <span>🥥 Cacao Forest Design</span><span class="text-leaf-400">·</span>
-      <span>🌾 Regenerative Organic Certified Aligned</span><span class="text-leaf-400">·</span>
-      <span>🌍 Native Species First</span><span class="text-leaf-400">·</span>
+<!-- HERO: a food forest growing year by year, drawn from the species matrix -->
+<div class="gx">
+<section class="hero" id="hero">
+  <div class="clouds" aria-hidden="true">
+    <i class="cloud" style="top:9%;--w:260px;--d:120s;--s:-20s"></i><i class="cloud" style="top:24%;--w:170px;--d:150s;--s:-95s;--o:.8"></i><i class="cloud" style="top:38%;--w:320px;--d:170s;--s:-60s;--o:.88"></i><i class="cloud" style="top:54%;--w:140px;--d:130s;--s:-118s;--o:.72"></i><i class="cloud" style="top:16%;--w:200px;--d:190s;--s:-150s;--o:.85"></i>
+  </div>
+  <div class="hero-in">
+    <div>
+      <p class="tag">Soil-first regenerative consulting</p>
+      <h1><span>Heal the soil.</span> <em>Grow the rest.</em></h1>
+      <p class="sub">Food forests, regenerative farms, and truly organic systems, designed from the soil up. Built on living-soil biology, JADAM natural farming, and worm compost you make on your own land.</p>
+      <div class="acts">
+        <a class="btn" href="https://calendly.com/seamlessflow-ai/30-minute-meeting" target="_blank" rel="noopener"><span>Book a Free 30-min Call</span> <span aria-hidden="true">→</span></a>
+        <a class="txt" href="/land-audit.html">Or get a free Land Audit</a>
+      </div>
     </div>
-    <!-- Set 2 (duplicate for seamless loop) -->
-    <div class="flex items-center gap-12 px-6 whitespace-nowrap" aria-hidden="true">
-      <span>🌱 JADAM Korean Natural Farming</span><span class="text-leaf-400">·</span>
-      <span>🪱 Vermicompost (Black Gold)</span><span class="text-leaf-400">·</span>
-      <span>🍄 Johnson-Su Bioreactor</span><span class="text-leaf-400">·</span>
-      <span>🧪 Haney Soil Health Tests</span><span class="text-leaf-400">·</span>
-      <span>🌳 Tropical Agroforestry</span><span class="text-leaf-400">·</span>
-      <span>🥥 Cacao Forest Design</span><span class="text-leaf-400">·</span>
-      <span>🌾 Regenerative Organic Certified Aligned</span><span class="text-leaf-400">·</span>
-      <span>🌍 Native Species First</span><span class="text-leaf-400">·</span>
+    <div></div>
+  </div>
+
+  <div class="scene" aria-hidden="true">
+    <svg id="svg" viewBox="0 0 1000 640" preserveAspectRatio="xMidYMax meet">
+      <defs>
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff8e0" stop-opacity="0"/><stop offset="1" stop-color="#fff8e0" stop-opacity=".55"/></linearGradient>
+        <linearGradient id="sub" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6b5028"/><stop offset="1" stop-color="#2d2010"/></linearGradient>
+        <linearGradient id="top" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c130a"/><stop offset="1" stop-color="#2d2010"/></linearGradient>
+      </defs>
+      <rect x="-3000" y="400" width="7000" height="80" fill="url(#sky)"/>
+      <g id="lines"></g>
+      <g id="plants"></g>
+      <rect x="-3000" y="480" width="7000" height="160" fill="url(#sub)"/>
+      <rect id="topsoil" x="-3000" y="480" width="7000" height="10" fill="url(#top)"/>
+      <rect id="mulch" x="-3000" y="476" width="7000" height="4" fill="#8a6b3d" opacity="0"/>
+      <g id="roots" fill="none" stroke-linecap="round"></g>
+      <g id="life"></g>
+      <line x1="-3000" y1="480" x2="4000" y2="480" stroke="#b89a6b" stroke-opacity=".5"/>
+    </svg>
+  </div>
+
+  <div class="dial">
+    <div class="dial-card">
+      <div class="dial-top"><div class="yr"><small id="yrL">Year</small><span id="yr">0</span></div><div class="phase" id="phase">Bare ground</div></div>
+      <p class="say" id="say"></p>
+      <div class="track"><input id="t" type="range" min="0" max="15" step="0.05" value="0" aria-label="Year of the food forest"></div>
+      <div class="bands" id="bands"><span data-a="1" data-b="3"><b></b><i></i></span><span data-a="3" data-b="8"><b></b><i></i></span><span data-a="10" data-b="16"><b></b><i></i></span></div>
+      <p class="now" id="now"></p>
+      <p class="fine">Drag the dial. Illustration: species, heights and phases come from the GrowEssential species matrix.</p>
     </div>
   </div>
 </section>
+
+<!-- TOOLS -->
+<section class="sec">
+  <p class="tag" style="color:var(--leaf500)">Start here</p>
+  <h2><span>Use the tools first.</span> <em>Talk to us after.</em></h2>
+  <div class="tools">
+    <a class="tool" href="/food-forest-design.html#matrix"><p class="tag">Species matrix</p><b>114 species, screened and mapped.</b><p>Filter by climate, strata, lifecycle and role. Invasives flagged by country.</p><span>Browse the matrix →</span></a>
+    <a class="tool dark" href="/knowledge-base.html"><p class="tag">Soil field guide</p><b>Read your soil like a paint swatch.</b><p>Match the colour, do the squeeze test, run a jar test. No lab needed to start.</p><span>Open the guide →</span></a>
+    <a class="tool" href="/land-audit.html"><p class="tag">Free Land Audit</p><b>Tell us about your land.</b><p>Send the basics about your parcel and get a first-actions report back.</p><span>Start the audit →</span></a>
+  </div>
+</section>
+</div>
 
 <!-- THREE PILLARS -->
 <section class="relative">
@@ -304,24 +393,24 @@
 <!-- STATS -->
 <section class="bg-leaf-800 text-cream">
   <div class="max-w-7xl mx-auto px-5 py-20 md:py-24">
-    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-6">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10 lg:gap-6">
       <div class="reveal">
-        <div class="font-serif text-6xl md:text-7xl text-rust-400 font-light mb-2">+26<span class="text-3xl align-super">%</span></div>
+        <div class="font-serif text-5xl md:text-7xl text-rust-400 font-light mb-2">+26<span class="text-3xl align-super">%</span></div>
         <div class="font-serif text-lg text-cream mb-1">Yield from vermicompost</div>
         <div class="text-sm text-cream/60">Per peer-reviewed meta-analysis (Mathieu 2019, Springer)</div>
       </div>
       <div class="reveal">
-        <div class="font-serif text-6xl md:text-7xl text-rust-400 font-light mb-2">5<span class="text-3xl">d</span></div>
+        <div class="font-serif text-5xl md:text-7xl text-rust-400 font-light mb-2">5<span class="text-3xl">d</span></div>
         <div class="font-serif text-lg text-cream mb-1">Land audit turnaround</div>
         <div class="text-sm text-cream/60">Free first-actions report, every parcel</div>
       </div>
       <div class="reveal">
-        <div class="font-serif text-6xl md:text-7xl text-rust-400 font-light mb-2">$0</div>
+        <div class="font-serif text-5xl md:text-7xl text-rust-400 font-light mb-2">$0</div>
         <div class="font-serif text-lg text-cream mb-1">Cost of JADAM inputs</div>
         <div class="text-sm text-cream/60">You make them on-farm. We teach the recipes.</div>
       </div>
       <div class="reveal">
-        <div class="font-serif text-6xl md:text-7xl text-rust-400 font-light mb-2">100<span class="text-3xl">%</span></div>
+        <div class="font-serif text-5xl md:text-7xl text-rust-400 font-light mb-2">100<span class="text-3xl">%</span></div>
         <div class="font-serif text-lg text-cream mb-1">Invasive-free recommendations</div>
         <div class="text-sm text-cream/60">Country-specific screening before any species suggested</div>
       </div>
@@ -525,7 +614,7 @@
       <div class="tag text-leaf-500 mb-4">Process · 05</div>
       <h2 class="font-serif text-4xl md:text-5xl text-leaf-700 leading-tight">From first call to thriving system.</h2>
     </div>
-    <div class="relative grid md:grid-cols-5 gap-6 md:gap-3">
+    <div class="gx-steps relative grid md:grid-cols-5 gap-6 md:gap-3">
       <!-- horizontal line on desktop -->
       <div class="hidden md:block absolute top-12 left-[10%] right-[10%] h-px bg-leaf-300"></div>
       <div class="reveal text-center">
@@ -648,25 +737,7 @@
   </div>
 </footer>
 
-<!-- MOBILE STICKY CTA -->
-<div id="stickyCta" class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-cream/95 backdrop-blur border-t border-soil-200 px-4 py-3 shadow-2xl translate-y-full transition-transform duration-300">
-  <a href="https://calendly.com/seamlessflow-ai/30-minute-meeting" target="_blank" rel="noopener" class="block bg-leaf-500 hover:bg-leaf-600 text-cream text-center px-5 py-3 rounded-full font-semibold transition">
-    Book Free 30-min Call →
-  </a>
-</div>
-<div class="md:hidden h-20"></div>
-
 <script>
-  // Mobile nav
-  const toggle = document.getElementById('navToggle');
-  const drawer = document.getElementById('mobileNav');
-  toggle?.addEventListener('click', () => drawer.classList.toggle('hidden'));
-  // Sticky mobile CTA — appears only after scrolling past the hero
-  const stickyCta = document.getElementById("stickyCta");
-  const toggleSticky = () => stickyCta?.classList.toggle("translate-y-full", window.scrollY < window.innerHeight * 0.7);
-  window.addEventListener("scroll", toggleSticky, { passive: true });
-  toggleSticky();
-
   // Scroll-reveal animation (progressive enhancement — content visible without JS)
   document.body.classList.add('js-anim');
   const io = new IntersectionObserver((entries) => {
@@ -676,6 +747,168 @@
     const r = el.getBoundingClientRect();
     if (r.top < window.innerHeight) { el.classList.add('in'); } else { io.observe(el); }
   });
+</script>
+
+<script>
+(() => {
+  const NS = 'http://www.w3.org/2000/svg', G = 480, PX = 16.2; // ground line, pixels per metre
+  const $ = s => document.querySelector(s);
+  const el = (n, a, p) => { const e = document.createElementNS(NS, n); for (const k in a) e.setAttribute(k, a[k]); p && p.appendChild(e); return e; };
+  const ss = x => { x = Math.max(0, Math.min(1, x)); return x * x * (3 - 2 * x); };
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // species, strata and mature heights from the live matrix (food-forest-design.html)
+  const KIND = {
+    coconut:   { name: 'Coconut palm', strata: 'Emergent', h: 25,  from: 1,   to: 14 },
+    avocado:   { name: 'Avocado',      strata: 'High',     h: 15,  from: 1.5, to: 11 },
+    guama:     { name: 'Guama',        strata: 'High',     h: 17,  from: 1,   to: 7,  thin: [10, 13], keep: .55 },
+    gliricidia:{ name: 'Gliricidia',   strata: 'Medium',   h: 10,  from: .8,  to: 4,  thin: [7, 9],  keep: 0 },
+    cacao:     { name: 'Cacao',        strata: 'Medium',   h: 6,   from: 3,   to: 9 },
+    banana:    { name: 'Banana',       strata: 'Medium',   h: 4.5, from: .5,  to: 2.5, thin: [9, 11], keep: 0 },
+    pigeon:    { name: 'Pigeon pea',   strata: 'Low',      h: 3,   from: .2,  to: 1.5, thin: [3.5, 5], keep: 0 },
+    vetiver:   { name: 'Vetiver',      strata: 'Low',      h: 1.7, from: .3,  to: 2 }
+  };
+  const PLANTS = [
+    ['coconut', 705], ['guama', 372], ['avocado', 548], ['gliricidia', 268], ['cacao', 452], ['cacao', 640], ['banana', 318], ['banana', 596],
+    ['pigeon', 296], ['pigeon', 410], ['pigeon', 500], ['pigeon', 762], ['vetiver', 282], ['vetiver', 792],
+    ['pigeon', 950], ['vetiver', 985], ['avocado', 980, .7], ['banana', 1060], ['coconut', 1130, .85], ['pigeon', 1100]
+  ];
+  // each plant is drawn 100 units tall, base at 0,0, growing up (negative y)
+  const DRAW = {
+    coconut(g) {
+      el('path', { d: 'M0 0 C6 -30 -8 -62 4 -92', stroke: '#8a6b3d', 'stroke-width': 3.2, fill: 'none', 'stroke-linecap': 'round' }, g);
+      for (let i = 0; i < 9; i++) { const a = -200 + i * 27.5, r = a * Math.PI / 180, x = Math.cos(r) * 30, y = Math.sin(r) * 22 - 92;
+        el('path', { d: `M4 -92 Q${4 + x * .55} ${-92 + (y + 92) * .2 - 12} ${4 + x} ${y + 8}`, stroke: i % 2 ? '#6fad7d' : '#458859', 'stroke-width': 3, fill: 'none', 'stroke-linecap': 'round' }, g); }
+      [[-1, -88], [7, -87], [3, -84]].forEach(c => el('circle', { cx: c[0], cy: c[1], r: 2.2, fill: '#6b5028' }, g));
+    },
+    round(g, c1, c2, c3) {
+      el('path', { d: 'M0 0 C-2 -20 3 -34 0 -50 M0 -36 L-14 -52 M1 -42 L15 -56', stroke: '#6b5028', 'stroke-width': 4, fill: 'none', 'stroke-linecap': 'round' }, g);
+      [[-20, -62, 22, 17, c1], [20, -64, 23, 18, c2], [0, -80, 27, 20, c3], [-4, -60, 20, 14, c2]].forEach(e => el('ellipse', { cx: e[0], cy: e[1], rx: e[2], ry: e[3], fill: e[4] }, g));
+    },
+    avocado(g) { DRAW.round(g, '#234629', '#2f5d3a', '#458859'); },
+    guama(g) { DRAW.round(g, '#458859', '#6fad7d', '#8cc79a'); },
+    gliricidia(g) { DRAW.round(g, '#2f5d3a', '#458859', '#6fad7d'); },
+    cacao(g) {
+      el('path', { d: 'M0 0 L0 -52', stroke: '#4a3719', 'stroke-width': 7, 'stroke-linecap': 'round' }, g);
+      [[-26, -66, 30, 20, '#172f1b'], [24, -68, 30, 21, '#234629'], [0, -82, 30, 18, '#2f5d3a']].forEach(e => el('ellipse', { cx: e[0], cy: e[1], rx: e[2], ry: e[3], fill: e[4] }, g));
+      [[-5, -22], [5, -34], [-4, -44]].forEach(p => el('ellipse', { cx: p[0], cy: p[1], rx: 3.6, ry: 6.5, fill: '#c0573b', transform: `rotate(${p[0] * 4} ${p[0]} ${p[1]})` }, g));
+    },
+    banana(g) {
+      el('path', { d: 'M0 0 L0 -50', stroke: '#6fad7d', 'stroke-width': 9, 'stroke-linecap': 'round' }, g);
+      [-62, -28, 0, 30, 64].forEach((a, i) => el('ellipse', { cx: 0, cy: -78, rx: 9, ry: 30, fill: i % 2 ? '#458859' : '#6fad7d', transform: `rotate(${a} 0 -50)` }, g));
+    },
+    pigeon(g) {
+      [-22, -6, 12, 26].forEach(a => el('path', { d: `M0 0 L${a} -74`, stroke: '#6b5028', 'stroke-width': 4, 'stroke-linecap': 'round' }, g));
+      [[-22, -76], [-8, -86], [12, -84], [26, -72], [2, -62], [-14, -58], [16, -60]].forEach(c => el('circle', { cx: c[0], cy: c[1], r: 15, fill: '#458859' }, g));
+      [[-18, -84], [8, -92], [24, -78], [-4, -70]].forEach(c => el('circle', { cx: c[0], cy: c[1], r: 3.8, fill: '#d4c39e' }, g));
+    },
+    vetiver(g) { for (let i = -5; i <= 5; i++) el('path', { d: `M0 0 Q${i * 4} -50 ${i * 9} -96`, stroke: i % 2 ? '#a8d2b1' : '#6fad7d', 'stroke-width': 5, fill: 'none', 'stroke-linecap': 'round' }, g); }
+  };
+
+  const layer = $('#plants'), items = [];
+  PLANTS.slice().sort((a, b) => KIND[b[0]].h - KIND[a[0]].h).forEach(([k, x, f]) => {
+    const g = el('g', {}, layer); DRAW[k](g);
+    items.push({ k, x, f: f || 1, g, sway: Math.random() * 6.28 });
+  });
+  // strata guide lines, from the site's own layer names
+  const lines = $('#lines');
+  [['Emergent', 25], ['High', 16], ['Medium', 7.5], ['Low', 3]].forEach(([n, m]) => {
+    const y = G - m * PX, g = el('g', { opacity: 0, 'data-m': m }, lines);
+    el('line', { x1: -3000, y1: y, x2: 4000, y2: y, stroke: '#0c1a0e', 'stroke-opacity': .28, 'stroke-dasharray': '3 9' }, g);
+    const t = el('text', { x: 992, y: y - 8, 'text-anchor': 'end', fill: '#0c1a0e', 'fill-opacity': .8, 'font-size': 13, 'font-weight': 600, 'font-family': 'Inter, sans-serif', 'letter-spacing': 2.2, stroke: '#eaf6fb', 'stroke-width': 6, 'stroke-opacity': .9, 'paint-order': 'stroke', 'data-k': n }, g); t.textContent = n.toUpperCase();
+  });
+  // roots + soil life
+  const roots = $('#roots'), life = $('#life'), rootEls = [];
+  items.forEach(it => { if (KIND[it.k].h < 4) return; const d = Math.min(120, KIND[it.k].h * 6 + 30), w = d * .7;
+    rootEls.push({ it, p: el('path', { d: `M${it.x} ${G} C${it.x - w * .3} ${G + d * .4} ${it.x - w} ${G + d * .5} ${it.x - w * 1.1} ${G + d} M${it.x} ${G} C${it.x + w * .2} ${G + d * .5} ${it.x + w * .9} ${G + d * .5} ${it.x + w} ${G + d * .9} M${it.x} ${G} L${it.x + 4} ${G + d * 1.1}`, stroke: '#d4c39e', 'stroke-width': 1.6, 'stroke-opacity': .5, pathLength: 1, 'stroke-dasharray': 1, 'stroke-dashoffset': 1 }, roots) }); });
+  const threads = [];
+  for (let i = 0; i < 26; i++) { const x = 20 + Math.random() * 960, y = G + 14 + Math.random() * 90, l = 20 + Math.random() * 50;
+    threads.push(el('path', { d: `M${x} ${y} q${l * .3} ${-8 + Math.random() * 16} ${l * .6} ${-4 + Math.random() * 8} t${l * .4} ${-6 + Math.random() * 12}`, stroke: '#f5f1e8', 'stroke-width': .9, fill: 'none', opacity: 0, 'data-at': (2 + Math.random() * 11).toFixed(1) }, life)); }
+  const worms = [];
+  for (let i = 0; i < 9; i++) worms.push({ x: 60 + Math.random() * 880, y: G + 16 + Math.random() * 60, at: 1.5 + i * 1.3, ph: Math.random() * 6.28, p: el('path', { stroke: '#c0573b', 'stroke-width': 3, fill: 'none', 'stroke-linecap': 'round', opacity: 0 }, life) });
+
+  // dynamic text is rendered here in the page language; static text goes through the site's es.js engine
+  const L = {
+    en: { strata: { Emergent: 'Emergent', High: 'High', Medium: 'Medium', Low: 'Low' }, names: {}, now: 'Growing now: ', none: 'nothing yet', year: 'Year',
+      bands: [['Placenta', 'years 1–3'], ['Secondary', 'years 3–8'], ['Climax', 'years 10+']],
+      say: [[0, 'Bare ground', 'Before anything is planted, the soil gets read: lab chemistry, biology, and field tests on the land itself.'],
+        [1, 'Placenta · pioneer years', 'Fast support species and short-lifecycle crops establish cover, fix nitrogen, and shade out grass pressure. Early food while the canopy is still open.'],
+        [3, 'Secondary · productive years', 'The main fruit trees come online and start carrying the system. Support species are thinned to open light.'],
+        [8, 'Secondary into climax', 'Pioneers get chopped down for mulch and replaced by the trees you actually planted for.'],
+        [10, 'Climax · legacy years', 'Emergent and high-strata trees reach full size. The system mostly maintains itself and recycles its own fertility.']] },
+    es: { strata: { Emergent: 'Emergente', High: 'Alto', Medium: 'Medio', Low: 'Bajo' }, now: 'Creciendo ahora: ', none: 'nada todavía', year: 'Año',
+      bands: [['Placenta', 'años 1–3'], ['Secundaria', 'años 3–8'], ['Clímax', 'años 10+']],
+      names: { 'Coconut palm': 'Palma de coco', Avocado: 'Aguacate', Guama: 'Guama', Gliricidia: 'Gliricidia', Cacao: 'Cacao', Banana: 'Guineo', 'Pigeon pea': 'Gandul', Vetiver: 'Vetiver' },
+      say: [[0, 'Tierra desnuda', 'Antes de sembrar nada, se lee el suelo: química de laboratorio, biología y pruebas de campo en el mismo terreno.'],
+        [1, 'Placenta · años pioneros', 'Especies de soporte rápidas y cultivos de ciclo corto establecen cobertura, fijan nitrógeno y le quitan sol a la maleza. Comida temprana mientras el dosel aún está abierto.'],
+        [3, 'Secundaria · años productivos', 'Los árboles frutales principales entran en producción y empiezan a sostener el sistema. Las especies de soporte se ralean para abrir luz.'],
+        [8, 'De secundaria a clímax', 'Las pioneras se cortan para mantillo y se reemplazan por los árboles que de verdad sembraste.'],
+        [10, 'Clímax · años de legado', 'Los árboles emergentes y de estrato alto alcanzan su tamaño completo. El sistema en su mayoría se mantiene solo y recicla su propia fertilidad.']] }
+  };
+  let lang = 'en', SAY = L.en.say;
+  function setLang(l) {
+    lang = l === 'es' ? 'es' : 'en'; SAY = L[lang].say;
+    $('#yrL').textContent = L[lang].year;
+    bands.forEach((b, i) => { b.children[0].textContent = L[lang].bands[i][0]; b.children[1].textContent = L[lang].bands[i][1]; });
+    lines.querySelectorAll('text').forEach(t => (t.textContent = L[lang].strata[t.dataset.k].toUpperCase()));
+    phase.textContent = '';
+  }
+  const inp = $('#t'), yr = $('#yr'), phase = $('#phase'), say = $('#say'), now = $('#now'), bands = [...document.querySelectorAll('#bands span[data-a]')];
+  const topsoil = $('#topsoil'), mulch = $('#mulch'), svg = $('#svg');
+  let T = 0, clock = 0;
+
+  function render(t) {
+    const live = {};
+    items.forEach(it => {
+      const K = KIND[it.k]; let gr = ss((t - K.from) / (K.to - K.from)), op = gr > 0 ? 1 : 0;
+      if (K.thin) { const c = ss((t - K.thin[0]) / (K.thin[1] - K.thin[0])); op *= 1 - c * (1 - K.keep); gr *= 1 - c * (K.keep ? .12 : .5); }
+      const s = Math.max(.0001, gr) * K.h * PX / 100 * it.f, sw = Math.sin(clock / 1400 + it.sway) * (K.h > 8 ? .9 : 1.8);
+      it.g.setAttribute('transform', `translate(${it.x} ${G}) rotate(${sw}) scale(${s})`);
+      it.g.setAttribute('opacity', (op * (it.g.dataset.airy ? .9 : 1)).toFixed(3));
+      if (op > .55 && gr > .3) live[K.name] = 1;
+    });
+    lines.childNodes.forEach(g => { const m = +g.dataset.m; const reached = items.some(it => { const K = KIND[it.k]; return K.h * ss((t - K.from) / (K.to - K.from)) >= m * .8; }); g.setAttribute('opacity', reached ? 1 : 0); });
+    const depth = 10 + 46 * ss(t / 14);
+    topsoil.setAttribute('height', depth.toFixed(1));
+    mulch.setAttribute('opacity', (ss((t - 1.5) / 5) * .85).toFixed(2));
+    rootEls.forEach(r => { const K = KIND[r.it.k]; r.p.setAttribute('stroke-dashoffset', (1 - ss((t - K.from) / (K.to - K.from + 2))).toFixed(3)); r.p.setAttribute('opacity', r.it.g.getAttribute('opacity')); });
+    threads.forEach(p => p.setAttribute('opacity', (ss((t - p.dataset.at) / 2) * .28).toFixed(2)));
+    worms.forEach(w => { const o = ss((t - w.at) / 1.5), a = clock / 500 + w.ph, x = w.x + Math.sin(a * .3) * 14;
+      w.p.setAttribute('d', `M${x} ${w.y} q5 ${Math.sin(a) * 5} 10 0 t10 0`); w.p.setAttribute('opacity', (o * .8).toFixed(2)); });
+    yr.textContent = Math.round(t);
+    let row = SAY[0]; SAY.forEach(r => { if (t >= r[0] - .01 && (r[0] || t < .6)) row = r; }); if (t >= .6 && row[0] === 0) row = SAY[1];
+    if (phase.textContent !== row[1]) { phase.textContent = row[1]; say.textContent = row[2]; }
+    bands.forEach(b => b.classList.toggle('on', t >= +b.dataset.a && t < +b.dataset.b));
+    const names = Object.keys(live).map(n => L[lang].names[n] || n); now.textContent = L[lang].now + (names.length ? names.join(' · ') : L[lang].none);
+  }
+
+  // phone gets one module, desktop the whole row
+  const fit = () => {
+    let x0 = 190, w = 620, y0 = 50, h = 570;
+    if (innerWidth >= 940) { const r = svg.getBoundingClientRect(); y0 = -30; h = 670; w = h * r.width / r.height; x0 = 500 - w * .64; }
+    svg.setAttribute('viewBox', `${x0} ${y0} ${w} ${h}`);
+    lines.querySelectorAll('text').forEach(t => t.setAttribute('x', x0 + w - 14));
+  };
+  addEventListener('resize', fit);
+  addEventListener('scroll', () => $('#bar').classList.toggle('lit', scrollY > 30), { passive: true });
+  new MutationObserver(() => setLang(document.documentElement.lang)).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
+  const burger = $('#burger'), drawer = $('#drawer');
+  const menu = open => { drawer.classList.toggle('open', open); burger.setAttribute('aria-expanded', open); };
+  burger.addEventListener('click', () => menu(!drawer.classList.contains('open')));
+  drawer.addEventListener('click', e => { if (e.target.closest('a')) menu(false); });
+  addEventListener('keydown', e => { if (e.key === 'Escape') menu(false); });
+
+  let auto = !reduce, hold = 0, last = 0;
+  inp.addEventListener('input', () => { auto = false; T = +inp.value; });
+  function loop(ts) {
+    const dt = Math.min(60, ts - (last || ts)); last = ts; clock = ts;
+    if (auto) { if (T >= 15) { hold += dt; if (hold > 2600) { T = 0; hold = 0; } } else T = Math.min(15, T + dt * 15 / 17000); inp.value = T; }
+    render(T);
+    requestAnimationFrame(loop);
+  }
+  fit(); setLang(document.documentElement.lang);
+  if (reduce) { T = 12; inp.value = 12; render(12); } else requestAnimationFrame(loop);
+})();
 </script>
 
 <script src="/assets/es.js"></script>
