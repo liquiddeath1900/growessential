@@ -17,7 +17,8 @@
   const SUPA_URL="https://lpzijtmbdowcshomyenk.supabase.co";
   const SUPA_ANON="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxwemlqdG1iZG93Y3Nob215ZW5rIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQwNTM4MDgsImV4cCI6MjA4OTYyOTgwOH0.2GN7eyC8rutMuHrVOc_2e2meMLu1S5YoNViV1zFgzX4";
   var msg=document.getElementById('msg');
-  var doc=new URLSearchParams(location.search).get('doc')==='labels'?'plantdoc_labels':'plantdoc_manual';
+  var want=new URLSearchParams(location.search).get('doc');
+  var doc=want==='labels'?'plantdoc_labels':want==='flyer'?'plantdoc_flyer':'plantdoc_manual';
   try{
     var sb=window.supabase.createClient(SUPA_URL, SUPA_ANON);
     var s=await sb.auth.getSession();
